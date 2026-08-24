@@ -1,6 +1,6 @@
 # AI Gelir Vakaları Ansiklopedisi
 
-Bu bölüm, projenin başından itibaren toplanan **116 kataloglanabilir vaka + 1 tartışmalı X vakasını** tek bir araştırma ansiklopedisi altında toplar.
+Bu bölüm, projenin başından itibaren toplanan **122 kataloglanabilir vaka + 1 tartışmalı X vakasını** tek bir araştırma ansiklopedisi altında toplar.
 
 Amaç tek bir fikri seçip ürün geliştirmek değildir. Amaç, insanların ve işletmelerin yapay zekâ/otomasyon kullanılarak hangi küçük problemlere gerçekten para ödediğini; hangi vakaların açık kaynakla izlenebildiğini; hangilerinin yalnızca ticari self-report olduğunu; hangilerinin Türkiye'de uygulanabilir olduğunu karşılaştırmalı biçimde korumaktır.
 
@@ -9,7 +9,7 @@ Amaç tek bir fikri seçip ürün geliştirmek değildir. Amaç, insanların ve 
 - **A — Ticari vaka + exact kaynak repo/workflow.** Aynı müşteri/gelir/operasyon vakası ile doğrudan bağlantılı kaynak kod doğrulanmıştır.
 - **B — Açık çalışan workflow/repo + ticari üretici/market bağlamı.** Kod gerçektir fakat o exact workflow'un ayrı ücretli müşteri sonucu kanıtlanmamıştır ya da kaynak mirror/template niteliğindedir.
 - **C — Güçlü ücretli müşteri, gelir, tasarruf veya marketplace sinyali.** Exact kaynak repo kapalıdır, bulunamamıştır veya doğrulanmamıştır.
-- **X — Tartışmalı.** Gelir iddiasında promosyon, çıkar çatışması veya başka ciddi güvenilirlik problemi vardır; ana 116 sayımına dahil edilmez.
+- **X — Tartışmalı.** Gelir iddiasında promosyon, çıkar çatışması veya başka ciddi güvenilirlik problemi vardır; ana 122 sayımına dahil edilmez.
 
 Gelir rakamlarında şu ayrım korunur:
 
@@ -44,8 +44,6 @@ A001–A005 ve B001–B025. Lead intelligence, hukuk, e-ticaret kreatifleri, Gma
 ### [Cilt 2 — Operasyon, back-office ve yerel işletme: C001–C019](encyclopedia/VOLUME-02-OPERATIONS-LOCAL-BUSINESS.md)
 Denizcilik lead research, fatura işleme, 50K katalog overhaul, property management, bookkeeping, monitoring, WhatsApp sipariş, HR, klinik intake, Stripe tahsilat, tutoring ve kahveci QR app gibi doğrudan işletme problemleri.
 
-> Not: C027 artık bu C grubunda sayılmaz; A006 olarak yukarı taşınmıştır.
-
 ### [Cilt 3 — App, mikro-SaaS ve uzmanlık işleri: C020–C033](encyclopedia/VOLUME-03-APPS-SAAS-SPECIALIST.md)
 Apple Watch uygulaması, mikro-SaaS, conversational forms, health app, Upwork otomasyon işi, Make→n8n migration, repair-shop agent, offline RAG, configurator app, bug bounty ve adversarial ML gibi daha ürün/uzmanlık ağırlıklı vakalar. C027'nin tarihsel kaydı bu ciltte görülebilir ancak kanonik derecesi artık A006'dır.
 
@@ -59,10 +57,13 @@ AI UGC, product commercial, music video, avatar video, thumbnail, faceless YouTu
 AI logo düzeltme, Gamma/AI deck'i profesyonel PPT'ye çevirme, OCR→Excel, AI destekli VA ve voice/task assistant gibi “AI çıktılarını işe yarar son ürüne çeviren” işler.
 
 ### [Cilt 7 — Enterprise operasyon, maliyet düşürme ve yüksek-ROI: C076–C086](encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md)
-Medikal stok expiry, D365 lisans ikamesi, okul veri workflow'ları, warehouse scan optimizasyonu, CRM sync replacement, real-estate document generation, tender research, 44-country localisation, internal Claude automation ve grant-funded custom app gibi yeni yüksek-ROI vakaları.
+Medikal stok expiry, D365 lisans ikamesi, okul veri workflow'ları, warehouse scan optimizasyonu, CRM sync replacement, real-estate document generation, tender research, 44-country localisation, internal Claude automation ve grant-funded custom app gibi yüksek-ROI vakaları.
+
+### [Cilt 8 — AI-destekli özel yazılım ve dar sektör araçları: C087–C092](encyclopedia/VOLUME-08-AI-ASSISTED-CUSTOM-SOFTWARE.md)
+$30K business-management web app, `$500` fitness-coach app, `$500/ay` pest-control inspection app, manufacturing recruiting lead-research ikamesi ve yüksek gelir bildiren dikey AI-assisted software örnekleri.
 
 ### [Ek X — Tartışmalı/şüpheli ticari vakalar](encyclopedia/APPENDIX-X-DISPUTED.md)
-Ana kanıt standardını geçmeyen fakat araştırma izi olarak korunması gereken örnekler. Şu anda X001 WhatsApp/Gemini `$275` iddiasını içerir.
+Ana kanıt standardını geçmeyen fakat araştırma izi olarak korunması gereken örnekler.
 
 ## Altın vakalar derin araştırması
 
@@ -95,4 +96,4 @@ Exact repo, ikinci bağımsız müşteri kanıtı veya daha güçlü ekonomik do
 
 > Çok spesifik müşteri + çok spesifik tekrar eden problem + AI yalnız gerektiği yerde + ölçülebilir çıktı.
 
-Ansiklopedinin amacı “AI ile para kazanmanın 116 yolu” demek değildir. Amaç, **gerçek bir insanın veya işletmenin para ödediği ya da ölçülebilir ekonomik değer bildirdiği 116 küçük problemi** arşivlemek ve güvenilirlik sorunu olan örnekleri ayrı X eki altında kaybetmemektir.
+Ansiklopedinin amacı “AI ile para kazanmanın 122 yolu” demek değildir. Amaç, **gerçek bir insanın veya işletmenin para ödediği ya da ölçülebilir ekonomik değer bildirdiği 122 küçük problemi** arşivlemek ve güvenilirlik sorunu olan örnekleri ayrı X eki altında kaybetmemektir.
