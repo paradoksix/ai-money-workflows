@@ -1,6 +1,6 @@
 # AI Gelir Vakaları Ansiklopedisi
 
-Bu bölüm, projenin başından itibaren toplanan **105 kataloglanabilir vakayı** tek bir araştırma ansiklopedisi altında toplar.
+Bu bölüm, projenin başından itibaren toplanan **105 kataloglanabilir vaka + 1 tartışmalı X vakasını** tek bir araştırma ansiklopedisi altında toplar.
 
 Amaç tek bir fikri seçip ürün geliştirmek değildir. Amaç, insanların ve işletmelerin yapay zekâ/otomasyon kullanılarak hangi küçük problemlere gerçekten para ödediğini; hangi vakaların açık kaynakla izlenebildiğini; hangilerinin yalnızca ticari self-report olduğunu; hangilerinin Türkiye'de uygulanabilir olduğunu karşılaştırmalı biçimde korumaktır.
 
@@ -9,7 +9,7 @@ Amaç tek bir fikri seçip ürün geliştirmek değildir. Amaç, insanların ve 
 - **A — Ticari vaka + exact kaynak repo/workflow.** Aynı müşteri/gelir vakası ile doğrudan bağlantılı kaynak kod doğrulanmıştır.
 - **B — Açık çalışan workflow/repo + ticari üretici/market bağlamı.** Kod gerçektir fakat o exact workflow'un ayrı ücretli müşteri sonucu kanıtlanmamıştır ya da kaynak mirror/template niteliğindedir.
 - **C — Güçlü ücretli müşteri, gelir, tasarruf veya marketplace sinyali.** Exact kaynak repo kapalıdır, bulunamamıştır veya doğrulanmamıştır.
-- **X — Tartışmalı.** Gelir iddiasında promosyon, çıkar çatışması veya başka ciddi güvenilirlik problemi vardır.
+- **X — Tartışmalı.** Gelir iddiasında promosyon, çıkar çatışması veya başka ciddi güvenilirlik problemi vardır; ana 105 sayımına dahil edilmez.
 
 Gelir rakamlarında şu ayrım korunur:
 
@@ -51,7 +51,10 @@ Fiverr/marketplace üzerinde gerçekten sipariş/review sinyali bulunan n8n, API
 AI UGC, product commercial, music video, avatar video, thumbnail, faceless YouTube prodüksiyonu ve aylık içerik paketleri.
 
 ### [Cilt 6 — AI sonrası temizlik, veri ve VA hizmetleri: C066–C075](encyclopedia/VOLUME-06-CLEANUP-DATA-VA.md)
-AI logo düzeltme, Gamma/AI deck'i profesyonel PPT'ye çevirme, OCR→Excel, humanize/editing, AI destekli VA ve voice/task assistant gibi “AI çıktılarını işe yarar son ürüne çeviren” işler.
+AI logo düzeltme, Gamma/AI deck'i profesyonel PPT'ye çevirme, OCR→Excel, AI destekli VA ve voice/task assistant gibi “AI çıktılarını işe yarar son ürüne çeviren” işler.
+
+### [Ek X — Tartışmalı/şüpheli ticari vakalar](encyclopedia/APPENDIX-X-DISPUTED.md)
+Ana kanıt standardını geçmeyen fakat araştırma izi olarak korunması gereken örnekler. Şu anda X001 WhatsApp/Gemini `$275` iddiasını içerir.
 
 ## Özellikle araştırılmaya devam edilecek altın vakalar
 
@@ -74,4 +77,4 @@ Bu vakalarda yeni bir sıradan fikir bulmaktan ziyade exact repo/Gist/template v
 
 > Çok spesifik müşteri + çok spesifik tekrar eden problem + AI yalnız gerektiği yerde + ölçülebilir çıktı.
 
-Ansiklopedinin amacı “AI ile para kazanmanın 105 yolu” demek değildir. Amaç, **gerçek bir insanın veya işletmenin para ödediği 105 küçük problemi** arşivlemektir.
+Ansiklopedinin amacı “AI ile para kazanmanın 105 yolu” demek değildir. Amaç, **gerçek bir insanın veya işletmenin para ödediği 105 küçük problemi** arşivlemek ve güvenilirlik sorunu olan örnekleri de ayrı X eki altında kaybetmemektir.
