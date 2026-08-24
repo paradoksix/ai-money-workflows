@@ -10,7 +10,7 @@ Amaç mümkün olduğunca çok “AI projesi” biriktirmek değil; **ticari vak
 
 Ansiklopedi şu anda:
 
-- **116 kataloglanabilir vaka**,
+- **122 kataloglanabilir vaka**,
 - **1 ayrı X-seviyesi tartışmalı vaka**,
 - A/B/C/X kanıt derecesi,
 - bildirilen ücret/gelir/tasarruf/değer ayrımı,
@@ -26,15 +26,16 @@ Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatıl
 
 - Altın vakalar için derin kaynak avı yapıldı: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md`.
 - Eski **C027 Device Repair WhatsApp + Voice Agent**, exact production repo bulunmasıyla **A006** seviyesine yükseltildi.
-- Enterprise/back-office yüksek-ROI vakaları için `encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md` eklendi.
-- Yeni dalga C076–C086 ile kataloglanabilir toplam **116** vakaya çıktı.
+- `encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md` ile C076–C086 yüksek-ROI operasyon vakaları eklendi.
+- `encyclopedia/VOLUME-08-AI-ASSISTED-CUSTOM-SOFTWARE.md` ile C087–C092 özel yazılım/dar sektör vakaları eklendi.
+- Kataloglanabilir toplam **122** vakaya çıktı.
 
 ## Repo yapısı
 
-- `ENCYCLOPEDIA.md` — 116+1 vakalık ana ansiklopedi ve cilt indeksi.
-- `encyclopedia/` — yedi ana cilt, A006 exact case card ve X-seviyesi tartışmalı vakalar eki.
+- `ENCYCLOPEDIA.md` — 122+1 vakalık ana ansiklopedi ve cilt indeksi.
+- `encyclopedia/` — sekiz ana cilt, A006 exact case card ve X-seviyesi tartışmalı vakalar eki.
 - `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md` — altın vakaların exact-source ve güvenilirlik derin araştırması.
-- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi. Not: tarihsel C027 satırı canonical A006 kartına taşınmak üzere veri-temizliği bekleyebilir; ansiklopedide kanonik derece A006'dır.
+- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi. Tarihsel C027 satırı canonical A006 kartına taşınmak üzere veri-temizliği bekleyebilir; ansiklopedide kanonik derece A006'dır.
 - `research_queue.csv` — exact kaynak repo/Gist/template'i henüz bulunamamış yüksek değerli vakaların araştırma kuyruğu.
 - `RESEARCH_POLICY.md` — A/B/C/X kanıt standardı ve lisans politikası.
 - `TURKIYE_OPPORTUNITIES.md` — yerel nişlerin satış/demonstrasyon açıları.
@@ -50,8 +51,6 @@ Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatıl
 - **B:** açık çalışan kaynak/JSON + güçlü ticari üretici veya marketplace bağlamı; fakat exact workflow'un ayrıca ne kadar kazandırdığı tam kanıtlı değil.
 - **C:** ücretli müşteri, gelir, tasarruf veya ölçülebilir ticari sonuç güçlü; exact public kaynak repo kapalı, eksik veya bulunamadı.
 - **X:** gelir iddiası var fakat promosyon, çıkar çatışması veya başka ciddi şüphe bulunuyor.
-
-Ayrıntı: `RESEARCH_POLICY.md`.
 
 Gelir rakamları birbirine karıştırılmaz:
 
@@ -98,8 +97,6 @@ Gelir rakamları birbirine karıştırılmaz:
 - Repo metadata'sında açık root lisans görünmüyor.
 
 ## Araştırmada özellikle kovalanacak C vakaları
-
-Exact kaynak repo veya bağımsız ikinci kanıt bulunması en değerli vakalar:
 
 1. C004 — Property-management vertical / Powerprozesse
 2. C003 — 50K ürün katalog overhaul
