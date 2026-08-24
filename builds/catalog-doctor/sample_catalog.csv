@@ -1,0 +1,9 @@
+sku,title,description,category,brand
+HB-001,"  Profesyonel Çekiç 500 gr  ","Kaymaz saplı çekiç",El Aletleri,ÖrnekMarka
+HB-002,"Profesyonel Çekiç 500 gr","Kaymaz saplı çekiç",El Aletleri,ÖrnekMarka
+EL-101,"LED Panel 24W Sıva Üstü","4000K beyaz panel",,IşıkCo
+EL-102,"LED Panel   24W Sıva Üstü","6500K gün ışığı panel",Aydınlatma,IşıkCo
+OT-500,"Fren Balatası Ön Takım","Uyumlu araç bilgisi tedarikçi listesinden kontrol edilmeli",Oto Yedek Parça,
+OT-500,"Fren Balatası Ön Takım Premium","Seramik katkılı olduğu iddiası doğrulanmadı",Oto Yedek Parça,ParçaX
+MB-200,"Ofis Koltuğu Fileli","Ayarlanabilir yükseklik ve file sırt",Ofis Mobilyası,MobilyaDemo
+MB-201,"","Ürün adı eksik; ergonomik ofis sandalyesi",Ofis Mobilyası,MobilyaDemo
