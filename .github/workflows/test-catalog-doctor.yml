@@ -1,0 +1,48 @@
+name: Test catalog-doctor
+
+on:
+  push:
+    paths:
+      - "builds/catalog-doctor/**"
+      - ".github/workflows/test-catalog-doctor.yml"
+  pull_request:
+    paths:
+      - "builds/catalog-doctor/**"
+      - ".github/workflows/test-catalog-doctor.yml"
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run deterministic catalog audit
+        working-directory: builds/catalog-doctor
+        run: python catalog_doctor.py sample_catalog.csv --out demo-output
+      - name: Validate outputs
+        working-directory: builds/catalog-doctor
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          out = Path("demo-output")
+          for name in ("summary.json", "audit.csv", "cleaned.csv"):
+              assert (out / name).exists(), f"missing {name}"
+
+          summary = json.loads((out / "summary.json").read_text(encoding="utf-8"))
+          assert summary["rows"] == 8, summary
+          assert summary["issue_counts"]["missing_title"] == 1, summary
+          assert summary["issue_counts"]["missing_category"] == 1, summary
+          assert summary["issue_counts"]["duplicate_sku"] == 2, summary
+          assert summary["issue_counts"]["duplicate_title"] == 2, summary
+
+          with (out / "cleaned.csv").open(encoding="utf-8-sig", newline="") as fh:
+              rows = list(csv.DictReader(fh))
+          assert len(rows) == 8
+          assert any(r["review_required"] == "yes" for r in rows)
+          print("catalog-doctor smoke test OK")
+          PY
