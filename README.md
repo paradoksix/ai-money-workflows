@@ -10,7 +10,7 @@ Amaç mümkün olduğunca çok “AI projesi” biriktirmek değil; **ticari vak
 
 Ansiklopedi şu anda:
 
-- **105 kataloglanabilir vaka**,
+- **116 kataloglanabilir vaka**,
 - **1 ayrı X-seviyesi tartışmalı vaka**,
 - A/B/C/X kanıt derecesi,
 - bildirilen ücret/gelir/tasarruf/değer ayrımı,
@@ -22,23 +22,31 @@ içerir.
 
 Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatılmıştır**. Projenin mevcut amacı, yapmaya değer AI gelir işlerinin olabildiğince geniş ve kanıt dereceli haritasını çıkarmaktır.
 
+## Son araştırma dalgası
+
+- Altın vakalar için derin kaynak avı yapıldı: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md`.
+- Eski **C027 Device Repair WhatsApp + Voice Agent**, exact production repo bulunmasıyla **A006** seviyesine yükseltildi.
+- Enterprise/back-office yüksek-ROI vakaları için `encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md` eklendi.
+- Yeni dalga C076–C086 ile kataloglanabilir toplam **116** vakaya çıktı.
+
 ## Repo yapısı
 
-- `ENCYCLOPEDIA.md` — 105+1 vakalık ana ansiklopedi ve cilt indeksi.
-- `encyclopedia/` — altı ana cilt + X-seviyesi tartışmalı vakalar eki.
-- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi.
+- `ENCYCLOPEDIA.md` — 116+1 vakalık ana ansiklopedi ve cilt indeksi.
+- `encyclopedia/` — yedi ana cilt, A006 exact case card ve X-seviyesi tartışmalı vakalar eki.
+- `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md` — altın vakaların exact-source ve güvenilirlik derin araştırması.
+- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi. Not: tarihsel C027 satırı canonical A006 kartına taşınmak üzere veri-temizliği bekleyebilir; ansiklopedide kanonik derece A006'dır.
 - `research_queue.csv` — exact kaynak repo/Gist/template'i henüz bulunamamış yüksek değerli vakaların araştırma kuyruğu.
 - `RESEARCH_POLICY.md` — A/B/C/X kanıt standardı ve lisans politikası.
 - `TURKIYE_OPPORTUNITIES.md` — yerel nişlerin satış/demonstrasyon açıları.
 - `BUILD_SHORTLIST.md` — önceki build kısa listesi; araştırma aşamasında aktif geliştirme planı değildir.
 - `sources.csv` — ilk kaynak indeksinin geriye dönük kopyası.
-- `clone_originals.ps1` / `clone_originals.sh` — yalnız A seviyesindeki doğrulanmış upstream repoları belirli commit'e sabitleyerek çeker.
+- `clone_originals.ps1` / `clone_originals.sh` — doğrulanmış upstream repoları belirli commit'e sabitleyerek çekmek için kullanılır; A006'nın scriptlere eklenmesi ayrı veri-temizliği adımıdır.
 - `clone_disputed.ps1` / `clone_disputed.sh` — tartışmalı örnekleri bilinçli olarak ayrı çeker.
 - `scripts/validate_catalog.py` — çekirdek katalog tutarlılık kontrolü.
 
 ## Kanıt seviyeleri
 
-- **A:** belirli ticari vaka/sonuç + vakaya doğrudan bağlı exact GitHub repo/workflow.
+- **A:** belirli ticari/operasyonel vaka + vakaya doğrudan bağlı exact GitHub repo/workflow.
 - **B:** açık çalışan kaynak/JSON + güçlü ticari üretici veya marketplace bağlamı; fakat exact workflow'un ayrıca ne kadar kazandırdığı tam kanıtlı değil.
 - **C:** ücretli müşteri, gelir, tasarruf veya ölçülebilir ticari sonuç güçlü; exact public kaynak repo kapalı, eksik veya bulunamadı.
 - **X:** gelir iddiası var fakat promosyon, çıkar çatışması veya başka ciddi şüphe bulunuyor.
@@ -50,9 +58,9 @@ Gelir rakamları birbirine karıştırılmaz:
 - **F:** freelancer/hizmet sağlayıcının aldığı ücret
 - **R:** ürün/SaaS/app geliri
 - **S:** müşterinin tasarrufu
-- **V:** kampanya değeri, booked call, impression, geri kazanılan alacak gibi ticari sonuç
+- **V:** kampanya değeri, booked call, impression, geri kazanılan alacak veya operasyonel değer gibi ticari sonuç
 
-## A — Doğrulanmış ticari vaka + exact GitHub
+## A — Doğrulanmış ticari/operasyonel vaka + exact GitHub
 
 ### A001 — AI Creative Director / moda kampanyası
 - Repo: https://github.com/sirlifehacker/Nano-Banana-Pro-Creative-Director
@@ -80,41 +88,32 @@ Gelir rakamları birbirine karıştırılmaz:
 - Commit: `08e33b6d589789bc06957611cf932d3602b81117`
 - Vaka: Austin'deki butik hukuk firmasına `$1,800` ücretle satıldığı bildiriliyor; geliştirici standart teklifini `$2,500 build + $400/month` olarak açıklıyor.
 
+### A006 — Jacobo Device Repair WhatsApp + Voice AI Agent
+- Case card: `encyclopedia/A006-JACOBO-DEVICE-REPAIR.md`
+- Repo: https://github.com/santifer/jacobo-workflows
+- Commit: `b26601dde3f35edddf3690bd2f5a6656420df073`
+- Exact source: 7 sanitised production n8n workflow.
+- Bildirilen sonuç: ~%90 self-service, ~80 saat/ay otomasyon, `<30s` response, `<€200/ay` altyapı.
+- Gelir semantiği: bağımsız freelance satış fiyatı yok; sistem işletmenin operasyonel varlığı olarak kullanılmış ve işletmeyle birlikte devredilmiş.
+- Repo metadata'sında açık root lisans görünmüyor.
+
 ## Araştırmada özellikle kovalanacak C vakaları
 
 Exact kaynak repo veya bağımsız ikinci kanıt bulunması en değerli vakalar:
 
-1. C003 — 50K ürün katalog overhaul
-2. C002 — Japon Google Ads invoice processor
-3. C001 — Ship manager lead capture
-4. C004 — Property-management vertical
+1. C004 — Property-management vertical / Powerprozesse
+2. C003 — 50K ürün katalog overhaul
+3. C002 — Japon Google Ads invoice processor
+4. C006 — 115+ workflow monitoring
 5. C005 — Bookkeeping process automation
-6. C006 — 115+ workflow monitoring
+6. C001 — Ship manager lead capture
 7. C008 — Bookstore WhatsApp order assistant
 8. C018 — $5K tutoring operations system
-9. C027 — Device-repair WhatsApp + voice agent
-10. C029 — Offline university RAG
+9. C029 — Offline university RAG
+10. C076 — Medical-device expiry/spoilage automation
 
-Bunların ayrıntıları `ENCYCLOPEDIA.md` üzerinden ilgili ciltlerde bulunur.
-
-## Orijinalleri çekmek
-
-Windows:
-
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-.\clone_originals.ps1
-```
-
-Linux / macOS / WSL:
-
-```bash
-chmod +x clone_originals.sh
-./clone_originals.sh
-```
-
-Scriptler A001–A005 kaynak repolarını `upstreams/` altında clone eder ve araştırmada doğrulanan commit'e checkout yapar.
+Bunların ayrıntıları `ENCYCLOPEDIA.md` ve derin araştırma raporu üzerinden izlenir.
 
 ## Lisans notu
 
-Public GitHub reposu otomatik olarak yeniden dağıtım veya yeniden lisanslama izni vermez. Açık lisansı bulunmayan upstream kodları bu repoya kopyalanmaz; orijinal repo, Git geçmişi ve sabit commit korunarak doğrudan upstream'den çekilir. Private/paid kaynaklar araştırma amacıyla kayda alınabilir fakat kopyalanmaz.
+Public GitHub reposu otomatik olarak yeniden dağıtım veya yeniden lisanslama izni vermez. Açık lisansı bulunmayan upstream kodları bu repoya kopyalanmaz; orijinal repo, Git geçmişi ve sabit commit korunarak doğrudan upstream'den referanslanır/çekilir. Private/paid kaynaklar araştırma amacıyla kayda alınabilir fakat kopyalanmaz.
