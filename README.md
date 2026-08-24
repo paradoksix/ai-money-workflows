@@ -1,8 +1,28 @@
 # AI Money Workflows
 
-Bu repo, 2025–2026 döneminde **gerçek müşteri / gelir / ticari lead sonucu bildirilen** ve doğrudan kaynak GitHub reposu doğrulanabilen AI otomasyon örneklerini izlemek için hazırlanmıştır.
+Bu repo, 2025–2026 döneminde **gerçek müşteri / gelir / ticari sonuç bildirilen** AI otomasyon örneklerini izlemek için hazırlanmıştır.
 
 Amaç, başkalarının kodunu bizimmiş gibi yeniden yayımlamak değil; **orijinal upstream repo + doğrulanmış commit + gelir/müşteri kanıtı** bağını koruyarak araştırılabilir ve tekrar kurulabilir bir koleksiyon oluşturmaktır.
+
+## Repo yapısı
+
+- `catalog.csv` — ana katalog: iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik.
+- `research_queue.csv` — para/müşteri kanıtı güçlü ama exact GitHub kaynağı henüz bulunamamış işler.
+- `RESEARCH_POLICY.md` — A/B/C/X kanıt standardı ve lisans politikası.
+- `sources.csv` — ilk kaynak indeksinin geriye dönük kopyası.
+- `clone_originals.ps1` / `clone_originals.sh` — yalnızca A seviyesindeki doğrulanmış upstream repoları çeker.
+- `clone_disputed.ps1` / `clone_disputed.sh` — tartışmalı örnekleri bilinçli olarak ayrı çeker.
+- `scripts/validate_catalog.py` — katalog tutarlılık kontrolü.
+- `.github/workflows/validate-catalog.yml` — catalog değişikliklerinde otomatik doğrulama.
+
+## Kanıt seviyeleri
+
+- **A:** belirli ticari vaka/sonuç + vakaya doğrudan bağlı exact GitHub repo.
+- **B:** ticari üretici + exact repo var, fakat bu workflow'un ayrı gelir/müşteri kanıtı eksik.
+- **C:** ücretli müşteri veya ticari sonuç güçlü, fakat kaynak repo henüz bulunamadı.
+- **X:** gelir iddiası var fakat promosyon/çıkar çatışması veya başka ciddi şüphe bulunuyor.
+
+Ayrıntı: `RESEARCH_POLICY.md`.
 
 ## A — Güçlü müşteri / para sinyali + doğrudan orijinal GitHub
 
@@ -34,6 +54,27 @@ Amaç, başkalarının kodunu bizimmiş gibi yeniden yayımlamak değil; **oriji
 - Kanıt: ~2.9M impression, 10+ high-ticket inbound lead ve yaklaşık `$75` çalışma maliyeti bildiriliyor.
 - Lisans: root `LICENSE` bulunamadı.
 
+## B — Kaynak kod açık, fakat workflow-bazlı gelir kanıtı daha zayıf
+
+### Job Hacker — CV'yi ilana göre uyarlama + hiring manager bulma
+- Repo: https://github.com/sirlifehacker/n8n-job-hacker
+- Commit: `edbc14455b17032b106492346378233a19e7ec20`
+- Reddit: https://www.reddit.com/r/n8n/comments/1qsz9qj/this_automation_scrapes_linkedin_jobs_customizes/
+- Not: yazar AI araçları geliştirerek tam zamanlı geçindiğini söylüyor; fakat bu belirli workflow'un ücretli satışına dair ayrı kanıt yok. Bu yüzden A değil B.
+
+## C — Para/müşteri kanıtı güçlü, exact repo aranıyor
+
+Araştırma kuyruğunda şu anda şunlar bulunuyor:
+- gemi yöneticisi lead capture — ilk ücretli müşteri,
+- Japon Google Ads fatura işleme — yaklaşık `$2k/month` değer iddiası,
+- 50K+ ürün kataloğu temizleme ve SEO zenginleştirme,
+- Alman property-management şirketlerine özel n8n dikeyi — 20 müşteri,
+- bookkeeping otomasyonu — 600 saat doğrudan / 2400 saat ölçek etkisi,
+- çok müşterili otomasyon monitoring dashboard,
+- 50K Shopify inventory update shock absorber — `$25k saved` iddiası, doğrulama bekliyor.
+
+Bunların kaynak kodu bulunmadan upstream koleksiyonuna alınmaz. Ayrıntılar `research_queue.csv` içinde.
+
 ## X — Tartışmalı gelir iddiası
 
 ### WhatsApp Gemini chatbot — $275 iddiası
@@ -42,7 +83,7 @@ Amaç, başkalarının kodunu bizimmiş gibi yeniden yayımlamak değil; **oriji
 - Reddit: https://www.reddit.com/r/AI_Agents/comments/1l4gojr/i_made_275_in_a_1_day_building_a_whatsapp_ai/
 - Not: yorumlarda API hizmetiyle gizli ilişki / reklam şüphesi bulunduğu için varsayılan clone listesine alınmadı.
 
-## Kullanım
+## Orijinalleri çekmek
 
 Windows:
 
