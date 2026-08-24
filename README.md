@@ -1,16 +1,29 @@
 # AI Money Workflows
 
-Bu repo, 2025–2026 döneminde **gerçek müşteri / gelir / ticari sonuç bildirilen** AI otomasyon örneklerini izlemek için hazırlanmıştır.
+Bu repo, 2025–2026 döneminde **gerçek müşteri / gelir / ticari sonuç bildirilen** AI otomasyon ve AI-destekli yazılım işlerini izlemek için hazırlanmıştır.
 
-Amaç, başkalarının kodunu bizimmiş gibi yeniden yayımlamak değil; **orijinal upstream repo + doğrulanmış commit + gelir/müşteri kanıtı** bağını koruyarak araştırılabilir ve tekrar kurulabilir bir koleksiyon oluşturmaktır.
+Amaç mümkün olduğunca çok “AI projesi” biriktirmek değil; **ticari vaka → kaynak → exact repo/kod → commit → lisans → Türkiye'de uygulanabilirlik** zincirini mümkün olduğunca izlenebilir tutmaktır.
+
+## Güncel durum
+
+Ana katalog şu anda **41 ticari vaka** içeriyor:
+
+- **5 × A:** ticari vaka + doğrudan ilişkili exact GitHub kaynak.
+- **2 × B:** ticari bağlam + GitHub kaynak/mirror var, fakat A standardının tamamı yok.
+- **33 × C:** müşteri/gelir/ROI sinyali güçlü; exact public kaynak aranıyor.
+- **1 × X:** promosyon/çıkar çatışması nedeniyle tartışmalı.
+
+`BUILD_SHORTLIST.md`, bunların içinden Türkiye'de ilk kurulacak 10 ürünü sıralar.
 
 ## Repo yapısı
 
 - `catalog.csv` — ana katalog: iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik.
-- `research_queue.csv` — para/müşteri kanıtı güçlü ama exact GitHub kaynağı henüz bulunamamış işler.
+- `research_queue.csv` — C seviyesindeki 33 vakanın exact kaynak-repo arama kuyruğu.
+- `BUILD_SHORTLIST.md` — Türkiye'de ilk kurulacak 10 ürün ve ilk beş build sırası.
+- `TURKIYE_OPPORTUNITIES.md` — yerel nişlerin satış/demonstrasyon açıları.
 - `RESEARCH_POLICY.md` — A/B/C/X kanıt standardı ve lisans politikası.
 - `sources.csv` — ilk kaynak indeksinin geriye dönük kopyası.
-- `clone_originals.ps1` / `clone_originals.sh` — yalnızca A seviyesindeki doğrulanmış upstream repoları çeker.
+- `clone_originals.ps1` / `clone_originals.sh` — yalnız A seviyesindeki doğrulanmış upstream repoları belirli commit'e sabitleyerek çeker.
 - `clone_disputed.ps1` / `clone_disputed.sh` — tartışmalı örnekleri bilinçli olarak ayrı çeker.
 - `scripts/validate_catalog.py` — katalog tutarlılık kontrolü.
 - `.github/workflows/validate-catalog.yml` — catalog değişikliklerinde otomatik doğrulama.
@@ -18,70 +31,80 @@ Amaç, başkalarının kodunu bizimmiş gibi yeniden yayımlamak değil; **oriji
 ## Kanıt seviyeleri
 
 - **A:** belirli ticari vaka/sonuç + vakaya doğrudan bağlı exact GitHub repo.
-- **B:** ticari üretici + exact repo var, fakat bu workflow'un ayrı gelir/müşteri kanıtı eksik.
-- **C:** ücretli müşteri veya ticari sonuç güçlü, fakat kaynak repo henüz bulunamadı.
-- **X:** gelir iddiası var fakat promosyon/çıkar çatışması veya başka ciddi şüphe bulunuyor.
+- **B:** ticari bağlam + GitHub kaynak var; fakat workflow-bazlı gelir kanıtı, kaynak sahipliği veya orijinallik A seviyesinden zayıf.
+- **C:** ücretli müşteri, gelir veya ölçülebilir ticari sonuç güçlü; exact public kaynak repo henüz bulunmadı.
+- **X:** gelir iddiası var fakat promosyon, çıkar çatışması veya başka ciddi şüphe bulunuyor.
 
 Ayrıntı: `RESEARCH_POLICY.md`.
 
-## A — Güçlü müşteri / para sinyali + doğrudan orijinal GitHub
+## A — Doğrulanmış ticari vaka + exact GitHub
 
-### 1. AI Creative Director — $9K e-ticaret moda kampanyası
-- Kaynak repo: https://github.com/sirlifehacker/Nano-Banana-Pro-Creative-Director
-- Sabitlenen commit: `1c82b35f1db29e9f0ed35f5e0680148241a371b5`
-- Reddit: https://www.reddit.com/r/n8n/comments/1p9uvtq/i_automated_a_9k_ecom_fashion_campaign_using_n8n/
-- Kanıt: müşteri işi açık; kampanya `$9K` olarak tanımlanmış; bunun freelancerın net ücreti olduğu kanıtlanmıyor.
-- Lisans: root `LICENSE` bulunamadı.
+### A001 — AI Creative Director / moda kampanyası
+- Repo: https://github.com/sirlifehacker/Nano-Banana-Pro-Creative-Director
+- Commit: `1c82b35f1db29e9f0ed35f5e0680148241a371b5`
+- Vaka: `$9K campaign`; bunun freelancer net ücreti olduğu kanıtlanmıyor.
 
-### 2. LinkedIn Jobs + Decision Maker Research
-- Kaynak repo: https://github.com/sirlifehacker/n8n-automations
-- Sabitlenen commit: `dcab49176024e410a1cc555ea8bda3f21f4c6f1f`
-- Reddit: https://www.reddit.com/r/n8n/comments/1ocnoyj/ive_had_multiple_clients_hire_me_to_build_this/
-- Kanıt: yazar, birden fazla müşterinin bu sistemi yaptırmak için kendisini tuttuğunu söylüyor.
-- Lisans: root `LICENSE` bulunamadı.
+### A002 — LinkedIn Jobs + Decision Maker Research
+- Repo: https://github.com/sirlifehacker/n8n-automations
+- Commit: `dcab49176024e410a1cc555ea8bda3f21f4c6f1f`
+- Vaka: ilk staffing müşterisinin ardından birden fazla müşterinin aynı sistemi istediği bildiriliyor.
 
-### 3. B2B Lead Search Engine
-- Kaynak repo: https://github.com/sirlifehacker/lead-gen-hacker
-- Sabitlenen commit: `9ed891f4bc2666f19941ea8c03841555c4812b66`
-- Reddit: https://www.reddit.com/r/n8n/comments/1t21mnr/i_created_a_leads_search_engine_in_n8n_b2b/
-- Kanıt: B2B girişimcilerin varyantlarını yaptırmak için yazarı tuttuğu belirtiliyor.
-- Lisans: root `LICENSE` bulunamadı.
+### A003 — B2B Lead Search Engine
+- Repo: https://github.com/sirlifehacker/lead-gen-hacker
+- Commit: `9ed891f4bc2666f19941ea8c03841555c4812b66`
+- Vaka: B2B girişimcilerin varyantları için geliştiriciyi tuttuğu bildiriliyor.
 
-### 4. Social Story Scraper — içerikten high-ticket lead üretimi
-- Kaynak repo: https://github.com/sirlifehacker/social-story-scraper
-- Sabitlenen commit: `69de2889cbe8a80124581d5f5b2abede4d221b3f`
-- Reddit: https://www.reddit.com/r/n8n/comments/1oncgwf/3m_views_in_3_months_all_from_this_automation/
-- Kanıt: ~2.9M impression, 10+ high-ticket inbound lead ve yaklaşık `$75` çalışma maliyeti bildiriliyor.
-- Lisans: root `LICENSE` bulunamadı.
+### A004 — Social Story Scraper
+- Repo: https://github.com/sirlifehacker/social-story-scraper
+- Commit: `69de2889cbe8a80124581d5f5b2abede4d221b3f`
+- Vaka: ~2.9M impression ve 10+ high-ticket inbound lead bildiriliyor.
 
-## B — Kaynak kod açık, fakat workflow-bazlı gelir kanıtı daha zayıf
+### A005 — Insurance Lawyer Lead Gen Automation
+- Repo: https://github.com/lucaswalter/n8n-ai-automations
+- Exact workflow: `deal_breakdown_lawyer_lead_gen.json`
+- Commit: `08e33b6d589789bc06957611cf932d3602b81117`
+- Vaka: Austin'deki butik hukuk firmasına `$1,800` ücretle satıldığı bildiriliyor; geliştirici standart teklifini `$2,500 build + $400/month` olarak açıklıyor.
+- Akış: dizin scrape → firma/site doğrulama → avukat profili → Gemini qualification → iletişim verisi → kişiselleştirilmiş outreach taslağı → Sheets/Docs.
 
-### Job Hacker — CV'yi ilana göre uyarlama + hiring manager bulma
-- Repo: https://github.com/sirlifehacker/n8n-job-hacker
-- Commit: `edbc14455b17032b106492346378233a19e7ec20`
-- Reddit: https://www.reddit.com/r/n8n/comments/1qsz9qj/this_automation_scrapes_linkedin_jobs_customizes/
-- Not: yazar AI araçları geliştirerek tam zamanlı geçindiğini söylüyor; fakat bu belirli workflow'un ücretli satışına dair ayrı kanıt yok. Bu yüzden A değil B.
+## B — Kaynak var fakat A standardının tamamı yok
 
-## C — Para/müşteri kanıtı güçlü, exact repo aranıyor
+### B001 — Job Hacker
+Exact creator repo mevcut; ancak bu belirli workflow'un ayrı ücretli satış kanıtı yok.
 
-Araştırma kuyruğunda şu anda şunlar bulunuyor:
-- gemi yöneticisi lead capture — ilk ücretli müşteri,
-- Japon Google Ads fatura işleme — yaklaşık `$2k/month` değer iddiası,
-- 50K+ ürün kataloğu temizleme ve SEO zenginleştirme,
-- Alman property-management şirketlerine özel n8n dikeyi — 20 müşteri,
-- bookkeeping otomasyonu — 600 saat doğrudan / 2400 saat ölçek etkisi,
-- çok müşterili otomasyon monitoring dashboard,
-- 50K Shopify inventory update shock absorber — `$25k saved` iddiası, doğrulama bekliyor.
+### B002 — Hotel High-Spender Reward Email Automation
+Kaynak vakada Kanadalı otel yöneticisinin `$200` ödediği bildiriliyor. Resmî n8n template'in GitHub aynası bulundu fakat bu repo vaka yazarının orijinal deposu değil; bu nedenle A'ya yükseltilmedi.
 
-Bunların kaynak kodu bulunmadan upstream koleksiyonuna alınmaz. Ayrıntılar `research_queue.csv` içinde.
+## C — Ticari vaka güçlü, exact public kaynak aranıyor
 
-## X — Tartışmalı gelir iddiası
+33 C-vaka `research_queue.csv` içinde tek tek source-repo arama hedefleriyle tutuluyor. Öne çıkanlar:
 
-### WhatsApp Gemini chatbot — $275 iddiası
-- Repo: https://github.com/YonkoSam/whatsapp-python-chatbot
-- Commit: `8a1ae46805410b11d43eebf023ab23df41f9d116`
-- Reddit: https://www.reddit.com/r/AI_Agents/comments/1l4gojr/i_made_275_in_a_1_day_building_a_whatsapp_ai/
-- Not: yorumlarda API hizmetiyle gizli ilişki / reklam şüphesi bulunduğu için varsayılan clone listesine alınmadı.
+- `$500` — kitapçı için WhatsApp sipariş/asistan sistemi.
+- `€3,000` — HR automation packaged MVP.
+- `$5,000` — tutoring/scheduling/WhatsApp/payment agent.
+- `$700` — kahveci QR sipariş mikro-uygulaması.
+- `$5,500` — üniversite için offline/local RAG chatbot.
+- `$2,530` — pazarlama ajansı için AI video content agent iddiası.
+- `$1,000+` — ilk Upwork n8n otomasyon işi.
+- `£1,000` — UK agency Make→n8n migration + workflow contract ilk ayı.
+- `$4,200 recovered` — Stripe invoice chaser sonucu bildirimi.
+- `40+ booked calls/month` — daily lead finder + personalized outreach sonucu.
+
+Kaynak kodu doğrulanmadan bunlar upstream koleksiyonuna alınmaz.
+
+## Türkiye build dalgası
+
+İlk sıra `BUILD_SHORTLIST.md` içinde:
+
+1. E-ticaret katalog doktoru
+2. B2B lead araştırma/zenginleştirme
+3. Muhasebe/fatura ön işleme
+4. Yerel işletme WhatsApp sipariş/asistan sistemi
+5. Kahveci/restoran QR sipariş mikro-uygulaması
+6. Emlak/site yönetimi talep triyajı
+7. Klinik/ofis intake otomasyonu
+8. Eğitim işletmesi scheduling + ödeme bildirim sistemi
+9. E-ticaret görsel/içerik pipeline'ı
+10. Automation maintenance / monitoring aboneliği
 
 ## Orijinalleri çekmek
 
@@ -99,8 +122,8 @@ chmod +x clone_originals.sh
 ./clone_originals.sh
 ```
 
-Scriptler repoları `upstreams/` altında clone eder ve araştırmada doğrulanan commit'e checkout yapar.
+Scriptler A001–A005 kaynak repolarını `upstreams/` altında clone eder ve araştırmada doğrulanan commit'e checkout yapar.
 
 ## Lisans notu
 
-Public GitHub reposu otomatik olarak yeniden dağıtım / yeniden lisanslama izni vermez. Açık lisansı olmayan upstream kodları bu repoya kopyalanmamıştır; bunun yerine orijinal repo ve Git geçmişi korunur.
+Public GitHub reposu otomatik olarak yeniden dağıtım veya yeniden lisanslama izni vermez. Açık lisansı bulunmayan upstream kodları bu repoya kopyalanmaz; orijinal repo, Git geçmişi ve sabit commit korunarak doğrudan upstream'den çekilir. Private/paid kaynaklar araştırma amacıyla kayda alınabilir fakat kopyalanmaz.
