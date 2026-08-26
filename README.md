@@ -24,11 +24,12 @@ Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatıl
 
 ## Son araştırma dalgası
 
-- Altın vakalar için derin kaynak avı yapıldı: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md`.
-- Eski **C027 Device Repair WhatsApp + Voice Agent**, exact production repo bulunmasıyla **A006** seviyesine yükseltildi.
+- Altın vakalar için derin kaynak avı yapıldı: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md`, ikinci tur: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-26.md`.
+- Eski **C027 Device Repair WhatsApp + Voice Agent**, exact production repo bulunmasıyla **A006** seviyesine yükseltildi ve `catalog.csv`'ye kendi satırıyla eklendi.
 - `encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md` ile C076–C086 yüksek-ROI operasyon vakaları eklendi.
 - `encyclopedia/VOLUME-08-AI-ASSISTED-CUSTOM-SOFTWARE.md` ile C087–C092 özel yazılım/dar sektör vakaları eklendi.
 - Kataloglanabilir toplam **122** vakaya çıktı.
+- İkinci araştırma turunda (2026-08-26) `catalog.csv`'deki 14 satırlık CSV virgül-kaçışı hatası düzeltildi (`scripts/validate_catalog.py` artık temiz geçiyor) ve 9 açık golden-case ipucu (C001–C008, C018) yeniden kovalandı; hiçbiri yükselmedi ama C003/C008 için yeni dolaylı sinyaller kaydedildi. Bu turda ortamın Reddit'e doğrudan erişimi yoktu — ayrıntı için ikinci tur raporuna bakın.
 
 ## Repo yapısı
 
@@ -99,17 +100,18 @@ Gelir rakamları birbirine karıştırılmaz:
 ## Araştırmada özellikle kovalanacak C vakaları
 
 1. C004 — Property-management vertical / Powerprozesse
-2. C003 — 50K ürün katalog overhaul
+2. C003 — 50K ürün katalog overhaul (`conor-is-my-name` doğrulanmamış aday)
 3. C002 — Japon Google Ads invoice processor
 4. C006 — 115+ workflow monitoring
 5. C005 — Bookkeeping process automation
 6. C001 — Ship manager lead capture
-7. C008 — Bookstore WhatsApp order assistant
-8. C018 — $5K tutoring operations system
-9. C029 — Offline university RAG
-10. C076 — Medical-device expiry/spoilage automation
+7. C007 — 50K Shopify inventory shock absorber
+8. C008 — Bookstore WhatsApp order assistant
+9. C018 — $5K tutoring operations system
+10. C029 — Offline university RAG
+11. C076 — Medical-device expiry/spoilage automation
 
-Bunların ayrıntıları `ENCYCLOPEDIA.md` ve derin araştırma raporu üzerinden izlenir.
+Bunların ayrıntıları `ENCYCLOPEDIA.md` ve derin araştırma raporları (2026-08-24, 2026-08-26) üzerinden izlenir.
 
 ## Lisans notu
 

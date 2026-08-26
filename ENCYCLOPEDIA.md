@@ -67,30 +67,33 @@ Ana kanıt standardını geçmeyen fakat araştırma izi olarak korunması gerek
 
 ## Altın vakalar derin araştırması
 
-👉 [2026-08-24 Altın Vakalar Derin Araştırma Raporu](research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md)
+👉 [2026-08-26 İkinci Tur Derin Araştırma Raporu](research/GOLDEN-CASES-DEEP-DIVE-2026-08-26.md) · [2026-08-24 İlk Tur Raporu](research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md)
 
 İlk derin taramada:
 
-- **C027 → A006:** exact production repo bulundu.
+- **C027 → A006:** exact production repo bulundu; artık `catalog.csv`'de kendi A006 satırıyla kataloglanmıştır.
 - **C004 Powerprozesse:** 20→23 müşteri, işe alım ve somut property-management workflow örnekleriyle ticari kanıt güçlendi; resmi exact repo bulunmadı.
 - **C008 Bookstore WhatsApp:** `$500` birincil Reddit vakası korunuyor; başka bir hesapta aynı hikâyenin `$1,500` olarak kopyalanması kaynak kirliliği/kırmızı bayrak olarak kaydedildi.
 - **C018 Tutoring:** `$5K` iddiası ikincil arşiv tarafından destekleniyor fakat birincil kaynak yeniden doğrulanmalı.
 - **C029 Offline University RAG:** teknik mimari ilginç; public exact code yok ve seller/promo bağlamı nedeniyle temkinli tutuluyor.
+
+İkinci turda (2026-08-26), Issue #1 checklist'i + ilk turun "sonraki exact-source avı" listesini birleştiren 9 açık ipucu (C001, C002, C003, C004, C005, C006, C007, C008, C018) yeniden kovalandı. Hiçbiri A/B'ye yükselmedi; en güçlü yeni sinyal C003 için `conor-is-my-name` GitHub hesabı (teknik olarak uyumlu ama yazar eşleşmesi doğrulanmamış) ve C008 için `anassy1` hesabının boş çıkması oldu. Bu turda oturumun ağ kısıtı nedeniyle Reddit'e doğrudan erişilemedi — tüm 9 vaka, doğrudan Reddit erişimi olan bir sonraki oturumda yeniden denenmeli.
 
 ## Özellikle araştırılmaya devam edilecek altın vakalar
 
 Exact repo, ikinci bağımsız müşteri kanıtı veya daha güçlü ekonomik doğrulama bulunması en değerli vakalar:
 
 1. C004 — Property-management vertical / Powerprozesse
-2. C003 — 50K ürün katalog overhaul
+2. C003 — 50K ürün katalog overhaul (`conor-is-my-name` doğrulanmamış aday)
 3. C002 — Japon Google Ads invoice processor
 4. C006 — 115+ workflow monitoring / AigencyTracker
 5. C005 — Bookkeeping process automation
 6. C001 — Ship manager lead capture
-7. C008 — Bookstore WhatsApp order assistant
-8. C018 — $5K tutoring operations system
-9. C029 — Offline university RAG
-10. C076 — Medical-device expiry/spoilage automation
+7. C007 — 50K Shopify inventory shock absorber
+8. C008 — Bookstore WhatsApp order assistant
+9. C018 — $5K tutoring operations system
+10. C029 — Offline university RAG
+11. C076 — Medical-device expiry/spoilage automation
 
 ## Ana araştırma ilkesi
 
