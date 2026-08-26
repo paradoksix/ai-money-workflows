@@ -35,13 +35,13 @@ Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatıl
 - `ENCYCLOPEDIA.md` — 122+1 vakalık ana ansiklopedi ve cilt indeksi.
 - `encyclopedia/` — sekiz ana cilt, A006 exact case card ve X-seviyesi tartışmalı vakalar eki.
 - `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md` — altın vakaların exact-source ve güvenilirlik derin araştırması.
-- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi. Tarihsel C027 satırı canonical A006 kartına taşınmak üzere veri-temizliği bekleyebilir; ansiklopedide kanonik derece A006'dır.
+- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi. A006 artık kendi satırıyla kataloglanmıştır; tarihsel C027 satırı `status=superseded_by_A006` olarak işaretlenip araştırma izini korumak için saklanmıştır — ansiklopedide kanonik derece A006'dır.
 - `research_queue.csv` — exact kaynak repo/Gist/template'i henüz bulunamamış yüksek değerli vakaların araştırma kuyruğu.
 - `RESEARCH_POLICY.md` — A/B/C/X kanıt standardı ve lisans politikası.
 - `TURKIYE_OPPORTUNITIES.md` — yerel nişlerin satış/demonstrasyon açıları.
 - `BUILD_SHORTLIST.md` — önceki build kısa listesi; araştırma aşamasında aktif geliştirme planı değildir.
 - `sources.csv` — ilk kaynak indeksinin geriye dönük kopyası.
-- `clone_originals.ps1` / `clone_originals.sh` — doğrulanmış upstream repoları belirli commit'e sabitleyerek çekmek için kullanılır; A006'nın scriptlere eklenmesi ayrı veri-temizliği adımıdır.
+- `clone_originals.ps1` / `clone_originals.sh` — doğrulanmış upstream repoları belirli commit'e sabitleyerek çekmek için kullanılır; A006 (`06-jacobo-device-repair`) artık her iki scripte de eklenmiştir.
 - `clone_disputed.ps1` / `clone_disputed.sh` — tartışmalı örnekleri bilinçli olarak ayrı çeker.
 - `scripts/validate_catalog.py` — çekirdek katalog tutarlılık kontrolü.
 
