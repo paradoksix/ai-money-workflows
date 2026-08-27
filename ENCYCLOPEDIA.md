@@ -1,26 +1,65 @@
 # AI Gelir Vakaları Ansiklopedisi
 
-Bu bölüm, projenin başından itibaren toplanan **122 kataloglanabilir vaka + 1 tartışmalı X vakasını** tek bir araştırma ansiklopedisi altında toplar.
+Bu ansiklopedi, insanların ve işletmelerin yapay zekâ/otomasyon kullanarak hangi küçük problemlere **gerçekten para ödediğini** izler.
 
-Amaç tek bir fikri seçip ürün geliştirmek değildir. Amaç, insanların ve işletmelerin yapay zekâ/otomasyon kullanılarak hangi küçük problemlere gerçekten para ödediğini; hangi vakaların açık kaynakla izlenebildiğini; hangilerinin yalnızca ticari self-report olduğunu; hangilerinin Türkiye'de uygulanabilir olduğunu karşılaştırmalı biçimde korumaktır.
+Amaç “AI ile para kazanmanın 122 yolu” demek değildir. Amaç, gerçek bir insanın veya işletmenin para ödediği ya da ölçülebilir ekonomik değer bildirdiği **122 küçük problemi** kanıt derecesiyle birlikte arşivlemek; güvenilirlik sorunu olanları da ayrı bir ek altında kaybetmemektir.
+
+## Nereden başlamalı?
+
+| Ne istiyorsun | Nereye git |
+|---|---|
+| Gezinmek, filtrelemek, bir niş seçmek | **[Atlas web sayfası](docs/index.html)** — arama + niş/kanıt/gelir tipi filtreleri |
+| Bir nişi derinlemesine okumak | Aşağıdaki **niş indeksi** |
+| Vaka gruplarından çıkan kesişen dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
+| Kanıt standardını anlamak | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |
+| Veriyi kendin analiz etmek | [`data/cases.csv`](data/cases.csv) — 124 kaydın tamamı |
+| Hâlâ kaynağı aranan vakalar | [`research_queue.csv`](research_queue.csv) + [`research/`](research/) |
 
 ## Kanıt sistemi
 
 - **A — Ticari vaka + exact kaynak repo/workflow.** Aynı müşteri/gelir/operasyon vakası ile doğrudan bağlantılı kaynak kod doğrulanmıştır.
-- **B — Açık çalışan workflow/repo + ticari üretici/market bağlamı.** Kod gerçektir fakat o exact workflow'un ayrı ücretli müşteri sonucu kanıtlanmamıştır ya da kaynak mirror/template niteliğindedir.
+- **B — Açık çalışan workflow/repo + ticari üretici bağlamı.** Kod gerçektir fakat o exact workflow'un ayrı ücretli müşteri sonucu kanıtlanmamıştır.
 - **C — Güçlü ücretli müşteri, gelir, tasarruf veya marketplace sinyali.** Exact kaynak repo kapalıdır, bulunamamıştır veya doğrulanmamıştır.
 - **X — Tartışmalı.** Gelir iddiasında promosyon, çıkar çatışması veya başka ciddi güvenilirlik problemi vardır; ana 122 sayımına dahil edilmez.
 
-Gelir rakamlarında şu ayrım korunur:
+Gelir rakamlarında şu ayrım korunur ve birbirine karıştırılmaz:
 
 - **F:** freelancer/hizmet sağlayıcının aldığı ücret
 - **R:** ürün/SaaS/app geliri
 - **S:** müşterinin bildirilen tasarrufu
-- **V:** kampanya değeri, booked call, impression, geri kazanılan alacak veya operasyonel değer gibi ticari sonuç
+- **V:** kampanya değeri, booked call, impression, geri kazanılan alacak gibi ticari sonuç
 
 Self-report rakamları bağımsız denetlenmiş gerçekler gibi sunulmaz.
 
-## Sana göre uygulama önizlemeleri nasıl hazırlanıyor?
+## Niş indeksi
+
+Vakalar 16 nişe ayrılmıştır. Her dosyada o nişin tanımı, Türkiye'de kimin satın aldığı, vakaların tam anlatımı ve nişin ortak deseni bulunur.
+
+| # | Niş | Vaka | Kanıt dağılımı |
+|---|---|---|---|
+| 1 | [Video & görsel prodüksiyon](encyclopedia/nis-01-video-gorsel-produksiyon.md) | 20 | A1 · B4 · C15 |
+| 2 | [B2B satış & lead araştırma](encyclopedia/nis-02-b2b-satis-lead.md) | 12 | **A3** · B6 · C3 |
+| 3 | [Müşteri iletişimi & destek](encyclopedia/nis-03-musteri-iletisim-destek.md) | 12 | B6 · C6 |
+| 4 | [Özel yazılım & mikro-SaaS](encyclopedia/nis-04-ozel-yazilim-mikro-saas.md) | 14 | C14 |
+| 5 | [İçerik, sosyal medya & bülten](encyclopedia/nis-05-icerik-sosyal-medya.md) | 11 | A1 · B5 · C5 |
+| 6 | [E-ticaret & katalog](encyclopedia/nis-06-eticaret-katalog.md) | 7 | C7 |
+| 7 | [Kurumsal operasyon & maliyet](encyclopedia/nis-07-kurumsal-operasyon-maliyet.md) | 6 | C6 |
+| 8 | [Ofis & belge operasyonu](encyclopedia/nis-08-ofis-belge-operasyonu.md) | 7 | B1 · C6 |
+| 9 | [Veri & AI-çıktısı temizliği](encyclopedia/nis-09-veri-cikti-temizligi.md) | 6 | C6 |
+| 10 | [Ajans & freelance hizmet modeli](encyclopedia/nis-10-ajans-freelance-model.md) | 6 | C6 |
+| 11 | [Yerel işletme & saha servisi](encyclopedia/nis-11-yerel-isletme-saha-servisi.md) | 5 | **A1** · B1 · C3 |
+| 12 | [RAG & özel bilgi sistemleri](encyclopedia/nis-12-rag-bilgi-sistemleri.md) | 5 | B1 · C4 |
+| 13 | [Emlak & site yönetimi](encyclopedia/nis-13-emlak-site-yonetimi.md) | 4 | C4 |
+| 14 | [Muhasebe & finans belgeleri](encyclopedia/nis-14-muhasebe-finans-belge.md) | 3 | C3 |
+| 15 | [İK & işe alım](encyclopedia/nis-15-ik-ise-alim.md) | 3 | B1 · C2 |
+| 16 | [Eğitim & kurs operasyonu](encyclopedia/nis-16-egitim-kurs-operasyonu.md) | 2 | C2 |
+
+Ayrıca:
+
+- [**A006 — Jacobo Device Repair**](encyclopedia/A006-JACOBO-DEVICE-REPAIR.md) — ansiklopedinin en güçlü tek vakası, kendi ayrıntılı kartıyla.
+- [**Ek X — Tartışmalı vakalar**](encyclopedia/APPENDIX-X-DISPUTED.md) — ana kanıt standardını geçmeyen fakat araştırma izi olarak korunan örnekler.
+
+## Sana göre uygulama önizlemeleri
 
 Her vakanın sonunda kısa bir **“Senin için uygulama önizlemesi”** bölümü bulunur. Bu önizleme şu çalışma profilini esas alır:
 
@@ -33,55 +72,21 @@ Her vakanın sonunda kısa bir **“Senin için uygulama önizlemesi”** bölü
 
 Bu önizlemeler uygulama garantisi veya gelir tahmini değildir; hangi yönden araştırılabileceğini gösteren kısa yönlendirmelerdir.
 
-## Ciltler
-
-### [Cilt 1 — Açık kaynakla izlenebilen çekirdek vakalar](encyclopedia/VOLUME-01-OPEN-SOURCE-CORE.md)
-A001–A005 ve B001–B025. Lead intelligence, hukuk, e-ticaret kreatifleri, Gmail agent, dental voice, content repurposing, RAG, WhatsApp, CRM enrichment ve benzeri açık workflow örnekleri.
-
-### [A006 — Jacobo Device Repair WhatsApp + Voice AI Agent](encyclopedia/A006-JACOBO-DEVICE-REPAIR.md)
-Önceden C027 olan vaka exact production repo bulunmasıyla A seviyesine yükseltildi. 7 sanitised n8n workflow, doğrudan vaka sahibi bağlantısı ve pinned commit doğrulandı.
-
-### [Cilt 2 — Operasyon, back-office ve yerel işletme: C001–C019](encyclopedia/VOLUME-02-OPERATIONS-LOCAL-BUSINESS.md)
-Denizcilik lead research, fatura işleme, 50K katalog overhaul, property management, bookkeeping, monitoring, WhatsApp sipariş, HR, klinik intake, Stripe tahsilat, tutoring ve kahveci QR app gibi doğrudan işletme problemleri.
-
-### [Cilt 3 — App, mikro-SaaS ve uzmanlık işleri: C020–C033](encyclopedia/VOLUME-03-APPS-SAAS-SPECIALIST.md)
-Apple Watch uygulaması, mikro-SaaS, conversational forms, health app, Upwork otomasyon işi, Make→n8n migration, repair-shop agent, offline RAG, configurator app, bug bounty ve adversarial ML gibi daha ürün/uzmanlık ağırlıklı vakalar. C027'nin tarihsel kaydı bu ciltte görülebilir ancak kanonik derecesi artık A006'dır.
-
-### [Cilt 4 — Marketplace otomasyon, RAG ve voice: C034–C049](encyclopedia/VOLUME-04-MARKETPLACE-AUTOMATION-RAG.md)
-Fiverr/marketplace üzerinde gerçekten sipariş/review sinyali bulunan n8n, API integration, AI agents, voice receptionist, private RAG, WhatsApp qualification, omnichannel concierge ve customer-support chatbot hizmetleri.
-
-### [Cilt 5 — Görsel, video, UGC ve faceless üretim: C050–C065](encyclopedia/VOLUME-05-CREATIVE-VIDEO-YOUTUBE.md)
-AI UGC, product commercial, music video, avatar video, thumbnail, faceless YouTube prodüksiyonu ve aylık içerik paketleri.
-
-### [Cilt 6 — AI sonrası temizlik, veri ve VA hizmetleri: C066–C075](encyclopedia/VOLUME-06-CLEANUP-DATA-VA.md)
-AI logo düzeltme, Gamma/AI deck'i profesyonel PPT'ye çevirme, OCR→Excel, AI destekli VA ve voice/task assistant gibi “AI çıktılarını işe yarar son ürüne çeviren” işler.
-
-### [Cilt 7 — Enterprise operasyon, maliyet düşürme ve yüksek-ROI: C076–C086](encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md)
-Medikal stok expiry, D365 lisans ikamesi, okul veri workflow'ları, warehouse scan optimizasyonu, CRM sync replacement, real-estate document generation, tender research, 44-country localisation, internal Claude automation ve grant-funded custom app gibi yüksek-ROI vakaları.
-
-### [Cilt 8 — AI-destekli özel yazılım ve dar sektör araçları: C087–C092](encyclopedia/VOLUME-08-AI-ASSISTED-CUSTOM-SOFTWARE.md)
-$30K business-management web app, `$500` fitness-coach app, `$500/ay` pest-control inspection app, manufacturing recruiting lead-research ikamesi ve yüksek gelir bildiren dikey AI-assisted software örnekleri.
-
-### [Ek X — Tartışmalı/şüpheli ticari vakalar](encyclopedia/APPENDIX-X-DISPUTED.md)
-Ana kanıt standardını geçmeyen fakat araştırma izi olarak korunması gereken örnekler.
-
 ## Altın vakalar derin araştırması
 
-👉 [2026-08-26 İkinci Tur Derin Araştırma Raporu](research/GOLDEN-CASES-DEEP-DIVE-2026-08-26.md) · [2026-08-24 İlk Tur Raporu](research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md)
+👉 [2026-08-26 İkinci Tur Raporu](research/GOLDEN-CASES-DEEP-DIVE-2026-08-26.md) · [2026-08-24 İlk Tur Raporu](research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md)
 
-İlk derin taramada:
+İlk turda:
 
-- **C027 → A006:** exact production repo bulundu; artık `catalog.csv`'de kendi A006 satırıyla kataloglanmıştır.
-- **C004 Powerprozesse:** 20→23 müşteri, işe alım ve somut property-management workflow örnekleriyle ticari kanıt güçlendi; resmi exact repo bulunmadı.
-- **C008 Bookstore WhatsApp:** `$500` birincil Reddit vakası korunuyor; başka bir hesapta aynı hikâyenin `$1,500` olarak kopyalanması kaynak kirliliği/kırmızı bayrak olarak kaydedildi.
-- **C018 Tutoring:** `$5K` iddiası ikincil arşiv tarafından destekleniyor fakat birincil kaynak yeniden doğrulanmalı.
-- **C029 Offline University RAG:** teknik mimari ilginç; public exact code yok ve seller/promo bağlamı nedeniyle temkinli tutuluyor.
+- **C027 → A006:** exact production repo bulundu; artık kendi A006 kaydına sahip.
+- **C004 Powerprozesse:** 20→23 müşteri ve somut workflow örnekleriyle ticari kanıt güçlendi; resmi exact repo bulunmadı.
+- **C008 Bookstore WhatsApp:** `$500` birincil Reddit vakası korunuyor; aynı hikâyenin başka bir hesapta `$1,500` olarak kopyalanması kaynak kirliliği olarak kaydedildi.
+- **C018 Tutoring:** `$5K` iddiası ikincil arşivce destekleniyor fakat birincil kaynak yeniden doğrulanmalı.
+- **C029 Offline University RAG:** teknik mimari ilginç; public exact code yok, seller/promo bağlamı nedeniyle temkinli.
 
-İkinci turda (2026-08-26), Issue #1 checklist'i + ilk turun "sonraki exact-source avı" listesini birleştiren 9 açık ipucu (C001, C002, C003, C004, C005, C006, C007, C008, C018) yeniden kovalandı. Hiçbiri A/B'ye yükselmedi; en güçlü yeni sinyal C003 için `conor-is-my-name` GitHub hesabı (teknik olarak uyumlu ama yazar eşleşmesi doğrulanmamış) ve C008 için `anassy1` hesabının boş çıkması oldu. Bu turda oturumun ağ kısıtı nedeniyle Reddit'e doğrudan erişilemedi — tüm 9 vaka, doğrudan Reddit erişimi olan bir sonraki oturumda yeniden denenmeli.
+İkinci turda 9 açık ipucu (C001–C008, C018) yeniden kovalandı. Hiçbiri A/B'ye yükselmedi; en güçlü yeni sinyal C003 için `conor-is-my-name` GitHub hesabı (teknik olarak uyumlu, yazar eşleşmesi doğrulanmamış), C008 için ise `anassy1` hesabının boş çıkması oldu. O turda ortamın Reddit'e doğrudan erişimi yoktu.
 
 ## Özellikle araştırılmaya devam edilecek altın vakalar
-
-Exact repo, ikinci bağımsız müşteri kanıtı veya daha güçlü ekonomik doğrulama bulunması en değerli vakalar:
 
 1. C004 — Property-management vertical / Powerprozesse
 2. C003 — 50K ürün katalog overhaul (`conor-is-my-name` doğrulanmamış aday)
@@ -98,5 +103,3 @@ Exact repo, ikinci bağımsız müşteri kanıtı veya daha güçlü ekonomik do
 ## Ana araştırma ilkesi
 
 > Çok spesifik müşteri + çok spesifik tekrar eden problem + AI yalnız gerektiği yerde + ölçülebilir çıktı.
-
-Ansiklopedinin amacı “AI ile para kazanmanın 122 yolu” demek değildir. Amaç, **gerçek bir insanın veya işletmenin para ödediği ya da ölçülebilir ekonomik değer bildirdiği 122 küçük problemi** arşivlemek ve güvenilirlik sorunu olan örnekleri ayrı X eki altında kaybetmemektir.

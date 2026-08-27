@@ -4,47 +4,69 @@ Bu repo, 2025–2026 döneminde **gerçek müşteri / gelir / ticari sonuç bild
 
 Amaç mümkün olduğunca çok “AI projesi” biriktirmek değil; **ticari vaka → kaynak → exact repo/kod → commit → lisans → Türkiye'de uygulanabilirlik** zincirini mümkün olduğunca izlenebilir tutmaktır.
 
-## Ana giriş: AI Gelir Vakaları Ansiklopedisi
+## Nereden başlamalı?
 
-👉 **[ENCYCLOPEDIA.md](ENCYCLOPEDIA.md)**
+| Ne istiyorsun | Nereye git |
+|---|---|
+| **Gezinmek, filtrelemek, bir niş seçmek** | **[Atlas web sayfası](docs/index.html)** — arama + niş/kanıt/gelir tipi/TR filtreleri |
+| Nişleri okumak | [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) — 16 nişlik indeks |
+| Kesişen dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
+| Kanıt standardı | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |
+| Veriyi analiz etmek | [`data/cases.csv`](data/cases.csv) — 124 kaydın tamamı |
+| Kaynak avına katılmak | [`research_queue.csv`](research_queue.csv) + [`research/`](research/) |
 
-Ansiklopedi şu anda:
-
-- **122 kataloglanabilir vaka**,
-- **1 ayrı X-seviyesi tartışmalı vaka**,
-- A/B/C/X kanıt derecesi,
-- bildirilen ücret/gelir/tasarruf/değer ayrımı,
-- kullanılan stack ve işleyiş,
-- ana riskler,
-- ve her vakanın altında **Türkiye'den, düşük maliyet/açık kaynak ağırlıklı biçimde nasıl uygulanabileceğine dair kısa kişisel önizleme**
-
-içerir.
+Ansiklopedi şu anda **122 kataloglanabilir vaka + 1 X-seviyesi tartışmalı vaka** içeriyor; her vakada A/B/C/X kanıt derecesi, ücret/gelir/tasarruf/değer ayrımı, stack, riskler ve **Türkiye'den düşük maliyet/açık kaynak ağırlıklı nasıl uygulanabileceğine dair kısa önizleme** var.
 
 Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatılmıştır**. Projenin mevcut amacı, yapmaya değer AI gelir işlerinin olabildiğince geniş ve kanıt dereceli haritasını çıkarmaktır.
+
+### Web sayfasını açmak
+
+`docs/index.html` tek başına çalışan bir dosyadır; yerelde çift tıklayarak açabilirsiniz. GitHub Pages'te yayınlamak için repo **Settings → Pages → Source: `main` / `/docs`** yeterlidir. Sayfa `data/cases.csv`'den üretilir:
+
+```bash
+python3 scripts/build_site.py     # docs/index.html'i yeniden üret
+```
 
 ## Son araştırma dalgası
 
 - Altın vakalar için derin kaynak avı yapıldı: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md`, ikinci tur: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-26.md`.
-- Eski **C027 Device Repair WhatsApp + Voice Agent**, exact production repo bulunmasıyla **A006** seviyesine yükseltildi ve `catalog.csv`'ye kendi satırıyla eklendi.
-- `encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md` ile C076–C086 yüksek-ROI operasyon vakaları eklendi.
-- `encyclopedia/VOLUME-08-AI-ASSISTED-CUSTOM-SOFTWARE.md` ile C087–C092 özel yazılım/dar sektör vakaları eklendi.
-- Kataloglanabilir toplam **122** vakaya çıktı.
-- İkinci araştırma turunda (2026-08-26) `catalog.csv`'deki 14 satırlık CSV virgül-kaçışı hatası düzeltildi (`scripts/validate_catalog.py` artık temiz geçiyor) ve 9 açık golden-case ipucu (C001–C008, C018) yeniden kovalandı; hiçbiri yükselmedi ama C003/C008 için yeni dolaylı sinyaller kaydedildi. Bu turda ortamın Reddit'e doğrudan erişimi yoktu — ayrıntı için ikinci tur raporuna bakın.
+- Eski **C027 Device Repair WhatsApp + Voice Agent**, exact production repo bulunmasıyla **A006** seviyesine yükseltildi ve kendi satırıyla kataloglandı.
+- İkinci araştırma turunda (2026-08-26) `catalog.csv`'deki 14 satırlık CSV virgül-kaçışı hatası düzeltildi ve 9 açık golden-case ipucu (C001–C008, C018) yeniden kovalandı; hiçbiri yükselmedi ama C003/C008 için yeni dolaylı sinyaller kaydedildi.
+- **Ansiklopedi nişe göre yeniden düzenlendi.** Sekiz "cilt" dosyası dağıtılıp vakalar 16 niş dosyasına taşındı; ciltlerin sonundaki sentez bölümleri `encyclopedia/DESENLER.md` altında toplandı.
+- **`data/cases.csv` eklendi:** 124 kaydın tamamı ilk kez makine-okunur hâlde. Daha önce vakaların yalnızca 42'si `catalog.csv`'deydi, 82'si sadece düz metindi.
+- **`docs/index.html` eklendi:** filtrelenebilir atlas sayfası.
 
 ## Repo yapısı
 
-- `ENCYCLOPEDIA.md` — 122+1 vakalık ana ansiklopedi ve cilt indeksi.
-- `encyclopedia/` — sekiz ana cilt, A006 exact case card ve X-seviyesi tartışmalı vakalar eki.
-- `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md` — altın vakaların exact-source ve güvenilirlik derin araştırması.
-- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi. A006 artık kendi satırıyla kataloglanmıştır; tarihsel C027 satırı `status=superseded_by_A006` olarak işaretlenip araştırma izini korumak için saklanmıştır — ansiklopedide kanonik derece A006'dır.
-- `research_queue.csv` — exact kaynak repo/Gist/template'i henüz bulunamamış yüksek değerli vakaların araştırma kuyruğu.
+**Okuma katmanı**
+
+- `ENCYCLOPEDIA.md` — niş indeksi ve kanıt sisteminin açıklaması.
+- `encyclopedia/nis-01…16-*.md` — 16 niş dosyası; her vakanın tam anlatımı, riskleri ve Türkiye uyarlaması.
+- `encyclopedia/DESENLER.md` — vaka gruplarının tamamından çıkan kesişen dersler.
+- `encyclopedia/A006-JACOBO-DEVICE-REPAIR.md` — en güçlü tek vakanın ayrıntılı kartı.
+- `encyclopedia/APPENDIX-X-DISPUTED.md` — X-seviyesi tartışmalı vakalar.
+
+**Veri katmanı**
+
+- `data/cases.csv` — 124 kaydın tamamı: niş, kanıt derecesi, gelir tipi, tutar, stack, zorluk, TR uygunluğu, kaynak/repo/commit ve özet.
+- `catalog.csv` — **pinned kaynaklı çekirdek** (42 kayıt): upstream repo + doğrulanmış commit taşıyan daha sıkı alt küme.
+- `research_queue.csv` — exact kaynağı hâlâ bulunamamış yüksek değerli vakaların araştırma kuyruğu.
+- `sources.csv` — ilk kaynak indeksinin geriye dönük kopyası.
+
+**Araç katmanı**
+
+- `docs/index.html` — üretilmiş atlas sayfası (elle düzenlenmez).
+- `scripts/build_site.py` — `data/cases.csv`'den sayfayı üretir; deterministiktir.
+- `scripts/validate_cases.py` — `cases.csv` şeması + `catalog.csv` ile alan uyumu + her vakanın gerçekten yazıldığı yerde olduğu kontrolü.
+- `scripts/validate_catalog.py` — çekirdek katalog tutarlılık kontrolü.
+- `clone_originals.ps1` / `clone_originals.sh` — doğrulanmış upstream repoları sabit commit'e pinleyerek çeker (A006 dâhil).
+- `clone_disputed.ps1` / `clone_disputed.sh` — tartışmalı örnekleri bilinçli olarak ayrı çeker.
+
+**Strateji notları**
+
 - `RESEARCH_POLICY.md` — A/B/C/X kanıt standardı ve lisans politikası.
 - `TURKIYE_OPPORTUNITIES.md` — yerel nişlerin satış/demonstrasyon açıları.
 - `BUILD_SHORTLIST.md` — önceki build kısa listesi; araştırma aşamasında aktif geliştirme planı değildir.
-- `sources.csv` — ilk kaynak indeksinin geriye dönük kopyası.
-- `clone_originals.ps1` / `clone_originals.sh` — doğrulanmış upstream repoları belirli commit'e sabitleyerek çekmek için kullanılır; A006 (`06-jacobo-device-repair`) artık her iki scripte de eklenmiştir.
-- `clone_disputed.ps1` / `clone_disputed.sh` — tartışmalı örnekleri bilinçli olarak ayrı çeker.
-- `scripts/validate_catalog.py` — çekirdek katalog tutarlılık kontrolü.
 
 ## Kanıt seviyeleri
 
@@ -61,6 +83,8 @@ Gelir rakamları birbirine karıştırılmaz:
 - **V:** kampanya değeri, booked call, impression, geri kazanılan alacak veya operasyonel değer gibi ticari sonuç
 
 ## A — Doğrulanmış ticari/operasyonel vaka + exact GitHub
+
+Altı A-seviyesi vakanın repo/commit özeti. Tam anlatımları için ilgili niş dosyalarına bakın: [B2B satış & lead](encyclopedia/nis-02-b2b-satis-lead.md) (A002, A003, A005), [video & görsel](encyclopedia/nis-01-video-gorsel-produksiyon.md) (A001), [içerik & sosyal medya](encyclopedia/nis-05-icerik-sosyal-medya.md) (A004), [yerel işletme & saha servisi](encyclopedia/nis-11-yerel-isletme-saha-servisi.md) (A006).
 
 ### A001 — AI Creative Director / moda kampanyası
 - Repo: https://github.com/sirlifehacker/Nano-Banana-Pro-Creative-Director
