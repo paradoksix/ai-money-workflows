@@ -41,6 +41,66 @@ def fail(message):
     errors.append(message)
 
 
+def check_readme(rows, grade_counts, niches, catalog_count):
+    """README.md quotes figures derived from cases.csv; make sure they stay true.
+
+    Each entry is (label, the exact string README must contain). The string is
+    built from the data, so editing cases.csv without refreshing README fails
+    here instead of silently leaving the front page wrong.
+    """
+    readme = ROOT / "README.md"
+    if not readme.exists():
+        fail("README.md not found")
+        return 0
+
+    revenue = {}
+    sellability = {}
+    for row in rows:
+        if row["revenue_type"]:
+            revenue[row["revenue_type"]] = revenue.get(row["revenue_type"], 0) + 1
+        sellability[row["tr_sellability"]] = sellability.get(row["tr_sellability"], 0) + 1
+
+    superseded = sum(1 for r in rows if r["status"].startswith("superseded"))
+    archived = len(rows) - grade_counts.get("X", 0) - superseded
+    real_niches = len(set(niches) - {"tartismali"})
+
+    expected = [
+        ("archived count badge", f"badge/örnek-{archived}-"),
+        ("niche count badge", f"badge/iş%20kolu-{real_niches}-"),
+        ("verified-source badge", f"badge/kaynağı%20doğrulanmış-{grade_counts.get('A', 0)}-"),
+        ("archived count", f"**{archived}** — ayrıca {grade_counts.get('X', 0)} şüpheli"),
+        ("total rows", f"{len(rows)} kaydın tamamı"),
+        ("grade split", "A: {A} · B: {B} · C: {C} · X: {X}".format(
+            A=grade_counts.get("A", 0), B=grade_counts.get("B", 0),
+            C=grade_counts.get("C", 0), X=grade_counts.get("X", 0))),
+        ("niche count", f"| {real_niches} (+ şüpheliler eki) |"),
+        ("pinned sources", f"{sum(1 for r in rows if r['repo_url'])} kayıt (depo adresi"),
+        ("source links", f"{sum(1 for r in rows if r['source_url'])} kayıt |"),
+        ("revenue split", "F: {F} · S: {S} · R: {R} · V: {V}".format(
+            F=revenue.get("F", 0), S=revenue.get("S", 0),
+            R=revenue.get("R", 0), V=revenue.get("V", 0))),
+        ("sellability split", "Yüksek: {h} · Orta: {m} · Düşük: {l}".format(
+            h=sellability.get("high", 0), m=sellability.get("medium", 0),
+            l=sellability.get("low", 0))),
+        ("catalog core size", f"çekirdek ({catalog_count} kayıt)"),
+    ]
+
+    text = readme.read_text(encoding="utf-8")
+    for label, needle in expected:
+        if needle not in text:
+            fail(f"README.md: stale {label} — expected to find {needle!r}. "
+                 "Refresh the figure after changing data/cases.csv.")
+
+    # the six A-grade rows quote a short commit; it must match the dataset
+    by_id = {r["id"]: r for r in rows}
+    for cid, short in re.findall(r"\*\*(A\d{3})\*\*.*?\|\s*`([0-9a-f]{7})`\s*\|", text):
+        real = by_id.get(cid, {}).get("pinned_commit", "")
+        if not real.startswith(short):
+            fail(f"README.md: {cid} quotes commit {short} but the data says {real[:7] or '(none)'}")
+
+    return len(expected)
+
+
 def main():
     if not CASES.exists():
         raise SystemExit("ERROR: data/cases.csv not found")
@@ -139,18 +199,23 @@ def main():
         elif cid not in headings:
             fail(f"{cid}: no heading for it in {rel}")
 
+    grade_counts = {}
+    for row in rows:
+        grade_counts[row["evidence_grade"]] = grade_counts.get(row["evidence_grade"], 0) + 1
+
+    # ── cross-check C: the figures quoted in README.md still hold ──────────
+    readme_checks = check_readme(rows, grade_counts, niches, len(catalog_rows))
+
     if errors:
-        print(f"ERROR: {len(errors)} problem(s) in data/cases.csv")
+        print(f"ERROR: {len(errors)} problem(s) found")
         for message in errors:
             print(f"  - {message}")
         raise SystemExit(1)
 
-    grade_counts = {}
-    for row in rows:
-        grade_counts[row["evidence_grade"]] = grade_counts.get(row["evidence_grade"], 0) + 1
     summary = " ".join(f"{g}={grade_counts.get(g, 0)}" for g in "ABCX")
     print(f"cases OK: {len(rows)} records ({summary}) across {len(niches)} niches")
     print(f"catalog cross-check OK: {len(catalog_rows)} pinned-source records agree")
+    print(f"README cross-check OK: {readme_checks} quoted figures match the data")
 
 
 if __name__ == "__main__":

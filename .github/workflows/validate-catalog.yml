@@ -8,6 +8,7 @@ on:
       - "docs/index.html"
       - "encyclopedia/**"
       - "scripts/**"
+      - "README.md"
       - ".github/workflows/validate-catalog.yml"
   pull_request:
     paths:
@@ -16,6 +17,7 @@ on:
       - "docs/index.html"
       - "encyclopedia/**"
       - "scripts/**"
+      - "README.md"
       - ".github/workflows/validate-catalog.yml"
 
 jobs:
