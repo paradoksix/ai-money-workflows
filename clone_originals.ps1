@@ -7,7 +7,8 @@ $repos = @(
   @{ Name="02-linkedin-jobs-decision-maker"; Url="https://github.com/sirlifehacker/n8n-automations.git"; Commit="dcab49176024e410a1cc555ea8bda3f21f4c6f1f" },
   @{ Name="03-b2b-lead-search-engine"; Url="https://github.com/sirlifehacker/lead-gen-hacker.git"; Commit="9ed891f4bc2666f19941ea8c03841555c4812b66" },
   @{ Name="04-social-story-scraper"; Url="https://github.com/sirlifehacker/social-story-scraper.git"; Commit="69de2889cbe8a80124581d5f5b2abede4d221b3f" },
-  @{ Name="05-insurance-lawyer-lead-gen"; Url="https://github.com/lucaswalter/n8n-ai-automations.git"; Commit="08e33b6d589789bc06957611cf932d3602b81117" }
+  @{ Name="05-insurance-lawyer-lead-gen"; Url="https://github.com/lucaswalter/n8n-ai-automations.git"; Commit="08e33b6d589789bc06957611cf932d3602b81117" },
+  @{ Name="06-jacobo-device-repair"; Url="https://github.com/santifer/jacobo-workflows.git"; Commit="b26601dde3f35edddf3690bd2f5a6656420df073" }
 )
 
 foreach ($r in $repos) {

@@ -1,116 +1,196 @@
-# AI Money Workflows
+<div align="center">
 
-Bu repo, 2025–2026 döneminde **gerçek müşteri / gelir / ticari sonuç bildirilen** AI otomasyon ve AI-destekli yazılım işlerini izlemek için hazırlanmıştır.
+# AI Gelir Vakaları Ansiklopedisi
 
-Amaç mümkün olduğunca çok “AI projesi” biriktirmek değil; **ticari vaka → kaynak → exact repo/kod → commit → lisans → Türkiye'de uygulanabilirlik** zincirini mümkün olduğunca izlenebilir tutmaktır.
+**Yapay zekâyla para kazanıldığı bildirilen 122 gerçek işin, her birinin ne kadar kanıtlı olduğu işaretlenmiş arşivi.**
 
-## Ana giriş: AI Gelir Vakaları Ansiklopedisi
+[![Doğrulama](https://github.com/paradoksix/ai-money-workflows/actions/workflows/validate-catalog.yml/badge.svg)](https://github.com/paradoksix/ai-money-workflows/actions/workflows/validate-catalog.yml)
+[![Örnek](https://img.shields.io/badge/örnek-122-3B4E8C)](ENCYCLOPEDIA.md)
+[![İş kolu](https://img.shields.io/badge/iş%20kolu-16-3B4E8C)](ENCYCLOPEDIA.md)
+[![Kaynağı doğrulanmış](https://img.shields.io/badge/kaynağı%20doğrulanmış-6-0E7A52)](#a--kaynağı-doğrulanmış-örnekler)
+[![Lisans](https://img.shields.io/badge/lisans-CC%20BY%204.0-8A6414)](LICENSE)
 
-👉 **[ENCYCLOPEDIA.md](ENCYCLOPEDIA.md)**
+[**Atlas sayfası**](docs/index.html) · [İş kolları](ENCYCLOPEDIA.md) · [Ortak dersler](encyclopedia/DESENLER.md) · [Ölçütler](RESEARCH_POLICY.md) · [Ham veri](data/cases.csv)
 
-Ansiklopedi şu anda:
+</div>
 
-- **122 kataloglanabilir vaka**,
-- **1 ayrı X-seviyesi tartışmalı vaka**,
-- A/B/C/X kanıt derecesi,
-- bildirilen ücret/gelir/tasarruf/değer ayrımı,
-- kullanılan stack ve işleyiş,
-- ana riskler,
-- ve her vakanın altında **Türkiye'den, düşük maliyet/açık kaynak ağırlıklı biçimde nasıl uygulanabileceğine dair kısa kişisel önizleme**
+> **In English —** An evidence-graded archive of 122 documented cases where people or businesses reportedly made money with AI and automation. Every case carries a letter (A/B/C/X) recording *how well it is actually proven*: whether the source code behind the claim was found and pinned, or whether the figure is only the claimant's own word. Revenue types are kept strictly apart — a freelancer's fee, product revenue, a client's saving and other commercial outcomes are never blended into one number. Written in Turkish, with a note under each case on how it might be adapted for the Turkish market. This is a research record, not investment or income advice.
 
-içerir.
+---
 
-Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatılmıştır**. Projenin mevcut amacı, yapmaya değer AI gelir işlerinin olabildiğince geniş ve kanıt dereceli haritasını çıkarmaktır.
+<div align="center">
+  <a href="docs/index.html">
+    <img src="docs/atlas-onizleme.png" alt="Atlas sayfası: kanıt açıklamaları, dağılım çubuğu ve iş kolu kartları" width="860">
+  </a>
+  <br>
+  <sub><b><a href="docs/index.html">docs/index.html</a></b> — arama ve dört filtreyle 122 örnek arasında gezinilebilen tek dosyalık sayfa</sub>
+</div>
 
-## Son araştırma dalgası
+---
 
-- Altın vakalar için derin kaynak avı yapıldı: `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md`.
-- Eski **C027 Device Repair WhatsApp + Voice Agent**, exact production repo bulunmasıyla **A006** seviyesine yükseltildi.
-- `encyclopedia/VOLUME-07-ENTERPRISE-OPS-ROI.md` ile C076–C086 yüksek-ROI operasyon vakaları eklendi.
-- `encyclopedia/VOLUME-08-AI-ASSISTED-CUSTOM-SOFTWARE.md` ile C087–C092 özel yazılım/dar sektör vakaları eklendi.
-- Kataloglanabilir toplam **122** vakaya çıktı.
+## Bu repo ne, ne değil
+
+İnternette "yapay zekâ ile şu kadar kazandım" anlatısı sonsuz. Sorun anlatının çokluğu değil, **hangisinin gerçekten doğrulanabildiğinin belli olmaması.**
+
+Bu arşiv tam olarak o ayrımı yapmak için var. Her örneğin yanında bir harf duruyor ve o harf tek bir soruyu cevaplıyor: *bu iddianın arkasında ne kadar sağlam bir kanıt var?* Kodu bulunup sürümü sabitlenmiş bir iş ile, yalnızca bir forum gönderisinde anlatılmış bir rakam aynı torbaya konmuyor.
+
+| Bu repo… | …bu repo değil |
+|---|---|
+| Kanıt derecesi işaretlenmiş bir araştırma kaydı | "Zengin olmanın 122 yolu" listesi |
+| Rakamların **türünü** ayıran bir defter (ücret / gelir / tasarruf / diğer) | Gelir vaadi veya yatırım tavsiyesi |
+| Kaynak koduna sürüm numarasıyla işaret eden bir dizin | Başkasının kodunu barındıran bir depo |
+| Türkiye'ye uyarlama notları taşıyan bir başlangıç noktası | Hazır iş planı |
+
+Rakamların neredeyse tamamı **işi yapan kişilerin kendi beyanı** ve hiçbiri bağımsız denetlenmedi. Arşiv bunu gizlemek yerine her örnekte açıkça işaretliyor.
+
+## Nereden başlamalı?
+
+| Ne istiyorsun | Nereye git |
+|---|---|
+| **Gezinmek, filtrelemek, bir iş kolu seçmek** | [**`docs/index.html`**](docs/index.html) — arama + iş kolu, güvenilirlik, gelir türü ve Türkiye filtreleri |
+| Bir iş kolunu baştan sona okumak | [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) — 16 iş kolunun listesi |
+| Örneklerin tamamından çıkan ortak dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
+| Neyin nasıl doğrulandığını anlamak | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |
+| Veriyi kendin analiz etmek | [`data/cases.csv`](data/cases.csv) — 124 kaydın tamamı |
+| Kaynağı hâlâ aranan örneklere bakmak | [`research_queue.csv`](research_queue.csv) + [`research/`](research/) |
+| Türkiye'de satış açılarını görmek | [`TURKIYE_OPPORTUNITIES.md`](TURKIYE_OPPORTUNITIES.md) |
+
+## Yanlarındaki harf ne demek?
+
+Her örnek dört güvenilirlik seviyesinden birini taşır. Harf, işin *ne kadar iyi* olduğunu değil, **iddianın ne kadar doğrulanabildiğini** anlatır.
+
+| | Ne demek | Ne doğrulandı |
+|:--:|---|---|
+| **A** | Müşteri kanıtı + kodu açık | İşin gerçek bir müşteriye satıldığı **ve** tam olarak hangi kodla yapıldığı, ikisi birden |
+| **B** | Kodu açık, kazancı belirsiz | Kod gerçek ve çalışıyor; ama tam olarak bu işin para kazandırdığı ayrıca gösterilmedi |
+| **C** | Para kazandırmış, kodu yok | Ödeme yapan müşteri veya tasarruf anlatımı güçlü; ama işin kodu paylaşılmamış ya da bulunamadı |
+| **X** | Şüpheli | Kazanç iddiasında gizli reklam veya çıkar çatışması şüphesi var — ana sayıma katılmaz |
+
+Rakamlarda ise birbirine benzeyen dört ayrı şey asla karıştırılmaz:
+
+| | | |
+|:--:|---|---|
+| **F** | İşi yapana ödenen ücret | Hizmeti verenin cebine giren para |
+| **R** | Üründen gelen gelir | Satılan ürün veya abonelik geliri |
+| **S** | Müşterinin tasarrufu | Müşterinin kazandığı zaman ya da kestiği gider |
+| **V** | Başka ticari sonuç | Kampanya değeri, alınan randevu, görüntülenme, tahsil edilen alacak |
+
+Bir kampanyanın bütçesi ile freelancerın aldığı ücret aynı şey değildir; arşiv bu ikisini aynı hücreye yazmaz.
+
+## Rakamlarla arşiv
+
+| | |
+|---|---|
+| Arşivlenmiş örnek | **122** — ayrıca 1 şüpheli ve 1 eski kayıt, toplam 124 satır |
+| Güvenilirlik dağılımı | A: 6 · B: 25 · C: 92 · X: 1 |
+| İş kolu | 16 (+ şüpheliler eki) |
+| Kaynak kodu sabitlenmiş | 9 kayıt (depo adresi + doğrulanmış sürüm) |
+| Kaynak bağlantısı olan | 59 kayıt |
+| Gelir türü dağılımı | F: 61 · S: 16 · R: 9 · V: 5 |
+| Türkiye'ye uygunluk | Yüksek: 51 · Orta: 60 · Düşük: 13 |
+
+## A — Kaynağı doğrulanmış örnekler
+
+Altı örnekte hem ticari sonuç hem de o sonucu üreten kod doğrulandı. Kod bu depoya kopyalanmadı; adresi ve sabitlenmiş sürümüyle referans veriliyor.
+
+| | İş | Kaynak deposu | Sabitlenen sürüm | Bildirilen sonuç |
+|:--:|---|---|:--:|---|
+| **A001** | Moda kampanyası için reklam görseli üretimi | [`sirlifehacker/Nano-Banana-Pro-Creative-Director`](https://github.com/sirlifehacker/Nano-Banana-Pro-Creative-Director) | `1c82b35` | $9K'lık kampanya (bu paranın ne kadarının işi yapana kaldığı belirsiz) |
+| **A002** | İş ilanından karar verici araştırması | [`sirlifehacker/n8n-automations`](https://github.com/sirlifehacker/n8n-automations) | `dcab491` | İlk müşteriden sonra birden fazla müşteri daha |
+| **A003** | Şirket bulup puanlayan araştırma motoru | [`sirlifehacker/lead-gen-hacker`](https://github.com/sirlifehacker/lead-gen-hacker) | `9ed891f` | Girişimciler çeşitli sürümleri için ödeme yapmış |
+| **A004** | Gündem takibinden içerik fırsatı çıkarma | [`sirlifehacker/social-story-scraper`](https://github.com/sirlifehacker/social-story-scraper) | `69de288` | ~2,9M görüntülenme, 10+ yüksek bütçeli müşteri adayı |
+| **A005** | Hukuk firmasına müşteri adayı bulma | [`lucaswalter/n8n-ai-automations`](https://github.com/lucaswalter/n8n-ai-automations) | `08e33b6` | **$1.800**'e satılmış; normal fiyatı $2.500 + aylık $400 |
+| **A006** | Cihaz tamir servisinde WhatsApp + sesli karşılama | [`santifer/jacobo-workflows`](https://github.com/santifer/jacobo-workflows) | `b26601d` | Müşterilerin ~%90'ı kendi kendine hallediyor; ayda ~80 saat kazanç |
+
+**A006** arşivin en sağlam örneği: yedi parçalı, iki yıl canlı çalışmış, işletme satıldığında yeni sahibi kullanmaya devam etmiş bir sistem. Ayrıntılı kartı → [`encyclopedia/A006-JACOBO-DEVICE-REPAIR.md`](encyclopedia/A006-JACOBO-DEVICE-REPAIR.md)
 
 ## Repo yapısı
 
-- `ENCYCLOPEDIA.md` — 122+1 vakalık ana ansiklopedi ve cilt indeksi.
-- `encyclopedia/` — sekiz ana cilt, A006 exact case card ve X-seviyesi tartışmalı vakalar eki.
-- `research/GOLDEN-CASES-DEEP-DIVE-2026-08-24.md` — altın vakaların exact-source ve güvenilirlik derin araştırması.
-- `catalog.csv` — ilk çekirdek vakaların iş modeli, müşteri tipi, bildirilen sonuç, kanıt derecesi, repo, commit, lisans, zorluk ve Türkiye'de satılabilirlik verisi. Tarihsel C027 satırı canonical A006 kartına taşınmak üzere veri-temizliği bekleyebilir; ansiklopedide kanonik derece A006'dır.
-- `research_queue.csv` — exact kaynak repo/Gist/template'i henüz bulunamamış yüksek değerli vakaların araştırma kuyruğu.
-- `RESEARCH_POLICY.md` — A/B/C/X kanıt standardı ve lisans politikası.
-- `TURKIYE_OPPORTUNITIES.md` — yerel nişlerin satış/demonstrasyon açıları.
-- `BUILD_SHORTLIST.md` — önceki build kısa listesi; araştırma aşamasında aktif geliştirme planı değildir.
-- `sources.csv` — ilk kaynak indeksinin geriye dönük kopyası.
-- `clone_originals.ps1` / `clone_originals.sh` — doğrulanmış upstream repoları belirli commit'e sabitleyerek çekmek için kullanılır; A006'nın scriptlere eklenmesi ayrı veri-temizliği adımıdır.
-- `clone_disputed.ps1` / `clone_disputed.sh` — tartışmalı örnekleri bilinçli olarak ayrı çeker.
-- `scripts/validate_catalog.py` — çekirdek katalog tutarlılık kontrolü.
+**Okuma katmanı**
 
-## Kanıt seviyeleri
+| Dosya | İçerik |
+|---|---|
+| [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) | İş kolları listesi ve harflerin anlamı |
+| [`encyclopedia/nis-01…16-*.md`](encyclopedia/) | 16 iş kolu dosyası; her örneğin tam anlatımı, riskleri ve Türkiye uyarlaması |
+| [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) | Örnek gruplarının tamamından çıkan ortak dersler |
+| [`encyclopedia/A006-JACOBO-DEVICE-REPAIR.md`](encyclopedia/A006-JACOBO-DEVICE-REPAIR.md) | En sağlam tek örneğin ayrıntılı kartı |
+| [`encyclopedia/APPENDIX-X-DISPUTED.md`](encyclopedia/APPENDIX-X-DISPUTED.md) | Şüpheli iddialar; kırmızı bayrak eğitimi olarak saklanır |
 
-- **A:** belirli ticari/operasyonel vaka + vakaya doğrudan bağlı exact GitHub repo/workflow.
-- **B:** açık çalışan kaynak/JSON + güçlü ticari üretici veya marketplace bağlamı; fakat exact workflow'un ayrıca ne kadar kazandırdığı tam kanıtlı değil.
-- **C:** ücretli müşteri, gelir, tasarruf veya ölçülebilir ticari sonuç güçlü; exact public kaynak repo kapalı, eksik veya bulunamadı.
-- **X:** gelir iddiası var fakat promosyon, çıkar çatışması veya başka ciddi şüphe bulunuyor.
+**Veri katmanı**
 
-Gelir rakamları birbirine karıştırılmaz:
+| Dosya | İçerik |
+|---|---|
+| [`data/cases.csv`](data/cases.csv) | 124 kaydın tamamı: iş kolu, güvenilirlik harfi, gelir türü, tutar, kullanılan araçlar, zorluk, Türkiye'ye uygunluk, kaynak bağlantıları, özet |
+| [`catalog.csv`](catalog.csv) | Kaynağı sabitlenmiş çekirdek (42 kayıt): depo adresi ve doğrulanmış sürüm taşıyan daha sıkı alt küme |
+| [`research_queue.csv`](research_queue.csv) | Kaynak kodu hâlâ bulunamamış, değerli örneklerin araştırma listesi |
+| [`sources.csv`](sources.csv) | İlk kaynak indeksinin geriye dönük kopyası |
 
-- **F:** freelancer/hizmet sağlayıcının aldığı ücret
-- **R:** ürün/SaaS/app geliri
-- **S:** müşterinin tasarrufu
-- **V:** kampanya değeri, booked call, impression, geri kazanılan alacak veya operasyonel değer gibi ticari sonuç
+**Araç katmanı**
 
-## A — Doğrulanmış ticari/operasyonel vaka + exact GitHub
+| Dosya | Ne yapar |
+|---|---|
+| [`docs/index.html`](docs/index.html) | Üretilmiş atlas sayfası — **elle düzenlenmez** |
+| [`scripts/build_site.py`](scripts/build_site.py) | Sayfayı `data/cases.csv`'den üretir; deterministiktir |
+| [`scripts/validate_cases.py`](scripts/validate_cases.py) | Veri yapısı, `catalog.csv` ile alan uyumu ve her örneğin yazıldığı yerde olduğu kontrolü |
+| [`scripts/validate_catalog.py`](scripts/validate_catalog.py) | Çekirdek katalog tutarlılık kontrolü |
+| [`builds/catalog-doctor/`](builds/catalog-doctor/) | Geniş ürün kataloglarını denetleyen çalışan araç; kendi testi CI'da koşar |
+| `clone_originals.sh` / `.ps1` | Doğrulanmış kaynak depolarını sabit sürüme kilitleyerek indirir |
+| `clone_disputed.sh` / `.ps1` | Şüpheli örnekleri bilerek ayrı indirir |
 
-### A001 — AI Creative Director / moda kampanyası
-- Repo: https://github.com/sirlifehacker/Nano-Banana-Pro-Creative-Director
-- Commit: `1c82b35f1db29e9f0ed35f5e0680148241a371b5`
-- Vaka: `$9K campaign`; bunun freelancer net ücreti olduğu kanıtlanmıyor.
+**Strateji notları**
 
-### A002 — LinkedIn Jobs + Decision Maker Research
-- Repo: https://github.com/sirlifehacker/n8n-automations
-- Commit: `dcab49176024e410a1cc555ea8bda3f21f4c6f1f`
-- Vaka: ilk staffing müşterisinin ardından birden fazla müşterinin aynı sistemi istediği bildiriliyor.
+[`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) — güvenilirlik ölçütleri ve lisans politikası · [`TURKIYE_OPPORTUNITIES.md`](TURKIYE_OPPORTUNITIES.md) — yerel satış açıları · [`BUILD_SHORTLIST.md`](BUILD_SHORTLIST.md) — duraklatılmış build listesi
 
-### A003 — B2B Lead Search Engine
-- Repo: https://github.com/sirlifehacker/lead-gen-hacker
-- Commit: `9ed891f4bc2666f19941ea8c03841555c4812b66`
-- Vaka: B2B girişimcilerin varyantları için geliştiriciyi tuttuğu bildiriliyor.
+## Veriyle çalışmak
 
-### A004 — Social Story Scraper
-- Repo: https://github.com/sirlifehacker/social-story-scraper
-- Commit: `69de2889cbe8a80124581d5f5b2abede4d221b3f`
-- Vaka: ~2.9M impression ve 10+ high-ticket inbound lead bildiriliyor.
+Python 3.12 dışında bağımlılık yok.
 
-### A005 — Insurance Lawyer Lead Gen Automation
-- Repo: https://github.com/lucaswalter/n8n-ai-automations
-- Exact workflow: `deal_breakdown_lawyer_lead_gen.json`
-- Commit: `08e33b6d589789bc06957611cf932d3602b81117`
-- Vaka: Austin'deki butik hukuk firmasına `$1,800` ücretle satıldığı bildiriliyor; geliştirici standart teklifini `$2,500 build + $400/month` olarak açıklıyor.
+```bash
+# Veri bütünlüğünü doğrula
+python3 scripts/validate_catalog.py    # kaynağı sabitlenmiş çekirdek
+python3 scripts/validate_cases.py      # 124 kayıt + iki çapraz kontrol
 
-### A006 — Jacobo Device Repair WhatsApp + Voice AI Agent
-- Case card: `encyclopedia/A006-JACOBO-DEVICE-REPAIR.md`
-- Repo: https://github.com/santifer/jacobo-workflows
-- Commit: `b26601dde3f35edddf3690bd2f5a6656420df073`
-- Exact source: 7 sanitised production n8n workflow.
-- Bildirilen sonuç: ~%90 self-service, ~80 saat/ay otomasyon, `<30s` response, `<€200/ay` altyapı.
-- Gelir semantiği: bağımsız freelance satış fiyatı yok; sistem işletmenin operasyonel varlığı olarak kullanılmış ve işletmeyle birlikte devredilmiş.
-- Repo metadata'sında açık root lisans görünmüyor.
+# Atlas sayfasını yeniden üret (deterministik: aynı veri = aynı çıktı)
+python3 scripts/build_site.py
 
-## Araştırmada özellikle kovalanacak C vakaları
+# Doğrulanmış upstream depoları sabit sürümle indir
+./clone_originals.sh                   # Windows: .\clone_originals.ps1
 
-1. C004 — Property-management vertical / Powerprozesse
-2. C003 — 50K ürün katalog overhaul
-3. C002 — Japon Google Ads invoice processor
-4. C006 — 115+ workflow monitoring
-5. C005 — Bookkeeping process automation
-6. C001 — Ship manager lead capture
-7. C008 — Bookstore WhatsApp order assistant
-8. C018 — $5K tutoring operations system
-9. C029 — Offline university RAG
-10. C076 — Medical-device expiry/spoilage automation
+# Katalog denetleme aracını örnek veriyle çalıştır
+cd builds/catalog-doctor && python3 catalog_doctor.py sample_catalog.csv --out demo-output
+```
 
-Bunların ayrıntıları `ENCYCLOPEDIA.md` ve derin araştırma raporu üzerinden izlenir.
+`scripts/validate_cases.py` iki dosyanın sessizce ayrışmasını engeller: `catalog.csv`'deki her kaydın `cases.csv`'de de bulunduğunu ve ortak alanların birebir aynı olduğunu; ayrıca her örneğin gerçekten kendi iş kolu dosyasında yazılı olduğunu doğrular. CI ayrıca `docs/index.html`'in veriye göre güncel olduğunu kontrol eder.
 
-## Lisans notu
+**Sayfayı yayınlamak:** `docs/index.html` tek başına çalışır — yerelde çift tıklamak yeterli. GitHub Pages için: **Settings → Pages → Source: `main` / `/docs`**.
 
-Public GitHub reposu otomatik olarak yeniden dağıtım veya yeniden lisanslama izni vermez. Açık lisansı bulunmayan upstream kodları bu repoya kopyalanmaz; orijinal repo, Git geçmişi ve sabit commit korunarak doğrudan upstream'den referanslanır/çekilir. Private/paid kaynaklar araştırma amacıyla kayda alınabilir fakat kopyalanmaz.
+## Bir örnek arşive nasıl giriyor?
+
+Tek bir ekran görüntüsü kanıt sayılmaz. Bir örneğin kaydedilmesi için sırasıyla şunlar aranır:
+
+1. **Net bir müşteri problemi** — kim, neyi, neden ödedi?
+2. **Çalışan sistemin anlatımı** — hangi parçalar, nerede insan devreye giriyor?
+3. **Ticari sonuç** — ve o rakamın türü (F / R / S / V) net biçimde ayrılmış hâlde.
+4. **İşin kaynak kodu** — bulunabiliyorsa adresi ve sürüm numarasıyla.
+5. **Kodun geçmişi ve lisansı** — herkese açık olması kullanma izni vermez.
+6. **Mümkünse ikinci bağımsız işaret** — aynı hikâyenin başka hesapta farklı rakamla tekrarı doğrulama değil, **kırmızı bayraktır**.
+
+Ayrıntılı ölçütler → [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md). Kaynağı hâlâ aranan örnekler → [`research_queue.csv`](research_queue.csv).
+
+## Proje durumu
+
+Arşiv **122 örnekte**; hedef, aynı ölçütleri gevşetmeden 150–200 bandına kontrollü biçimde ilerlemek. Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatılmış** durumda.
+
+En çok değer taşıyan üç açık ipucu:
+
+- **C004** — Alman site yönetimi otomasyon şirketi; ticari sürekliliği güçlü, resmî kaynak kodu bulunamadı.
+- **C003** — 50 bin ürünlük katalog düzenleme; `conor-is-my-name` teknik olarak uyumlu ama **doğrulanmamış** aday.
+- **C002** — Japon reklam faturası işleme; kaynak kodu ve panel izi hâlâ yok.
+
+Tam liste ve gerekçeler → [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) · derin araştırma raporları → [`research/`](research/)
+
+## Lisans
+
+Bu deponun **kendi** araştırma metni, veri dosyaları ve scriptleri [Creative Commons Attribution 4.0](LICENSE) (CC BY 4.0) altındadır — atıf vererek kullanabilirsiniz.
+
+Atıf verilen **upstream projelerin kodu bu lisansın dışındadır.** O kodların hiçbiri depoya kopyalanmadı; yalnızca adres ve doğrulanmış sürüm numarası olarak referans verildi. Her biri kendi şartlarına tabidir ve çoğunun kök dizininde açık bir lisans dosyası bulunmuyor — bir projeyi kullanmadan önce kendi lisans durumunu ayrıca kontrol edin. Ücretli veya özel kaynaklar araştırma amacıyla kayda geçirilir, kopyalanmaz.

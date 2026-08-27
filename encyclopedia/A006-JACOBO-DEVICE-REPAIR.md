@@ -1,6 +1,6 @@
 # A006 — Jacobo Device Repair WhatsApp + Voice AI Agent
 
-**Kanıt seviyesi:** A — gerçek production vaka + vaka sahibine doğrudan bağlı exact GitHub workflow reposu.
+**Kanıt seviyesi:** A — gerçek production vaka + vaka sahibine doğrudan bağlı doğrulanmış GitHub iş akışı deposu.
 
 ## Ne yapılmış?
 
@@ -21,13 +21,13 @@ Kaynak sahibi ve repo dokümantasyonunda bildirilen sonuçlar:
 
 Bu vaka için ayrı bir `$X freelance satış ücreti` kanıtlanmıyor. Kaynak sahibi sistemi tek başına satmadığını; tüm işletmeyi, içindeki AI/otomasyon sistemleriyle birlikte sattığını açıklıyor. Bu nedenle ekonomik kanıt türü **operational value / business asset**, freelancer fee değildir.
 
-## Exact kaynak
+## doğrulanmış kaynak kodu
 
 - Reddit vaka: https://www.reddit.com/r/n8n/comments/1sc3i30/i_built_a_whatsapp_voice_ai_agent_in_n8n_that/
 - Repo: https://github.com/santifer/jacobo-workflows
 - Pinned commit: `b26601dde3f35edddf3690bd2f5a6656420df073`
 
-## Exact workflow dosyaları
+## birebir iş akışı dosyaları
 
 - `jacobo-chatbot-v2.json` — merkezi router, intent classification ve kısa konuşma hafızası
 - `subagente-citas.json` — doğal dil randevu talebini uygun slotlara çevirir

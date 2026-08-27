@@ -1,6 +1,102 @@
-# Cilt 5 — Görsel, video, UGC ve faceless üretim vakaları
+# Video ve görsel üretimi
 
-Bu cilt **C050–C065** arasındaki yaratıcı hizmet vakalarını içerir. Buradaki ticari kanıt büyük ölçüde marketplace review/order sinyalidir. Yüksek talep vardır; fakat aynı zamanda rekabet ve metalaşma riski de yüksektir.
+Reklam filmi, ürün videosu, müzik klibi, avatar ve video kapak görseli. Buradaki kanıt çoğunlukla pazaryerlerindeki müşteri yorumu sayısı: talep gerçek, ama rekabet de o kadar yüksek. Örneklerin gösterdiği şey şu: müşteri artık "yapay zekâya erişim" satın almıyor; **aynı ürün için birden çok deneme sürümü, marka tutarlılığı ve makinenin çıkardığı işi yayınlanabilir hâle getiren insan kurgusunu** satın alıyor.
+
+**Türkiye'de kim satın alır?** E-ticaret markaları, reklam ajansları, müzisyenler, içerik kanalları
+
+**Bu grupta 20 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 4 · C: 15.
+
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
+
+---
+
+## A001 — AI Creative Director: moda kampanyası
+
+**Ne satılmış?** Bir e-ticaret moda markası için çok sayıda kampanya görselini tutarlı kreatif yönle üretmeye yarayan AI creative-director workflow'u.
+
+**Ticari kanıt:** Kaynak vaka kampanyayı **V: $9K campaign** olarak tanımlıyor. Bu rakam freelancerın net ücreti olarak doğrulanmıyor.
+
+**Nasıl çalışıyor?** n8n + Gemini/Nano Banana benzeri görsel üretim zinciri; brief'i sahne/konsept/prompta dönüştürüp varyasyon üretiyor.
+
+**Kaynak:** Reddit vaka + `sirlifehacker/Nano-Banana-Pro-Creative-Director`, pinned commit `1c82b35f...`. Root lisans bulunmadığı için kodu sahiplenmek yerine upstream referans alınmalı.
+
+**Risk:** Marka/IP, ürünün gerçekte olmayan biçimde gösterilmesi, sentetik model kullanımı.
+
+**Senin için uygulama önizlemesi:** Türkiye'de giyim yerine **mobilya, kozmetik, yerel gıda veya küçük e-ticaret markalarında “10 ürün → 30 reklam varyasyonu”** gibi dar bir paket araştırılabilir. Başlangıçta ücretli video modellerine girmeden görsel tarafında açık/ucuz araçlarla örnek set hazırlamak daha mantıklı; yerel PC'ni prompt/QA/metadata üretiminde kullanabilirsin.
+
+---
+
+## B010 — Uzun videodan Shorts/Reels adayları
+
+**Ne yapıyor?** Uzun videoyu analiz edip kısa klip olabilecek bölümleri seçiyor ve üretim hattına aktarıyor.
+
+**Stack:** n8n + Vizard/clip tool + Slack vb.
+
+**Risk:** Telif, yanlış segment seçimi, düşük kalite.
+
+**Senin için uygulama önizlemesi:** Tam otomatik video üretmek yerine **“AI klip adaylarını bulur, sen final kesim/altyazı/tempo kontrolü yaparsın”** yaklaşımı daha savunulabilir. Yerel Whisper kullanarak transkripsiyon maliyetini düşürebilirsin.
+
+---
+
+## B014 — Reklamdan 10 kontrollü A/B varyasyonu
+
+**Ne yapıyor?** Mevcut başarılı kreatifi temel alıp kontrollü görsel/metin varyasyonları oluşturuyor.
+
+**Kanıt:** Açık workflow; ücret yok.
+
+**Risk:** Marka/IP, yalnız görsel değiştirip “test” diye satma.
+
+**Senin için uygulama önizlemesi:** “AI görsel” yerine **“1 mevcut reklam → 10 hipotezli test varyasyonu + hangi unsur değişti tablosu”** satılabilir. Böylece çıktı ölçülebilir ve ajans müşterisi için daha profesyonel olur.
+
+---
+
+## B015 — E-commerce AI UGC video varyantları
+
+**Ne yapıyor?** Ürün görsellerinden UGC tarzı video senaryoları/varyantları üretiyor.
+
+**Stack:** Sora/Gemini/vision/n8n.
+
+**Risk:** Sahte testimonial, marka güveni, video maliyeti.
+
+**Senin için uygulama önizlemesi:** Başlangıçta gerçek kullanıcı yorumu taklit etmek yerine **ürün demonstrasyonu, problem/çözüm, katalog video** türüne odaklan. Video API maliyeti nedeniyle bu kategori yerel PC'nde metin/storyboard/QA, bulutta yalnız final üretim şeklinde düşünülmeli.
+
+---
+
+## B016 — Ürün fotoğrafını kısa videoya çevirme
+
+**Ne yapıyor?** E-ticaret katalog görsellerini kısa hareketli ürün videolarına dönüştürüyor.
+
+**Stack:** Firecrawl/Veo/Drive/n8n.
+
+**Risk:** Ürünün fiziksel özelliklerini yanlış göstermek.
+
+**Senin için uygulama önizlemesi:** Türkiye'de pazaryeri satıcılarına **“20 SKU → 20 kısa dikey ürün klibi”** şeklinde paketlenebilir. Önce birkaç üründe gerçek ürüne sadakat testi yapılmalı.
+
+---
+
+## C026 — AI Video Content Production Agent
+
+**Ne satılmış?** Marketing ekibinin haftalık 20+ saatlik içerik üretimini azaltmayı hedefleyen AI video/content agent.
+
+**Ticari kanıt:** **F: $2.530** satış iddiası.
+
+**Stack:** Flux + Gemini + text/image-to-video + Telegram/n8n.
+
+**Güven notu:** Satıcı/promosyon bağlamı nedeniyle bağımsız doğrulama gerekli.
+
+**Senin için uygulama önizlemesi:** Senin içerik/video deneyimin nedeniyle teknik olarak erişilebilir, ancak “tam otomatik içerik agent” yerine **aylık içerik üretim hattı: brief → storyboard → draft → insan edit → teslim klasörü** daha güvenli ve satılabilir.
+
+---
+
+## C040 — AI UGC sosyal reklam videoları
+
+**Ne satılmış?** TikTok/Instagram/Facebook için AI UGC tarzı reklam videoları.
+
+**Ticari sinyal:** **31 ücretli review**.
+
+**Risk:** Sentetik testimonial, marka güveni, platform reklam politikaları.
+
+**Senin için uygulama önizlemesi:** İçerik/video tecrüben burada avantaj. “Sahte müşteri yorumu” yerine **ürün demonstrasyonu + 3 hook + 3 dikey varyasyon + insan edit** paketi araştırılabilir.
 
 ---
 
@@ -114,40 +210,6 @@ Bu cilt **C050–C065** arasındaki yaratıcı hizmet vakalarını içerir. Bura
 
 ---
 
-## C059 — Faceless YouTube Full Production
-
-**Ne satılmış?** Script, voice, edit, görsel ve thumbnail dahil faceless YouTube video üretimi.
-
-**Ticari sinyal:** **143 review, 11 aktif queue**, `$20` basic.
-
-**Önemli ders:** Bu, faceless kanalın para kazandığını değil **kanal sahiplerinin prodüksiyona para ödediğini** kanıtlıyor.
-
-**Senin için uygulama önizlemesi:** Kendi kanalını büyütme riskini almadan, **belirli bir nişte video prodüksiyon hizmeti** araştırılabilir. Türkçe/İngilizce eğitim, tarih, teknoloji veya şirket içi açıklayıcı video tarafı daha savunulabilir.
-
----
-
-## C060 — Faceless Editing / Content Service
-
-**Ne satılmış?** Faceless kanal sahiplerine düzenli editing/content üretimi.
-
-**Ticari sinyal:** **173 review, 21 queue**.
-
-**Senin için uygulama önizlemesi:** Aylık retainer'a en uygun yaratıcı işlerden. AI ile script/rough-cut hızlanabilir; sen kalite kontrol, ritim, görsel seçim ve final export kısmını sahiplenirsin.
-
----
-
-## C061 — 8 Dakika Niche Faceless Video + Thumbnail
-
-**Ne satılmış?** Belirli nişte yaklaşık 8 dakikalık faceless video ve thumbnail.
-
-**Ticari sinyal:** **48 review**, `$20` giriş.
-
-**Risk:** Düşük fiyatlı global rekabet.
-
-**Senin için uygulama önizlemesi:** Fiyat rekabetine girmek yerine **Türkçe niş uzmanlığı veya iki dilli içerik** üzerinden ayrışmak daha mantıklı. Örneğin teknik eğitim/yerel sektör videosu.
-
----
-
 ## C062 — AI Promotional Commercial
 
 **Ne satılmış?** AI destekli kısa promotional commercial.
@@ -193,15 +255,3 @@ Bu cilt **C050–C065** arasındaki yaratıcı hizmet vakalarını içerir. Bura
 **Senin için uygulama önizlemesi:** “Midjourney thumbnail” yerine **CTR test mantığı, okunabilir tipografi, marka yüzü/renk tutarlılığı** sat. Araç değişse bile hizmet değeri kalır.
 
 ---
-
-## Cilt 5'ten çıkan ortak desen
-
-Yaratıcı AI tarafında müşterinin para verdiği şey giderek model erişimi değil:
-
-- aynı ürün için çoklu reklam varyasyonu,
-- aylık sürekli içerik akışı,
-- AI çıktısının insan edit ile yayınlanabilir hale gelmesi,
-- marka/karakter tutarlılığı,
-- farklı platform formatlarına paketleme.
-
-Senin için en güçlü savunma hattı **AI + video/editing kalite kontrolü + paketlenmiş teslimat** kombinasyonu. Tek görsel veya tek video üretimi ise daha kolay metalaşıyor.
