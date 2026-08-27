@@ -1,12 +1,12 @@
-# Muhasebe & finans belgeleri
+# Muhasebe ve fatura işleri
 
-Fatura, tahsilat ve ön-muhasebe süreçleri. Bu nişin değişmez kuralı her vakada tekrarlanıyor: **LLM rakam hesabı yapmasın.** AI yalnız alan çıkarır; matematiği, vergi kontrolünü ve format doğrulamasını deterministik kod yapar, düşük güvenli satır insana gider.
+Fatura, tahsilat ve ön muhasebe işleri. Bu grubun değişmez kuralı her örnekte tekrarlanıyor: **hesabı yapay zekâ yapmasın.** Yapay zekâ yalnız bilgiyi okuyup çıkarır; toplamayı, vergi kontrolünü ve biçim denetimini sıradan kod yapar, emin olunamayan satır insana gider.
 
 **Türkiye'de kim satın alır?** Mali müşavir, dijital ajans, çok şubeli işletme, e-ticaret firması
 
-**Bu nişte 3 vaka var.** Kanıt dağılımı — C: 3.
+**Bu grupta 3 örnek var.** Ne kadar güvenilir oldukları — C: 3.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 

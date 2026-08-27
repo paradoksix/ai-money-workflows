@@ -25,7 +25,8 @@ REQUIRED = [
     "license_status", "detail_file", "summary",
 ]
 SHARED_WITH_CATALOG = [
-    "title", "evidence_grade", "status", "source_url", "repo_url", "pinned_commit",
+    "title", "evidence_grade", "status", "work_model", "reported_result",
+    "source_url", "repo_url", "pinned_commit",
 ]
 
 GRADES = {"A", "B", "C", "X"}

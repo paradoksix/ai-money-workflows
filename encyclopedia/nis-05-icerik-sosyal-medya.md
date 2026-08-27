@@ -1,12 +1,12 @@
-# İçerik, sosyal medya & bülten
+# İçerik, sosyal medya ve bülten
 
-Uzun içeriği parçalamak, bülten üretmek, kaynak taramak ve faceless kanal prodüksiyonu. Buradaki önemli ders C059'da net: bu vakalar faceless kanalın para kazandığını değil, **kanal sahiplerinin prodüksiyona para ödediğini** kanıtlıyor.
+Uzun içeriği parçalara ayırmak, bülten hazırlamak, kaynak taramak ve yüz göstermeyen kanallar için üretim yapmak. Buradaki en önemli ders C059'da net görünüyor: bu örnekler yüz göstermeyen kanalın para kazandığını değil, **kanal sahiplerinin video üretimine para ödediğini** kanıtlıyor.
 
-**Türkiye'de kim satın alır?** Eğitmen, danışman, podcast, B2B firma, kanal sahibi
+**Türkiye'de kim satın alır?** Eğitmen, danışman, podcast yapan, B2B firma, kanal sahibi
 
-**Bu nişte 11 vaka var.** Kanıt dağılımı — A: 1 · B: 5 · C: 5.
+**Bu grupta 11 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 5 · C: 5.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 

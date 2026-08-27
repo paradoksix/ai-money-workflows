@@ -1,12 +1,12 @@
-# Ofis & belge operasyonu
+# Ofis ve evrak işleri
 
-Form, e-posta, dosya ve tablo trafiğini yapılandıran idari otomasyonlar. C011'in gösterdiği gibi burada **AI çoğu zaman şart değil** — müşteri kopyala-yapıştır işinden kurtulmak istiyor. Bu niş, normal otomasyonun bazen AI'dan daha doğru ürün olduğunu hatırlatıyor.
+Form, e-posta, dosya ve tablo trafiğini düzene sokan işler. C011'in gösterdiği gibi burada **yapay zekâ çoğu zaman şart bile değil** — müşteri sadece kopyala-yapıştırdan kurtulmak istiyor. Bu grup, sıradan bir otomasyonun bazen yapay zekâdan daha doğru çözüm olduğunu hatırlatıyor.
 
-**Türkiye'de kim satın alır?** Klinik, kurs, emlak ofisi, küçük ajans, founder/KOBİ
+**Türkiye'de kim satın alır?** Klinik, kurs, emlak ofisi, küçük ajans, tek başına yürüyen işletmeci
 
-**Bu nişte 7 vaka var.** Kanıt dağılımı — B: 1 · C: 6.
+**Bu grupta 7 örnek var.** Ne kadar güvenilir oldukları — B: 1 · C: 6.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -14,7 +14,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapıyor?** Gelen e-postayı sınıflandırıyor, önceliklendiriyor ve taslak yanıt oluşturuyor.
 
-**Kanıt:** Açık JSON workflow; exact ücret yok.
+**Kanıt:** Açık JSON workflow; ne kadar kazandırdığı bilinmiyor.
 
 **Risk:** Yanlış otomatik gönderim, gizli e-posta içeriği.
 

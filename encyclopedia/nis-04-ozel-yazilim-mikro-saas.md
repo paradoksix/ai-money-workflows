@@ -1,12 +1,12 @@
-# Özel yazılım & mikro-SaaS
+# Sipariş üzerine yazılım ve küçük ürünler
 
-Workflow değil, uygulama satılan vakalar. Ortak desen "genel SaaS fikri bulup kullanıcı beklemek" değil: mevcut ilişki, bizzat yaşanan sektör problemi ve küçük çalışan demo. AI kodu hızlandırıyor; **müşteriyi ödemeye ikna eden şey problem bilgisi ve dağıtım** olmaya devam ediyor.
+Hazır bir sistem değil, uygulama satılan işler. Ortak yön şu: kimse "parlak bir fikir bulup kullanıcı beklemiyor". Müşteri; mevcut bir tanıdıklıktan, bizzat yaşanmış bir sektör derdinden ve gösterilen küçük çalışan bir örnekten geliyor. Yapay zekâ kod yazmayı hızlandırıyor; **müşteriyi ödemeye ikna eden şey hâlâ problemi bilmek ve ürünü ulaştırabilmek**.
 
-**Türkiye'de kim satın alır?** Dar sektör işletmeleri, meslek grupları, mevcut müşteri ilişkileri
+**Türkiye'de kim satın alır?** Dar sektör işletmeleri, meslek grupları, hâlihazırda tanıdığın müşteriler
 
-**Bu nişte 14 vaka var.** Kanıt dağılımı — C: 14.
+**Bu grupta 14 örnek var.** Ne kadar güvenilir oldukları — C: 14.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -14,9 +14,9 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** Kafein tüketimi ve uyku zamanlamasına yardımcı olan Apple Watch/iOS uygulaması; Claude SwiftUI/SwiftData/Watch/widget/Health/Siri geliştirmesinde pair-programmer olarak kullanılmış.
 
-**Ticari kanıt:** **R: 2.500 indirme ve yaklaşık $700 gelir** self-report.
+**Ticari kanıt:** **R: 2.500 indirme ve yaklaşık $700 gelir** kendi beyanı.
 
-**Kaynak notu:** Aynı geliştiricinin GitHub'ında `CaffeineCurfew` isimli repo bulundu ancak yalnız landing page içeriyor; uygulamanın gerçek Swift kaynak kodu olmadığı için exact repo sayılmadı.
+**Kaynak notu:** Aynı geliştiricinin GitHub'ında `CaffeineCurfew` isimli repo bulundu ancak yalnız landing page içeriyor; uygulamanın gerçek Swift kaynak kodu olmadığı için doğrulanmış kaynak sayılmadı.
 
 **Risk:** Sağlık iddiaları ve App Store ekonomisi; gelir düşük olabilir.
 
@@ -84,7 +84,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** AI'dan güvenlik araştırmasında destek alarak bug bounty programında açık bulma.
 
-**Ticari kanıt:** **F/R: $5.000 bounty** self-report; bağımsız doğrulama ve teknik detay yok.
+**Ticari kanıt:** **F/R: $5.000 bounty** kendi beyanı; bağımsız doğrulama ve teknik detay yok.
 
 **Risk:** Çok yüksek uzmanlık, authorization sınırları; yanlış yerde güvenlik testi yasadışı olabilir.
 
@@ -96,11 +96,11 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne satılmış?** AI/ML müşterisine adversarial/evaluation script geliştirme hizmeti.
 
-**Ticari kanıt:** **F: $3.600/hafta** self-report.
+**Ticari kanıt:** **F: $3.600/hafta** kendi beyanı.
 
 **Teknik eşik:** Python, ML ve değerlendirme metodolojisi; yüksek.
 
-**Risk:** Uzmanlık gereksinimi ve doğrulanmamış self-report.
+**Risk:** Uzmanlık gereksinimi ve doğrulanmamış kendi beyanı.
 
 **Senin için uygulama önizlemesi:** Kısa vadeli gelir adayı değil. Fakat yerel model/benchmark projelerine ilgin olduğu için uzun vadede **model evaluation, prompt regression test, output QA** gibi daha erişilebilir alt parçaları inceleyebilirsin.
 
@@ -122,7 +122,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne satılmış?** Bir işletmeye uygun `$5.000` grant bulunuyor; grant kapsamında satış verisini accounting software'den export edip statik uygulamada OpenAI API ile satış analizi/prediction yapan küçük custom app geliştiriliyor.
 
-**Ticari kanıt:** Geliştirici **F: $5.000 collected** self-report ediyor; app'i yaklaşık bir günde hazırladığını söylüyor. İşletme kendi OpenAI API key'ini ödüyor.
+**Ticari kanıt:** Geliştirici **F: $5.000 collected** kendisi bildiriyor; app'i yaklaşık bir günde hazırladığını söylüyor. İşletme kendi OpenAI API key'ini ödüyor.
 
 **Kaynak:** Reddit r/ClaudeAI, 13 Haziran 2026 “Anyone here actually making money with stuff they built using Claude?” thread'i.
 
@@ -146,7 +146,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Kaynak:** Reddit r/ClaudeAI, 10 Şubat 2026 — “I just delivered on a $30,000 contract thanks to Claude Code”.
 
-**Source durumu:** Müşteri uygulamasının exact source'u public değil. C kalır.
+**Source durumu:** Müşteri uygulamasının kaynak kodu herkese açık değil. C kalır.
 
 **Risk:** Custom software'da bakım, güvenlik, authentication, veri migration, scope creep ve production support.
 
@@ -166,7 +166,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Kaynak:** Reddit r/vibecoding, 7 Nisan 2026 — “I made my first $500 coding with claude”.
 
-**Source durumu:** Exact repo public olarak doğrulanmadı. C kalır.
+**Source durumu:** doğrulanmış kaynak kodu public olarak doğrulanmadı. C kalır.
 
 **Risk:** Kişisel/sağlık verisi, hosting ve bakım sorumluluğu. Kaynak yorumlarında tek seferlik ücret karşılığında sürekli hosting/bakımın nasıl karşılanacağı özellikle sorgulanıyor.
 
@@ -182,7 +182,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Kaynak:** Reddit r/vibecoding, 11 Şubat 2026 “Real success stories” tartışmasındaki yorum.
 
-**Source durumu:** Ürün adı/exact repo kaynak yorumda görünmüyor. C kalır.
+**Source durumu:** Ürün adı/kaynak kodu yorumda görünmüyor. C kalır.
 
 **Neden önemli?** Generic checklist/SaaS yerine **tek saha mesleğinin inspection workflow'u** için ödeme var. Recurring revenue kanıtı olan dar dikey app örneği.
 
@@ -196,11 +196,11 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** 10 yıllık software engineer bir geliştirici, yaklaşık bir yıl boyunca Claude Code desteğiyle kendi SaaS'ını geliştirip pazarlamayı öğreniyor.
 
-**Ticari kanıt:** **R: €100K ARR**, yaklaşık **%80 profit margin** self-report.
+**Ticari kanıt:** **R: €100K ARR**, yaklaşık **%80 profit margin** kendi beyanı.
 
 **Kaynak:** Reddit r/ClaudeAI, 17 Şubat 2026 — “Claude changed my life”.
 
-**Source durumu:** Kaynak post ürünün adını ve exact source kodunu açıklamıyor. Dolayısıyla gelir iddiası güçlü olsa da iş modelinin ne olduğuna dair uygulanabilir ayrıntı sınırlı. C kalır ve “fikir kataloğu” açısından düşük önceliklidir.
+**Source durumu:** Kaynak post ürünün adını ve kaynak kodunu açıklamıyor. Dolayısıyla gelir iddiası güçlü olsa da iş modelinin ne olduğuna dair uygulanabilir ayrıntı sınırlı. C kalır ve “fikir kataloğu” açısından düşük önceliklidir.
 
 **Risk:** Survivor bias ve deneyimli geliştirici etkisi. Claude'un katkısı ile ürün/pazarlama/uzmanlık katkısı ayrıştırılamaz.
 
@@ -208,15 +208,15 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 ---
 
-## C092 — Photographer-Specific Tools, >$150K ARR self-report
+## C092 — Photographer-Specific Tools, >$150K ARR, kendi beyanı
 
 **Ne yapılmış?** Profesyonel fotoğrafçı, kendi ihtiyacı için geliştirdiği araçları daha sonra diğer fotoğrafçılara satıyor.
 
-**Ticari kanıt:** Aynı Claude success thread'indeki farklı bir yorumcu bu dikey araçların **R: $150K ARR üzerinde** gelir ürettiğini self-report ediyor.
+**Ticari kanıt:** Aynı Claude success thread'indeki farklı bir yorumcu bu dikey araçların **R: $150K ARR üzerinde** gelir ürettiğini kendisi bildiriyor.
 
 **Müşteri stratejisi:** Ürün fikri dışarıdan tahmin edilmiyor; geliştirici kendi mesleğinde yaşadığı probleme araç yapıyor ve aynı problemi yaşayan meslektaşlara sunuyor.
 
-**Source durumu:** Ürün isimleri ve exact source yorumda açıklanmıyor. C kalır.
+**Source durumu:** Ürün isimleri ve kaynak kodu yorumda açıklanmıyor. C kalır.
 
 **Risk:** Ayrıntı az, bağımsız doğrulama yok.
 

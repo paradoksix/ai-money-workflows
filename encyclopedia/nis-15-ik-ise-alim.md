@@ -1,12 +1,12 @@
-# İK & işe alım
+# İnsan kaynakları ve işe alım
 
-Aday/çalışan süreçleri ve işe alım tarafındaki araştırma işleri. C090'daki practitioner ayrımı bu nişin özeti: AI'nın iyi olduğu alan **araştırma ve admin**, insanın alanı **değerlendirme ve karar**. İşe alım kararını AI'ya bırakmak hem etik hem hukuki risk.
+Aday ve çalışan süreçleri ile işe alım tarafındaki araştırma işleri. C090'daki saha notu grubun özeti: yapay zekânın iyi olduğu yer **araştırma ve evrak**, insanın yeri **değerlendirme ve karar**. İşe alım kararını makineye bırakmak hem etik hem hukuki risk.
 
 **Türkiye'de kim satın alır?** İK danışmanlığı, personel firması, teknik işe alım ajansı
 
-**Bu nişte 3 vaka var.** Kanıt dağılımı — B: 1 · C: 2.
+**Bu grupta 3 örnek var.** Ne kadar güvenilir oldukları — B: 1 · C: 2.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -14,7 +14,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapıyor?** İş ilanlarını buluyor, CV'deki anahtar kelime/bullet'ları ilana göre düzenlemeye yardımcı oluyor ve hiring manager araştırıyor.
 
-**Kanıt:** Üretici AI araçları geliştirerek tam zamanlı gelir bildirmiş; bu exact workflow için ayrı ücretli müşteri kanıtı yok.
+**Kanıt:** Üretici AI araçları geliştirerek tam zamanlı gelir bildirmiş; tam olarak bu iş akışı için ayrı ücretli müşteri kanıtı yok.
 
 **Kaynak:** `sirlifehacker/n8n-job-hacker`, commit `edbc144...`.
 
@@ -28,7 +28,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne satılmış?** HR sürecini haritalayıp AI prompt logic + Sheets + Slack/Railway gibi araçlarla paketlenmiş operasyon MVP'si.
 
-**Ticari kanıt:** **F: €3.000** self-report.
+**Ticari kanıt:** **F: €3.000** kendi beyanı.
 
 **Problem:** Dağınık aday/çalışan süreçleri ve manuel koordinasyon.
 
@@ -42,7 +42,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** Manufacturing recruiting nişinde hangi şirketlerin büyüdüğünü/işe alım yaptığını izleyen dar lead-research sistemi.
 
-**Ticari sonuç:** Recruiter, sistemin **S: £3.600/ay araştırmacı maliyetini kaldırdığını** ve lead kalitesinin arttığını self-report ediyor.
+**Ticari sonuç:** Recruiter, sistemin **S: £3.600/ay araştırmacı maliyetini kaldırdığını** ve lead kalitesinin arttığını kendisi bildiriyor.
 
 **Kaynak:** Reddit r/recruiting, 24 Ocak 2026 “How is AI actually changing your recruiting process right now?” tartışmasındaki practitioner yorumu.
 
@@ -50,7 +50,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ders:** Aynı yorumcu AI sourcing/phone screen/resume parsing'i kötü buluyor; AI'nın iyi olduğu alanı **araştırma + admin**, insanın alanını **assessment/judgment** olarak ayırıyor.
 
-**Risk:** Self-report, potansiyel ürün tanıtımı, şirket büyüme sinyalinin yanlış yorumlanması.
+**Risk:** kendi beyanı, potansiyel ürün tanıtımı, şirket büyüme sinyalinin yanlış yorumlanması.
 
 **Senin için uygulama önizlemesi:** Türkiye'de recruiting yerine **“hangi fabrikalar yeni yatırım/işe alım/ihracat sinyali veriyor?”** araştırması, personel firmaları veya B2B tedarikçiler için satılabilir. AI karar verici seçmesin; açık kaynaklardan şirket fırsat listesi ve kaynak linki üretsin.
 

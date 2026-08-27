@@ -1,12 +1,12 @@
-# Veri & AI-çıktısı temizliği
+# Yapay zekâ çıktısını temize çekme
 
-AI'nın bıraktığı yarım işi güvenilir son ürüne çevirmek: AI logo → baskıya hazır vektör, AI deck → kurumsal PowerPoint, OCR → doğrulanmış Excel. AI yeni işler üretirken aynı anda **kendi çıktısını temizleme pazarını da** yaratıyor; bu nişin tamamı o pazar.
+Yapay zekânın yarım bıraktığı işi gerçekten kullanılabilir son ürüne çevirmek: taslak logoyu baskıya hazır dosyaya, otomatik hazırlanmış sunumu kurumsal sunuma, taranmış faturayı kontrol edilmiş tabloya. Yapay zekâ yeni işler üretirken aynı anda **kendi çıktısını temizleme pazarını da** yaratıyor; bu grubun tamamı o pazar.
 
-**Türkiye'de kim satın alır?** AI aracı kullanıp sonuç yayına hazır olmayan herkes; muhasebeci, distribütör
+**Türkiye'de kim satın alır?** Yapay zekâ aracı kullanıp sonucu yayına hazır olmayan herkes; muhasebeci, distribütör
 
-**Bu nişte 6 vaka var.** Kanıt dağılımı — C: 6.
+**Bu grupta 6 örnek var.** Ne kadar güvenilir oldukları — C: 6.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 

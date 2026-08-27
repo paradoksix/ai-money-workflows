@@ -1,12 +1,12 @@
-# Kurumsal operasyon & maliyet
+# Büyük şirketlerde maliyet düşürme
 
-Bu nişin ortak özelliği çoğunda "AI ürünü" satılmaması: mevcut lisans, insan zamanı, belge akışı veya operasyon kaybı ölçülebilir biçimde azaltılıyor. En yüksek ROI çoğu zaman en zeki agent'ta değil; **lisans maliyetini kaldırmakta, tarihi yaklaşan stoğu erken görmekte ve 20 saniyelik yüksek-frekans gecikmeyi yok etmekte.**
+Bu grubun ortak özelliği çoğunda yapay zekâ satılmaması: ödenen yazılım lisansı, harcanan insan saati veya sessizce sızan kayıp ölçülebilir biçimde azaltılıyor. En yüksek getiri çoğu zaman en akıllı sistemde değil; **her ay ödenen yazılım faturasını kaldırmakta, tarihi yaklaşan stoğu önceden görmekte ve günde yüzlerce kez tekrarlanan 20 saniyelik beklemeyi yok etmekte.**
 
-**Türkiye'de kim satın alır?** Distribütör, üretici, depo, çok sistemli KOBİ
+**Türkiye'de kim satın alır?** Distribütör, üretici, depo, birden çok yazılım kullanan orta ölçekli şirket
 
-**Bu nişte 6 vaka var.** Kanıt dağılımı — C: 6.
+**Bu grupta 6 örnek var.** Ne kadar güvenilir oldukları — C: 6.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -42,7 +42,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** Dynamics 365 status update sürecinde pahalı IOM/lisans + developer bakım katmanını n8n tabanlı daha basit entegrasyonla değiştirme.
 
-**Ticari kanıt:** **S: up to $240K/year** self-report; yaklaşık `$160K/yıl licensing + $50–80K/yıl developer/maintenance` maliyeti. Geliştirme süresi 2,5 gün olarak bildiriliyor.
+**Ticari kanıt:** **S: up to $240K/year** kendi beyanı; yaklaşık `$160K/yıl licensing + $50–80K/yıl developer/maintenance` maliyeti. Geliştirme süresi 2,5 gün olarak bildiriliyor.
 
 **Kaynak:** Reddit r/n8n real-business-problem thread'i.
 
@@ -82,7 +82,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** Yenilenebilir enerji şirketi sahibi; eski database ile HubSpot'u webhooks/scripts/Python ile birleştirme, Google Ads weekly reports, HTML proposals, P&L analysis ve business reporting gibi işleri Claude yardımıyla geliştirmiş.
 
-**Ticari kanıt:** İşletme sahibi 2026 başından Ağustos'a kadar **S: $50K+ tasarruf** ettiğini self-report ediyor; kullandığı plan `$200/ay`.
+**Ticari kanıt:** İşletme sahibi 2026 başından Ağustos'a kadar **S: $50K+ tasarruf** ettiğini kendisi bildiriyor; kullandığı plan `$200/ay`.
 
 **Kaynak:** Reddit r/ClaudeAI, 5 Ağustos 2026 “Claude from a small business perspective”.
 

@@ -1,12 +1,12 @@
-# Eğitim & kurs operasyonu
+# Kurs ve eğitim işletmeciliği
 
-Ders programı, öğrenci/veli iletişimi, ödeme takibi ve sınav/öğrenci verisi normalizasyonu. Türkiye'de dil kursu, özel ders merkezi ve etüt merkezi yoğunluğu düşünülünce vaka sayısına göre orantısız biçimde uygulanabilir bir niş. AI öğrenci değerlendirmesi yapmamalı.
+Ders programı, öğrenci ve veli iletişimi, ödeme takibi, sınav ve öğrenci bilgilerinin düzene sokulması. Türkiye'deki dil kursu, özel ders merkezi ve etüt merkezi yoğunluğu düşünülünce, örnek sayısına göre beklenmedik biçimde uygulanabilir bir grup. Öğrenciyi yapay zekâ değerlendirmemeli.
 
 **Türkiye'de kim satın alır?** Dil kursu, özel ders merkezi, etüt merkezi, sınav merkezi
 
-**Bu nişte 2 vaka var.** Kanıt dağılımı — C: 2.
+**Bu grupta 2 örnek var.** Ne kadar güvenilir oldukları — C: 2.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 

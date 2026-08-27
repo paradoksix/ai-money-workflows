@@ -1,18 +1,18 @@
-# Yerel işletme & saha servisi
+# Mahalle esnafı ve saha servisi
 
-Mahalledeki işletmeye yüz yüze satılabilen sistemler: teknik servis, kitapçı, kafe, oto servis. Ansiklopedinin **en güçlü tek vakası (A006)** burada — 7 workflow'luk, iki yıl production'da çalışmış, exact kaynağı doğrulanmış bir sistem. Ortak desen: AI fiyat uydurmasın, gerçek tablodan okusun.
+Mahalledeki işletmeye gidip yüz yüze gösterilebilen sistemler: teknik servis, kitapçı, kafe, oto servis. Arşivin **en sağlam tek örneği (A006)** burada — yedi parçalı, iki yıl canlı çalışmış ve kaynak kodu doğrulanmış bir sistem. Ortak kural: fiyatı yapay zekâ uydurmasın, gerçek fiyat tablosundan okusun.
 
 **Türkiye'de kim satın alır?** Teknik servis, kitapçı, kafe, oto servis, pet shop, çiçekçi
 
-**Bu nişte 5 vaka var.** Kanıt dağılımı — A: 1 · B: 1 · C: 3.
+**Bu grupta 5 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 1 · C: 3.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
 ## A006 — Jacobo Device Repair WhatsApp + Voice AI Agent
 
-**Kanıt seviyesi:** A — ticari vaka + exact kaynak
+**Ne kadar güvenilir?** A — Müşteri kanıtı + kodu açık
 
 16 yıllık cihaz tamir işletmesinde randevu, gerçek fiyat tablosundan teklif, stok/iç sipariş ve insan devrini yöneten 7 workflow'luk çok-ajanlı production sistemi. Ayrı freelance satış ücreti yok; işletmeyle birlikte devredilen operasyonel varlık.
 
@@ -24,7 +24,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapıyor?** Oto servise gelen quote talebinde marka/model/araç bilgileri eksikse takip sorusu soruyor; yeterliyse ilgili kişiye SMS/iş akışı başlatıyor.
 
-**Kanıt:** Exact workflow açık; ücret yok.
+**Kanıt:** birebir iş akışı açık; ücret yok.
 
 **Risk:** Yanlış sınıflandırma ve müşteriye yanlış fiyat/vaat.
 

@@ -2,73 +2,73 @@
 
 Bu ansiklopedi, insanların ve işletmelerin yapay zekâ/otomasyon kullanarak hangi küçük problemlere **gerçekten para ödediğini** izler.
 
-Amaç “AI ile para kazanmanın 122 yolu” demek değildir. Amaç, gerçek bir insanın veya işletmenin para ödediği ya da ölçülebilir ekonomik değer bildirdiği **122 küçük problemi** kanıt derecesiyle birlikte arşivlemek; güvenilirlik sorunu olanları da ayrı bir ek altında kaybetmemektir.
+Amaç “AI ile para kazanmanın 122 yolu” demek değildir. Amaç, gerçek bir insanın veya işletmenin para ödediği ya da ölçülebilir ekonomik değer bildirdiği **122 küçük problemi** ne kadar güvenilir olduğu işaretlenmiş hâlde arşivlemek; güvenilirlik sorunu olanları da ayrı bir ek altında kaybetmemektir.
 
 ## Nereden başlamalı?
 
 | Ne istiyorsun | Nereye git |
 |---|---|
-| Gezinmek, filtrelemek, bir niş seçmek | **[Atlas web sayfası](docs/index.html)** — arama + niş/kanıt/gelir tipi filtreleri |
-| Bir nişi derinlemesine okumak | Aşağıdaki **niş indeksi** |
-| Vaka gruplarından çıkan kesişen dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
-| Kanıt standardını anlamak | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |
+| Gezinmek, filtrelemek, bir iş kolu seçmek | **[Atlas web sayfası](docs/index.html)** — arama + iş kolu, güvenilirlik ve gelir türü filtreleri |
+| Bir iş kolunu derinlemesine okumak | Aşağıdaki **iş kolları listesi** |
+| Örnek gruplarından çıkan ortak dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
+| Neyin nasıl doğrulandığını anlamak | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |
 | Veriyi kendin analiz etmek | [`data/cases.csv`](data/cases.csv) — 124 kaydın tamamı |
-| Hâlâ kaynağı aranan vakalar | [`research_queue.csv`](research_queue.csv) + [`research/`](research/) |
+| Kaynağı hâlâ aranan örnekler | [`research_queue.csv`](research_queue.csv) + [`research/`](research/) |
 
-## Kanıt sistemi
+## Yanlarındaki harf ne demek?
 
-- **A — Ticari vaka + exact kaynak repo/workflow.** Aynı müşteri/gelir/operasyon vakası ile doğrudan bağlantılı kaynak kod doğrulanmıştır.
-- **B — Açık çalışan workflow/repo + ticari üretici bağlamı.** Kod gerçektir fakat o exact workflow'un ayrı ücretli müşteri sonucu kanıtlanmamıştır.
-- **C — Güçlü ücretli müşteri, gelir, tasarruf veya marketplace sinyali.** Exact kaynak repo kapalıdır, bulunamamıştır veya doğrulanmamıştır.
-- **X — Tartışmalı.** Gelir iddiasında promosyon, çıkar çatışması veya başka ciddi güvenilirlik problemi vardır; ana 122 sayımına dahil edilmez.
+- **A — Müşteri kanıtı + kodu açık.** İşin gerçek bir müşteriye satıldığı ve tam olarak hangi kodla yapıldığı, ikisi birden doğrulandı.
+- **B — Kodu açık, kazancı belirsiz.** Kod gerçek ve çalışıyor; ama tam olarak bu işin para kazandırdığı ayrıca gösterilmedi.
+- **C — Para kazandırmış, kodu yok.** Ödeme yapan müşteri, gelir ya da tasarruf anlatımı güçlü; ama işin kodu paylaşılmamış veya bulunamadı.
+- **X — Şüpheli.** Kazanç iddiasında gizli reklam ya da çıkar çatışması şüphesi var; ana 122 sayımına katılmıyor.
 
-Gelir rakamlarında şu ayrım korunur ve birbirine karıştırılmaz:
+Rakamlarda birbirine benzeyen ama aynı olmayan dört şey ayrı tutulur:
 
-- **F:** freelancer/hizmet sağlayıcının aldığı ücret
-- **R:** ürün/SaaS/app geliri
-- **S:** müşterinin bildirilen tasarrufu
-- **V:** kampanya değeri, booked call, impression, geri kazanılan alacak gibi ticari sonuç
+- **F:** işi yapana ödenen ücret
+- **R:** satılan üründen veya abonelikten gelen gelir
+- **S:** müşterinin kazandığı tasarruf
+- **V:** kampanya değeri, alınan randevu, görüntülenme, tahsil edilen alacak gibi başka ticari sonuçlar
 
-Self-report rakamları bağımsız denetlenmiş gerçekler gibi sunulmaz.
+Bu rakamların neredeyse tamamı işi yapan kişilerin kendi beyanıdır; bağımsız denetlenmiş gerçekler gibi sunulmaz.
 
-## Niş indeksi
+## İş kolları
 
-Vakalar 16 nişe ayrılmıştır. Her dosyada o nişin tanımı, Türkiye'de kimin satın aldığı, vakaların tam anlatımı ve nişin ortak deseni bulunur.
+Örnekler, satılan işin türüne göre 16 gruba ayrıldı. Her dosyada o grubun tanımı, Türkiye'de kimin satın aldığı, örneklerin tam anlatımı ve gruptan çıkan ortak ders var.
 
-| # | Niş | Vaka | Kanıt dağılımı |
+| # | İş kolu | Örnek | Güvenilirlik |
 |---|---|---|---|
-| 1 | [Video & görsel prodüksiyon](encyclopedia/nis-01-video-gorsel-produksiyon.md) | 20 | A1 · B4 · C15 |
-| 2 | [B2B satış & lead araştırma](encyclopedia/nis-02-b2b-satis-lead.md) | 12 | **A3** · B6 · C3 |
-| 3 | [Müşteri iletişimi & destek](encyclopedia/nis-03-musteri-iletisim-destek.md) | 12 | B6 · C6 |
-| 4 | [Özel yazılım & mikro-SaaS](encyclopedia/nis-04-ozel-yazilim-mikro-saas.md) | 14 | C14 |
-| 5 | [İçerik, sosyal medya & bülten](encyclopedia/nis-05-icerik-sosyal-medya.md) | 11 | A1 · B5 · C5 |
-| 6 | [E-ticaret & katalog](encyclopedia/nis-06-eticaret-katalog.md) | 7 | C7 |
-| 7 | [Kurumsal operasyon & maliyet](encyclopedia/nis-07-kurumsal-operasyon-maliyet.md) | 6 | C6 |
-| 8 | [Ofis & belge operasyonu](encyclopedia/nis-08-ofis-belge-operasyonu.md) | 7 | B1 · C6 |
-| 9 | [Veri & AI-çıktısı temizliği](encyclopedia/nis-09-veri-cikti-temizligi.md) | 6 | C6 |
-| 10 | [Ajans & freelance hizmet modeli](encyclopedia/nis-10-ajans-freelance-model.md) | 6 | C6 |
-| 11 | [Yerel işletme & saha servisi](encyclopedia/nis-11-yerel-isletme-saha-servisi.md) | 5 | **A1** · B1 · C3 |
-| 12 | [RAG & özel bilgi sistemleri](encyclopedia/nis-12-rag-bilgi-sistemleri.md) | 5 | B1 · C4 |
-| 13 | [Emlak & site yönetimi](encyclopedia/nis-13-emlak-site-yonetimi.md) | 4 | C4 |
-| 14 | [Muhasebe & finans belgeleri](encyclopedia/nis-14-muhasebe-finans-belge.md) | 3 | C3 |
-| 15 | [İK & işe alım](encyclopedia/nis-15-ik-ise-alim.md) | 3 | B1 · C2 |
-| 16 | [Eğitim & kurs operasyonu](encyclopedia/nis-16-egitim-kurs-operasyonu.md) | 2 | C2 |
+| 1 | [Video ve görsel üretimi](encyclopedia/nis-01-video-gorsel-produksiyon.md) | 20 | A1 · B4 · C15 |
+| 2 | [Şirketlere satış: müşteri adayı bulma](encyclopedia/nis-02-b2b-satis-lead.md) | 12 | **A3** · B6 · C3 |
+| 3 | [Müşteri iletişimi ve destek](encyclopedia/nis-03-musteri-iletisim-destek.md) | 12 | B6 · C6 |
+| 4 | [Sipariş üzerine yazılım ve küçük ürünler](encyclopedia/nis-04-ozel-yazilim-mikro-saas.md) | 14 | C14 |
+| 5 | [İçerik, sosyal medya ve bülten](encyclopedia/nis-05-icerik-sosyal-medya.md) | 11 | A1 · B5 · C5 |
+| 6 | [E-ticaret ve ürün kataloğu](encyclopedia/nis-06-eticaret-katalog.md) | 7 | C7 |
+| 7 | [Büyük şirketlerde maliyet düşürme](encyclopedia/nis-07-kurumsal-operasyon-maliyet.md) | 6 | C6 |
+| 8 | [Ofis ve evrak işleri](encyclopedia/nis-08-ofis-belge-operasyonu.md) | 7 | B1 · C6 |
+| 9 | [Yapay zekâ çıktısını temize çekme](encyclopedia/nis-09-veri-cikti-temizligi.md) | 6 | C6 |
+| 10 | [Nasıl satılıyor: fiyat, kapsam, süreklilik](encyclopedia/nis-10-ajans-freelance-model.md) | 6 | C6 |
+| 11 | [Mahalle esnafı ve saha servisi](encyclopedia/nis-11-yerel-isletme-saha-servisi.md) | 5 | **A1** · B1 · C3 |
+| 12 | [Kendi belgelerinden cevap veren sistemler](encyclopedia/nis-12-rag-bilgi-sistemleri.md) | 5 | B1 · C4 |
+| 13 | [Emlak ve site yönetimi](encyclopedia/nis-13-emlak-site-yonetimi.md) | 4 | C4 |
+| 14 | [Muhasebe ve fatura işleri](encyclopedia/nis-14-muhasebe-finans-belge.md) | 3 | C3 |
+| 15 | [İnsan kaynakları ve işe alım](encyclopedia/nis-15-ik-ise-alim.md) | 3 | B1 · C2 |
+| 16 | [Kurs ve eğitim işletmeciliği](encyclopedia/nis-16-egitim-kurs-operasyonu.md) | 2 | C2 |
 
 Ayrıca:
 
-- [**A006 — Jacobo Device Repair**](encyclopedia/A006-JACOBO-DEVICE-REPAIR.md) — ansiklopedinin en güçlü tek vakası, kendi ayrıntılı kartıyla.
-- [**Ek X — Tartışmalı vakalar**](encyclopedia/APPENDIX-X-DISPUTED.md) — ana kanıt standardını geçmeyen fakat araştırma izi olarak korunan örnekler.
+- [**A006 — Jacobo Device Repair**](encyclopedia/A006-JACOBO-DEVICE-REPAIR.md) — arşivin en sağlam tek örneği, kendi ayrıntılı kartıyla.
+- [**Ek X — Şüpheli iddialar**](encyclopedia/APPENDIX-X-DISPUTED.md) — güvenilirlik ölçütlerini geçemeyen ama iz olarak saklanan örnekler.
 
 ## Sana göre uygulama önizlemeleri
 
-Her vakanın sonunda kısa bir **“Senin için uygulama önizlemesi”** bölümü bulunur. Bu önizleme şu çalışma profilini esas alır:
+Her örneğin sonunda kısa bir **“Senin için uygulama önizlemesi”** bölümü bulunur. Bu önizleme şu çalışma profilini esas alır:
 
 - Türkiye'den satış veya hizmet verme,
 - mümkün olduğunca düşük maliyetli/açık kaynak araç kullanma,
 - n8n/Sheets/yerel LLM gibi basit ve değiştirilebilir bileşenleri tercih etme,
 - mevcut RTX 3060 12 GB sınıfı bilgisayarda küçük yerel modellerden yararlanabilme,
 - “AI uzmanlığı” satmak yerine ölçülebilir bir işletme problemini satma,
-- önce dar kapsamlı demo/pilot, sonra gerekiyorsa aylık bakım/retainer modeline geçme.
+- önce dar kapsamlı demo/pilot, sonra gerekiyorsa aylık bakım anlaşmasına geçme.
 
 Bu önizlemeler uygulama garantisi veya gelir tahmini değildir; hangi yönden araştırılabileceğini gösteren kısa yönlendirmelerdir.
 
@@ -78,11 +78,11 @@ Bu önizlemeler uygulama garantisi veya gelir tahmini değildir; hangi yönden a
 
 İlk turda:
 
-- **C027 → A006:** exact production repo bulundu; artık kendi A006 kaydına sahip.
-- **C004 Powerprozesse:** 20→23 müşteri ve somut workflow örnekleriyle ticari kanıt güçlendi; resmi exact repo bulunmadı.
+- **C027 → A006:** canlı ortamdaki kaynak kodu bulundu; artık kendi A006 kaydına sahip.
+- **C004 Powerprozesse:** 20→23 müşteri ve somut iş akışı örnekleriyle ticari kanıt güçlendi; şirketin resmî kaynak kodu bulunamadı.
 - **C008 Bookstore WhatsApp:** `$500` birincil Reddit vakası korunuyor; aynı hikâyenin başka bir hesapta `$1,500` olarak kopyalanması kaynak kirliliği olarak kaydedildi.
 - **C018 Tutoring:** `$5K` iddiası ikincil arşivce destekleniyor fakat birincil kaynak yeniden doğrulanmalı.
-- **C029 Offline University RAG:** teknik mimari ilginç; public exact code yok, seller/promo bağlamı nedeniyle temkinli.
+- **C029 Offline University RAG:** teknik kurgu ilginç; herkese açık kaynak kodu yok, seller/promo bağlamı nedeniyle temkinli.
 
 İkinci turda 9 açık ipucu (C001–C008, C018) yeniden kovalandı. Hiçbiri A/B'ye yükselmedi; en güçlü yeni sinyal C003 için `conor-is-my-name` GitHub hesabı (teknik olarak uyumlu, yazar eşleşmesi doğrulanmamış), C008 için ise `anassy1` hesabının boş çıkması oldu. O turda ortamın Reddit'e doğrudan erişimi yoktu.
 
@@ -91,7 +91,7 @@ Bu önizlemeler uygulama garantisi veya gelir tahmini değildir; hangi yönden a
 1. C004 — Property-management vertical / Powerprozesse
 2. C003 — 50K ürün katalog overhaul (`conor-is-my-name` doğrulanmamış aday)
 3. C002 — Japon Google Ads invoice processor
-4. C006 — 115+ workflow monitoring / AigencyTracker
+4. C006 — 115+ iş akışını izleyen panel / AigencyTracker
 5. C005 — Bookkeeping process automation
 6. C001 — Ship manager lead capture
 7. C007 — 50K Shopify inventory shock absorber

@@ -1,12 +1,12 @@
-# E-ticaret & katalog
+# E-ticaret ve ürün kataloğu
 
-Ürün verisi, katalog kalitesi, stok akışı ve sipariş sonrası operasyon. Türkiye için en güçlü nişlerden biri: oto yedek parça, hırdavat, elektrik malzemesi, mobilya ve sanayi ekipmanı kataloglarında aynı problemler görünür durumda. C003'ün kritik notu bu nişin özeti: **asıl değer n8n değil, data wrangling ve cleanup.**
+Ürün bilgisi, katalog kalitesi, stok akışı ve satış sonrası işler. Türkiye için en uygun gruplardan biri: oto yedek parça, hırdavat, elektrik malzemesi, mobilya ve sanayi ekipmanı kataloglarında aynı dertler açıkça duruyor. C003'ün notu grubun özeti: **asıl değer otomasyon aracında değil, dağınık veriyi toparlamakta.**
 
 **Türkiye'de kim satın alır?** Oto yedek parça, hırdavat, mobilya, sanayi ekipmanı, pazaryeri satıcısı
 
-**Bu nişte 7 vaka var.** Kanıt dağılımı — C: 7.
+**Bu grupta 7 örnek var.** Ne kadar güvenilir oldukları — C: 7.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -30,7 +30,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** Çok yüksek hacimli inventory update/webhook akışını buffer/queue/rate-limit ederek Shopify tarafındaki yükü azaltan sistem.
 
-**Ticari sonuç:** **S: $25K tasarruf iddiası**, ancak güvenilirlik ve exact source hâlâ doğrulama bekliyor.
+**Ticari sonuç:** **S: $25K tasarruf iddiası**, ancak güvenilirlik ve kaynak kodu hâlâ doğrulama bekliyor.
 
 **Risk:** Envanter yanlışlığı doğrudan satış kaybı doğurur; güçlü engineering gerekir.
 

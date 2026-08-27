@@ -1,12 +1,12 @@
-# Ajans & freelance hizmet modeli
+# Nasıl satılıyor: fiyat, kapsam, süreklilik
 
-Diğer nişler "ne satılıyor"u anlatıyor; bu niş **nasıl satıldığını** anlatıyor: fiyatlama, scope, marketplace giriş noktaları, migration işleri ve retainer'a geçiş. Bir vaka listesinden çok bir iş modeli referansı olarak okunmalı.
+Diğer gruplar "ne satılıyor"u anlatıyor; bu grup **nasıl satıldığını** anlatıyor: fiyat nasıl belirleniyor, iş nerede büyüyor, pazaryerine nereden giriliyor, tek seferlik iş nasıl aylık gelire dönüyor. Bir örnek listesinden çok bir iş modeli notu gibi okunmalı.
 
-**Türkiye'de kim satın alır?** Hizmeti satan kişinin kendisi — fiyatlama, scope ve retainer örnekleri
+**Türkiye'de kim satın alır?** Hizmeti satan kişinin kendisi — fiyat, kapsam ve süreklilik örnekleri
 
-**Bu nişte 6 vaka var.** Kanıt dağılımı — C: 6.
+**Bu grupta 6 örnek var.** Ne kadar güvenilir oldukları — C: 6.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -14,11 +14,11 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne satılmış?** Çeşitli KOBİ'lere CRM, lead follow-up, Zapier/GPT ve operasyon otomasyonları.
 
-**Ticari kanıt:** Yaklaşık **R/F: $75K / ~1 yıl**, ortalama proje ~$4.200, **8 retainer** self-report.
+**Ticari kanıt:** Yaklaşık **R/F: $75K / ~1 yıl**, ortalama proje ~$4.200, **8 retainer** kendi beyanı.
 
 **Örnek değer:** Bir SaaS lead follow-up sisteminde yanıt süresinin yaklaşık 14 saatten 3 dakikanın altına indiği iddia ediliyor.
 
-**Risk:** Self-report; tüm gelirin tek teknolojiye atfedilememesi.
+**Risk:** kendi beyanı; tüm gelirin tek teknolojiye atfedilememesi.
 
 **Senin için uygulama önizlemesi:** Bu vaka “AI agency kur” demiyor; **müşteride önce tek tekrar eden problem bul, sonra aynı müşteride ikinci/üçüncü süreci keşfet** modelini gösteriyor. Senin repo-temelli çalışma tarzın için her müşteri tipini case template olarak belgelemek yararlı olur.
 

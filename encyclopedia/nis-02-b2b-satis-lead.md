@@ -1,12 +1,12 @@
-# B2B satış & lead araştırma
+# Şirketlere satış: müşteri adayı bulma
 
-Hedef şirketi bul, karar vericiyi çıkar, açık veriyle zenginleştir, satışçıya temiz bir araştırma notu bırak. Ansiklopedinin **exact kaynak koduyla en iyi doğrulanmış** nişi: üç A-seviyesi vaka burada. Ortak kritik nokta KVKK, platform ToS ve ticari ileti izni — scraping'i kör spam sistemine çevirmemek bu nişin savunma hattı.
+Hedef şirketi bul, kararı veren kişiyi çıkar, herkese açık bilgiyle zenginleştir ve satışçıya temiz bir not bırak. Arşivin **kaynak koduyla en iyi doğrulanmış** grubu: üç A örneği burada. Ortak hassas nokta kişisel veri, platform kuralları ve izinsiz toplu mesaj — bu işi kör bir spam makinesine çevirmemek grubun tek gerçek savunması.
 
 **Türkiye'de kim satın alır?** Sanayi tedarikçisi, ihracatçı, personel ajansı, makine üreticisi, B2B ajans
 
-**Bu nişte 12 vaka var.** Kanıt dağılımı — A: 3 · B: 6 · C: 3.
+**Bu grupta 12 örnek var.** Ne kadar güvenilir oldukları — A: 3 · B: 6 · C: 3.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -14,7 +14,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne satılmış?** Construction staffing ajansı için yeni iş ilanlarını bulup işe alım ihtiyacı olan şirketleri ve karar vericileri araştıran workflow.
 
-**Ticari kanıt:** İlk müşteri vakası ve geliştiricinin daha sonra **birden fazla müşterinin aynı sistemi yaptırmak için kendisini tuttuğu** self-report'u var.
+**Ticari kanıt:** İlk müşteri vakası ve geliştiricinin daha sonra **birden fazla müşterinin aynı sistemi yaptırmak için kendisini tuttuğu** kendi beyanı var.
 
 **Nasıl çalışıyor?** İlanları toplama → şirketi tanıma → hiring manager/decision maker araştırma → enrichment → kişiselleştirilmiş outreach notu.
 
@@ -50,7 +50,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Nasıl çalışıyor?** Directory scrape → firma web sitesi bulma → uygunluk değerlendirme → araştırma → Sheets/Docs → kişiselleştirilmiş mesaj.
 
-**Kaynak:** Reddit + `lucaswalter/n8n-ai-automations`, commit `08e33b6...`; exact `deal_breakdown_lawyer_lead_gen.json` doğrulanmış.
+**Kaynak:** Reddit + `lucaswalter/n8n-ai-automations`, commit `08e33b6...`; birebir `deal_breakdown_lawyer_lead_gen.json` dosyası doğrulanmış.
 
 **Risk:** Dizin kullanım şartları, spam, kişisel veri, hukuk sektöründe yanlış temsil.
 
@@ -142,7 +142,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapılmış?** Her gün yeni lead bulup GPT ile kişiselleştirilmiş outreach hazırlayan sistem.
 
-**Ticari sonuç:** **V: 40+ booked sales call/ay, 8 ay** self-report.
+**Ticari sonuç:** **V: 40+ booked sales call/ay, 8 ay** kendi beyanı.
 
 **Stack:** n8n + GPT + Google Sheets.
 

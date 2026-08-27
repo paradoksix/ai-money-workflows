@@ -1,12 +1,12 @@
-# RAG & özel bilgi sistemleri
+# Kendi belgelerinden cevap veren sistemler
 
-Müşterinin kendi belgelerinden kaynaklı cevap üreten sistemler. Satış argümanı çoğu zaman zekâ değil **gizlilik**: "verimiz dışarı gitmesin". Ölçülecek şey "chatbot var" değil; retrieval hit-rate, citation doğruluğu, yanıt gecikmesi ve eşzamanlı kullanıcı sınırı.
+Şirketin kendi belgelerine dayanarak cevap üreten yardımcılar. Satış gerekçesi çoğu zaman zekâ değil **gizlilik**: "verimiz dışarı çıkmasın". Ölçülecek şey de "bot var mı" değil; doğru belgeyi bulabiliyor mu, kaynağı doğru gösteriyor mu, ne kadar sürede cevaplıyor ve aynı anda kaç kişiye yetiyor.
 
-**Türkiye'de kim satın alır?** Teknik doküman sahibi üretici, eğitim kurumu, gizlilik hassasiyeti olan kurum
+**Türkiye'de kim satın alır?** Teknik belgesi olan üretici, eğitim kurumu, gizliliğe önem veren şirket
 
-**Bu nişte 5 vaka var.** Kanıt dağılımı — B: 1 · C: 4.
+**Bu grupta 5 örnek var.** Ne kadar güvenilir oldukları — B: 1 · C: 4.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 

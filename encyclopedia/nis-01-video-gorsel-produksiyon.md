@@ -1,12 +1,12 @@
-# Video & görsel prodüksiyon
+# Video ve görsel üretimi
 
-Reklam, ürün videosu, müzik videosu, avatar ve thumbnail üretimi. Bu nişteki ticari kanıt büyük ölçüde marketplace review/order sinyali: talep gerçek, ama rekabet ve metalaşma da yüksek. Kanıtın gösterdiği şey şu: müşteri artık model erişimi satın almıyor; **çoklu varyasyon, marka tutarlılığı ve AI çıktısını yayınlanabilir hâle getiren insan editini** satın alıyor.
+Reklam filmi, ürün videosu, müzik klibi, avatar ve video kapak görseli. Buradaki kanıt çoğunlukla pazaryerlerindeki müşteri yorumu sayısı: talep gerçek, ama rekabet de o kadar yüksek. Örneklerin gösterdiği şey şu: müşteri artık "yapay zekâya erişim" satın almıyor; **aynı ürün için birden çok deneme sürümü, marka tutarlılığı ve makinenin çıkardığı işi yayınlanabilir hâle getiren insan kurgusunu** satın alıyor.
 
-**Türkiye'de kim satın alır?** E-ticaret markaları, ajanslar, müzisyenler, içerik kanalları
+**Türkiye'de kim satın alır?** E-ticaret markaları, reklam ajansları, müzisyenler, içerik kanalları
 
-**Bu nişte 20 vaka var.** Kanıt dağılımı — A: 1 · B: 4 · C: 15.
+**Bu grupta 20 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 4 · C: 15.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 

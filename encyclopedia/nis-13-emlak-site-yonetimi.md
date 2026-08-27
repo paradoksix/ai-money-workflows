@@ -1,12 +1,12 @@
-# Emlak & site yönetimi
+# Emlak ve site yönetimi
 
-Kiracı/sakin talebi, bakım koordinasyonu, belge üretimi ve lead takibi. C004 bu nişin en güçlü ticari sürekliliğe sahip vakası: tek bir dikeye odaklanmış bir ajansın 2025 boyunca 20→23 müşteriye çıkması. Türkiye'de profesyonel site/apartman yönetim şirketleri doğal hedef.
+Kiracı ve sakin talebi, tamir koordinasyonu, belge hazırlama ve müşteri adayı takibi. C004 bu grubun ticari olarak en sürekli örneği: tek bir alana odaklanmış bir şirketin 2025 boyunca 20'den 23 müşteriye çıkması. Türkiye'de profesyonel site ve apartman yönetim şirketleri doğal hedef.
 
-**Türkiye'de kim satın alır?** Site/apartman yönetim şirketi, emlak ofisi, portföy yöneticisi
+**Türkiye'de kim satın alır?** Site ve apartman yönetim şirketi, emlak ofisi, portföy yöneticisi
 
-**Bu nişte 4 vaka var.** Kanıt dağılımı — C: 4.
+**Bu grupta 4 örnek var.** Ne kadar güvenilir oldukları — C: 4.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 

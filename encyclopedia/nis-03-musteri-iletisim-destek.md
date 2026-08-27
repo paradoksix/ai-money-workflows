@@ -1,12 +1,12 @@
-# Müşteri iletişimi & destek
+# Müşteri iletişimi ve destek
 
-Gelen mesajı, çağrıyı veya formu karşılayıp sınıflandıran, eksik bilgiyi tamamlayan ve gerektiğinde insana devreden sistemler. Marketplace'te en çok review alan kategorilerden biri — yani hem gerçek talep hem güçlü metalaşma var. Ayrışma yolu generic bot değil, **tek sektörün diline ve gerçek operasyonuna bağlanmak**.
+Gelen mesajı, çağrıyı veya formu karşılayıp konusuna ayıran, eksik bilgiyi soran ve gerektiğinde bir insana devreden sistemler. Pazaryerlerinde en çok yorum alan kategorilerden biri — yani hem gerçek talep hem de sert rekabet var. Ayrışmanın yolu genel bir bot değil, **tek bir sektörün diline ve gerçek işleyişine bağlanmak**.
 
 **Türkiye'de kim satın alır?** Otel, klinik, oto servis, e-ticaret, kurs, site yönetimi
 
-**Bu nişte 12 vaka var.** Kanıt dağılımı — B: 6 · C: 6.
+**Bu grupta 12 örnek var.** Ne kadar güvenilir oldukları — B: 6 · C: 6.
 
-Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
 
 ---
 
@@ -26,7 +26,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapıyor?** Diş kliniğinde telefondan gelen talepleri karşılayıp müsaitlik kontrolü, randevu ve Sheets log işlemleri yapıyor.
 
-**Kanıt:** Çalışan JSON açık; exact müşteri/ücret bilinmiyor.
+**Kanıt:** Çalışan JSON açık; hangi müşteriye ne ücretle yapıldığı bilinmiyor.
 
 **Stack:** n8n + voice provider + Calendar + Sheets.
 
@@ -40,7 +40,7 @@ Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler
 
 **Ne yapıyor?** Misafirlerin sık sorularını yanıtlayıp otel bilgisi/öneri sunan WhatsApp agent.
 
-**Kanıt:** Açık workflow var; exact ücret yok.
+**Kanıt:** Açık workflow var; ne kadar kazandırdığı bilinmiyor.
 
 **Risk:** Meta policy, yanlış tesis bilgisi, kişisel veriler.
 

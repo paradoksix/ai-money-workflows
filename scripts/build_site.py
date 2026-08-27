@@ -25,58 +25,68 @@ BLOB = f"{REPO}/blob/main"
 
 # Display order and copy for each niche. Order matches the nis-NN- file prefix.
 NICHES = [
-    ("video-gorsel-produksiyon", 1, "Video & görsel prodüksiyon",
-     "Reklam, ürün videosu, müzik videosu ve thumbnail üretimi. Talep gerçek, rekabet yüksek."),
-    ("b2b-satis-lead", 2, "B2B satış & lead araştırma",
-     "Hedef şirketi bul, karar vericiyi çıkar, satışçıya temiz not bırak. En iyi kaynak-doğrulanmış niş."),
-    ("musteri-iletisim-destek", 3, "Müşteri iletişimi & destek",
-     "Gelen mesajı karşıla, sınıflandır, eksik bilgiyi tamamla, gerekince insana devret."),
-    ("ozel-yazilim-mikro-saas", 4, "Özel yazılım & mikro-SaaS",
-     "Workflow değil uygulama satılan vakalar. Satış kanalı reklam değil, mevcut ilişki."),
-    ("icerik-sosyal-medya", 5, "İçerik, sosyal medya & bülten",
-     "Uzun içeriği parçala, bülten üret, kanal prodüksiyonu yap."),
-    ("eticaret-katalog", 6, "E-ticaret & katalog",
-     "Ürün verisi, katalog kalitesi, stok akışı. Türkiye için en güçlü nişlerden."),
-    ("kurumsal-operasyon-maliyet", 7, "Kurumsal operasyon & maliyet",
-     "Çoğunda AI ürünü satılmıyor; lisans, insan zamanı veya operasyon kaybı azaltılıyor."),
-    ("ofis-belge-operasyonu", 8, "Ofis & belge operasyonu",
-     "Form, e-posta ve tablo trafiğini yapılandırmak. Burada AI çoğu zaman şart değil."),
-    ("veri-cikti-temizligi", 9, "Veri & AI-çıktısı temizliği",
-     "AI'nın bıraktığı yarım işi güvenilir son ürüne çevirmek."),
-    ("ajans-freelance-model", 10, "Ajans & freelance hizmet modeli",
-     "Ne satıldığını değil, nasıl satıldığını anlatan vakalar: fiyat, scope, retainer."),
-    ("yerel-isletme-saha-servisi", 11, "Yerel işletme & saha servisi",
-     "Mahalledeki işletmeye yüz yüze satılabilen sistemler. Ansiklopedinin en güçlü tek vakası burada."),
-    ("rag-bilgi-sistemleri", 12, "RAG & özel bilgi sistemleri",
-     "Müşterinin kendi belgelerinden kaynaklı cevap. Satış argümanı zekâ değil, gizlilik."),
-    ("emlak-site-yonetimi", 13, "Emlak & site yönetimi",
-     "Kiracı talebi, bakım koordinasyonu, belge üretimi ve lead takibi."),
-    ("muhasebe-finans-belge", 14, "Muhasebe & finans belgeleri",
-     "Fatura, tahsilat, ön-muhasebe. Değişmez kural: LLM rakam hesabı yapmasın."),
-    ("ik-ise-alim", 15, "İK & işe alım",
-     "AI'nın alanı araştırma ve admin; insanın alanı değerlendirme ve karar."),
-    ("egitim-kurs-operasyonu", 16, "Eğitim & kurs operasyonu",
-     "Ders programı, veli iletişimi, ödeme takibi, öğrenci verisi normalizasyonu."),
-    ("tartismali", 17, "Tartışmalı (X seviyesi)",
-     "Satın alınacak iş değil; kırmızı bayrak eğitimi olarak saklanan örnek."),
+    ("video-gorsel-produksiyon", 1, "Video ve görsel üretimi",
+     "Reklam filmi, ürün videosu, müzik klibi ve video kapak görseli. Talep gerçek, rekabet yüksek."),
+    ("b2b-satis-lead", 2, "Şirketlere satış: müşteri adayı bulma",
+     "Hedef şirketi bul, kararı veren kişiyi çıkar, satışçıya temiz bir not bırak. Kaynak koduyla en iyi doğrulanmış grup."),
+    ("musteri-iletisim-destek", 3, "Müşteri iletişimi ve destek",
+     "Gelen mesajı karşıla, konusuna ayır, eksik bilgiyi sor, gerekince bir insana devret."),
+    ("ozel-yazilim-mikro-saas", 4, "Sipariş üzerine yazılım ve küçük ürünler",
+     "Hazır bir sistem değil, uygulama satılan işler. Müşteri reklamdan değil, mevcut tanıdıklıktan geliyor."),
+    ("icerik-sosyal-medya", 5, "İçerik, sosyal medya ve bülten",
+     "Uzun içeriği parçalara ayır, bülten hazırla, kanal için düzenli üretim yap."),
+    ("eticaret-katalog", 6, "E-ticaret ve ürün kataloğu",
+     "Ürün bilgisi, katalog kalitesi, stok akışı. Türkiye için en uygun gruplardan biri."),
+    ("kurumsal-operasyon-maliyet", 7, "Büyük şirketlerde maliyet düşürme",
+     "Çoğunda yapay zekâ satılmıyor; ödenen yazılım ücreti, harcanan insan saati veya kayıp azaltılıyor."),
+    ("ofis-belge-operasyonu", 8, "Ofis ve evrak işleri",
+     "Form, e-posta ve tablo trafiğini düzene sokmak. Burada yapay zekâ çoğu zaman şart bile değil."),
+    ("veri-cikti-temizligi", 9, "Yapay zekâ çıktısını temize çekme",
+     "Yapay zekânın yarım bıraktığı işi, gerçekten kullanılabilir son ürüne çevirmek."),
+    ("ajans-freelance-model", 10, "Nasıl satılıyor: fiyat, kapsam, süreklilik",
+     "Ne satıldığını değil, işin nasıl fiyatlandığını ve aylık gelire nasıl döndüğünü anlatan örnekler."),
+    ("yerel-isletme-saha-servisi", 11, "Mahalle esnafı ve saha servisi",
+     "İşletmeye yüz yüze gidip gösterilebilen sistemler. Arşivin en sağlam tek örneği burada."),
+    ("rag-bilgi-sistemleri", 12, "Kendi belgelerinden cevap veren sistemler",
+     "Şirketin kendi dosyalarına dayanarak cevap üreten yardımcılar. Satış gerekçesi zekâ değil, gizlilik."),
+    ("emlak-site-yonetimi", 13, "Emlak ve site yönetimi",
+     "Kiracı talebi, tamir koordinasyonu, belge hazırlama ve müşteri adayı takibi."),
+    ("muhasebe-finans-belge", 14, "Muhasebe ve fatura işleri",
+     "Fatura, tahsilat, ön muhasebe. Değişmez kural: hesabı yapay zekâ yapmasın."),
+    ("ik-ise-alim", 15, "İnsan kaynakları ve işe alım",
+     "Yapay zekânın işi araştırma ve evrak; değerlendirme ve karar insanda kalır."),
+    ("egitim-kurs-operasyonu", 16, "Kurs ve eğitim işletmeciliği",
+     "Ders programı, veli iletişimi, ödeme takibi ve öğrenci bilgilerinin düzene sokulması."),
+    ("tartismali", 17, "Şüpheli iddialar",
+     "Denenecek bir iş değil; nelere kanmamak gerektiğini gösteren örnek."),
 ]
 
 GRADES = [
-    ("A", "Ticari vaka + exact kaynak",
-     "Belirli müşteri/gelir vakası ile doğrudan bağlantılı kaynak kod doğrulandı."),
-    ("B", "Açık kaynak, gelir kanıtı eksik",
-     "Kod gerçek ve çalışıyor; bu workflow'un ayrı ücretli müşteri sonucu kanıtlanmadı."),
-    ("C", "Güçlü ticari sinyal, kaynak yok",
-     "Ücretli müşteri, gelir veya tasarruf sinyali güçlü; exact kaynak repo bulunamadı."),
-    ("X", "Tartışmalı",
-     "Gelir iddiasında promosyon veya çıkar çatışması var. Ana sayıma dahil değil."),
+    ("A", "Müşteri kanıtı + kodu açık",
+     "İşin gerçek bir müşteriye satıldığı ve tam olarak hangi kodla yapıldığı, ikisi birden doğrulandı."),
+    ("B", "Kodu açık, kazancı belirsiz",
+     "Kod gerçek ve çalışıyor; ama tam olarak bu işin para kazandırdığı ayrıca gösterilmedi."),
+    ("C", "Para kazandırmış, kodu yok",
+     "Ödeme yapan müşteri, gelir ya da tasarruf anlatımı güçlü; ama işin kodu paylaşılmamış veya bulunamadı."),
+    ("X", "Şüpheli",
+     "Kazanç iddiasında gizli reklam ya da çıkar çatışması şüphesi var. Ana sayıma katılmıyor."),
 ]
 
 REVENUE = [
-    ("F", "Freelancer ücreti", "Hizmet sağlayıcının aldığı para."),
-    ("R", "Ürün/SaaS geliri", "Üründen doğan tekrarlı veya doğrudan gelir."),
-    ("S", "Müşteri tasarrufu", "Müşterinin kazandığı zaman veya kestiği gider."),
-    ("V", "Ticari değer", "Kampanya değeri, booked call, impression, geri kazanılan alacak."),
+    ("F", "İşi yapana ödenen ücret", "Hizmeti veren kişinin cebine giren para."),
+    ("R", "Üründen gelen gelir", "Satılan ürün veya abonelikten doğan gelir."),
+    ("S", "Müşterinin tasarrufu", "Müşterinin kazandığı zaman ya da kestiği gider."),
+    ("V", "Başka ticari sonuç", "Kampanya değeri, alınan randevu, görüntülenme, tahsil edilen alacak."),
+]
+
+# Terms kept as-is because they are searchable and precise, explained once here.
+GLOSSARY = [
+    ("n8n", "İş akışı kurmaya yarayan, kod yazmadan kutuları birbirine bağladığın açık kaynak araç."),
+    ("RAG", "Yapay zekânın, kendi kafasından değil senin verdiğin belgelerden cevap üretmesi."),
+    ("SaaS", "Aylık/yıllık abonelikle satılan, tarayıcıdan kullanılan yazılım."),
+    ("API", "İki yazılımın birbirine otomatik veri geçirmesini sağlayan bağlantı noktası."),
+    ("OCR", "Fotoğraf ya da PDF'teki yazıyı, düzenlenebilir metne çeviren teknoloji."),
+    ("Repo", "Bir projenin kaynak kodunun durduğu yer — burada hep GitHub'daki hâli kastediliyor."),
 ]
 
 SELLABILITY = [("high", "Yüksek"), ("medium", "Orta"), ("low", "Düşük")]
@@ -155,8 +165,9 @@ h1{font-size:clamp(2rem,1.3rem + 3vw,3.1rem);line-height:1.1;letter-spacing:-.01
 .standfirst strong{color:var(--ink);font-weight:600}
 
 /* ── evidence legend ── */
+.legend-h{font-size:1.0625rem;margin-top:34px;letter-spacing:-.005em}
 .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;
-  background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-top:30px}
+  background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-top:12px}
 .legend div{background:var(--surface);padding:14px 16px}
 .legend dt{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.875rem;margin:0 0 4px}
 .legend dd{margin:0;font-size:.8125rem;color:var(--muted);line-height:1.5}
@@ -172,6 +183,20 @@ h1{font-size:clamp(2rem,1.3rem + 3vw,3.1rem);line-height:1.1;letter-spacing:-.01
 .g-B{color:var(--gB-text);background:var(--gB-wash)}
 .g-C{color:var(--gC-text);background:var(--gC-wash)}
 .g-X{color:var(--gX-text);background:var(--gX-wash)}
+
+/* ── glossary ── */
+.glossary{margin-top:14px;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+.glossary summary{padding:11px 16px;cursor:pointer;font-size:.875rem;font-weight:600;color:var(--accent);
+  list-style:none}
+.glossary summary::-webkit-details-marker{display:none}
+.glossary summary::before{content:"+ ";font-family:"IBM Plex Mono",ui-monospace,monospace}
+.glossary[open] summary::before{content:"− "}
+.glossary[open] summary{border-bottom:1px solid var(--rule)}
+.glossary dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px 24px;
+  margin:0;padding:16px}
+.glossary dt{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8125rem;font-weight:600;
+  color:var(--ink);margin-bottom:3px}
+.glossary dd{margin:0;font-size:.8125rem;color:var(--muted);line-height:1.5}
 
 /* ── distribution meter ── */
 .meter-block{margin-top:34px}
@@ -303,31 +328,37 @@ def build_body(rows):
 
     # ── masthead ──
     a('<header class="masthead"><div class="wrap">')
-    a('<p class="eyebrow">Kanıt dereceli araştırma atlası · 2026</p>')
+    a('<p class="eyebrow">Neyin kanıtlı, neyin iddia olduğu ayrılmış arşiv · 2026</p>')
     a("<h1>AI Gelir Vakaları Ansiklopedisi</h1>")
-    a('<p class="standfirst">İnsanların ve işletmelerin yapay zekâ ile hangi küçük problemlere '
-      f'<strong>gerçekten para ödediğini</strong> izleyen {catalogable} vakalık araştırma. Her vaka '
-      'kanıt derecesine göre ayrılır: neyin kaynak koduyla doğrulandığı, neyin yalnızca '
-      'self-report olduğu karıştırılmaz.</p>')
+    a('<p class="standfirst">İnsanların ve işletmelerin yapay zekâ ile hangi küçük işlere '
+      f'<strong>gerçekten para ödediğini</strong> derleyen {catalogable} örneklik arşiv. Her örneğin '
+      'yanında ne kadar güvenilir olduğu yazıyor: hangisinin kodu açıkta duruyor, hangisi sadece '
+      'anlatan kişinin kendi beyanı — ikisi birbirine karıştırılmıyor.</p>')
 
+    a('<h2 class="legend-h">Yanlarındaki harf ne demek?</h2>')
     a('<dl class="legend">')
     for g, title, desc in GRADES:
         a(f'<div><dt><span class="chip g-{g}">{g}</span> {e(title)}</dt>'
           f"<dd>{e(desc)}</dd></div>")
     a("</dl>")
 
+    a('<details class="glossary"><summary>Sayfada geçen birkaç terim</summary><dl>')
+    for term, meaning in GLOSSARY:
+        a(f"<div><dt>{e(term)}</dt><dd>{e(meaning)}</dd></div>")
+    a("</dl></details>")
+
     # ── distribution meter (status scale: every segment directly labelled) ──
     a('<div class="meter-block">')
     a('<div class="meter-head">')
-    a(f'<span class="meter-total">{catalogable}<span>kataloglanabilir vaka · ayrıca {disputed} tartışmalı '
-      f"ve {superseded} tarihsel kayıt (A006'ya taşındı) · toplam {total} kayıt</span></span>")
+    a(f'<span class="meter-total">{catalogable}<span>arşivlenmiş örnek · ayrıca {disputed} şüpheli '
+      f"ve {superseded} eski kayıt (A006'ya taşındı) · toplam {total} satır</span></span>")
     a("</div>")
     a('<div class="meter" role="img" aria-label="'
-      + e(", ".join(f"{g} derecesi {counts[g]} vaka" for g, _, _ in GRADES)) + '">')
+      + e(", ".join(f"{g} harfi: {counts[g]} örnek" for g, _, _ in GRADES)) + '">')
     for g, title, _ in GRADES:
         pct = counts[g] / total * 100
         label = f"{g} · {counts[g]}" if pct > 7 else (g if pct > 2.5 else "")
-        a(f'<i class="s-{g}" style="width:{pct:.4f}%" title="{e(title)}: {counts[g]} vaka">{label}</i>')
+        a(f'<i class="s-{g}" style="width:{pct:.4f}%" title="{e(title)}: {counts[g]} örnek">{label}</i>')
     a("</div>")
     a('<div class="meter-key">')
     for g, title, _ in GRADES:
@@ -339,10 +370,10 @@ def build_body(rows):
 
     # ── niche grid ──
     a('<section class="section" id="nisler">')
-    a("<h2>Bir niş seçin</h2>")
-    a('<p class="lede">Vakalar sektöre ve satılan işe göre gruplanmıştır. Bir kart seçtiğinizde '
-      "aşağıdaki liste yalnızca o nişi gösterir; kartın kendi dosyasında ise her vakanın tam "
-      "anlatımı, riskleri ve Türkiye uyarlaması bulunur.</p>")
+    a("<h2>Hangi iş kolu ilgini çekiyor?</h2>")
+    a('<p class="lede">Örnekler, satılan işin türüne göre ayrıldı. Bir kutuya tıkladığında aşağıdaki '
+      "liste yalnızca onu gösterir. Kutunun kendi sayfasında ise o iş kolundaki her örneğin tam "
+      "anlatımı, nelere dikkat edilmesi gerektiği ve Türkiye'de nasıl uygulanabileceği yazıyor.</p>")
     a('<div class="niches">')
     for slug, order, name, desc in NICHES:
         group = by_niche.get(slug, [])
@@ -362,26 +393,26 @@ def build_body(rows):
     a("</div></section>")
 
     # ── filters ──
-    a('<section class="section" id="vakalar"><h2>Vakalar</h2>')
+    a('<section class="section" id="vakalar"><h2>Bütün örnekler</h2>')
     a('<div class="filters"><div class="filter-row">')
-    a('<input class="search" id="q" type="search" placeholder="Ara: başlık, stack, sektör, özet…" '
-      'aria-label="Vakalarda ara">')
-    a('<select id="f-niche" aria-label="Niş"><option value="">Tüm nişler</option>')
+    a('<input class="search" id="q" type="search" placeholder="Ara: iş adı, sektör, kullanılan araç…" '
+      'aria-label="Örnekler arasında ara">')
+    a('<select id="f-niche" aria-label="İş kolu"><option value="">Bütün iş kolları</option>')
     for slug, order, name, _ in NICHES:
         if by_niche.get(slug):
             a(f'<option value="{e(slug)}">{e(name)}</option>')
     a("</select>")
-    a('<select id="f-grade" aria-label="Kanıt derecesi"><option value="">Tüm kanıt dereceleri</option>')
+    a('<select id="f-grade" aria-label="Ne kadar güvenilir"><option value="">Güvenilirlik: hepsi</option>')
     for g, title, _ in GRADES:
         a(f'<option value="{g}">{g} — {e(title)}</option>')
     a("</select>")
-    a('<select id="f-rev" aria-label="Gelir tipi"><option value="">Tüm gelir tipleri</option>')
+    a('<select id="f-rev" aria-label="Para nereden geliyor"><option value="">Para nereden geliyor: hepsi</option>')
     for code, name, _ in REVENUE:
         a(f'<option value="{code}">{code} — {e(name)}</option>')
     a("</select>")
-    a('<select id="f-tr" aria-label="Türkiye uygunluğu"><option value="">TR uygunluğu: hepsi</option>')
+    a('<select id="f-tr" aria-label="Türkiye\'ye uygunluk"><option value="">Türkiye\'ye uygunluk: hepsi</option>')
     for val, name in SELLABILITY:
-        a(f'<option value="{e(val)}">TR uygunluğu: {e(name)}</option>')
+        a(f'<option value="{e(val)}">Türkiye\'ye uygunluk: {e(name)}</option>')
     a("</select>")
     a('<button class="btn" type="button" id="reset">Sıfırla</button>')
     a("</div>")
@@ -393,23 +424,24 @@ def build_body(rows):
 
     # ── footer ──
     a("<footer><div class=\"wrap\">")
-    a("<h2>Yöntem ve sınırlar</h2>")
-    a("<p>Bu atlas bir gelir vaadi değil, bir araştırma kaydıdır. Tek bir ekran görüntüsü kanıt "
-      "sayılmaz; tercih sırası belirli müşteri problemi, çalışan sistem açıklaması, ticari sonuç, "
-      "exact kaynak kod, repo geçmişi ve lisanstır.</p>")
+    a("<h2>Bu sayfa neye göre hazırlandı?</h2>")
+    a("<p>Burası bir kazanç vaadi değil, bir araştırma kaydı. Tek bir ekran görüntüsü kanıt sayılmıyor. "
+      "Bir örneğin arşive girmesi için sırasıyla şunlar aranıyor: net bir müşteri problemi, çalışan "
+      "sistemin anlatımı, elde edilen ticari sonuç, işin kaynak kodu, o kodun geçmişi ve lisansı.</p>")
     a('<div class="disclaimer"><strong>Rakamlar hakkında.</strong> Sayfadaki tutarların neredeyse '
-      "tamamı kaynak kişilerin kendi beyanıdır (self-report) ve bağımsız denetlenmemiştir. "
-      "Freelancer ücreti, ürün geliri, müşteri tasarrufu ve ticari değer birbirine karıştırılmaz — "
-      "her vakada F/R/S/V etiketiyle ayrılır. Public bir GitHub reposu, yeniden dağıtım veya "
-      "yeniden lisanslama izni vermez.</div>")
+      "tamamı, işi yapan kişilerin kendi beyanı. Hiçbiri bağımsız olarak denetlenmedi. Ayrıca "
+      "birbirine benzeyen ama aynı olmayan dört şey ayrı tutuluyor: işi yapana ödenen ücret, üründen "
+      "gelen gelir, müşterinin tasarrufu ve başka ticari sonuçlar — her örnekte F/R/S/V harfiyle "
+      "işaretli. Son olarak: bir kodun GitHub'da herkese açık olması, onu kopyalayıp kendi adına "
+      "kullanma izni vermez.</div>")
     a('<div class="foot-links">')
     for label, href in [
-        ("Depo", REPO),
-        ("Niş indeksi", f"{BLOB}/ENCYCLOPEDIA.md"),
-        ("Kesişen desenler", f"{BLOB}/encyclopedia/DESENLER.md"),
-        ("Kanıt standardı", f"{BLOB}/RESEARCH_POLICY.md"),
-        ("Ham veri (cases.csv)", f"{BLOB}/data/cases.csv"),
-        ("Araştırma kuyruğu", f"{BLOB}/research_queue.csv"),
+        ("Proje deposu", REPO),
+        ("İş kolları listesi", f"{BLOB}/ENCYCLOPEDIA.md"),
+        ("Ortak dersler", f"{BLOB}/encyclopedia/DESENLER.md"),
+        ("Güvenilirlik ölçütleri", f"{BLOB}/RESEARCH_POLICY.md"),
+        ("Ham veri tablosu", f"{BLOB}/data/cases.csv"),
+        ("Hâlâ aranan kaynaklar", f"{BLOB}/research_queue.csv"),
     ]:
         a(f'<a href="{e(href)}">{e(label)}</a>')
     a("</div></div></footer>")
@@ -447,11 +479,11 @@ function caseHTML(c){
   else if(c.result) tags.push(`<span class="tag">${esc(c.result)}</span>`);
   if(c.work) tags.push(`<span class="tag">${esc(c.work)}</span>`);
   if(c.stack) tags.push(`<span class="tag">${esc(c.stack)}</span>`);
-  tags.push(`<span class="tag" title="Türkiye'de satılabilirlik — kaba araştırma önceliği">TR: ${esc(TR_LABEL[c.tr]||c.tr)}</span>`);
+  tags.push(`<span class="tag" title="Türkiye'de satması ne kadar kolay olur — kaba bir tahmin, garanti değil">Türkiye'ye uygunluk: ${esc(TR_LABEL[c.tr]||c.tr)}</span>`);
 
-  const links = [`<a href="${esc(BLOB + "/" + c.file)}">Tam anlatım →</a>`];
-  if(c.source) links.push(`<a href="${esc(c.source)}">Kaynak vaka</a>`);
-  if(c.repo) links.push(`<a href="${esc(c.repo)}">Kaynak kod${c.commit ? " @" + esc(c.commit.slice(0,7)) : ""}</a>`);
+  const links = [`<a href="${esc(BLOB + "/" + c.file)}">Tamamını oku →</a>`];
+  if(c.source) links.push(`<a href="${esc(c.source)}">Anlatıldığı yer</a>`);
+  if(c.repo) links.push(`<a href="${esc(c.repo)}">İşin kodu${c.commit ? " @" + esc(c.commit.slice(0,7)) : ""}</a>`);
 
   return `<article class="case">
     <div class="case-id">
@@ -470,11 +502,11 @@ function caseHTML(c){
 function render(){
   const hits = CASES.filter(matches);
   $("count").innerHTML = hits.length === CASES.length
-    ? `<b>${CASES.length}</b> vakanın tamamı gösteriliyor.`
-    : `<b>${hits.length}</b> vaka eşleşti · ${CASES.length} vaka arasından.`;
+    ? `<b>${CASES.length}</b> örneğin tamamı gösteriliyor.`
+    : `<b>${hits.length}</b> örnek eşleşti · toplam ${CASES.length} arasından.`;
 
   if(!hits.length){
-    $("results").innerHTML = `<p class="empty">Bu filtrelerle eşleşen vaka yok. Filtreleri gevşetmeyi deneyin.</p>`;
+    $("results").innerHTML = `<p class="empty">Bu seçimlerle eşleşen örnek yok. Filtreleri gevşetmeyi deneyin.</p>`;
     return;
   }
   const groups = new Map();
@@ -486,7 +518,7 @@ function render(){
   for(const [slug, name] of NICHE_NAMES){
     const g = groups.get(slug);
     if(!g) continue;
-    out += `<section class="group"><h3>${esc(name)}<em>${g.length} vaka</em></h3>${g.map(caseHTML).join("")}</section>`;
+    out += `<section class="group"><h3>${esc(name)}<em>${g.length} örnek</em></h3>${g.map(caseHTML).join("")}</section>`;
   }
   $("results").innerHTML = out;
 
@@ -564,7 +596,7 @@ def build_js(rows):
 HEAD = """<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Gelir Vakaları Ansiklopedisi</title>
-<meta name="description" content="Kanıt dereceli 122 AI gelir vakası: neyin kaynak koduyla doğrulandığı, neyin yalnızca self-report olduğu ayrılmış hâlde.">
+<meta name="description" content="Yapay zekâyla para kazanılan 122 gerçek örnek. Her birinin yanında ne kadar güvenilir olduğu yazıyor: hangisinin kodu açıkta, hangisi sadece anlatanın kendi beyanı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
