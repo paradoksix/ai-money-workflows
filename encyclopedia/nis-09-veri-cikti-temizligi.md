@@ -6,7 +6,7 @@ Yapay zekânın yarım bıraktığı işi gerçekten kullanılabilir son ürüne
 
 **Bu grupta 6 örnek var.** Ne kadar güvenilir oldukları — C: 6.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
 
 ---
 

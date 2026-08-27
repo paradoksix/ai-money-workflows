@@ -6,7 +6,7 @@ Reklam filmi, ürün videosu, müzik klibi, avatar ve video kapak görseli. Bura
 
 **Bu grupta 20 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 4 · C: 15.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
 
 ---
 

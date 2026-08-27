@@ -2,7 +2,7 @@
 
 Bu liste, katalogdaki ticari vakaları **Türkiye'de müşteri bulma kolaylığı + demo üretme hızı + tekrar satılabilirlik + teknik risk** açısından sıralar. Gelir garantisi değildir. Amaç tek seferlik oyuncak demolar değil, aynı çekirdeği birden fazla müşteriye uyarlayabileceğimiz ürünleşmiş hizmetler çıkarmaktır.
 
-> Bu build dalgası şu anda duraklatılmıştır; repo araştırma aşamasındadır. Anılan vaka kodlarının tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya filtrelenebilir [atlas sayfasına](docs/index.html) bakın.
+> Bu build dalgası şu anda duraklatılmıştır; repo araştırma aşamasındadır. Anılan vaka kodlarının tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya filtrelenebilir [atlas sayfasına](https://paradoksix.github.io/ai-money-workflows/) bakın.
 
 ## Dalga 1 — Önce bunları kur
 

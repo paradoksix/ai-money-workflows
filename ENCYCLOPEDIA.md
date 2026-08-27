@@ -8,7 +8,7 @@ Amaç “AI ile para kazanmanın 122 yolu” demek değildir. Amaç, gerçek bir
 
 | Ne istiyorsun | Nereye git |
 |---|---|
-| Gezinmek, filtrelemek, bir iş kolu seçmek | **[Atlas web sayfası](docs/index.html)** — arama + iş kolu, güvenilirlik ve gelir türü filtreleri |
+| Gezinmek, filtrelemek, bir iş kolu seçmek | **[Atlas web sayfası](https://paradoksix.github.io/ai-money-workflows/)** — arama + iş kolu, güvenilirlik ve gelir türü filtreleri |
 | Bir iş kolunu derinlemesine okumak | Aşağıdaki **iş kolları listesi** |
 | Örnek gruplarından çıkan ortak dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
 | Neyin nasıl doğrulandığını anlamak | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |

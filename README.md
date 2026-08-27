@@ -4,13 +4,14 @@
 
 **Yapay zekâyla para kazanıldığı bildirilen 122 gerçek işin, her birinin ne kadar kanıtlı olduğu işaretlenmiş arşivi.**
 
+[![Atlas](https://img.shields.io/badge/atlas-yayında-0E7A52?logo=github)](https://paradoksix.github.io/ai-money-workflows/)
 [![Doğrulama](https://github.com/paradoksix/ai-money-workflows/actions/workflows/validate-catalog.yml/badge.svg)](https://github.com/paradoksix/ai-money-workflows/actions/workflows/validate-catalog.yml)
 [![Örnek](https://img.shields.io/badge/örnek-122-3B4E8C)](ENCYCLOPEDIA.md)
 [![İş kolu](https://img.shields.io/badge/iş%20kolu-16-3B4E8C)](ENCYCLOPEDIA.md)
 [![Kaynağı doğrulanmış](https://img.shields.io/badge/kaynağı%20doğrulanmış-6-0E7A52)](#a--kaynağı-doğrulanmış-örnekler)
 [![Lisans](https://img.shields.io/badge/lisans-CC%20BY%204.0-8A6414)](LICENSE)
 
-[**Atlas sayfası**](docs/index.html) · [İş kolları](ENCYCLOPEDIA.md) · [Ortak dersler](encyclopedia/DESENLER.md) · [Ölçütler](RESEARCH_POLICY.md) · [Ham veri](data/cases.csv)
+[**Atlas sayfası**](https://paradoksix.github.io/ai-money-workflows/) · [İş kolları](ENCYCLOPEDIA.md) · [Ortak dersler](encyclopedia/DESENLER.md) · [Ölçütler](RESEARCH_POLICY.md) · [Ham veri](data/cases.csv)
 
 </div>
 
@@ -19,11 +20,11 @@
 ---
 
 <div align="center">
-  <a href="docs/index.html">
+  <a href="https://paradoksix.github.io/ai-money-workflows/">
     <img src="docs/atlas-onizleme.png" alt="Atlas sayfası: kanıt açıklamaları, dağılım çubuğu ve iş kolu kartları" width="860">
   </a>
   <br>
-  <sub><b><a href="docs/index.html">docs/index.html</a></b> — arama ve dört filtreyle 122 örnek arasında gezinilebilen tek dosyalık sayfa</sub>
+  <sub><b><a href="https://paradoksix.github.io/ai-money-workflows/">paradoksix.github.io/ai-money-workflows</a></b> — arama ve dört filtreyle 122 örnek arasında gezinilebilen tek sayfa</sub>
 </div>
 
 ---
@@ -47,7 +48,7 @@ Rakamların neredeyse tamamı **işi yapan kişilerin kendi beyanı** ve hiçbir
 
 | Ne istiyorsun | Nereye git |
 |---|---|
-| **Gezinmek, filtrelemek, bir iş kolu seçmek** | [**`docs/index.html`**](docs/index.html) — arama + iş kolu, güvenilirlik, gelir türü ve Türkiye filtreleri |
+| **Gezinmek, filtrelemek, bir iş kolu seçmek** | [**Atlas sayfası**](https://paradoksix.github.io/ai-money-workflows/) — arama + iş kolu, güvenilirlik, gelir türü ve Türkiye filtreleri |
 | Bir iş kolunu baştan sona okumak | [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) — 16 iş kolunun listesi |
 | Örneklerin tamamından çıkan ortak dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
 | Neyin nasıl doğrulandığını anlamak | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |
@@ -129,7 +130,7 @@ Altı örnekte hem ticari sonuç hem de o sonucu üreten kod doğrulandı. Kod b
 
 | Dosya | Ne yapar |
 |---|---|
-| [`docs/index.html`](docs/index.html) | Üretilmiş atlas sayfası — **elle düzenlenmez** |
+| [`docs/index.html`](docs/index.html) | Üretilmiş atlas sayfası ([canlı hâli](https://paradoksix.github.io/ai-money-workflows/)) — **elle düzenlenmez** |
 | [`scripts/build_site.py`](scripts/build_site.py) | Sayfayı `data/cases.csv`'den üretir; deterministiktir |
 | [`scripts/validate_cases.py`](scripts/validate_cases.py) | Veri yapısı, `catalog.csv` ile alan uyumu ve her örneğin yazıldığı yerde olduğu kontrolü |
 | [`scripts/validate_catalog.py`](scripts/validate_catalog.py) | Çekirdek katalog tutarlılık kontrolü |
@@ -162,7 +163,7 @@ cd builds/catalog-doctor && python3 catalog_doctor.py sample_catalog.csv --out d
 
 `scripts/validate_cases.py` iki dosyanın sessizce ayrışmasını engeller: `catalog.csv`'deki her kaydın `cases.csv`'de de bulunduğunu ve ortak alanların birebir aynı olduğunu; ayrıca her örneğin gerçekten kendi iş kolu dosyasında yazılı olduğunu doğrular. CI ayrıca `docs/index.html`'in veriye göre güncel olduğunu kontrol eder.
 
-**Sayfayı yayınlamak:** `docs/index.html` tek başına çalışır — yerelde çift tıklamak yeterli. GitHub Pages için: **Settings → Pages → Source: `main` / `/docs`**.
+**Sayfa nerede yayında?** [paradoksix.github.io/ai-money-workflows](https://paradoksix.github.io/ai-money-workflows/) — `main` dalındaki `docs/` klasöründen GitHub Pages ile servis ediliyor, her push'ta kendiliğinden güncelleniyor. `docs/index.html` tek başına çalışan bir dosya olduğu için yerelde çift tıklayarak da açabilirsiniz.
 
 ## Bir örnek arşive nasıl giriyor?
 

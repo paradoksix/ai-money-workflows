@@ -2,7 +2,7 @@
 
 Bu dosya, katalogdaki gerçek ticari vakaları Türkiye'deki küçük/orta işletmelere uyarlamak için hazırlanmış çalışma görünümüdür. Gelir garantisi değildir; hangi demo ve tekliflerin önce denenmeye değer olduğunu gösterir.
 
-> Burada anılan vaka kodlarının (C003, A005, C004 …) tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya filtrelenebilir [atlas sayfasına](docs/index.html) bakın.
+> Burada anılan vaka kodlarının (C003, A005, C004 …) tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya filtrelenebilir [atlas sayfasına](https://paradoksix.github.io/ai-money-workflows/) bakın.
 
 ## 1. E-ticaret katalog doktorluğu
 

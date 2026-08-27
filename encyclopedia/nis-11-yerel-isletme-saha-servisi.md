@@ -6,7 +6,7 @@ Mahalledeki işletmeye gidip yüz yüze gösterilebilen sistemler: teknik servis
 
 **Bu grupta 5 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 1 · C: 3.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için `../docs/index.html`.
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
 
 ---
 
