@@ -1,6 +1,12 @@
-# Cilt 6 — AI sonrası temizlik, veri ve VA hizmetleri
+# Veri & AI-çıktısı temizliği
 
-Bu cilt **C066–C075** vakalarını içerir. Bu grup önemli çünkü AI'nın yalnız yeni işler üretmediğini, aynı zamanda **AI çıktısını üretimde kullanılabilir son ürüne dönüştürme** ve sıkıcı operasyonları hızlandırma pazarları yarattığını gösterir.
+AI'nın bıraktığı yarım işi güvenilir son ürüne çevirmek: AI logo → baskıya hazır vektör, AI deck → kurumsal PowerPoint, OCR → doğrulanmış Excel. AI yeni işler üretirken aynı anda **kendi çıktısını temizleme pazarını da** yaratıyor; bu nişin tamamı o pazar.
+
+**Türkiye'de kim satın alır?** AI aracı kullanıp sonuç yayına hazır olmayan herkes; muhasebeci, distribütör
+
+**Bu nişte 6 vaka var.** Kanıt dağılımı — C: 6.
+
+Kanıt dereceleri için `../RESEARCH_POLICY.md`, nişler arası kesişen dersler için `DESENLER.md`, tüm vakaların filtrelenebilir listesi için `../docs/index.html`.
 
 ---
 
@@ -64,30 +70,6 @@ Bu cilt **C066–C075** vakalarını içerir. Bu grup önemli çünkü AI'nın y
 
 ---
 
-## C071 — AI-Assisted Executive / Content VA
-
-**Ne satılmış?** Founder/KOBİ için araştırma, içerik, planlama, doküman ve asistanlık işlerini ChatGPT/Claude/Office/Canva ile hızlandıran VA hizmeti.
-
-**Ticari sinyal:** **20 review**, yaklaşık **$30 / 6 saat** paket sinyali.
-
-**Risk:** Düşük fiyat baskısı, credential/confidentiality.
-
-**Senin için uygulama önizlemesi:** Generic VA yerine **AI destekli B2B araştırma/operasyon asistanı** daha uyumlu: şirket listesi temizleme, araştırma özeti, Sheets düzenleme, takip tablosu ve haftalık rapor. Sonradan tekrar eden parçalar n8n'e taşınabilir.
-
----
-
-## C072 — AI-Boosted VA: research + Sheets + outreach + Notion
-
-**Ne satılmış?** Araştırma, Sheets, özetleme, outreach hazırlığı, Notion ve genel operasyon işlerini AI ile hızlandıran sanal asistanlık.
-
-**Ticari sinyal:** **65 completed order / 44 review**, yaklaşık `$5 / 1 saat` giriş paketi.
-
-**Ders:** Talep var ama global marketplace'te fiyat çok düşük olabilir.
-
-**Senin için uygulama önizlemesi:** Saat satma yarışına girme. **“50 şirketlik temiz araştırma listesi”, “haftalık rakip radar raporu”, “300 satırlık katalog QA”** gibi fixed-output hizmete dönüştür. AI verimliliği marjını artırır.
-
----
-
 ## C073 — OCR Invoice/PDF → Verified Excel
 
 **Ne satılmış?** Fatura/PDF/görüntüdeki veriyi OCR ile Excel'e çıkarıp insan QA ile doğrulama.
@@ -99,39 +81,3 @@ Bu cilt **C066–C075** vakalarını içerir. Bu grup önemli çünkü AI'nın y
 **Senin için uygulama önizlemesi:** En güçlü düşük maliyetli adaylardan. Yerel OCR + küçük LLM + Python validation ile **PDF → temiz CSV/XLSX + hata/emin-değilim kuyruğu** yapılabilir. Türkiye'de muhasebeci, distribütör, servis ve küçük üreticilere çok uyumlu.
 
 ---
-
-## C074 — AI-Assisted General VA
-
-**Ne satılmış?** Genel sanal asistanlık; araştırma, veri girişi, admin ve içerik işleri AI ile hızlandırılıyor.
-
-**Ticari sinyal:** **492 completed order** sinyali, yaklaşık `$20 / 2 saat` giriş paketi.
-
-**Risk:** Düşük fiyat/yoğun rekabet ve müşteri hesaplarına erişim.
-
-**Senin için uygulama önizlemesi:** Bunu son hedef değil **müşteri problemlerini içeriden gözlemleme yolu** olarak gör. Bir sektörde VA işi yaparken en sık tekrarlanan 2–3 işi tespit edip otomasyon fırsatına çevirmek daha değerli olabilir.
-
----
-
-## C075 — Jarvis / Voice Virtual-Assistant Build
-
-**Ne satılmış?** Voice/AI/automation kullanan kişisel veya iş amaçlı sanal asistan sistemi.
-
-**Ticari sinyal:** Görünür yaklaşık **$200–400** AI-chatbot/assistant siparişi.
-
-**Risk:** Scope çok kolay patlar; “Jarvis gibi her şeyi yapsın” beklentisi teknik ve güvenlik açısından tehlikeli.
-
-**Senin için uygulama önizlemesi:** Genel Jarvis yapma. **Tek rol + tek veri kaynağı + 2–3 aksiyon** sınırı koy: örneğin “servis yöneticisinin günlük iş emirlerini özetleyen sesli asistan”. Voice son katman olsun; önce text workflow doğru çalışsın.
-
----
-
-## Cilt 6'dan çıkan ortak desen
-
-Bu ciltteki en önemli fırsat “AI üretmek” değil, **AI'nın bıraktığı yarım işi güvenilir son ürüne çevirmek**:
-
-- AI logo → baskıya hazır vector,
-- AI deck → kurumsal PowerPoint,
-- OCR → doğrulanmış Excel,
-- AI research → kaynaklı temiz rapor,
-- AI VA → sabit çıktılı operasyon hizmeti.
-
-Senin düşük maliyet/açık kaynak yaklaşımına en uygun vaka **C073 OCR/PDF → verified spreadsheet** ve onun genelleştirilmiş hali olan **veri temizleme + QA** hizmetleri. Bunlar mevcut bilgisayarda büyük ölçüde yerel çalışabilir, API bağımlılığı düşüktür ve müşteri ROI'si kolay anlatılır.
