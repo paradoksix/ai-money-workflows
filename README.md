@@ -86,7 +86,7 @@ Bir kampanyanın bütçesi ile freelancerın aldığı ücret aynı şey değild
 | Güvenilirlik dağılımı | A: 6 · B: 25 · C: 92 · X: 1 |
 | İş kolu | 16 (+ şüpheliler eki) |
 | Kaynak kodu sabitlenmiş | 9 kayıt (depo adresi + doğrulanmış sürüm) |
-| Kaynak bağlantısı olan | 59 kayıt |
+| Kaynak bağlantısı olan | 50 kayıt |
 | Gelir türü dağılımı | F: 61 · S: 16 · R: 9 · V: 5 |
 | Türkiye'ye uygunluk | Yüksek: 51 · Orta: 60 · Düşük: 13 |
 
