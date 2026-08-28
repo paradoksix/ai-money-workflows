@@ -4,14 +4,14 @@
 
 **Yapay zekâyla para kazanıldığı bildirilen 122 gerçek işin, her birinin ne kadar kanıtlı olduğu işaretlenmiş arşivi.**
 
-[![Atlas](https://img.shields.io/badge/atlas-yayında-0E7A52?logo=github)](https://paradoksix.github.io/ai-money-workflows/)
+[![Wiki](https://img.shields.io/badge/wiki-yayında-0E7A52?logo=github)](https://paradoksix.github.io/ai-money-workflows/)
 [![Doğrulama](https://github.com/paradoksix/ai-money-workflows/actions/workflows/validate-catalog.yml/badge.svg)](https://github.com/paradoksix/ai-money-workflows/actions/workflows/validate-catalog.yml)
 [![Örnek](https://img.shields.io/badge/örnek-122-3B4E8C)](ENCYCLOPEDIA.md)
 [![İş kolu](https://img.shields.io/badge/iş%20kolu-16-3B4E8C)](ENCYCLOPEDIA.md)
 [![Kaynağı doğrulanmış](https://img.shields.io/badge/kaynağı%20doğrulanmış-6-0E7A52)](#a--kaynağı-doğrulanmış-örnekler)
 [![Lisans](https://img.shields.io/badge/lisans-CC%20BY%204.0-8A6414)](LICENSE)
 
-[**Atlas sayfası**](https://paradoksix.github.io/ai-money-workflows/) · [İş kolları](ENCYCLOPEDIA.md) · [Ortak dersler](encyclopedia/DESENLER.md) · [Ölçütler](RESEARCH_POLICY.md) · [Ham veri](data/cases.csv)
+[**Wiki**](https://paradoksix.github.io/ai-money-workflows/) · [İş kolları](ENCYCLOPEDIA.md) · [Ortak dersler](encyclopedia/DESENLER.md) · [Ölçütler](RESEARCH_POLICY.md) · [Ham veri](data/cases.csv)
 
 </div>
 
@@ -21,21 +21,21 @@
 
 <div align="center">
   <a href="https://paradoksix.github.io/ai-money-workflows/">
-    <img src="docs/atlas-onizleme.png" alt="Atlas sayfası: kanıt açıklamaları, dağılım çubuğu ve iş kolu kartları" width="860">
+    <img src="docs/wiki-onizleme.png" alt="Wiki'nin giriş sayfası: solda iş kolu menüsü, sağda kanıt açıklamaları ve dağılım çubuğu" width="860">
   </a>
   <br>
-  <sub><b><a href="https://paradoksix.github.io/ai-money-workflows/">paradoksix.github.io/ai-money-workflows</a></b> — arama ve dört filtreyle 122 örnek arasında gezinilebilen tek sayfa</sub>
+  <sub><b><a href="https://paradoksix.github.io/ai-money-workflows/">paradoksix.github.io/ai-money-workflows</a></b> — sol menüden gezilen 22 sayfalık Wiki: her iş kolu kendi sayfasında, her örnek kendi adresinde</sub>
 </div>
 
 ---
 
-## Bu repo ne, ne değil
+## Bu depo ne, ne değil
 
 İnternette "yapay zekâ ile şu kadar kazandım" anlatısı sonsuz. Sorun anlatının çokluğu değil, **hangisinin gerçekten doğrulanabildiğinin belli olmaması.**
 
 Bu arşiv tam olarak o ayrımı yapmak için var. Her örneğin yanında bir harf duruyor ve o harf tek bir soruyu cevaplıyor: *bu iddianın arkasında ne kadar sağlam bir kanıt var?* Kodu bulunup sürümü sabitlenmiş bir iş ile, yalnızca bir forum gönderisinde anlatılmış bir rakam aynı torbaya konmuyor.
 
-| Bu repo… | …bu repo değil |
+| Bu depo… | …bu depo değil |
 |---|---|
 | Kanıt derecesi işaretlenmiş bir araştırma kaydı | "Zengin olmanın 122 yolu" listesi |
 | Rakamların **türünü** ayıran bir defter (ücret / gelir / tasarruf / diğer) | Gelir vaadi veya yatırım tavsiyesi |
@@ -48,7 +48,8 @@ Rakamların neredeyse tamamı **işi yapan kişilerin kendi beyanı** ve hiçbir
 
 | Ne istiyorsun | Nereye git |
 |---|---|
-| **Gezinmek, filtrelemek, bir iş kolu seçmek** | [**Atlas sayfası**](https://paradoksix.github.io/ai-money-workflows/) — arama + iş kolu, güvenilirlik, gelir türü ve Türkiye filtreleri |
+| **Gezinmek ve bir iş kolu seçmek** | [**Wiki**](https://paradoksix.github.io/ai-money-workflows/) — sol menü; her iş kolu kendi sayfasında, her örnek künyesiyle |
+| Bütün örnekleri arayıp süzmek | [**Bütün örnekler**](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html) — arama + iş kolu, güvenilirlik, gelir türü ve Türkiye filtreleri |
 | Bir iş kolunu baştan sona okumak | [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) — 16 iş kolunun listesi |
 | Örneklerin tamamından çıkan ortak dersler | [`encyclopedia/DESENLER.md`](encyclopedia/DESENLER.md) |
 | Neyin nasıl doğrulandığını anlamak | [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) |
@@ -130,8 +131,8 @@ Altı örnekte hem ticari sonuç hem de o sonucu üreten kod doğrulandı. Kod b
 
 | Dosya | Ne yapar |
 |---|---|
-| [`docs/index.html`](docs/index.html) | Üretilmiş atlas sayfası ([canlı hâli](https://paradoksix.github.io/ai-money-workflows/)) — **elle düzenlenmez** |
-| [`scripts/build_site.py`](scripts/build_site.py) | Sayfayı `data/cases.csv`'den üretir; deterministiktir |
+| [`docs/`](docs/) | Üretilmiş Wiki — 22 sayfa, ortak `wiki.css`/`wiki.js` ([canlı hâli](https://paradoksix.github.io/ai-money-workflows/)) — **elle düzenlenmez** |
+| [`scripts/build_site.py`](scripts/build_site.py) | Wiki'yi `data/cases.csv` ve `encyclopedia/*.md`'den üretir; deterministiktir |
 | [`scripts/validate_cases.py`](scripts/validate_cases.py) | Veri yapısı, `catalog.csv` ile alan uyumu ve her örneğin yazıldığı yerde olduğu kontrolü |
 | [`scripts/validate_catalog.py`](scripts/validate_catalog.py) | Çekirdek katalog tutarlılık kontrolü |
 | [`builds/catalog-doctor/`](builds/catalog-doctor/) | Geniş ürün kataloglarını denetleyen çalışan araç; kendi testi CI'da koşar |
@@ -153,21 +154,21 @@ Python 3.12 dışında bağımlılık yok.
 ```bash
 # Veri bütünlüğünü doğrula
 python3 scripts/validate_catalog.py    # kaynağı sabitlenmiş çekirdek
-python3 scripts/validate_cases.py      # 124 kayıt + iki çapraz kontrol
+python3 scripts/validate_cases.py      # 124 kayıt + üç çapraz kontrol
 
-# Atlas sayfasını yeniden üret (deterministik: aynı veri = aynı çıktı)
+# Wiki'yi yeniden üret (deterministik: aynı veri = aynı çıktı)
 python3 scripts/build_site.py
 
-# Doğrulanmış upstream depoları sabit sürümle indir
+# Doğrulanmış özgün depoları sabit sürümle indir
 ./clone_originals.sh                   # Windows: .\clone_originals.ps1
 
 # Katalog denetleme aracını örnek veriyle çalıştır
 cd builds/catalog-doctor && python3 catalog_doctor.py sample_catalog.csv --out demo-output
 ```
 
-`scripts/validate_cases.py` iki dosyanın sessizce ayrışmasını engeller: `catalog.csv`'deki her kaydın `cases.csv`'de de bulunduğunu ve ortak alanların birebir aynı olduğunu; ayrıca her örneğin gerçekten kendi iş kolu dosyasında yazılı olduğunu doğrular. CI ayrıca `docs/index.html`'in veriye göre güncel olduğunu kontrol eder.
+`scripts/validate_cases.py` üç çapraz kontrol yapar: `catalog.csv`'deki her kaydın `cases.csv`'de de bulunduğu ve ortak alanların birebir aynı olduğu; her örneğin gerçekten kendi iş kolu dosyasında yazılı olduğu; ve **README'deki 12 rakamın veriyle tuttuğu**. CI ayrıca `docs/` altındaki Wiki'nin veriye göre güncel olduğunu kontrol eder.
 
-**Sayfa nerede yayında?** [paradoksix.github.io/ai-money-workflows](https://paradoksix.github.io/ai-money-workflows/) — `main` dalındaki `docs/` klasöründen GitHub Pages ile servis ediliyor, her push'ta kendiliğinden güncelleniyor. `docs/index.html` tek başına çalışan bir dosya olduğu için yerelde çift tıklayarak da açabilirsiniz.
+**Wiki nerede yayında?** [paradoksix.github.io/ai-money-workflows](https://paradoksix.github.io/ai-money-workflows/) — `main` dalındaki `docs/` klasöründen GitHub Pages ile servis ediliyor, her push'ta kendiliğinden güncelleniyor. Yerelde okumak için `docs/index.html`'i tarayıcıda açmanız yeterli; sayfalar birbirine göreli bağlantılarla bağlı olduğu için sunucu gerekmez.
 
 ## Bir örnek arşive nasıl giriyor?
 
@@ -184,7 +185,7 @@ Ayrıntılı ölçütler → [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md). Kaynağ
 
 ## Proje durumu
 
-Arşiv **122 örnekte**; hedef, aynı ölçütleri gevşetmeden 150–200 bandına kontrollü biçimde ilerlemek. Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatılmış** durumda.
+Arşiv **122 örnekte** ve **ucu açık** — sabit bir hedef sayı yok, ölçütler gevşetilmeden büyümeye devam ediyor. Tek bir ürün geliştirmeye odaklanan yapım dalgası şu aşamada **duraklatılmış** durumda.
 
 En çok değer taşıyan üç açık ipucu:
 
@@ -198,4 +199,4 @@ Tam liste ve gerekçeler → [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) · derin araş
 
 Bu deponun **kendi** araştırma metni, veri dosyaları ve scriptleri [Creative Commons Attribution 4.0](LICENSE) (CC BY 4.0) altındadır — atıf vererek kullanabilirsiniz.
 
-Atıf verilen **upstream projelerin kodu bu lisansın dışındadır.** O kodların hiçbiri depoya kopyalanmadı; yalnızca adres ve doğrulanmış sürüm numarası olarak referans verildi. Her biri kendi şartlarına tabidir ve çoğunun kök dizininde açık bir lisans dosyası bulunmuyor — bir projeyi kullanmadan önce kendi lisans durumunu ayrıca kontrol edin. Ücretli veya özel kaynaklar araştırma amacıyla kayda geçirilir, kopyalanmaz.
+Atıf verilen **başkalarına ait projelerin kodu** bu lisansın dışındadır.** O kodların hiçbiri depoya kopyalanmadı; yalnızca adres ve doğrulanmış sürüm numarası olarak referans verildi. Her biri kendi şartlarına tabidir ve çoğunun kök dizininde açık bir lisans dosyası bulunmuyor — bir projeyi kullanmadan önce kendi lisans durumunu ayrıca kontrol edin. Ücretli veya özel kaynaklar araştırma amacıyla kayda geçirilir, kopyalanmaz.

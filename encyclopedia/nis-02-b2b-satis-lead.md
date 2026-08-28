@@ -6,13 +6,13 @@ Hedef şirketi bul, kararı veren kişiyi çıkar, herkese açık bilgiyle zengi
 
 **Bu grupta 12 örnek var.** Ne kadar güvenilir oldukları — A: 3 · B: 6 · C: 3.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
 ## A002 — İş ilanı → hiring manager araştırması
 
-**Ne satılmış?** Construction staffing ajansı için yeni iş ilanlarını bulup işe alım ihtiyacı olan şirketleri ve karar vericileri araştıran workflow.
+**Ne satılmış?** Construction staffing ajansı için yeni iş ilanlarını bulup işe alım ihtiyacı olan şirketleri ve karar vericileri araştıran iş akışı.
 
 **Ticari kanıt:** İlk müşteri vakası ve geliştiricinin daha sonra **birden fazla müşterinin aynı sistemi yaptırmak için kendisini tuttuğu** kendi beyanı var.
 
@@ -86,7 +86,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne yapıyor?** Inbound lead'i çok alanlı skorlayıp Calendar/e-mail/Slack aksiyonuna yönlendiriyor.
 
-**Kaynak:** Nextwave portfolio, runnable workflow.
+**Kaynak:** Nextwave portfolio, çalıştırılabilir iş akışı.
 
 **Risk:** Yanlış lead skoru ve fırsat kaçırma.
 

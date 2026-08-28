@@ -6,7 +6,7 @@ Form, e-posta, dosya ve tablo trafiğini düzene sokan işler. C011'in gösterdi
 
 **Bu grupta 7 örnek var.** Ne kadar güvenilir oldukları — B: 1 · C: 6.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
@@ -14,7 +14,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne yapıyor?** Gelen e-postayı sınıflandırıyor, önceliklendiriyor ve taslak yanıt oluşturuyor.
 
-**Kanıt:** Açık JSON workflow; ne kadar kazandırdığı bilinmiyor.
+**Kanıt:** Açık JSON iş akışı; ne kadar kazandırdığı bilinmiyor.
 
 **Risk:** Yanlış otomatik gönderim, gizli e-posta içeriği.
 
@@ -92,6 +92,6 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Risk:** Scope çok kolay patlar; “Jarvis gibi her şeyi yapsın” beklentisi teknik ve güvenlik açısından tehlikeli.
 
-**Senin için uygulama önizlemesi:** Genel Jarvis yapma. **Tek rol + tek veri kaynağı + 2–3 aksiyon** sınırı koy: örneğin “servis yöneticisinin günlük iş emirlerini özetleyen sesli asistan”. Voice son katman olsun; önce text workflow doğru çalışsın.
+**Senin için uygulama önizlemesi:** Genel Jarvis yapma. **Tek rol + tek veri kaynağı + 2–3 aksiyon** sınırı koy: örneğin “servis yöneticisinin günlük iş emirlerini özetleyen sesli asistan”. Voice son katman olsun; önce yazılı iş akışı doğru çalışsın.
 
 ---

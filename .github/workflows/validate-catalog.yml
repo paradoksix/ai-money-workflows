@@ -5,7 +5,7 @@ on:
     paths:
       - "catalog.csv"
       - "data/cases.csv"
-      - "docs/index.html"
+      - "docs/**"
       - "encyclopedia/**"
       - "scripts/**"
       - "README.md"
@@ -14,7 +14,7 @@ on:
     paths:
       - "catalog.csv"
       - "data/cases.csv"
-      - "docs/index.html"
+      - "docs/**"
       - "encyclopedia/**"
       - "scripts/**"
       - "README.md"
@@ -35,12 +35,19 @@ jobs:
       - name: Validate full case index and cross-checks
         run: python scripts/validate_cases.py
 
-      - name: Assert docs/index.html is up to date
+      - name: Assert the docs/ wiki is up to date
         run: |
           python scripts/build_site.py
-          if ! git diff --quiet -- docs/index.html; then
-            echo "::error::docs/index.html is stale. Run 'python3 scripts/build_site.py' and commit the result."
-            git diff --stat -- docs/index.html
+          if ! git diff --quiet -- docs; then
+            echo "::error::The docs/ wiki is stale. Run 'python3 scripts/build_site.py' and commit the result."
+            git diff --stat -- docs
             exit 1
           fi
-          echo "docs/index.html matches data/cases.csv"
+          # A page the builder started emitting but nobody committed is untracked,
+          # so it never shows up in git diff.
+          if [ -n "$(git status --porcelain -- docs)" ]; then
+            echo "::error::The build produced files that are not committed:"
+            git status --porcelain -- docs
+            exit 1
+          fi
+          echo "docs/ matches data/cases.csv and the encyclopedia"

@@ -10,7 +10,7 @@ Bu bölüm, araştırma sırasında ticari iddia ve kaynak kod sinyali bulunduğ
 
 **Kaynak kod:** `YonkoSam/whatsapp-python-chatbot`, pinned commit `8a1ae46805410b11d43eebf023ab23df41f9d116`.
 
-**Neden X?** Reddit yorumlarında poster ile kullanılan WhatsApp API hizmeti arasında sahiplik/affiliate/promosyon ilişkisi olabileceğine dair ciddi eleştiriler bulunuyor. Bu nedenle gelir iddiası güvenilir ticari kanıt gibi kullanılamaz.
+**Neden X?** Reddit yorumlarında poster ile kullanılan WhatsApp API hizmeti arasında sahiplik/komisyonlu tanıtım/promosyon ilişkisi olabileceğine dair ciddi eleştiriler bulunuyor. Bu nedenle gelir iddiası güvenilir ticari kanıt gibi kullanılamaz.
 
 **Teknik desen yine de ne öğretiyor?** Küçük işletmelerin WhatsApp üzerinden FAQ, lead intake ve basit destek süreçlerini otomatikleştirmeye ilgi gösterebildiği diğer bağımsız vakalarla da destekleniyor. Yani teknik problem gerçek olabilir; bu spesifik gelir anlatısı güvenilir değildir.
 

@@ -2,7 +2,7 @@
 
 Bu liste, katalogdaki ticari vakaları **Türkiye'de müşteri bulma kolaylığı + demo üretme hızı + tekrar satılabilirlik + teknik risk** açısından sıralar. Gelir garantisi değildir. Amaç tek seferlik oyuncak demolar değil, aynı çekirdeği birden fazla müşteriye uyarlayabileceğimiz ürünleşmiş hizmetler çıkarmaktır.
 
-> Bu build dalgası şu anda duraklatılmıştır; repo araştırma aşamasındadır. Anılan vaka kodlarının tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya filtrelenebilir [atlas sayfasına](https://paradoksix.github.io/ai-money-workflows/) bakın.
+> Bu yapım dalgası şu anda duraklatılmıştır; depo araştırma aşamasındadır. Anılan vaka kodlarının tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya arayıp süzebileceğiniz [bütün örnekler sayfasına](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html) bakın.
 
 ## Dalga 1 — Önce bunları kur
 
@@ -24,7 +24,7 @@ Bu liste, katalogdaki ticari vakaları **Türkiye'de müşteri bulma kolaylığ�
 
 **İlk MVP:** sektör + şehir → hedef şirketler → karar verici rolü → kamuya açık şirket/iletişim bilgisi → kısa satış araştırma notu → Sheet/CRM.
 
-**Kaynak avantajı:** üç A-seviye workflow çekirdeği var; A005'in `$1,800` gerçek müşteri vakası ve exact JSON'u doğrulandı.
+**Kaynak avantajı:** üç A-seviye iş akışı çekirdeği var; A005'in `$1,800` gerçek müşteri vakası ve tam olarak hangi JSON dosyasıyla yapıldığı doğrulandı.
 
 **Kritik:** KVKK, platform ToS ve ticari elektronik ileti kuralları ayrı ele alınmalı. Scraping'i kör spam sistemine çevirmeyiz.
 
@@ -86,12 +86,12 @@ Form/e-posta/WhatsApp'tan gelen bilgiyi tek forma normalize et; belge klasörü 
 ### 10. Automation maintenance / monitoring aboneliği
 **Kaynak:** C006
 
-Kurulum satıldıktan sonra aylık bakım ürünü: workflow health-check, başarısız run alarmı, API/model maliyet raporu, örnek çıktı kalite denetimi, credentials/expiry kontrolü. Kaynak vaka 11 müşteri ve 115+ workflow yönetildiğini bildiriyor.
+Kurulum satıldıktan sonra aylık bakım ürünü: iş akışı sağlık kontrolü, başarısız run alarmı, API/model maliyet raporu, örnek çıktı kalite denetimi, credentials/expiry kontrolü. Kaynak vaka 11 müşteri ve 115+ iş akışı yönetildiğini bildiriyor.
 
 ## Uygulama sırası
 
 1. `catalog-doctor` demosu — dış servis bağımlılığı minimum.
-2. A005 hukuk lead-gen workflow'unu incele; Türkiye için sektör-genel lead motoruna temiz biçimde uyarlama planı çıkar.
+2. A005 hukuk lead-gen iş akışını incele; Türkiye için sektör-genel lead motoruna temiz biçimde uyarlama planı çıkar.
 3. `invoice-intake` demosu — test faturaları ve insan-onay kuyruğu.
 4. `local-commerce-assistant` — resmi mesajlaşma API'si kullanan sürüm.
 5. `qr-ordering` — yeniden markalanabilir tek kod tabanı.

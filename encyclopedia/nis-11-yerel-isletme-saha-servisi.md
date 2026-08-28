@@ -6,7 +6,7 @@ Mahalledeki işletmeye gidip yüz yüze gösterilebilen sistemler: teknik servis
 
 **Bu grupta 5 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 1 · C: 3.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
@@ -14,7 +14,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne kadar güvenilir?** A — Müşteri kanıtı + kodu açık
 
-16 yıllık cihaz tamir işletmesinde randevu, gerçek fiyat tablosundan teklif, stok/iç sipariş ve insan devrini yöneten 7 workflow'luk çok-ajanlı production sistemi. Ayrı freelance satış ücreti yok; işletmeyle birlikte devredilen operasyonel varlık.
+16 yıllık cihaz tamir işletmesinde randevu, gerçek fiyat tablosundan teklif, stok/iç sipariş ve insan devrini yöneten 7 iş akışlık çok-ajanlı production sistemi. Ayrı freelance satış ücreti yok; işletmeyle birlikte devredilen operasyonel varlık.
 
 👉 Tam vaka kartı: [`A006-JACOBO-DEVICE-REPAIR.md`](A006-JACOBO-DEVICE-REPAIR.md)
 

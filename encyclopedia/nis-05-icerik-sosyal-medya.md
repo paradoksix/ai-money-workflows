@@ -6,7 +6,7 @@ Uzun içeriği parçalara ayırmak, bülten hazırlamak, kaynak taramak ve yüz 
 
 **Bu grupta 11 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 5 · C: 5.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
@@ -14,7 +14,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne satılmış?** X/Twitter ve diğer kaynaklarda yükselen hikâyeleri toplayıp kümelendiren, araştıran ve içerik fırsatına çeviren sistem.
 
-**Ticari kanıt:** **V: ~2,9M impression + 10+ high-ticket inbound lead**, yaklaşık `$75` run cost bildiriliyor. Bu doğrudan workflow satışı değil, içerikten ticari lead üretimi.
+**Ticari kanıt:** **V: ~2,9M impression + 10+ high-ticket inbound lead**, yaklaşık `$75` run cost bildiriliyor. Bu doğrudan iş akışı satışı değil, içerikten ticari lead üretimi.
 
 **Kaynak:** `sirlifehacker/social-story-scraper`, commit `69de288...` + Reddit vaka.
 

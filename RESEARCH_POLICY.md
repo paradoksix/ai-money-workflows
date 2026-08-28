@@ -1,45 +1,50 @@
 # Araştırma ve kanıt standardı
 
-Bu koleksiyonun amacı mümkün olduğunca çok repo biriktirmek değil; **ticari kullanım iddiası ile kaynak kod arasındaki bağı izlenebilir tutmaktır.**
+Bu arşivin amacı mümkün olduğunca çok depo biriktirmek değil; **bir işin para kazandırdığı iddiası ile o işin kaynak kodu arasındaki bağı izlenebilir tutmaktır.**
 
 ## Kanıt dereceleri
 
-### A — Doğrulanmış ticari vaka + exact repo
+### A — Müşteri kanıtı + kodu açık
 Aşağıdakilerin tamamı gerekir:
+
 1. Belirli bir müşteri, gelir, ticari sonuç veya ücretli kullanım açıkça anlatılmış olmalı.
-2. Aynı vaka ile doğrudan ilişkilendirilen GitHub/Gist/workflow kaynağı bulunmalı.
-3. Repo sahibinin veya vaka yazarının bağlantısı makul biçimde kurulabilmeli.
-4. Gelir rakamı varsa neyi ifade ettiği ayrıştırılmalı: freelancer ücreti, kampanya bütçesi, müşteriye sağlanan değer veya tasarruf aynı şey değildir.
+2. Aynı vakayla doğrudan ilişkilendirilebilen, açıkta duran bir kaynak kod bulunmalı — bir GitHub deposu ya da Gist (GitHub'ın küçük kod parçalarını paylaşmaya yarayan sayfası).
+3. Kodu paylaşan kişi ile vakayı anlatan kişi arasındaki bağ makul biçimde kurulabilmeli.
+4. Gelir rakamı varsa neyi ifade ettiği ayrıştırılmalı: **işi yapana ödenen ücret, kampanya bütçesi, müşteriye sağlanan değer ve müşterinin kazandığı tasarruf aynı şey değildir.**
 
-### B — Ticari üretici + exact repo, fakat workflow bazında gelir kanıtı eksik
-Kod açık ve ticari bağlam güçlüdür; fakat bu belirli workflow için ücretli müşteri veya gelir doğrudan gösterilmemiştir.
+### B — Kodu açık, kazancı belirsiz
+Kod açıkta duruyor ve ticari bağlam güçlü; fakat **tam olarak bu iş akışının** para kazandırdığı, yani ödeme yapan bir müşteri ya da gelir, doğrudan gösterilmemiş.
 
-### C — Güçlü ücretli müşteri vakası, fakat kaynak repo yok
-İş modeli gerçektir ve araştırmaya değerdir. Orijinal kod bulunana kadar upstream koleksiyonuna girmez.
+### C — Para kazandırmış, kodu yok
+İş modeli gerçek ve araştırmaya değer. Kodu ortaya çıkana kadar, indirilecek kaynak kod listesine girmez.
 
-### X — Tartışmalı / promosyon riski
-Gelir veya müşteri iddiası vardır ancak gizli reklam, affiliate çıkar çatışması, kopya içerik veya başka ciddi şüphe bulunur. Varsayılan clone listesine alınmaz.
+### X — Şüpheli
+Gelir veya müşteri iddiası var; ama gizli reklam, komisyonlu tanıtımdan doğan çıkar çatışması, kopya içerik ya da başka ciddi bir şüphe de var. Varsayılan indirme listesine alınmaz.
 
 ## Lisans kuralı
-Public GitHub reposu, yeniden dağıtım veya yeniden lisanslama iznini otomatik olarak vermez. Root seviyede açık lisans bulunmayan projelerin kodunu bu repoya kopyalamıyoruz. Bunun yerine:
-- upstream URL,
-- doğrulanmış commit SHA,
-- kaynak vaka URL'si
-saklanır ve clone scripti orijinal repoyu doğrudan çeker.
+Herkese açık bir GitHub deposu, o kodu yeniden dağıtma veya yeniden lisanslama iznini kendiliğinden **vermez**. Kök dizininde açık lisans bulunmayan projelerin kodunu bu depoya kopyalamıyoruz. Bunun yerine
+
+- özgün deponun adresi,
+- doğrulanmış sürüm kimliği (commit SHA — bir kodun tam olarak hangi hâline bakıldığını sabitleyen numara),
+- vakanın anlatıldığı sayfanın adresi
+
+saklanır; indirme scripti özgün depoyu doğrudan o sürümden çeker.
 
 ## Türkiye'de satılabilirlik alanı
-`tr_sellability` kaba bir araştırma önceliğidir:
+`tr_sellability` kesin bir ölçüm değil, kaba bir araştırma önceliğidir:
+
 - `high`: Türkiye'de çok sayıda benzer işletmeye doğrudan satılabilir.
-- `medium`: müşteri var ama entegrasyon/pazar koşulları daha niş.
+- `medium`: müşterisi var, ama kurulum koşulları ya da pazarı daha dar.
 - `low`: yerel talep veya platform erişimi sınırlı.
 
-Bu alan gelir garantisi değildir.
+Bu alan bir gelir garantisi değildir.
 
 ## Araştırma ilkesi
-Tek bir Reddit gelir ekran görüntüsü yeterli kanıt değildir. Tercih sırası:
-1. belirli müşteri problemi,
-2. çalışan sistem açıklaması,
-3. ticari sonuç,
-4. exact kaynak kod,
-5. repo geçmişi ve lisans,
-6. mümkünse ikinci bağımsız sinyal.
+Tek bir Reddit gelir ekran görüntüsü yeterli kanıt değildir. Aranan sıra:
+
+1. belirli bir müşteri problemi,
+2. çalışan sistemin anlatımı,
+3. elde edilen ticari sonuç,
+4. işin tam olarak hangi kodla yapıldığı,
+5. o kodun geçmişi ve lisansı,
+6. mümkünse ikinci bir bağımsız işaret.

@@ -6,13 +6,13 @@ Gelen mesajı, çağrıyı veya formu karşılayıp konusuna ayıran, eksik bilg
 
 **Bu grupta 12 örnek var.** Ne kadar güvenilir oldukları — B: 6 · C: 6.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
 ## B002 — Otel yüksek-harcayan müşteri reward e-mail
 
-**Ne satılmış?** Salesforce/CRM'deki yüksek harcayan otel müşterilerini belirleyip kişiselleştirilmiş teşekkür/ödül e-maili gönderen workflow.
+**Ne satılmış?** Salesforce/CRM'deki yüksek harcayan otel müşterilerini belirleyip kişiselleştirilmiş teşekkür/ödül e-maili gönderen iş akışı.
 
 **Ticari kanıt:** **F: $200**; yazar yaklaşık 40 dakikada yaptığını söylüyor. GitHub'daki kaynak author repo değil, resmi n8n template'in mirror'u.
 
@@ -40,7 +40,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne yapıyor?** Misafirlerin sık sorularını yanıtlayıp otel bilgisi/öneri sunan WhatsApp agent.
 
-**Kanıt:** Açık workflow var; ne kadar kazandırdığı bilinmiyor.
+**Kanıt:** Açık iş akışı var; ne kadar kazandırdığı bilinmiyor.
 
 **Risk:** Meta policy, yanlış tesis bilgisi, kişisel veriler.
 
@@ -78,9 +78,9 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 ---
 
-## C037 — AI chatbot + e-mail reply + lead workflow
+## C037 — AI chatbot + e-posta yanıtı + müşteri adayı iş akışı
 
-**Ne satılmış?** KOBİ için chatbot, e-mail yanıt ve lead workflow kombinasyonu.
+**Ne satılmış?** KOBİ için chatbot, e-posta yanıtı ve müşteri adayı iş akışı kombinasyonu.
 
 **Ticari sinyal:** Marketplace'te görünür yaklaşık **$100–200** order örneği.
 

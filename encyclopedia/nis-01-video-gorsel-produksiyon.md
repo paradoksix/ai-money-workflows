@@ -6,19 +6,19 @@ Reklam filmi, ürün videosu, müzik klibi, avatar ve video kapak görseli. Bura
 
 **Bu grupta 20 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 4 · C: 15.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
 ## A001 — AI Creative Director: moda kampanyası
 
-**Ne satılmış?** Bir e-ticaret moda markası için çok sayıda kampanya görselini tutarlı kreatif yönle üretmeye yarayan AI creative-director workflow'u.
+**Ne satılmış?** Bir e-ticaret moda markası için çok sayıda kampanya görselini tutarlı kreatif yönle üretmeye yarayan AI creative-director iş akışını.
 
 **Ticari kanıt:** Kaynak vaka kampanyayı **V: $9K campaign** olarak tanımlıyor. Bu rakam freelancerın net ücreti olarak doğrulanmıyor.
 
 **Nasıl çalışıyor?** n8n + Gemini/Nano Banana benzeri görsel üretim zinciri; brief'i sahne/konsept/prompta dönüştürüp varyasyon üretiyor.
 
-**Kaynak:** Reddit vaka + `sirlifehacker/Nano-Banana-Pro-Creative-Director`, pinned commit `1c82b35f...`. Root lisans bulunmadığı için kodu sahiplenmek yerine upstream referans alınmalı.
+**Kaynak:** Reddit vaka + `sirlifehacker/Nano-Banana-Pro-Creative-Director`, pinned commit `1c82b35f...`. Root lisans bulunmadığı için kodu sahiplenmek yerine özgün depo kaynak gösterilmeli.
 
 **Risk:** Marka/IP, ürünün gerçekte olmayan biçimde gösterilmesi, sentetik model kullanımı.
 
@@ -42,7 +42,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne yapıyor?** Mevcut başarılı kreatifi temel alıp kontrollü görsel/metin varyasyonları oluşturuyor.
 
-**Kanıt:** Açık workflow; ücret yok.
+**Kanıt:** Açık iş akışı; ücret yok.
 
 **Risk:** Marka/IP, yalnız görsel değiştirip “test” diye satma.
 

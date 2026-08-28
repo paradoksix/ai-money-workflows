@@ -6,7 +6,7 @@ Hazır bir sistem değil, uygulama satılan işler. Ortak yön şu: kimse "parla
 
 **Bu grupta 14 örnek var.** Ne kadar güvenilir oldukları — C: 14.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
@@ -184,7 +184,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Source durumu:** Ürün adı/kaynak kodu yorumda görünmüyor. C kalır.
 
-**Neden önemli?** Generic checklist/SaaS yerine **tek saha mesleğinin inspection workflow'u** için ödeme var. Recurring revenue kanıtı olan dar dikey app örneği.
+**Neden önemli?** Generic checklist/SaaS yerine **tek saha mesleğinin denetim iş akışı** için ödeme var. Recurring revenue kanıtı olan dar dikey app örneği.
 
 **Risk:** Inspection raporu yasal/teknik kayıt olarak kullanılıyorsa doğruluk, audit trail ve offline saha kullanımı gerekir.
 
