@@ -2,13 +2,13 @@
 
 **Nerede kaldık** dosyası. Turdan tura değişmeyen kurallar için [`CLAUDE.md`](CLAUDE.md)'ye bak — bu dosya her turda güncellenir.
 
-Son güncelleme: **2026-08-28**, "Wiki'ye geçiş turu"nun kapanışında.
+Son güncelleme: **2026-08-28**, "Wiki'ye geçiş turu"nun kapanışında — dal PR [#5](https://github.com/paradoksix/ai-money-workflows/pull/5)'e bağlandı.
 
 ## Şu anki durum
 
 | | |
 |---|---|
-| Dal | `claude/handoff-wiki-conversion-xemu2b` — `main`'den (`1914dfc`) ayrıldı, Wiki commit'ini taşıyor |
+| Dal | `claude/handoff-wiki-conversion-xemu2b` — `main`'den (`1914dfc`) ayrıldı, 4 commit taşıyor (son: `141792f`) |
 | Vaka sayısı | **124 kayıt** — A 6 · B 25 · C 92 · X 1 · **arşivde 122** (X001 ve A006'ya devredilen C027 hariç) — *bu turda değişmedi* |
 | İş kolu | 16 gerçek niş + `tartismali` |
 | `validate_catalog.py` | 42 kayıt — **geçiyor** |
@@ -16,7 +16,7 @@ Son güncelleme: **2026-08-28**, "Wiki'ye geçiş turu"nun kapanışında.
 | `docs/` | **22 sayfalık Wiki**, veriyle taze |
 | GitHub Pages | `main`'e merge edilince canlıya çıkar — https://paradoksix.github.io/ai-money-workflows/ |
 | Issue | **açık issue yok** |
-| PR | **Açılmadı, açılmayacak da** — kullanıcı kararı: PR'lar biriktirilip önemli bir aşamada değerlendirilecek. Kendi başına açma, hatırlat (`CLAUDE.md` → PR ve dal politikası) |
+| PR | **[#5](https://github.com/paradoksix/ai-money-workflows/pull/5) açık** — `main`'e karşı çakışmasız, CI yeşil, inceleme bekliyor. Bu dala push etmek PR'ı kendiliğinden günceller; **yeni PR açılmaz**. Politika aynen geçerli: PR'ı kullanıcı açar, agent kendi başına açmaz — yalnız hatırlatır (`CLAUDE.md` → PR ve dal politikası) |
 
 ## Bu turda ne yapıldı: web arayüzü Wiki oldu
 
@@ -134,7 +134,7 @@ Silinecek **iki bayat dal**:
 - `claude/golden-cases-deep-dive-2-c1m4ov` — **merge edilmemiş**, `main`'de olmayan 2 commit taşıyor ama içeriği tamamen bayat (eski `VOLUME-*` yapısı, `data/cases.csv` öncesi dünya). Kurtarılacak bir şeyi yok;
 - `claude/continue-from-where-left-y8utux` — **tamamen merge edilmiş** (`main`'de olmayan commit'i yok), yalnız artık gereksiz.
 
-Wiki dalı (`claude/handoff-wiki-conversion-xemu2b`) `main`'e girene kadar canlı sitede **eski tek sayfa** duruyor. PR politikası gereği bu dalın PR'ı kendi başına açılmaz — önemli bir aşamada kullanıcıya sorulur.
+Wiki dalı (`claude/handoff-wiki-conversion-xemu2b`) için **PR [#5](https://github.com/paradoksix/ai-money-workflows/pull/5) açıldı** ve inceleme bekliyor. Merge edilene kadar canlı sitede **eski tek sayfa** durmaya devam ediyor — Pages `main`'in `docs/` klasöründen yayın yapıyor.
 
 ## Yeni oturum için ilk adımlar
 
