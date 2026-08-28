@@ -14,7 +14,7 @@ Son güncelleme: **2026-08-28**, Wiki turu `main`'e birleştikten sonra.
 | `validate_catalog.py` | 42 kayıt — **geçiyor** |
 | `validate_cases.py` | 124 kayıt + 3 çapraz kontrol — **geçiyor** |
 | `docs/` | **22 sayfalık Wiki**, veriyle taze |
-| GitHub Pages | ⚠️ **Kaynak yanlıştı** — `main` → kök dizin olduğu için Jekyll README'yi yayınlıyordu, Wiki `docs/` altında gömülü kaldı. Kullanıcı `/docs`'a çeviriyor. Teyit `verify-live-site` iş akışından gelecek; **o yeşile dönene kadar "canlı" yazma** |
+| GitHub Pages | **Wiki canlıda — doğrulandı.** `verify-live-site` iş akışı 2026-08-28'de kök adreste Wiki'yi buldu ([run #1](https://github.com/paradoksix/ai-money-workflows/actions/runs/33220250547)). Bu, oturum boyunca *kanıta* dayanan ilk "canlı" ifadesi — öncekiler derleme durumundan varsayılmıştı |
 | Issue | **açık issue yok** |
 | PR | **[#5](https://github.com/paradoksix/ai-money-workflows/pull/5) merge edildi** (7 commit, 57 dosya) — **açık PR yok**. Politika aynen geçerli: PR'ı kullanıcı açar, agent kendi başına açmaz — yalnız hatırlatır (`CLAUDE.md` → PR ve dal politikası) |
 
@@ -140,7 +140,9 @@ Kalıcı önlem iki parçalı:
 - **`verify-live-site.yml`** eklendi. Actions runner'ları siteye erişebiliyor; iş akışı kök adresi çekip Wiki'nin sol menü işaretini (`class="nav" id="nav"` — README'de yok) arıyor. `page_build` sonrası ve elle çalışıyor, ayrı iş akışı olduğu için PR'ları bloklamıyor.
 - **`CLAUDE.md`** artık şunu kural olarak taşıyor: Pages kaynağı `main` + `/docs` olmak zorunda, ve **derleme durumuna bakıp "canlı" varsayılmaz** — iddia ya bu iş akışının yeşiline ya da kullanıcının teyidine dayanır.
 
-**Bekleyen tek adım kullanıcıda:** Settings → Pages → Source: "Deploy from a branch" → Branch `main`, klasör **`/docs`** → Save. Ayar değişince hiçbir bağlantının düzeltilmesi gerekmiyor; README, ENCYCLOPEDIA, 16 niş dosyası ve rozetler zaten bu kökü gösteriyor.
+**Çözüldü.** Kullanıcı Pages kaynağını `/docs`'a çevirdi ve `verify-live-site` ilk çalışmasında kök adreste Wiki'yi buldu. Hiçbir bağlantının düzeltilmesi gerekmedi — README, ENCYCLOPEDIA, 16 niş dosyası ve rozetler zaten bu kökü gösteriyordu.
+
+Kontrol sonradan güçlendirildi: yalnız giriş sayfasına bakmak yetmez, çünkü kök yanlış yapılandırılmışken bile giriş sayfası cevap verebilir ama içindeki bağlantılar 404 döner. İş akışı artık `tum-vakalar.html`, `wiki.css` ve `vakalar.js`'i de çekerek sitenin gerçekten **gezilebilir** olduğunu doğruluyor.
 
 ## Kullanıcıya kalan manuel işler
 
@@ -152,7 +154,7 @@ Silinecek **üç bayat dal**:
 - `claude/continue-from-where-left-y8utux` — **tamamen merge edilmiş** (`main`'de olmayan commit'i yok), yalnız artık gereksiz;
 - `claude/handoff-wiki-conversion-xemu2b` — **PR #5 ile merge edildi**, işi bitti.
 
-Wiki `main`'e girdi, ama **canlı sitede görünmesi Pages ayarına bağlı** — aşağıdaki bölüme bak.
+Wiki `main`'e girdi ve **canlı sitede yayında** — kaynak `/docs`'a çevrildikten sonra `verify-live-site` bunu doğruladı.
 
 ## Yeni oturum için ilk adımlar
 

@@ -31,7 +31,19 @@ jobs:
             body=$(curl -fsSL --max-time 25 "$URL" 2>/dev/null || true)
 
             if printf '%s' "$body" | grep -qF "$MARKER"; then
-              echo "OK: $URL serves the wiki."
+              # The front page alone is not enough: if Pages were serving the
+              # repository root, /docs/index.html could still answer here while
+              # every link inside it pointed at a 404. Prove the wiki is
+              # navigable by fetching a sub-page and the shared stylesheet at
+              # the same level the pages link to them.
+              for path in "tum-vakalar.html" "wiki.css" "vakalar.js"; do
+                if ! curl -fsS -o /dev/null --max-time 25 "$URL$path"; then
+                  echo "::error::$URL serves the wiki, but $URL$path does not resolve."
+                  echo "The front page is published without the rest of docs/."
+                  exit 1
+                fi
+              done
+              echo "OK: $URL serves the wiki, and its sub-pages and assets resolve."
               exit 0
             fi
 
