@@ -6,7 +6,7 @@ Form, e-posta, dosya ve tablo trafiğini düzene sokan işler. C011'in gösterdi
 
 **Bu grupta 7 örnek var.** Ne kadar güvenilir oldukları — B: 1 · C: 6.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 

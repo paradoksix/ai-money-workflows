@@ -6,7 +6,7 @@ Uzun içeriği parçalara ayırmak, bülten hazırlamak, kaynak taramak ve yüz 
 
 **Bu grupta 11 örnek var.** Ne kadar güvenilir oldukları — A: 1 · B: 5 · C: 5.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 

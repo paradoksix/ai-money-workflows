@@ -54,10 +54,11 @@ Okur sıradan bir insan; jargon bilen bir mühendis değil.
 ## Veri sözleşmesi
 
 - **`data/cases.csv` tek doğruluk kaynağıdır.** 124 kaydın tamamı burada. Bir vakayla ilgili herhangi bir sayı değişecekse önce burası değişir.
-- **`docs/index.html` üretilir — elle düzenlenmez.** `scripts/build_site.py` onu `data/cases.csv`'den yeniden yazar.
+- **`docs/` klasörünün tamamı üretilir — elle düzenlenmez.** `scripts/build_site.py` 22 Wiki sayfasını + `wiki.css`, `wiki.js`, `vakalar.js` dosyalarını `data/cases.csv` ve `encyclopedia/*.md`'den yeniden yazar. (Elle konmuş tek iki dosya: `.nojekyll` ve `wiki-onizleme.png`.)
 - **`catalog.csv`**, A/B/X çekirdeğinin pinlenmiş alt kümesidir (42 satır) ve `validate_cases.py`'deki `SHARED_WITH_CATALOG` alanlarında `cases.csv` ile **birebir uyuşmak zorundadır**.
 - **README'deki rakamlar veriden yeniden hesaplanır.** `validate_cases.py`'nin `check_readme` kontrolü 15 rakamı veriden üretip README ile karşılaştırır; tutmayanı adıyla söyleyip başarısız olur. README'de sayı değiştirirken veriyi de değiştir, yoksa CI kırılır.
 - **`build_site.py` deterministiktir** — aynı veriden bayt-aynı çıktı üretir. CI tazeliği `git diff --exit-code` ile ölçtüğü için bu özellik korunmalı: sözlük sırasına güvenme, zaman damgası veya rastgelelik ekleme.
+- **Ansiklopedi markdown'ı dar bir alt kümedir.** `build_site.py` içindeki renderer başlık, kalın, satır içi kod, bağlantı, madde ve numaralı liste, yatay çizgi ve alıntıyı tanır. Tablo, kod bloğu veya görsel eklenirse **derleme sessizce atlamaz, hata verip durur**. Yeni bir yapı gerekiyorsa önce `md_blocks`'a desteğini ekle.
 - Scriptler **saf stdlib** Python'dır (`csv`, `html`, `json`, `argparse`, `pathlib`, `re`). Dış bağımlılık eklenmez.
 - CSV'ler **RFC4180**'e uyar: içinde virgül geçen her serbest metin alanı tırnaklanır. (`$1,800` gibi tutarlar tırnaksız yazılırsa kolonlar kayar — bu hata bir kez yaşandı.)
 
@@ -68,7 +69,7 @@ CI de birebir aynısını çalıştırır (`.github/workflows/validate-catalog.y
 ```bash
 python3 scripts/validate_catalog.py                                    # 42 kayıt, pinlenmiş çekirdek
 python3 scripts/validate_cases.py                                      # 124 kayıt + 3 çapraz kontrol
-python3 scripts/build_site.py && git diff --exit-code docs/index.html  # sayfa taze mi
+python3 scripts/build_site.py && git diff --exit-code docs             # Wiki taze mi
 ```
 
 Ansiklopedi metnine dokunan her değişiklikten sonra ayrıca vaka bloğu sayısı korunmalı:
@@ -90,8 +91,8 @@ grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc     # 123 olm
 | `encyclopedia/A006-JACOBO-DEVICE-REPAIR.md` | Arşivin en sağlam tek vakası, kendi kartıyla |
 | `encyclopedia/APPENDIX-X-DISPUTED.md` | Şüpheli iddialar |
 | `ENCYCLOPEDIA.md` | Ansiklopedi girişi ve iş kolu indeksi |
-| `docs/index.html` | **Üretilen** atlas sayfası · `docs/.nojekyll` · `docs/atlas-onizleme.png` |
-| `scripts/build_site.py` | Atlas üreticisi (`--fragment PATH` ile başlıksız kopya da yazar) |
+| `docs/` | **Üretilen Wiki** — 22 sayfa: giriş, bütün örnekler, 16 iş kolu, şüpheli iddialar, ortak dersler, A006, ölçütler · `wiki.css` · `wiki.js` · `vakalar.js` · elle konan `.nojekyll` ve `wiki-onizleme.png` |
+| `scripts/build_site.py` | Wiki üreticisi — sol menü, vaka çapaları, ansiklopedi renderer'ı (`--fragment PATH` ile giriş sayfasının başlıksız kopyasını da yazar) |
 | `scripts/validate_cases.py` | Şema + 3 çapraz kontrol (katalog ↔ ansiklopedi ↔ README) |
 | `scripts/validate_catalog.py` | `catalog.csv` şeması, A/B/X için repo + 40 karakterlik SHA zorunlu |
 | `research/GOLDEN-CASES-DEEP-DIVE-*.md` | Tarihli derin araştırma turları |
@@ -107,7 +108,7 @@ Depoda `.md` linkleri **canlı adrese** gider, `docs/index.html`'e değil — Gi
 
 Bu sandbox'ta doğrulanmış, kalıcı kısıtlar. **Her oturumda yeniden test etme** — kullanıcı düzeldiğini söylemedikçe doğru kabul et:
 
-- **Engelli alan adları:** `reddit.com`, `old.reddit.com`, `linktr.ee`, çoğu şirket sitesi ve **tüm `*.github.io` adresleri** — kendi canlı sitemiz dâhil. Yani sayfayı buradan açıp göremezsin; doğrulamayı yerelde `docs/index.html` üzerinden (Chromium `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`) veya GitHub API ile yap.
+- **Engelli alan adları:** `reddit.com`, `old.reddit.com`, `linktr.ee`, çoğu şirket sitesi ve **tüm `*.github.io` adresleri** — kendi canlı sitemiz dâhil. Yani sayfayı buradan açıp göremezsin; doğrulamayı yerelde `docs/index.html` ve diğer Wiki sayfaları üzerinden (Chromium `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`) veya GitHub API ile yap.
 - **GitHub API yazma yolları proxy tarafından kapalı:** `"Write access to this GitHub API path is not permitted through this proxy."` Yani **dal silme, repo ayarı, Pages ayarı buradan yapılamaz** — bunlar kullanıcıya bırakılır. Okuma, issue/PR yorumu ve `git push` çalışır.
 - Reddit metni gerektiren araştırmalarda tek yol `WebSearch`'ün dolaylı özetleridir; thread'in tam metnine ulaşılamaz. Kaynak bulunamadıysa **uydurma — "bulunamadı" diye kaydet.**
 

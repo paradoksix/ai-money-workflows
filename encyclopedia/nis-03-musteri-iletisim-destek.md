@@ -6,7 +6,7 @@ Gelen mesajı, çağrıyı veya formu karşılayıp konusuna ayıran, eksik bilg
 
 **Bu grupta 12 örnek var.** Ne kadar güvenilir oldukları — B: 6 · C: 6.
 
-Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [atlas sayfası](https://paradoksix.github.io/ai-money-workflows/).
+Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak dersler için `DESENLER.md`, hepsini birden filtrelemek için [bütün örnekler sayfası](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html).
 
 ---
 
