@@ -2,21 +2,21 @@
 
 **Nerede kaldık** dosyası. Turdan tura değişmeyen kurallar için [`CLAUDE.md`](CLAUDE.md)'ye bak — bu dosya her turda güncellenir.
 
-Son güncelleme: **2026-08-28**, "Wiki'ye geçiş turu"nun kapanışında — dal PR [#5](https://github.com/paradoksix/ai-money-workflows/pull/5)'e bağlandı.
+Son güncelleme: **2026-08-28**, Wiki turu `main`'e birleştikten sonra.
 
 ## Şu anki durum
 
 | | |
 |---|---|
-| Dal | `claude/handoff-wiki-conversion-xemu2b` — `main`'den (`1914dfc`) ayrıldı, 4 commit taşıyor (son: `141792f`) |
+| Dal | **`main`** — Wiki dalı birleşti (merge commit `10dfc80`), çalışma ağacı temiz |
 | Vaka sayısı | **124 kayıt** — A 6 · B 25 · C 92 · X 1 · **arşivde 122** (X001 ve A006'ya devredilen C027 hariç) — *bu turda değişmedi* |
 | İş kolu | 16 gerçek niş + `tartismali` |
 | `validate_catalog.py` | 42 kayıt — **geçiyor** |
 | `validate_cases.py` | 124 kayıt + 3 çapraz kontrol — **geçiyor** |
 | `docs/` | **22 sayfalık Wiki**, veriyle taze |
-| GitHub Pages | `main`'e merge edilince canlıya çıkar — https://paradoksix.github.io/ai-money-workflows/ |
+| GitHub Pages | **Wiki canlıda** — https://paradoksix.github.io/ai-money-workflows/ (`main` → `docs/`) |
 | Issue | **açık issue yok** |
-| PR | **[#5](https://github.com/paradoksix/ai-money-workflows/pull/5) açık** — `main`'e karşı çakışmasız, CI yeşil, inceleme bekliyor. Bu dala push etmek PR'ı kendiliğinden günceller; **yeni PR açılmaz**. Politika aynen geçerli: PR'ı kullanıcı açar, agent kendi başına açmaz — yalnız hatırlatır (`CLAUDE.md` → PR ve dal politikası) |
+| PR | **[#5](https://github.com/paradoksix/ai-money-workflows/pull/5) merge edildi** (7 commit, 57 dosya) — **açık PR yok**. Politika aynen geçerli: PR'ı kullanıcı açar, agent kendi başına açmaz — yalnız hatırlatır (`CLAUDE.md` → PR ve dal politikası) |
 
 ## Bu turda ne yapıldı: web arayüzü Wiki oldu
 
@@ -131,12 +131,13 @@ Kullanılan karşılıklar artık kalıcı kural olarak `CLAUDE.md`'nin **Dil ku
 
 **Acil değil.** Kullanıcı bunları müsait olduğunda kendisi yapacak; oturum sonlarında hatırlatılması yeterli. Agent proxy'si GitHub API'sinin yazma yollarını reddettiği için dal silme buradan zaten yapılamıyor — GitHub arayüzünde `Branches` ekranından siliniyor.
 
-Silinecek **iki bayat dal**:
+Silinecek **üç bayat dal**:
 
 - `claude/golden-cases-deep-dive-2-c1m4ov` — **merge edilmemiş**, `main`'de olmayan 2 commit taşıyor ama içeriği tamamen bayat (eski `VOLUME-*` yapısı, `data/cases.csv` öncesi dünya). Kurtarılacak bir şeyi yok;
-- `claude/continue-from-where-left-y8utux` — **tamamen merge edilmiş** (`main`'de olmayan commit'i yok), yalnız artık gereksiz.
+- `claude/continue-from-where-left-y8utux` — **tamamen merge edilmiş** (`main`'de olmayan commit'i yok), yalnız artık gereksiz;
+- `claude/handoff-wiki-conversion-xemu2b` — **PR #5 ile merge edildi**, işi bitti.
 
-Wiki dalı (`claude/handoff-wiki-conversion-xemu2b`) için **PR [#5](https://github.com/paradoksix/ai-money-workflows/pull/5) açıldı** ve inceleme bekliyor. Merge edilene kadar canlı sitede **eski tek sayfa** durmaya devam ediyor — Pages `main`'in `docs/` klasöründen yayın yapıyor.
+Wiki `main`'e girdiği için canlı sitede artık **22 sayfalık Wiki** yayında.
 
 ## Yeni oturum için ilk adımlar
 
