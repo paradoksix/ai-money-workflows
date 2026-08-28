@@ -51,6 +51,23 @@ Okur sıradan bir insan; jargon bilen bir mühendis değil.
 - Kural yalnız gövde metnini değil **başlıkları, arayüz etiketlerini, filtre adlarını ve kart özetlerini** de kapsar.
 - Kanıt derecesi hiçbir yerde yalnız renkle anlatılmaz — **harf her zaman görünür** (A/B/C/X), renk yalnız destektir.
 
+Sık düşülen tuzaklar ve arşivin yerleşmiş karşılıkları — yeni metinde bunlar kullanılır:
+
+| Kullanma | Bunu kullan |
+|---|---|
+| exact repo / exact kaynak | işin tam olarak hangi kodla yapıldığı · doğrulanmış kaynak kodu |
+| workflow | iş akışı |
+| upstream | özgün depo · kodun asıl sahibi |
+| clone listesi | indirilecek kaynak kod listesi |
+| affiliate | komisyonlu tanıtım |
+| public repo | herkese açık depo |
+| root lisans | deponun kök dizinindeki lisansı |
+| pinlenmiş commit | sabitlenmiş sürüm |
+| renderer | markdown çeviricisi |
+| thread | tartışma başlığı |
+
+**Dört derecenin adı üç yerde birebir aynıdır** ve öyle kalmalı: `RESEARCH_POLICY.md` başlıkları, `CLAUDE.md`'nin yukarıdaki özeti ve `build_site.py`'deki `GRADES` sabiti.
+
 ## Veri sözleşmesi
 
 - **`data/cases.csv` tek doğruluk kaynağıdır.** 124 kaydın tamamı burada. Bir vakayla ilgili herhangi bir sayı değişecekse önce burası değişir.

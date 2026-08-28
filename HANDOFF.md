@@ -112,50 +112,18 @@ Akış:
 - **Onaylanan aday veriye nasıl bağlanacak?** Bir vaka üç yerde birden yaşıyor: `data/cases.csv`, `encyclopedia/nis-*.md` ve gerekiyorsa `research_queue.csv`. `validate_cases.py` üçü arasında çapraz kontrol yapıyor; hat bu üçünü tutarlı bırakmak zorunda.
 - **`docs/` üretilen çıktıdır.** Gönderim hattı oraya doğrudan yazamaz — veri değişir, Wiki `build_site.py` ile yeniden üretilir.
 
-## Sonraki iş: dil kuralını `RESEARCH_POLICY.md`'ye uygula
+## Yapıldı: dil kuralı kendi kural kitaplarına da uygulandı
 
-`CLAUDE.md`'deki **dil kuralı** melez terimleri yasaklıyor ("exact kaynak", "ground truth", "verified repo" örnek olarak veriliyor) ama kuralı koyan iki dosyanın kendisi o terimleri kullanıyordu.
+`CLAUDE.md`'deki **dil kuralı** melez terimleri yasaklıyor ("exact kaynak", "ground truth", "verified repo" örnek olarak veriliyor) ama kuralı koyan iki dosyanın kendisi o terimleri kullanıyordu. İkisi de temizlendi.
 
-**`CLAUDE.md` temizlendi** (21 + 2 değişiklik): "upstream" → özgün depo · "clone listesi" → indirilecek kaynak kod listesi · "affiliate" → komisyonlu tanıtım · "Public repo" → herkese açık depo · "Root seviyede" → kök dizininde · "pinlenmiş" → sabitlenmiş · "renderer" → markdown çeviricisi · "sandbox" → çalışma ortamı · "thread" → tartışma başlığı · "build dalgası" → yapım dalgası. Ayrıca `CI`, `PR` ve `commit SHA` ilk geçtikleri yerde açıklandı, ve gerçek bir hata düzeltildi: `check_readme`'nin kontrol ettiği rakam sayısı **15 değil 12**.
+- **`CLAUDE.md`** — 23 değişiklik. Ayrıca `CI`, `PR` ve `commit SHA` ilk geçtikleri yerde açıklandı. Okurken gerçek bir hata da çıktı: veri sözleşmesi `check_readme`'nin **15** rakam kontrol ettiğini söylüyordu, doğrusu **12** (doğrulayıcının kendi çıktısı bunu yazıyor). Düzeltildi.
+- **`RESEARCH_POLICY.md`** — baştan sona yeniden yazıldı. Dört derecenin başlığı artık Wiki ve `CLAUDE.md` ile **birebir aynı** (`A — Müşteri kanıtı + kodu açık` vb.); önceden `A — Doğrulanmış ticari vaka + exact repo` diyordu. Eşikler, lisans kuralı ve `tr_sellability` tanımları **anlamca değişmedi**; yalnız kelimeler sadeleşti.
 
-**Geriye `RESEARCH_POLICY.md` kaldı.** Aşağıdaki tarama **yapıldı** — sonraki turun yeniden taramasına gerek yok.
+Kullanılan karşılıklar artık kalıcı kural olarak `CLAUDE.md`'nin **Dil kuralı** bölümünde bir tabloda duruyor — yeni metin yazarken oraya bakılır.
 
-### `RESEARCH_POLICY.md` (45 satır) — ihlaller
+`docs/arastirma-politikasi.html` aynı commit'te yeniden üretildi. Doğrulayıcılar bu iki dosyayı okumadığı için CI etkilenmedi.
 
-| Satır | İfade |
-|---|---|
-| 7 (başlık) | `### A — Doğrulanmış ticari vaka + exact repo` |
-| 10 | "GitHub/Gist/**workflow** kaynağı" |
-| 14 (başlık) | `### B — Ticari üretici + exact repo, fakat workflow bazında gelir kanıtı eksik` |
-| 15 | "bu belirli **workflow** için" |
-| 18 | "**upstream** koleksiyonuna girmez" |
-| 21 | "**affiliate** çıkar çatışması… **clone** listesine alınmaz" |
-| 24 | "**Public** GitHub **reposu**… bu **repo**ya kopyalamıyoruz" |
-| 25 | "**upstream** URL" |
-| 43 | "**exact kaynak** kod" — kuralın birebir yasakladığı örnek ifadenin aynısı |
-| 44 | "**repo** geçmişi ve lisans" |
-
-### Kullanılabilecek karşılıklar (`CLAUDE.md`'de bunlar kullanıldı)
-
-| Şimdi | Sade karşılığı |
-|---|---|
-| exact repo | işin tam olarak hangi kodla yapıldığı · doğrulanmış kaynak kodu |
-| workflow | iş akışı |
-| upstream | özgün depo · kodun asıl sahibi |
-| clone listesi | indirilecek kaynak kod listesi |
-| affiliate | komisyonlu tanıtım |
-| public repo | herkese açık depo |
-| root lisans | deponun kök dizinindeki lisans |
-
-### Güvenlik ve kısıt notları (taranarak doğrulandı)
-
-- **CI güvenli:** `validate_cases.py` ve `validate_catalog.py` `RESEARCH_POLICY.md`'yi **hiç okumuyor**. Düzyazı değişikliği doğrulamayı kırmaz.
-- **Ama `docs/` tazelenmeli:** `build_site.py` bu dosyayı `docs/arastirma-politikasi.html`'e render ediyor. Değişiklikten sonra `python3 scripts/build_site.py` çalıştırılıp `docs/` aynı commit'e konmalı, yoksa tazelik kontrolü kırılır.
-- **Markdown alt kümesinin dışına çıkma:** başlık, kalın, satır içi kod, bağlantı, madde/numaralı liste, yatay çizgi, alıntı serbest. **Tablo, kod bloğu veya görsel derlemeyi durdurur** (renderer bilerek hata veriyor).
-- **Başlıklar serbestçe değiştirilebilir:** dosyaya bağlanan hiçbir yer bölüm çapası kullanmıyor — hepsi dosyanın kendisine bağlanıyor (`CLAUDE.md`, `README.md`×3, `ENCYCLOPEDIA.md`, 16 `encyclopedia/nis-*.md`, `build_site.py`).
-- **Anlam değişmemeli, yalnız kelimeler.** A/B/C/X tanımları `validate_*.py` tarafından zorlanıyor ve `build_site.py`'nin `GRADES` sabitinde tekrar ediliyor. Kural aynı kalacak, sadece sadeleşecek.
-- **Wiki'de iş yok:** `build_site.py`'deki `GRADES` ve `REVENUE` metinleri zaten sade Türkçe. `CLAUDE.md` de temizlendi; geride kalan tek dosya `RESEARCH_POLICY.md`.
-- **Düşük öncelikli yayılma:** aynı jargon (`workflow`, `upstream` ağırlıklı) `encyclopedia/*.md`, `TURKIYE_OPPORTUNITIES.md` ve `BUILD_SHORTLIST.md`'de de var. `research/GOLDEN-CASES-DEEP-DIVE-*.md` en yoğunu ama bunlar **iç araştırma notu**, yayınlanan metin değil — kapsam dışı bırakılabilir.
+**Geriye düşük öncelikli bir kuyruk kaldı:** aynı jargon (`workflow`, `upstream` ağırlıklı) `encyclopedia/*.md`, `TURKIYE_OPPORTUNITIES.md` ve `BUILD_SHORTLIST.md` içinde de var. `research/GOLDEN-CASES-DEEP-DIVE-*.md` en yoğunu ama bunlar **iç araştırma notu**, yayınlanan metin değil — kapsam dışı bırakılabilir. Ansiklopediye dokunulursa **123 vaka bloğu sayımı korunmalı**.
 
 ## Kullanıcıya kalan manuel işler
 
@@ -179,6 +147,6 @@ Wiki dalı (`claude/handoff-wiki-conversion-xemu2b`) `main`'e girene kadar canl�
    grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc   # 123 olmalı
    ```
 3. **Açık karar kalmadı** — sorulacak bir şey yok, iş var. Sıradaki iki somut iş:
-   - **Dil kuralı temizliği** — geriye yalnız `RESEARCH_POLICY.md` kaldı (`CLAUDE.md` bitti). Tarama yapıldı, ihlal listesi ve karşılıklar yukarıda; yeniden taramaya gerek yok. **Bitince `docs/` yeniden üretilip aynı commit'e konmalı** — bu dosya Wiki'ye render ediliyor.
-   - **`README.md` satır 188** — artık geçerli olmayan 150–200 hedef bandı ifadesi.
+   - **`README.md` satır 188** — artık geçerli olmayan 150–200 hedef bandı ifadesi (yukarıda tam alıntısı ve uyarısı var).
+   - **İstenirse:** kalan düşük öncelikli jargon kuyruğu — `encyclopedia/*.md`, `TURKIYE_OPPORTUNITIES.md`, `BUILD_SHORTLIST.md`. Karşılıklar `CLAUDE.md`'nin Dil kuralı bölümündeki tabloda.
 4. Araştırma turunu kapatan commit bu dosyayı da güncellesin.
