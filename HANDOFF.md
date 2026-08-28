@@ -74,12 +74,14 @@ Arşivin ucu açık olması, **eldeki 124 kaydın da eksiksiz olduğu anlamına 
 | Boşluk | Sayı | Anlamı |
 |---|---|---|
 | `status = encyclopedia_only` | **82 / 124** | Hiç araştırma kuyruğundan geçmemiş |
-| `research_queue.csv`'de olmayan C vakası | **59 / 92** | Kuyruk yalnız 33 satır |
+| `research_queue.csv`'de olmayan C vakası | **50 / 92** | Kuyruk 42 satır (C076–C084 bu turda eklendi) |
 | `source_url` boş | **74 / 124** | 23 B + 51 C. En ağır nişler: video-görsel **18**, müşteri iletişimi **11**, içerik-sosyal medya **10**, B2B lead **7** |
 | `revenue_type` boş | **33 / 124** | 2 A + 24 B + 7 C |
 | `reported_amount` boş | **39 / 124** | |
 
 **Asıl takip yeri `research_queue.csv`'nin `next_action` sütunudur** — issue checklist'i değil.
+
+**Bu turda denenen ve başarısız olan:** C076–C084'ün ortak kaynak başlığı arandı. Dokuzu da tek bir Reddit başlığından geliyor ama adresi hiç kaydedilmemiş. Üç ayrı açıdan arandı (CRM ara katmanı `$3.500/ay` · D365 IOM `~$240K/yıl` · tıbbi cihaz son kullanma `$36K/çeyrek`) — hiçbiri bulmadı. **`reddit.com` bu ortamda yalnız doğrudan erişime değil, web aramasına da kapalı** (arama motoru `400` döndürüyor). Dokuzu da dürüst kayıtla kuyruğa alındı; aynı aramaları tekrarlama.
 
 **Kaynağı hâlâ aranan 11 altın vaka** (öncelik sırasıyla): C004 Powerprozesse · C003 50K katalog (`conor-is-my-name` adayı **reddedildi**, yeniden kullanma) · C002 Japon fatura işleyici · C006 AigencyTracker · C005 muhasebe otomasyonu · C001 gemi yöneticisi lead · C007 Shopify stok · C008 kitapçı WhatsApp · C018 `$5K` özel ders · C029 çevrimdışı üniversite RAG · C076 tıbbi cihaz son kullanma takibi.
 
