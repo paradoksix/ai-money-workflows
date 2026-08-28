@@ -16,7 +16,7 @@ Son güncelleme: **2026-08-28**, "Wiki'ye geçiş turu"nun kapanışında.
 | `docs/` | **22 sayfalık Wiki**, veriyle taze |
 | GitHub Pages | `main`'e merge edilince canlıya çıkar — https://paradoksix.github.io/ai-money-workflows/ |
 | Issue | **açık issue yok** |
-| PR | Bu dalın PR'ı **henüz açılmadı** — kullanıcı istemedi |
+| PR | **Açılmadı, açılmayacak da** — kullanıcı kararı: PR'lar biriktirilip önemli bir aşamada değerlendirilecek. Kendi başına açma, hatırlat (`CLAUDE.md` → PR ve dal politikası) |
 
 ## Bu turda ne yapıldı: web arayüzü Wiki oldu
 
@@ -59,9 +59,21 @@ Kullanıcıya soruldu, **"niş sayfası + derin bağlantı (~21 sayfa)"** seçil
 
 Wiki, her niş sayfasında iki satırı **görüntülemiyor**: "Bu grupta N örnek var" (artık sayfa başlığında) ve "Harflerin ne anlama geldiği için…" (artık sol menüde, her sayfada). Kaynak markdown'da ikisi de duruyor; GitHub'dan okuyanlar için hâlâ gerekli.
 
-## Sıradaki iş: araştırmayı tamamlama
+## Karar: araştırmanın ucu açık, hedef yok
 
-Bu tur **bilerek yeni vaka eklemedi** — kullanıcı "araştırmayı sonraya bırakıyoruz" dedi. Aşağıdaki tablo bir önceki turda ölçüldü ve **hâlâ geçerli**:
+Önceki turdan kalan "araştırma nerede biter?" sorusu **kapandı**. Kullanıcının kararı: **sabit bir bitiş çizgisi yok.** Arşiv sürekli büyümeye açık; 150–200 vaka gibi bir hedef bandı artık geçerli değil.
+
+**Bu bir çelişki bıraktı — sonraki turun somut işi:** `README.md` satır 188 hâlâ şunu diyor:
+
+> Arşiv **122 örnekte**; hedef, aynı ölçütleri gevşetmeden 150–200 bandına kontrollü biçimde ilerlemek.
+
+Bu cümlenin ikinci yarısı artık yanlış. Düzeltilirken `validate_cases.py`'nin `check_readme` kontrolüne dikkat: **"122" rakamı veriden doğrulanıyor**, ona dokunma; yalnız hedef bandı ifadesi değişecek.
+
+Ucu açıklık, ölçütlerin gevşediği anlamına **gelmiyor** — A/B/C/X eşikleri ve lisans kuralı aynen duruyor. Değişen tek şey, arşivin bir bitiş sayısına doğru yürümemesi.
+
+## Açık boşluklar: neyin araştırılacağı
+
+Arşivin ucu açık olması, **eldeki 124 kaydın da eksiksiz olduğu anlamına gelmiyor.** Yeni vaka aramak kadar mevcutların boşluklarını kapatmak da iş. Bu tur bilerek yeni vaka eklemedi; aşağıdaki tablo bir önceki turda ölçüldü ve **hâlâ geçerli**:
 
 | Boşluk | Sayı | Anlamı |
 |---|---|---|
@@ -79,23 +91,84 @@ Bu tur **bilerek yeni vaka eklemedi** — kullanıcı "araştırmayı sonraya b�
 
 Wiki'nin künye bölümü artık bu boşlukları **sayfada görünür kılıyor**: kaynağı olmayan her vaka "kaynağın tam adresi kaydedilmemiş" yazıyor. Araştırma ilerledikçe bu satırlar kendiliğinden dolar.
 
-## Açıkta kalan tek karar
+## Gelecek fikri: repo gönderim ve tarama hattı
 
-**Araştırma nerede biter?** (Derinlik kararı bu turda kapandı, bu duruyor.) Adaylar:
+Araştırmanın ucu açık olmasının **kullanıcının tarif ettiği yolu** bu. Henüz **tasarlanmadı** — burada yalnız fikir ve kısıtları kayıtlı. Uygulanmadan önce ayrı bir tasarım turu gerekiyor.
 
-- README'deki mevcut hedef: **150–200 vaka** bandına ölçütleri gevşetmeden çıkmak;
-- ya da yeni vaka eklemeden **derinleşmek**: her C vakasını kuyruğa sokmak, her vakaya `source_url` kazandırmak, boş `revenue_type`/`reported_amount` alanlarını kapatmak.
+Akış:
 
-İkisi çok farklı işler. Yukarıdaki tablo hangisinin ne kadar iş olduğunu gösteriyor. **Yeni oturum bunu kendi başına seçmemeli — sorup karar almalı.**
+1. **Wiki'de bir gönderim sayfası.** Ziyaretçi, para kazandırdığını düşündüğü bir reponun linkini bir alana yazıp gönderir.
+2. **Modele gitmeden önce ücretsiz elemeler.** Token harcamadan yapılabilecek kontroller önce koşar: link gerçekten bir GitHub reposu mu · `data/cases.csv`'de `repo_url` olarak zaten var mı · kök dizinde açık lisans var mı · depo boş ya da arşivlenmiş mi. Gönderimlerin çoğu burada elenir ve **modele hiç ulaşmaz**.
+3. **Elemeyi geçen için tek ve küçük bir model çağrısı.** Yalnız repo üstverisi gönderilir: ad, açıklama, konu etiketleri ve README'nin ilk birkaç bin karakteri. **Kod indirilmez, dosya ağacı taranmaz.** Ucuz/küçük bir model yeter (Haiku sınıfı). Tek soru: *bu, para kazandırdığı iddia edilen bir iş akışı mı; arşivin ölçütlerine aday olur mu?*
+4. **Karar kullanıcıda.** Aday çıkarsa ayrı bir yönetim paneli sayfasında kullanıcıya bildirim düşer; ekle/ekleme kararını **yalnız kullanıcı** verir. Otomatik ekleme yok.
+5. **Onaylananlar için derin araştırma.** Repo derinlemesine incelenir, vaka hakkında internette araştırma yapılır, mevcut kayıtlarla benzerlik ve çakışma kontrol edilir, sonra uygun nişe ve kanıt derecesine yerleştirilir.
+
+**Token maliyeti bu tasarımın ana kısıtı** — kullanıcı bunu iki kez vurguladı. Kural: ücretsiz elemeler her zaman modelden önce koşar; model çağrısı gönderim başına bir tane ve küçük tutulur.
+
+**Çözülmemiş mimari sorular** (tasarım turunun cevaplaması gerekenler):
+
+- **GitHub Pages statiktir.** Form gönderimini alacak ve arka planda tarama koşturacak bir yer yok. Depo dışında bir şey gerekiyor: GitHub Actions, harici bir servis ya da başka bir çözüm. Bu, tasarımın en büyük açık ucu.
+- **Yönetim paneli kimlik doğrulaması** nasıl yapılacak — panel herkese açık bir sayfa olamaz.
+- **Onaylanan aday veriye nasıl bağlanacak?** Bir vaka üç yerde birden yaşıyor: `data/cases.csv`, `encyclopedia/nis-*.md` ve gerekiyorsa `research_queue.csv`. `validate_cases.py` üçü arasında çapraz kontrol yapıyor; hat bu üçünü tutarlı bırakmak zorunda.
+- **`docs/` üretilen çıktıdır.** Gönderim hattı oraya doğrudan yazamaz — veri değişir, Wiki `build_site.py` ile yeniden üretilir.
+
+## Sonraki iş: dil kuralını iki dosyaya uygula
+
+`CLAUDE.md`'deki **dil kuralı** melez terimleri yasaklıyor ("exact kaynak", "ground truth", "verified repo" örnek olarak veriliyor) ama **kuralın kendi kural kitabı ve kendi anayasası hâlâ o terimleri kullanıyor.** Kullanıcı ikisinin de temizlenmesini onayladı; yalnız zamanlamayı sonraya bıraktı.
+
+Aşağıdaki tarama **yapıldı** — sonraki turun yeniden taramasına gerek yok.
+
+### `RESEARCH_POLICY.md` (45 satır) — ihlaller
+
+| Satır | İfade |
+|---|---|
+| 7 (başlık) | `### A — Doğrulanmış ticari vaka + exact repo` |
+| 10 | "GitHub/Gist/**workflow** kaynağı" |
+| 14 (başlık) | `### B — Ticari üretici + exact repo, fakat workflow bazında gelir kanıtı eksik` |
+| 15 | "bu belirli **workflow** için" |
+| 18 | "**upstream** koleksiyonuna girmez" |
+| 21 | "**affiliate** çıkar çatışması… **clone** listesine alınmaz" |
+| 24 | "**Public** GitHub **reposu**… bu **repo**ya kopyalamıyoruz" |
+| 25 | "**upstream** URL" |
+| 43 | "**exact kaynak** kod" — kuralın birebir yasakladığı örnek ifadenin aynısı |
+| 44 | "**repo** geçmişi ve lisans" |
+
+### `CLAUDE.md` — aynı jargon
+
+Satır 19 ("Repo çıkana kadar **upstream clone** listesine girmez") · satır 20 ("**affiliate** çıkar çatışması", "varsayılan **clone** listesi") · satır 35 ("**Public** bir GitHub **reposu**", "**Root** seviyede") · satır 37 ("**upstream** URL") · satır 41 ("**Clone** scriptleri") · satır 43 ("atıf verilen **upstream** kod").
+
+### Kullanılabilecek karşılıklar
+
+| Şimdi | Sade karşılığı |
+|---|---|
+| exact repo | işin tam olarak hangi kodla yapıldığı · doğrulanmış kaynak kodu |
+| workflow | iş akışı |
+| upstream | özgün depo · kodun asıl sahibi |
+| clone listesi | indirilecek kaynak kod listesi |
+| affiliate | komisyonlu tanıtım |
+| public repo | herkese açık depo |
+| root lisans | deponun kök dizinindeki lisans |
+
+### Güvenlik ve kısıt notları (taranarak doğrulandı)
+
+- **CI güvenli:** `validate_cases.py` ve `validate_catalog.py` `RESEARCH_POLICY.md`'yi **hiç okumuyor**. Düzyazı değişikliği doğrulamayı kırmaz.
+- **Ama `docs/` tazelenmeli:** `build_site.py` bu dosyayı `docs/arastirma-politikasi.html`'e render ediyor. Değişiklikten sonra `python3 scripts/build_site.py` çalıştırılıp `docs/` aynı commit'e konmalı, yoksa tazelik kontrolü kırılır.
+- **Markdown alt kümesinin dışına çıkma:** başlık, kalın, satır içi kod, bağlantı, madde/numaralı liste, yatay çizgi, alıntı serbest. **Tablo, kod bloğu veya görsel derlemeyi durdurur** (renderer bilerek hata veriyor).
+- **Başlıklar serbestçe değiştirilebilir:** dosyaya bağlanan hiçbir yer bölüm çapası kullanmıyor — hepsi dosyanın kendisine bağlanıyor (`CLAUDE.md`, `README.md`×3, `ENCYCLOPEDIA.md`, 16 `encyclopedia/nis-*.md`, `build_site.py`).
+- **Anlam değişmemeli, yalnız kelimeler.** A/B/C/X tanımları `validate_*.py` tarafından zorlanıyor ve `build_site.py`'nin `GRADES` sabitinde tekrar ediliyor. Kural aynı kalacak, sadece sadeleşecek.
+- **Wiki'de iş yok:** `build_site.py`'deki `GRADES` ve `REVENUE` metinleri zaten sade Türkçe. Geride kalan yalnız bu iki markdown dosyası.
+- **Düşük öncelikli yayılma:** aynı jargon (`workflow`, `upstream` ağırlıklı) `encyclopedia/*.md`, `TURKIYE_OPPORTUNITIES.md` ve `BUILD_SHORTLIST.md`'de de var. `research/GOLDEN-CASES-DEEP-DIVE-*.md` en yoğunu ama bunlar **iç araştırma notu**, yayınlanan metin değil — kapsam dışı bırakılabilir.
 
 ## Kullanıcıya kalan manuel işler
 
-Agent proxy'si GitHub API'sinin yazma yollarını reddettiği için **dal silme buradan yapılamıyor**. GitHub arayüzünden `Branches` ekranından silinecek **iki bayat dal** var:
+**Acil değil.** Kullanıcı bunları müsait olduğunda kendisi yapacak; oturum sonlarında hatırlatılması yeterli. Agent proxy'si GitHub API'sinin yazma yollarını reddettiği için dal silme buradan zaten yapılamıyor — GitHub arayüzünde `Branches` ekranından siliniyor.
+
+Silinecek **iki bayat dal**:
 
 - `claude/golden-cases-deep-dive-2-c1m4ov` — **merge edilmemiş**, `main`'de olmayan 2 commit taşıyor ama içeriği tamamen bayat (eski `VOLUME-*` yapısı, `data/cases.csv` öncesi dünya). Kurtarılacak bir şeyi yok;
 - `claude/continue-from-where-left-y8utux` — **tamamen merge edilmiş** (`main`'de olmayan commit'i yok), yalnız artık gereksiz.
 
-Ayrıca: bu dalın **PR'ı açılmadı**. İstenirse açılabilir; Wiki `main`'e merge edilene kadar canlı sitede eski tek sayfa duruyor.
+Wiki dalı (`claude/handoff-wiki-conversion-xemu2b`) `main`'e girene kadar canlı sitede **eski tek sayfa** duruyor. PR politikası gereği bu dalın PR'ı kendi başına açılmaz — önemli bir aşamada kullanıcıya sorulur.
 
 ## Yeni oturum için ilk adımlar
 
@@ -107,5 +180,7 @@ Ayrıca: bu dalın **PR'ı açılmadı**. İstenirse açılabilir; Wiki `main`'e
    python3 scripts/build_site.py && git diff --exit-code docs
    grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc   # 123 olmalı
    ```
-3. Yukarıdaki **açık kararı** kullanıcıya sor — araştırmanın bitiş çizgisi.
+3. **Açık karar kalmadı** — sorulacak bir şey yok, iş var. Sıradaki iki somut iş:
+   - **Dil kuralı temizliği** — `RESEARCH_POLICY.md` ve `CLAUDE.md`. Tarama yapıldı, ihlal listesi ve karşılıklar yukarıda; yeniden taramaya gerek yok. Bitince `docs/` yeniden üretilmeli.
+   - **`README.md` satır 188** — artık geçerli olmayan 150–200 hedef bandı ifadesi.
 4. Araştırma turunu kapatan commit bu dosyayı da güncellesin.

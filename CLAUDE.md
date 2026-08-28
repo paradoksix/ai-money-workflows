@@ -112,6 +112,12 @@ Bu sandbox'ta doğrulanmış, kalıcı kısıtlar. **Her oturumda yeniden test e
 - **GitHub API yazma yolları proxy tarafından kapalı:** `"Write access to this GitHub API path is not permitted through this proxy."` Yani **dal silme, repo ayarı, Pages ayarı buradan yapılamaz** — bunlar kullanıcıya bırakılır. Okuma, issue/PR yorumu ve `git push` çalışır.
 - Reddit metni gerektiren araştırmalarda tek yol `WebSearch`'ün dolaylı özetleridir; thread'in tam metnine ulaşılamaz. Kaynak bulunamadıysa **uydurma — "bulunamadı" diye kaydet.**
 
+## PR ve dal politikası
+
+- **PR kendi başına açılmaz.** İş biten dala push edilir, orada bekler. Kullanıcı PR'ları biriktirip önemli bir aşamada topluca değerlendirmek istiyor.
+- **Önemli bir gelişmeden sonra hatırlat** — "şu dal hazır, PR açmamı ister misin?" diye sor. Onay gelirse aç, gelmezse dalda bırak.
+- **Silinecek bayat dal varsa oturum sonunda hatırlat.** Silmeyi kullanıcı, müsait olduğunda GitHub arayüzünden kendisi yapar (proxy zaten yazma yollarını kapatıyor). **Acil bir işmiş gibi sunma** — sadece listeyi hatırlat.
+
 ## Senkron kuralı
 
 - **Kural değişti mi** → `CLAUDE.md`.
