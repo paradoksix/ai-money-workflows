@@ -112,6 +112,7 @@ grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc     # 123 olm
 | `scripts/build_site.py` | Wiki üreticisi — sol menü, vaka çapaları, ansiklopedi çeviricisi (`--fragment PATH` ile giriş sayfasının başlıksız kopyasını da yazar) |
 | `scripts/validate_cases.py` | Şema + 3 çapraz kontrol (katalog ↔ ansiklopedi ↔ README) |
 | `scripts/validate_catalog.py` | `catalog.csv` şeması, A/B/X için depo adresi + 40 karakterlik sürüm kimliği zorunlu |
+| `.github/workflows/verify-live-site.yml` | Canlı sitenin **Wiki'yi** sunduğunu doğrular (README'yi değil) — bu ortamdan yapılamayan tek kontrol |
 | `research/GOLDEN-CASES-DEEP-DIVE-*.md` | Tarihli derin araştırma turları |
 | `RESEARCH_POLICY.md` | Kanıt ve lisans kural kitabı |
 | `TURKIYE_OPPORTUNITIES.md` · `BUILD_SHORTLIST.md` | Türkiye uyarlaması ve duraklatılmış yapım listesi |
@@ -127,7 +128,9 @@ Bu çalışma ortamında doğrulanmış, kalıcı kısıtlar. **Her oturumda yen
 
 - **Engelli alan adları:** `reddit.com`, `old.reddit.com`, `linktr.ee`, çoğu şirket sitesi ve **tüm `*.github.io` adresleri** — kendi canlı sitemiz dâhil. Yani sayfayı buradan açıp göremezsin; doğrulamayı yerelde `docs/index.html` ve diğer Wiki sayfaları üzerinden (Chromium `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`) veya GitHub API ile yap.
 - **GitHub API yazma yolları proxy tarafından kapalı:** `"Write access to this GitHub API path is not permitted through this proxy."` Yani **dal silme, depo ayarı, Pages ayarı buradan yapılamaz** — bunlar kullanıcıya bırakılır. Okuma, issue ve PR yorumu (PR = pull request, bir dalın `main`'e katılma önerisi) ve `git push` çalışır.
-- Reddit metni gerektiren araştırmalarda tek yol `WebSearch`'ün dolaylı özetleridir; tartışma başlığının tam metnine ulaşılamaz. Kaynak bulunamadıysa **uydurma — "bulunamadı" diye kaydet.**
+- Reddit metni gerektiren araştırmalarda tek yol `WebSearch`'ün dolaylı özetleridir; tartışma başlığının tam metnine ulaşılamaz. Kaynak bulunamadıysa **uydurma — "bulunamadı" diye kaydet.** (`reddit.com` yalnız doğrudan erişime değil, **web aramasına da kapalı** — arama motoru alan adını reddediyor.)
+- **GitHub Pages kaynağı `main` + `/docs` olmak zorundadır.** Kök dizin seçilirse Jekyll `README.md`'yi site sanıp yayınlar; Wiki `/docs/` altına gömülür ve deponun bütün bağlantıları yanlış yere gider. Bu ayar buradan **değiştirilemez** (depo ayarı, GitHub MCP'sinde Pages aracı yok) — kullanıcıya bırakılır.
+- **Sitenin yayında olduğu buradan doğrulanamaz.** `*.github.io` kapalı. "pages build and deployment" iş akışının yeşil bitmesi bir derlemenin *bittiğini* söyler, **neyin yayınlandığını söylemez** — bu ikisi bir kez karıştırıldı ve depo birkaç tur boyunca sitenin canlı olduğunu yanlış varsaydı. "Canlı" iddiası yalnız iki şeye dayanabilir: `verify-live-site` iş akışının yeşili ya da kullanıcının teyidi. **Derleme durumuna bakıp varsayma.**
 
 ## PR ve dal politikası
 

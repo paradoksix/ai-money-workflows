@@ -14,7 +14,7 @@ Son güncelleme: **2026-08-28**, Wiki turu `main`'e birleştikten sonra.
 | `validate_catalog.py` | 42 kayıt — **geçiyor** |
 | `validate_cases.py` | 124 kayıt + 3 çapraz kontrol — **geçiyor** |
 | `docs/` | **22 sayfalık Wiki**, veriyle taze |
-| GitHub Pages | **Wiki canlıda** — https://paradoksix.github.io/ai-money-workflows/ (`main` → `docs/`) |
+| GitHub Pages | ⚠️ **Kaynak yanlıştı** — `main` → kök dizin olduğu için Jekyll README'yi yayınlıyordu, Wiki `docs/` altında gömülü kaldı. Kullanıcı `/docs`'a çeviriyor. Teyit `verify-live-site` iş akışından gelecek; **o yeşile dönene kadar "canlı" yazma** |
 | Issue | **açık issue yok** |
 | PR | **[#5](https://github.com/paradoksix/ai-money-workflows/pull/5) merge edildi** (7 commit, 57 dosya) — **açık PR yok**. Politika aynen geçerli: PR'ı kullanıcı açar, agent kendi başına açmaz — yalnız hatırlatır (`CLAUDE.md` → PR ve dal politikası) |
 
@@ -127,6 +127,21 @@ Kullanılan karşılıklar artık kalıcı kural olarak `CLAUDE.md`'nin **Dil ku
 
 `research/GOLDEN-CASES-DEEP-DIVE-*.md` hâlâ yoğun jargon içeriyor ama bunlar **iç araştırma notu**, yayınlanan metin değil — kapsam dışı.
 
+## Bu turun bulgusu: site Wiki'yi hiç yayınlamamış
+
+Kullanıcı canlı siteyi açtı ve **README göründü** — Wiki'ye çevrilmiş hâli sayfada yalnızca gömülü bir ekran görüntüsü olarak duruyordu.
+
+Sebep: **Pages kaynağı `main` + kök dizin.** Kök seçildiğinde Jekyll `README.md`'yi site sanıp temayla yayınlıyor; `docs/` altındaki 22 sayfa köke gelmiyor. `docs/.nojekyll` var ama kaynak kök olduğu için Jekyll'i durdurmuyor. Ek belirti: README'nin `<div align="center">` ile başlayan başlık/rozet bloğu **ham markdown** olarak çıkıyordu — kramdown HTML bloğu içindeki markdown'ı işlemez, GitHub'ın kendi render'ı işler.
+
+**Asıl ders teknik değil.** Bu depo birkaç turdur sitenin canlı olduğunu *varsaydı*. Kaynak: "pages build and deployment" iş akışının yeşil bitmesi, "Wiki yayında" diye okundu. Oysa yeşil derleme bir derlemenin **bittiğini** söyler, **neyin yayınlandığını** söylemez. `*.github.io` bu ortama kapalı olduğu için hiçbir oturum farkı göremedi ve yanlış birikti — eski "atlas canlı" commit'i de aynı hatayı yapmıştı.
+
+Kalıcı önlem iki parçalı:
+
+- **`verify-live-site.yml`** eklendi. Actions runner'ları siteye erişebiliyor; iş akışı kök adresi çekip Wiki'nin sol menü işaretini (`class="nav" id="nav"` — README'de yok) arıyor. `page_build` sonrası ve elle çalışıyor, ayrı iş akışı olduğu için PR'ları bloklamıyor.
+- **`CLAUDE.md`** artık şunu kural olarak taşıyor: Pages kaynağı `main` + `/docs` olmak zorunda, ve **derleme durumuna bakıp "canlı" varsayılmaz** — iddia ya bu iş akışının yeşiline ya da kullanıcının teyidine dayanır.
+
+**Bekleyen tek adım kullanıcıda:** Settings → Pages → Source: "Deploy from a branch" → Branch `main`, klasör **`/docs`** → Save. Ayar değişince hiçbir bağlantının düzeltilmesi gerekmiyor; README, ENCYCLOPEDIA, 16 niş dosyası ve rozetler zaten bu kökü gösteriyor.
+
 ## Kullanıcıya kalan manuel işler
 
 **Acil değil.** Kullanıcı bunları müsait olduğunda kendisi yapacak; oturum sonlarında hatırlatılması yeterli. Agent proxy'si GitHub API'sinin yazma yollarını reddettiği için dal silme buradan zaten yapılamıyor — GitHub arayüzünde `Branches` ekranından siliniyor.
@@ -137,7 +152,7 @@ Silinecek **üç bayat dal**:
 - `claude/continue-from-where-left-y8utux` — **tamamen merge edilmiş** (`main`'de olmayan commit'i yok), yalnız artık gereksiz;
 - `claude/handoff-wiki-conversion-xemu2b` — **PR #5 ile merge edildi**, işi bitti.
 
-Wiki `main`'e girdiği için canlı sitede artık **22 sayfalık Wiki** yayında.
+Wiki `main`'e girdi, ama **canlı sitede görünmesi Pages ayarına bağlı** — aşağıdaki bölüme bak.
 
 ## Yeni oturum için ilk adımlar
 

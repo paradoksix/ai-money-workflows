@@ -1,0 +1,56 @@
+name: Verify live site
+
+# The published site must be the wiki, not the README.
+#
+# GitHub Pages can be pointed at the repository root or at /docs. It has to be
+# /docs: docs/index.html is the wiki. With the root as the source, Jekyll picks
+# up README.md instead, themes it, and publishes that — the wiki then hides
+# under /docs/ and the archive's own links all lead to the wrong place. That is
+# exactly what happened, and nobody noticed for several rounds because the agent
+# environment cannot reach *.github.io: a green "pages build and deployment"
+# only says a build finished, never *what* it published.
+#
+# Actions runners can reach the site, so this asks the question directly.
+
+on:
+  page_build:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: The published root must serve the wiki
+        run: |
+          URL="https://paradoksix.github.io/ai-money-workflows/"
+          # Present in docs/index.html, absent from README.md — so it tells the
+          # two apart even if both render without error.
+          MARKER='class="nav" id="nav"'
+
+          for attempt in 1 2 3 4 5 6; do
+            body=$(curl -fsSL --max-time 25 "$URL" 2>/dev/null || true)
+
+            if printf '%s' "$body" | grep -qF "$MARKER"; then
+              echo "OK: $URL serves the wiki."
+              exit 0
+            fi
+
+            if [ -n "$body" ]; then
+              echo "Attempt $attempt: the page loads but is not the wiki."
+            else
+              echo "Attempt $attempt: no response yet."
+            fi
+            [ "$attempt" -lt 6 ] && sleep 20
+          done
+
+          echo "::error::$URL is not serving the wiki."
+          echo ""
+          echo "The site responded, but without the wiki's left menu. Almost"
+          echo "always this means GitHub Pages is building from the repository"
+          echo "root, so Jekyll is publishing README.md as the site."
+          echo ""
+          echo "Fix: Settings -> Pages -> Source: Deploy from a branch,"
+          echo "     Branch: main, folder: /docs -> Save."
+          echo ""
+          echo "Do not record the wiki as live until this check passes."
+          exit 1
