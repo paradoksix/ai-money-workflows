@@ -142,6 +142,10 @@ Altı örnekte hem ticari sonuç hem de o sonucu üreten kod doğrulandı. Kod b
 
 [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md) — güvenilirlik ölçütleri ve lisans politikası · [`TURKIYE_OPPORTUNITIES.md`](TURKIYE_OPPORTUNITIES.md) — yerel satış açıları · [`BUILD_SHORTLIST.md`](BUILD_SHORTLIST.md) — duraklatılmış build listesi
 
+**Proje sürekliliği**
+
+[`CLAUDE.md`](CLAUDE.md) — turdan tura değişmeyen kurallar: harflerin tanımı, lisans politikası, veri sözleşmesi, doğrulama komutları · [`HANDOFF.md`](HANDOFF.md) — nerede kalındığı, açık araştırma boşlukları ve sıradaki adımlar
+
 ## Veriyle çalışmak
 
 Python 3.12 dışında bağımlılık yok.
