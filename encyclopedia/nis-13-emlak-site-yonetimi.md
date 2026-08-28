@@ -12,7 +12,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 ## C004 — Property Management Automation Vertical
 
-**Ne satılmış?** Yalnız Alman property-management/Hausverwaltung şirketlerine yönelik bakım, kiracı talebi ve operasyon workflow'ları.
+**Ne satılmış?** Yalnız Alman property-management/Hausverwaltung şirketlerine yönelik bakım, kiracı talebi ve operasyon iş akışları.
 
 **Ticari kanıt:** 2025'te **20 müşteri**, daha sonra yaklaşık 23 müşteri seviyesinde büyüme ve özel n8n geliştiricisi işe alımı bildiriliyor.
 

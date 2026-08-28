@@ -12,7 +12,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 ## A002 — İş ilanı → hiring manager araştırması
 
-**Ne satılmış?** Construction staffing ajansı için yeni iş ilanlarını bulup işe alım ihtiyacı olan şirketleri ve karar vericileri araştıran workflow.
+**Ne satılmış?** Construction staffing ajansı için yeni iş ilanlarını bulup işe alım ihtiyacı olan şirketleri ve karar vericileri araştıran iş akışı.
 
 **Ticari kanıt:** İlk müşteri vakası ve geliştiricinin daha sonra **birden fazla müşterinin aynı sistemi yaptırmak için kendisini tuttuğu** kendi beyanı var.
 
@@ -86,7 +86,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne yapıyor?** Inbound lead'i çok alanlı skorlayıp Calendar/e-mail/Slack aksiyonuna yönlendiriyor.
 
-**Kaynak:** Nextwave portfolio, runnable workflow.
+**Kaynak:** Nextwave portfolio, çalıştırılabilir iş akışı.
 
 **Risk:** Yanlış lead skoru ve fırsat kaçırma.
 

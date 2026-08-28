@@ -60,7 +60,7 @@ Bu ayrım, güvenilir ticari otomasyon için çok önemli.
 
 ## Lisans
 
-GitHub repository metadata'sında açık bir root lisans görünmüyor. Public repo olması yeniden dağıtım veya yeniden lisanslama izni anlamına gelmez. Bu ansiklopedide upstream URL + pinned commit olarak tutulur; kod sahiplenilmez.
+GitHub repository metadata'sında açık bir root lisans görünmüyor. Public repo olması yeniden dağıtım veya yeniden lisanslama izni anlamına gelmez. Bu ansiklopedide özgün deponun adresi + sabitlenmiş sürüm olarak tutulur; kod sahiplenilmez.
 
 ## Senin için uygulama önizlemesi
 

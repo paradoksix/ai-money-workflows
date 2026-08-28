@@ -63,11 +63,7 @@ Wiki, her niş sayfasında iki satırı **görüntülemiyor**: "Bu grupta N örn
 
 Önceki turdan kalan "araştırma nerede biter?" sorusu **kapandı**. Kullanıcının kararı: **sabit bir bitiş çizgisi yok.** Arşiv sürekli büyümeye açık; 150–200 vaka gibi bir hedef bandı artık geçerli değil.
 
-**Bu bir çelişki bıraktı — sonraki turun somut işi:** `README.md` satır 188 hâlâ şunu diyor:
-
-> Arşiv **122 örnekte**; hedef, aynı ölçütleri gevşetmeden 150–200 bandına kontrollü biçimde ilerlemek.
-
-Bu cümlenin ikinci yarısı artık yanlış. Düzeltilirken `validate_cases.py`'nin `check_readme` kontrolüne dikkat: **"122" rakamı veriden doğrulanıyor**, ona dokunma; yalnız hedef bandı ifadesi değişecek.
+`README.md`'nin "Proje durumu" bölümü buna göre **düzeltildi** — eskiden "hedef, aynı ölçütleri gevşetmeden 150–200 bandına kontrollü biçimde ilerlemek" diyordu, artık ucu açıklığı anlatıyor. Doğrulayıcının kontrol ettiği "122" rakamına dokunulmadı.
 
 Ucu açıklık, ölçütlerin gevşediği anlamına **gelmiyor** — A/B/C/X eşikleri ve lisans kuralı aynen duruyor. Değişen tek şey, arşivin bir bitiş sayısına doğru yürümemesi.
 
@@ -123,7 +119,11 @@ Kullanılan karşılıklar artık kalıcı kural olarak `CLAUDE.md`'nin **Dil ku
 
 `docs/arastirma-politikasi.html` aynı commit'te yeniden üretildi. Doğrulayıcılar bu iki dosyayı okumadığı için CI etkilenmedi.
 
-**Geriye düşük öncelikli bir kuyruk kaldı:** aynı jargon (`workflow`, `upstream` ağırlıklı) `encyclopedia/*.md`, `TURKIYE_OPPORTUNITIES.md` ve `BUILD_SHORTLIST.md` içinde de var. `research/GOLDEN-CASES-DEEP-DIVE-*.md` en yoğunu ama bunlar **iç araştırma notu**, yayınlanan metin değil — kapsam dışı bırakılabilir. Ansiklopediye dokunulursa **123 vaka bloğu sayımı korunmalı**.
+**Kuyruk da kapandı.** `encyclopedia/*.md` (26 yer), `TURKIYE_OPPORTUNITIES.md`, `BUILD_SHORTLIST.md` ve `README.md` temizlendi; 123 vaka bloğu sayımı korundu. İki vakanın başlığı da değişti — C035 ve C037 "workflow" taşıyordu — ve `data/cases.csv` ile senkronlandı, yoksa Wiki'nin iki sayfası aynı vakayı farklı isimle gösterirdi. (İkisi de `catalog.csv`'de olmadığı için orada karşılığı yok.)
+
+**Bilerek yapılmayan:** İngilizce vaka adlarının tamamı Türkçeleştirilmedi (ör. "Faceless Editing / Content Service", "50K Product Catalog Overhaul"). Bunlar melez jargon değil, vakanın kaynağındaki adı; çevirmek kaynağa geri izlenebilirliği zorlaştırır. Ayrı bir editoryal karar gerektirir.
+
+`research/GOLDEN-CASES-DEEP-DIVE-*.md` hâlâ yoğun jargon içeriyor ama bunlar **iç araştırma notu**, yayınlanan metin değil — kapsam dışı.
 
 ## Kullanıcıya kalan manuel işler
 
@@ -146,7 +146,5 @@ Wiki dalı (`claude/handoff-wiki-conversion-xemu2b`) için **PR [#5](https://git
    python3 scripts/build_site.py && git diff --exit-code docs
    grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc   # 123 olmalı
    ```
-3. **Açık karar kalmadı** — sorulacak bir şey yok, iş var. Sıradaki iki somut iş:
-   - **`README.md` satır 188** — artık geçerli olmayan 150–200 hedef bandı ifadesi (yukarıda tam alıntısı ve uyarısı var).
-   - **İstenirse:** kalan düşük öncelikli jargon kuyruğu — `encyclopedia/*.md`, `TURKIYE_OPPORTUNITIES.md`, `BUILD_SHORTLIST.md`. Karşılıklar `CLAUDE.md`'nin Dil kuralı bölümündeki tabloda.
+3. **Açık karar ve bekleyen düzeltme yok.** Dil kuralı temizliği ve README çelişkisi kapandı; sıradaki iş **araştırmanın kendisi** — yukarıdaki "Açık boşluklar" tablosu ve 11 altın vaka. Yeni metin yazarken `CLAUDE.md`'nin Dil kuralı bölümündeki karşılık tablosuna bak.
 4. Araştırma turunu kapatan commit bu dosyayı da güncellesin.

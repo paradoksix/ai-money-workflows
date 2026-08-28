@@ -12,15 +12,15 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 ## C006 — Automation Monitoring Dashboard
 
-**Ne satılmış/yapılmış?** Bir ajansın çok müşterili n8n workflow'larını tek panelden izleyen dashboard: execution error, anomaly, raporlama, bakım.
+**Ne satılmış/yapılmış?** Bir ajansın çok müşterili n8n iş akışlarını tek panelden izleyen dashboard: execution error, anomaly, raporlama, bakım.
 
-**Ticari kanıt:** **11 müşteri / 115+ workflow** yöneten ajans.
+**Ticari kanıt:** **11 müşteri / 115+ iş akışı** yöneten ajans.
 
 **Değer:** Yeni otomasyon satmaktan ziyade mevcut otomasyonların bozulmasını erken yakalamak.
 
 **Risk:** Müşteri credential'ları, loglarda kişisel veri, tek noktadan erişim riski.
 
-**Senin için uygulama önizlemesi:** Bu hemen ilk müşteriye satılacak iş değil; fakat ansiklopedide önemli çünkü **retainer gelirinin nereden çıktığını** gösteriyor. İleride 3–5 müşteriye workflow kurulduğunda “aylık sağlık kontrolü + hata raporu + API değişikliği kontrolü” şeklinde doğal bakım ürünü olur.
+**Senin için uygulama önizlemesi:** Bu hemen ilk müşteriye satılacak iş değil; fakat ansiklopedide önemli çünkü **retainer gelirinin nereden çıktığını** gösteriyor. İleride 3–5 müşteriye iş akışı kurulduğunda “aylık sağlık kontrolü + hata raporu + API değişikliği kontrolü” şeklinde doğal bakım ürünü olur.
 
 ---
 

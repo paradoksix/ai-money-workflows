@@ -29,13 +29,13 @@
 
 ---
 
-## Bu repo ne, ne değil
+## Bu depo ne, ne değil
 
 İnternette "yapay zekâ ile şu kadar kazandım" anlatısı sonsuz. Sorun anlatının çokluğu değil, **hangisinin gerçekten doğrulanabildiğinin belli olmaması.**
 
 Bu arşiv tam olarak o ayrımı yapmak için var. Her örneğin yanında bir harf duruyor ve o harf tek bir soruyu cevaplıyor: *bu iddianın arkasında ne kadar sağlam bir kanıt var?* Kodu bulunup sürümü sabitlenmiş bir iş ile, yalnızca bir forum gönderisinde anlatılmış bir rakam aynı torbaya konmuyor.
 
-| Bu repo… | …bu repo değil |
+| Bu depo… | …bu depo değil |
 |---|---|
 | Kanıt derecesi işaretlenmiş bir araştırma kaydı | "Zengin olmanın 122 yolu" listesi |
 | Rakamların **türünü** ayıran bir defter (ücret / gelir / tasarruf / diğer) | Gelir vaadi veya yatırım tavsiyesi |
@@ -154,19 +154,19 @@ Python 3.12 dışında bağımlılık yok.
 ```bash
 # Veri bütünlüğünü doğrula
 python3 scripts/validate_catalog.py    # kaynağı sabitlenmiş çekirdek
-python3 scripts/validate_cases.py      # 124 kayıt + iki çapraz kontrol
+python3 scripts/validate_cases.py      # 124 kayıt + üç çapraz kontrol
 
 # Wiki'yi yeniden üret (deterministik: aynı veri = aynı çıktı)
 python3 scripts/build_site.py
 
-# Doğrulanmış upstream depoları sabit sürümle indir
+# Doğrulanmış özgün depoları sabit sürümle indir
 ./clone_originals.sh                   # Windows: .\clone_originals.ps1
 
 # Katalog denetleme aracını örnek veriyle çalıştır
 cd builds/catalog-doctor && python3 catalog_doctor.py sample_catalog.csv --out demo-output
 ```
 
-`scripts/validate_cases.py` iki dosyanın sessizce ayrışmasını engeller: `catalog.csv`'deki her kaydın `cases.csv`'de de bulunduğunu ve ortak alanların birebir aynı olduğunu; ayrıca her örneğin gerçekten kendi iş kolu dosyasında yazılı olduğunu doğrular. CI ayrıca `docs/` altındaki Wiki'nin veriye göre güncel olduğunu kontrol eder.
+`scripts/validate_cases.py` üç çapraz kontrol yapar: `catalog.csv`'deki her kaydın `cases.csv`'de de bulunduğu ve ortak alanların birebir aynı olduğu; her örneğin gerçekten kendi iş kolu dosyasında yazılı olduğu; ve **README'deki 12 rakamın veriyle tuttuğu**. CI ayrıca `docs/` altındaki Wiki'nin veriye göre güncel olduğunu kontrol eder.
 
 **Wiki nerede yayında?** [paradoksix.github.io/ai-money-workflows](https://paradoksix.github.io/ai-money-workflows/) — `main` dalındaki `docs/` klasöründen GitHub Pages ile servis ediliyor, her push'ta kendiliğinden güncelleniyor. Yerelde okumak için `docs/index.html`'i tarayıcıda açmanız yeterli; sayfalar birbirine göreli bağlantılarla bağlı olduğu için sunucu gerekmez.
 
@@ -185,7 +185,7 @@ Ayrıntılı ölçütler → [`RESEARCH_POLICY.md`](RESEARCH_POLICY.md). Kaynağ
 
 ## Proje durumu
 
-Arşiv **122 örnekte**; hedef, aynı ölçütleri gevşetmeden 150–200 bandına kontrollü biçimde ilerlemek. Tek bir ürün geliştirmeye odaklanan build dalgası şu aşamada **duraklatılmış** durumda.
+Arşiv **122 örnekte** ve **ucu açık** — sabit bir hedef sayı yok, ölçütler gevşetilmeden büyümeye devam ediyor. Tek bir ürün geliştirmeye odaklanan yapım dalgası şu aşamada **duraklatılmış** durumda.
 
 En çok değer taşıyan üç açık ipucu:
 
@@ -199,4 +199,4 @@ Tam liste ve gerekçeler → [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) · derin araş
 
 Bu deponun **kendi** araştırma metni, veri dosyaları ve scriptleri [Creative Commons Attribution 4.0](LICENSE) (CC BY 4.0) altındadır — atıf vererek kullanabilirsiniz.
 
-Atıf verilen **upstream projelerin kodu bu lisansın dışındadır.** O kodların hiçbiri depoya kopyalanmadı; yalnızca adres ve doğrulanmış sürüm numarası olarak referans verildi. Her biri kendi şartlarına tabidir ve çoğunun kök dizininde açık bir lisans dosyası bulunmuyor — bir projeyi kullanmadan önce kendi lisans durumunu ayrıca kontrol edin. Ücretli veya özel kaynaklar araştırma amacıyla kayda geçirilir, kopyalanmaz.
+Atıf verilen **başkalarına ait projelerin kodu** bu lisansın dışındadır.** O kodların hiçbiri depoya kopyalanmadı; yalnızca adres ve doğrulanmış sürüm numarası olarak referans verildi. Her biri kendi şartlarına tabidir ve çoğunun kök dizininde açık bir lisans dosyası bulunmuyor — bir projeyi kullanmadan önce kendi lisans durumunu ayrıca kontrol edin. Ücretli veya özel kaynaklar araştırma amacıyla kayda geçirilir, kopyalanmaz.

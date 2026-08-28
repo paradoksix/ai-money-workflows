@@ -115,7 +115,7 @@ Bu cilt, Türkiye'de özellikle **sanayi, distribütörlük, eğitim operasyonu,
 - mevcut müşteri/iş ilişkisi,
 - aynı sektörde bizzat yaşanan problem,
 - küçük çalışan demo,
-- dar meslek/inspection/management workflow'u,
+- dar meslek/denetim/yönetim iş akışı,
 - müşterinin bugün ödediği insan/yazılım maliyetini açıkça görmek.
 
 AI kodu hızlandırıyor; **müşteriyi ödeme yapmaya ikna eden şey problem bilgisi ve dağıtım** olmaya devam ediyor.

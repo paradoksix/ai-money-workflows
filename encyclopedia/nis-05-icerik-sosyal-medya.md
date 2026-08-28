@@ -14,7 +14,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 **Ne satılmış?** X/Twitter ve diğer kaynaklarda yükselen hikâyeleri toplayıp kümelendiren, araştıran ve içerik fırsatına çeviren sistem.
 
-**Ticari kanıt:** **V: ~2,9M impression + 10+ high-ticket inbound lead**, yaklaşık `$75` run cost bildiriliyor. Bu doğrudan workflow satışı değil, içerikten ticari lead üretimi.
+**Ticari kanıt:** **V: ~2,9M impression + 10+ high-ticket inbound lead**, yaklaşık `$75` run cost bildiriliyor. Bu doğrudan iş akışı satışı değil, içerikten ticari lead üretimi.
 
 **Kaynak:** `sirlifehacker/social-story-scraper`, commit `69de288...` + Reddit vaka.
 

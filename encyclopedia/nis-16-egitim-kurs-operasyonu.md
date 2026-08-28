@@ -24,9 +24,9 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 ## C078 — UK Private School / Exam Centre Data Workflow Retainer
 
-**Ne satılmış?** Özel okul/sınav merkezinde farklı formatlarda gelen öğrenci/sınav verilerini temizleyip master spreadsheet üretme ve sezonluk veri toplama workflow'ları.
+**Ne satılmış?** Özel okul/sınav merkezinde farklı formatlarda gelen öğrenci/sınav verilerini temizleyip master spreadsheet üretme ve sezonluk veri toplama iş akışları.
 
-**Ticari kanıt:** Büyük tek seferlik ücret değil; geliştirici **yıllık retainer'ın biriktiğini** ve workflow'u kendisinin host ettiğini bildiriyor.
+**Ticari kanıt:** Büyük tek seferlik ücret değil; geliştirici **yıllık retainer'ın biriktiğini** ve iş akışını kendisinin barındırdığını bildiriyor.
 
 **Müşteri edinme:** Süreci elle yapan yönetici problemden bıkmış; demo sonrası kabul etmiş.
 

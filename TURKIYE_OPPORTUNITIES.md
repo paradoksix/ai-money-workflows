@@ -2,7 +2,7 @@
 
 Bu dosya, katalogdaki gerçek ticari vakaları Türkiye'deki küçük/orta işletmelere uyarlamak için hazırlanmış çalışma görünümüdür. Gelir garantisi değildir; hangi demo ve tekliflerin önce denenmeye değer olduğunu gösterir.
 
-> Burada anılan vaka kodlarının (C003, A005, C004 …) tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya filtrelenebilir [atlas sayfasına](https://paradoksix.github.io/ai-money-workflows/) bakın.
+> Burada anılan vaka kodlarının (C003, A005, C004 …) tam anlatımı için [`ENCYCLOPEDIA.md`](ENCYCLOPEDIA.md) niş indeksine veya arayıp süzebileceğiniz [bütün örnekler sayfasına](https://paradoksix.github.io/ai-money-workflows/tum-vakalar.html) bakın.
 
 ## 1. E-ticaret katalog doktorluğu
 
@@ -52,11 +52,11 @@ Bu dosya, katalogdaki gerçek ticari vakaları Türkiye'deki küçük/orta işle
 - yanıt gelmezse takip,
 - yönetici için haftalık sorun özeti.
 
-**Demo:** su kaçağı / elektrik / asansör / temizlik / aidat kategorilerinde 30 sahte talebi işleyen workflow.
+**Demo:** su kaçağı / elektrik / asansör / temizlik / aidat kategorilerinde 30 sahte talebi işleyen iş akışı.
 
 ## 4. B2B lead araştırma motoru
 
-**Kaynak vakalar:** LinkedIn Jobs + Decision Maker Research ve B2B Lead Search Engine; ikisi de ticari müşteri/ödeme sinyali taşıyor ve exact repo açık.
+**Kaynak vakalar:** LinkedIn Jobs + Decision Maker Research ve B2B Lead Search Engine; ikisi de ticari müşteri/ödeme sinyali taşıyor ve işin tam olarak hangi kodla yapıldığı açık.
 
 **Türkiye'de hedef:** personel danışmanlığı, endüstriyel tedarikçi, yazılım ajansı, makine üreticisi, ihracatçı, kurumsal eğitim firması.
 
@@ -73,7 +73,7 @@ Bu dosya, katalogdaki gerçek ticari vakaları Türkiye'deki küçük/orta işle
 
 ## 5. İşe alım ajansları için yeni ilan radar sistemi
 
-**Kaynak vaka:** Texas'taki inşaat staffing ajansı için LinkedIn ilanlarını sürekli izleyen ve hiring manager bulan workflow; geliştirici daha sonra birden fazla müşterinin aynı sistemi istediğini bildiriyor.
+**Kaynak vaka:** Texas'taki inşaat staffing ajansı için LinkedIn ilanlarını sürekli izleyen ve hiring manager bulan iş akışı; geliştirici daha sonra birden fazla müşterinin aynı sistemi istediğini bildiriyor.
 
 **Türkiye'de hedef:** insan kaynakları danışmanlıkları, mavi yaka personel firmaları, teknik işe alım ajansları.
 

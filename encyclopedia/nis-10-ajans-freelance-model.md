@@ -40,7 +40,7 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 ## C025 — UK Agency: Make → n8n Migration + 15 Workflow
 
-**Ne satılmış?** Bir UK ajans için 15 basit workflow ve 9 Make→n8n migration.
+**Ne satılmış?** Bir UK ajans için 15 basit iş akışı ve 9 Make→n8n taşıma işi.
 
 **Ticari kanıt:** **F: £1.000 ilk ay**, sonra **£1.000/ay extension** teklifi.
 
@@ -52,9 +52,9 @@ Harflerin ne anlama geldiği için `../RESEARCH_POLICY.md`, gruplar arası ortak
 
 ---
 
-## C035 — Agentic n8n workflow build
+## C035 — Agentic n8n iş akışı kurulumu
 
-**Ne satılmış?** Claude/Gemini/LangChain/Vapi gibi bileşenlerle daha karmaşık agentic n8n workflow geliştirme.
+**Ne satılmış?** Claude/Gemini/LangChain/Vapi gibi bileşenlerle daha karmaşık agentic n8n iş akışı geliştirme.
 
 **Ticari sinyal:** **9 ücretli review**, yaklaşık `$50` order örnekleri.
 
