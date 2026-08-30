@@ -2,7 +2,7 @@
 
 **Nerede kaldık** dosyası. Turdan tura değişmeyen kurallar için [`CLAUDE.md`](CLAUDE.md)'ye bak — bu dosya her turda güncellenir.
 
-Son güncelleme: **2026-08-28**, Wiki turu `main`'e birleştikten sonra.
+Son güncelleme: **2026-08-30**, Wiki turu `main`'e birleşip canlıda doğrulandıktan sonra.
 
 ## Şu anki durum
 
@@ -146,13 +146,11 @@ Kontrol sonradan güçlendirildi: yalnız giriş sayfasına bakmak yetmez, çün
 
 ## Kullanıcıya kalan manuel işler
 
-**Acil değil.** Kullanıcı bunları müsait olduğunda kendisi yapacak; oturum sonlarında hatırlatılması yeterli. Agent proxy'si GitHub API'sinin yazma yollarını reddettiği için dal silme buradan zaten yapılamıyor — GitHub arayüzünde `Branches` ekranından siliniyor.
+Kullanıcı bayat dalları temizledi. **İkisi silindi:** `claude/golden-cases-deep-dive-2-c1m4ov` ve `claude/continue-from-where-left-y8utux`.
 
-Silinecek **üç bayat dal**:
+Geriye **tek dal** kaldı: `claude/handoff-wiki-conversion-xemu2b` (`fe3535f`). Kullanıcı bunu da kendisi silecek. Sonraki oturum içinde bir şey kalıp kalmadığını araştırmasın diye: **tamamen merge edilmiş** — `main`'de olmayan commit'i yok, PR #5 ile girdi, silinse hiçbir şey kaybolmaz.
 
-- `claude/golden-cases-deep-dive-2-c1m4ov` — **merge edilmemiş**, `main`'de olmayan 2 commit taşıyor ama içeriği tamamen bayat (eski `VOLUME-*` yapısı, `data/cases.csv` öncesi dünya). Kurtarılacak bir şeyi yok;
-- `claude/continue-from-where-left-y8utux` — **tamamen merge edilmiş** (`main`'de olmayan commit'i yok), yalnız artık gereksiz;
-- `claude/handoff-wiki-conversion-xemu2b` — **PR #5 ile merge edildi**, işi bitti.
+Dal silme buradan yapılamıyor: GitHub MCP'sinde dal silme aracı **yok** (arandı). `git push origin --delete` git protokolü üzerinden gittiği için çalışabilir ama denenmedi — kullanıcı silmeyi kendisi yapmayı tercih ediyor. **Acil bir iş değil**, oturum sonlarında hatırlatılması yeterli.
 
 Wiki `main`'e girdi ve **canlı sitede yayında** — kaynak `/docs`'a çevrildikten sonra `verify-live-site` bunu doğruladı.
 
