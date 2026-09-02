@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>AI Money Workflows — Repo Discovery Demo</title>
+  <meta name="description" content="AI Money Workflows arşivinden kanıt dereceli iş vakaları; arşiv tükendiğinde ücretsiz GitHub frontier keşfi." />
+  <title>AI Money Workflows — Discovery Engine</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,57 +13,58 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">AI Money Workflows</p>
-        <h1>Repo Discovery Engine — ücretsiz demo</h1>
+        <h1>Repo Discovery Engine</h1>
+        <p class="lede">Önce kendi kanıt dereceli arşivimiz. Arşiv bittiğinde, aynı desenlerden yeni fırsat adayları.</p>
       </div>
       <div class="status-row">
+        <span id="sourceStatus" class="pill accent">kaynak: hazırlanıyor</span>
         <span id="networkStatus" class="pill">hazırlanıyor</span>
-        <span id="rateStatus" class="pill">rate-limit: ?</span>
+        <span id="rateStatus" class="pill">GitHub API: beklemede</span>
       </div>
     </header>
 
     <section class="toolbar" aria-label="Keşif ayarları">
       <label>
-        Tema
+        Arşiv odağı
         <select id="modeSelect">
-          <option value="money-ai">AI + gelir/otomasyon</option>
-          <option value="automation">Otomasyon</option>
-          <option value="agents">AI agent</option>
-          <option value="local-ai">Yerel AI</option>
-          <option value="scraping">Araştırma / scraping</option>
+          <option value="all">Tüm vakalar</option>
+          <option value="verified">A — en güçlü kanıt</option>
+          <option value="high">Türkiye'de yüksek satılabilirlik</option>
+          <option value="code">Kaynak reposu olanlar</option>
+          <option value="local">Yerel işletme / müşteri operasyonu</option>
         </select>
       </label>
-      <label>
-        Minimum yıldız
-        <input id="minStars" type="number" min="0" max="100000" value="20" />
-      </label>
       <label class="grow">
-        İsteğe bağlı GitHub token
+        Frontier için isteğe bağlı GitHub token
         <input id="tokenInput" type="password" autocomplete="off" placeholder="yalnızca bu sekmede tutulur" />
       </label>
-      <button id="applyBtn" class="secondary" type="button">Havuzu yenile</button>
-      <button id="exportBtn" class="ghost" type="button">Seen dışa aktar</button>
-      <label class="ghost file-label">Seen içe aktar<input id="importInput" type="file" accept="application/json" hidden /></label>
+      <button id="applyBtn" class="secondary" type="button">Arşivi yeniden yükle</button>
+      <button id="exportBtn" class="ghost" type="button">Geçmişi dışa aktar</button>
+      <label class="ghost file-label">Geçmişi içe aktar<input id="importInput" type="file" accept="application/json" hidden /></label>
     </section>
+
+    <section id="phaseNote" class="phase-note" hidden></section>
 
     <section class="stage" aria-live="polite">
       <button id="repoCard" class="repo-card" type="button" aria-describedby="spaceHint">
-        <span class="skeleton">İlk repo hazırlanıyor…</span>
+        <span class="skeleton">Arşiv yükleniyor…</span>
       </button>
-      <p id="spaceHint" class="hint">Kart odaktayken <kbd>Space</kbd> / <kbd>Enter</kbd> → sıradaki hiç görülmemiş repo</p>
+      <p id="spaceHint" class="hint">Kart odaktayken <kbd>Space</kbd> / <kbd>Enter</kbd> → sıradaki görülmemiş kayıt</p>
     </section>
 
-    <section class="actions" aria-label="Repo işlemleri">
-      <a id="githubLink" class="primary disabled" href="#" target="_blank" rel="noreferrer">GitHub</a>
-      <button id="wikiBtn" class="secondary" type="button" disabled>Ücretsiz wiki özeti</button>
+    <section class="actions" aria-label="Kayıt işlemleri">
+      <a id="sourceLink" class="primary disabled" href="#" target="_blank" rel="noreferrer">Birincil kaynak</a>
+      <a id="githubLink" class="secondary disabled" href="#" target="_blank" rel="noreferrer">GitHub repo</a>
+      <button id="wikiBtn" class="secondary" type="button" disabled>Derin analiz</button>
       <a id="deepWikiLink" class="ghost disabled" href="#" target="_blank" rel="noreferrer">DeepWiki</a>
-      <button id="skipSeenBtn" class="ghost" type="button">Görülmüşleri gerektiğinde aç</button>
+      <button id="skipSeenBtn" class="ghost" type="button">Arşivi baştan dolaş</button>
     </section>
 
     <section id="wikiPanel" class="wiki-panel" hidden>
       <div class="wiki-head">
         <div>
-          <p class="eyebrow">Talep üzerine</p>
-          <h2 id="wikiTitle">Repo özeti</h2>
+          <p id="analysisEyebrow" class="eyebrow">Analiz</p>
+          <h2 id="wikiTitle">Kayıt analizi</h2>
         </div>
         <button id="closeWikiBtn" class="ghost" type="button">Kapat</button>
       </div>
@@ -75,6 +77,6 @@
     </details>
   </main>
 
-  <script src="app.js" type="module"></script>
+  <script src="archive-app.js" type="module"></script>
 </body>
 </html>
