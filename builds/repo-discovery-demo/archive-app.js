@@ -26,7 +26,7 @@ function repoText(r,readme=''){return `${r.name} ${r.description||''} ${(r.topic
 function nearestCases(r,readme='',limit=3){return state.cases.filter(c=>c.evidence_grade!=='X').map(c=>({c,s:simText(repoText(r,readme),caseText(c))+.08*scoreCase(c)})).sort((a,b)=>b.s-a.s).slice(0,limit)}
 function archiveFit(r){const n=nearestCases(r,'',5);return n.length?Math.min(1,n.reduce((a,x)=>a+x.s,0)/Math.min(3,n.length)):0}
 function scoreRepo(r){const d=r.pushed_at?(Date.now()-new Date(r.pushed_at))/864e5:9999;const technical=Math.min(1,.34*Math.log10((r.stargazers_count||0)+1)/4+.26*Math.exp(-d/365)+.2*(r.license?.spdx_id?1:.3)+.2*((r.description||'').length?1:.3));return Math.min(1,.58*technical+.42*archiveFit(r))}
-function weight(items,score,n=20){return items.map(x=>({x,k:Math.pow(Math.random(),1/Math.max(.02,score(x))})).sort((a,b)=>b.k-a.k).slice(0,n).map(o=>o.x)}
+function weight(items,score,n=20){return items.map(x=>({x,k:Math.pow(Math.random(),1/Math.max(.02,score(x)))})).sort((a,b)=>b.k-a.k).slice(0,n).map(o=>o.x)}
 function match(c){if(state.mode==='verified')return c.evidence_grade==='A';if(state.mode==='high')return c.tr_sellability==='high';if(state.mode==='code')return !!c.repo_url;if(state.mode==='local')return /yerel|musteri-iletisim|saha-servisi|servis|randevu/i.test(`${c.niche} ${c.work_model}`);return c.evidence_grade!=='X'}
 function refillArchive(){let a=state.cases.filter(c=>match(c)&&!state.seen.has(keyCase(c)));if(!a.length)a=state.cases.filter(c=>c.evidence_grade!=='X'&&!state.seen.has(keyCase(c)));state.queue=weight(a,scoreCase,24).map(data=>({kind:'case',data}))}
 function setLink(a,url,label){a.textContent=label;if(url){a.href=url;a.classList.remove('disabled')}else{a.href='#';a.classList.add('disabled')}}
