@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'builds/repo-discovery-demo/archive-app.js'
+      - 'builds/repo-discovery-demo/discovery-core.js'
+      - 'builds/repo-discovery-demo/discovery-runtime.js'
       - 'builds/repo-discovery-demo/index.html'
       - 'docs/repo-discovery/**'
       - '.github/workflows/archive-discovery.yml'
@@ -11,6 +13,8 @@ on:
     branches: [main]
     paths:
       - 'builds/repo-discovery-demo/archive-app.js'
+      - 'builds/repo-discovery-demo/discovery-core.js'
+      - 'builds/repo-discovery-demo/discovery-runtime.js'
       - 'builds/repo-discovery-demo/index.html'
       - 'docs/repo-discovery/**'
       - '.github/workflows/archive-discovery.yml'
@@ -27,13 +31,44 @@ jobs:
         with:
           node-version: '22'
       - name: JavaScript syntax
-        run: node --check builds/repo-discovery-demo/archive-app.js
+        run: |
+          node --check builds/repo-discovery-demo/archive-app.js
+          node --check builds/repo-discovery-demo/discovery-core.js
+          node --check builds/repo-discovery-demo/discovery-runtime.js
+      - name: Data-driven discovery core
+        run: |
+          cp builds/repo-discovery-demo/discovery-core.js /tmp/discovery-core.mjs
+          node --input-type=module <<'NODE'
+          import {buildDiscoveryModel,synthesizeQueries,synthesizeRefinementQueries,scoreRepository} from 'file:///tmp/discovery-core.mjs';
+          const cases=[
+            {id:'A1',evidence_grade:'A',niche:'b2b-satis-lead',work_model:'Müşteri adayı bulma',client_type:'B2B entrepreneurs',stack:'n8n + Firecrawl + Gemini + CRM',tr_sellability:'high',status:'verified_exact_repo',reported_result:'paid',repo_url:'https://github.com/x/y',title:'Lead Search Engine',summary:'Şirket bulup karar vericiyi araştırır.'},
+            {id:'B1',evidence_grade:'B',niche:'musteri-iletisim-destek',work_model:'Klinik telefon karşılama',client_type:'Dental clinic',stack:'n8n + voice provider + Calendar',tr_sellability:'medium',status:'encyclopedia_only',title:'Dental Voice Agent',summary:'Randevu ve telefon taleplerini yönetir.'}
+          ];
+          const model=buildDiscoveryModel(cases);
+          if(model.patterns.length<2) throw new Error('pattern mining failed');
+          const queries=synthesizeQueries(model,{limit:5,stars:3});
+          if(queries.length<2) throw new Error('query synthesis failed');
+          if(!queries.every(q=>q.caseIds&&q.text.includes('stars:>3')&&q.text.includes('archived:false')&&q.text.includes('fork:false'))) throw new Error('query provenance/qualifier contract failed');
+          if(queries.some(q=>/musteri\s+aday/i.test(q.text))||!queries.some(q=>/lead generation|sales prospecting/i.test(q.text))) throw new Error('Turkish archive phrase normalization failed');
+          const refine=synthesizeRefinementQueries(model,new Map(),queries,{limit:2});
+          if(!refine.every(q=>q.text.includes('stars:>1'))) throw new Error('refinement contract failed');
+          const score=scoreRepository({name:'lead-agent',full_name:'x/lead-agent',description:'AI sales prospecting automation with n8n and CRM',topics:['lead-generation','n8n'],stargazers_count:100,pushed_at:new Date().toISOString(),license:{spdx_id:'MIT'}},model,[{queryId:'q1',patternId:model.patterns[0].id}]);
+          if(!(score.score>0&&score.archiveFit>=0)) throw new Error('candidate scoring failed');
+          NODE
       - name: Archive-first contracts
         run: |
           grep -q "data/cases.csv" builds/repo-discovery-demo/archive-app.js
-          grep -q "async function frontier" builds/repo-discovery-demo/archive-app.js
+          grep -q "buildDiscoveryModel" builds/repo-discovery-demo/archive-app.js
+          grep -q "synthesizeQueries" builds/repo-discovery-demo/discovery-core.js
+          grep -q "runDiscoveryPipeline" builds/repo-discovery-demo/archive-app.js
+          grep -q "runDiscoveryPipeline" builds/repo-discovery-demo/discovery-runtime.js
+          grep -q "synthesizeRefinementQueries" builds/repo-discovery-demo/discovery-runtime.js
+          grep -q "discovery-core.js" builds/repo-discovery-demo/archive-app.js
           grep -q "archiveRepos" builds/repo-discovery-demo/archive-app.js
-          grep -q "archive-app.js" docs/repo-discovery/index.html
+          if grep -q "const FRONTIER=" builds/repo-discovery-demo/archive-app.js; then echo 'Static FRONTIER query list is forbidden'; exit 1; fi
+          cmp builds/repo-discovery-demo/archive-app.js docs/repo-discovery/archive-app.js
+          cmp builds/repo-discovery-demo/discovery-core.js docs/repo-discovery/discovery-core.js
+          cmp builds/repo-discovery-demo/discovery-runtime.js docs/repo-discovery/discovery-runtime.js
       - name: Serve live-copy smoke
         run: |
           python -m http.server 8080 --directory docs/repo-discovery >/tmp/archive-discovery.log 2>&1 &
@@ -41,4 +76,6 @@ jobs:
           trap 'kill $pid' EXIT
           sleep 1
           curl --fail --silent http://127.0.0.1:8080/ | grep -q 'Repo Discovery Engine'
-          curl --fail --silent http://127.0.0.1:8080/archive-app.js | grep -q 'AI Money Workflows arşivi'
+          curl --fail --silent http://127.0.0.1:8080/archive-app.js | grep -q 'buildDiscoveryModel'
+          curl --fail --silent http://127.0.0.1:8080/discovery-core.js | grep -q 'synthesizeQueries'
+          curl --fail --silent http://127.0.0.1:8080/discovery-runtime.js | grep -q 'runDiscoveryPipeline'
