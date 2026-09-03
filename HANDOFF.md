@@ -8,7 +8,7 @@ Son güncelleme: **2026-09-03**. Bu tur **arşiv doğrulamasıydı**: sabitlenmi
 
 | | |
 |---|---|
-| Dal | `claude/proje-arsiv-revizyon-yzwtvq` |
+| Dal | `claude/proje-arsiv-revizyon-yzwtvq` → **[PR #13](https://github.com/paradoksix/ai-money-workflows/pull/13)** açık |
 | Vaka sayısı | **124 kayıt** — A 6 · B 25 · C 92 · X 1 · **arşivde 122** (X001 ve A006'ya devredilen C027 hariç) |
 | İş kolu | 16 gerçek niş + `tartismali` |
 | Doğrulayıcılar | `validate_catalog.py` 42 kayıt · `validate_cases.py` 124 kayıt + 3 çapraz kontrol — **ikisi de geçiyor** |
@@ -147,7 +147,7 @@ Veri değişince `docs/` yeniden üretilip **aynı commit'e** konur.
 ## Kullanıcıya kalan manuel iş
 
 - `claude/handoff-wiki-conversion-xemu2b` dalı hâlâ duruyor. **Tamamen merge edilmiş** — `main`'de olmayan commit'i yok, silinse hiçbir şey kaybolmaz. Dal silme buradan yapılamıyor (proxy yazma yollarını kapatıyor). **Acil değil.**
-- Bu turun dalı: `claude/proje-arsiv-revizyon-yzwtvq` — PR açılmadı, dalda bekliyor.
+- Bu turun dalı [PR #13](https://github.com/paradoksix/ai-money-workflows/pull/13) olarak açıldı. İçinde `main` de merge edildi: tur sürerken [PR #12](https://github.com/paradoksix/ai-money-workflows/pull/12) ("arayüzden keşif kontrollerini kaldır") merge edilmiş ve `card-metric-ui.yml`'nin tam aynı yerine dokunmuştu. Çakışma çözüldü — PR #12'nin kontrol denetimi olduğu gibi korundu, benim eklediğimden yalnız onun kapsamadığı `repoCard` ve `wikiBtn` bırakıldı.
 
 ## Yeni oturum için ilk adımlar
 
