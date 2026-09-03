@@ -35,12 +35,6 @@ const STACK_CANONICAL = new Map([
 function normalize(value='') {
   return String(value ?? '')
     .toLowerCase()
-    .replace(/Ä±/g,'i')
-    .replace(/ÄŸ/g,'g')
-    .replace(/ÅŸ/g,'s')
-    .replace(/Ã§/g,'c')
-    .replace(/Ã¶/g,'o')
-    .replace(/Ã¼/g,'u')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g,'')
     .replace(/[â€™']/g,'')
@@ -232,4 +226,71 @@ export function synthesizeRefinementQueries(model, coverage=new Map(), existing=
 
 function tokenSet(value='') { return new Set(words(value)); }
 function similaritySets(A,B) {
-  if(!A.size||!B,¹Í¥é”¥É•ÑÕÉ¸€Àì(€±•Ð¸ôÀì™½È¡½¹ÍÐà½˜¤¥˜¡¹¡…Ì¡à¤¤¸¬¬ì(€É•ÑÕÉ¸¸½5…Ñ ¹ÍÅÉÐ¡¹Í¥é”©¹Í¥é”¤ì)ô()•áÁ½ÉÐ™Õ¹Ñ¥½¸¹•…É•ÍÑ…Í•Ì¡É•Á¼±µ½‘•°±É•…‘µ”ôœœ±±¥µ¥ÐôÐ¤ì(€½¹ÍÐÉÐõÑ½­•¹M•Ð¡€‘íÉ•Á¼¹¹…µ•ñðœô€‘íÉ•Á¼¹™Õ±±}¹…µ•ñðœô€‘íÉ•Á¼¹‘•ÍÉ¥ÁÑ¥½¹ñðœô€‘ì¡É•Á¼¹Ñ½Á¥Íññmt¤¹©½¥¸ œ€œ¥ô€‘íÉ•…‘µ•õ€¤ì(€É•ÑÕÉ¸µ½‘•°¹…Í•Y•Ñ½ÉÌ¹µ…À¡Øôø¡í…Í”éØ¹É…Ü±Í½É”éÍ¥µ¥±…É¥ÑåM•ÑÌ¡ÉÐ±Ø¹Ñ½­•¹Ì¤¬¸Àà©Ø¹Ý•¥¡Ñô¤¤¹Í½ÉÐ ¡„±ˆ¤ôùˆ¹Í½É”µ„¹Í½É”¤¹Í±¥” À±±¥µ¥Ð¤ì)ô()•áÁ½ÉÐ™Õ¹Ñ¥½¸Á…ÑÑ•É¹M¥µ¥±…É¥Ñä¡É•Á¼±Á…ÑÑ•É¸±É•…‘µ”ôœœ¤ì(€½¹ÍÐÉÐõÑ½­•¹M•Ð¡€‘íÉ•Á¼¹¹…µ•ñðœô€‘íÉ•Á¼¹™Õ±±}¹…µ•ñðœô€‘íÉ•Á¼¹‘•ÍÉ¥ÁÑ¥½¹ñðœô€‘ì¡É•Á¼¹Ñ½Á¥Íññmt¤¹©½¥¸ œ€œ¥ô€‘íÉ•…‘µ•õ€¤ì(€½¹ÍÐÁÐõÑ½­•¹M•Ð¡l(€€€€¸¸¹Á…ÑÑ•É¸¹¹¥¡”¹µ…À¡àôùà¹Ù…±Õ”¤°¸¸¹Á…ÑÑ•É¸¹Ý½É¬¹µ…À¡àôùà¹Ù…±Õ”¤°¸¸¹Á…ÑÑ•É¸¹±¥•¹ÑÌ¹µ…À¡àôùà¹Ù…±Õ”¤°¸¸¹Á…ÑÑ•É¸¹ÍÑ…­Ì¹µ…À¡àôùà¹Ù…±Õ”¤°¸¸¹Á…ÑÑ•É¸¹­•åÝ½É‘Ì¹µ…À¡àôùà¹Ù…±Õ”¤(€t¹©½¥¸ œ€œ¤¤ì(€É•ÑÕÉ¸Í¥µ¥±…É¥ÑåM•ÑÌ¡ÉÐ±ÁÐ¤ì)ô()•áÁ½ÉÐ™Õ¹Ñ¥½¸‰•ÍÑA…ÑÑ•É¸¡É•Á¼±µ½‘•°±É•…‘µ”ôœœ¤ì(€±•Ð‰•ÍÐõ¹Õ±°ì(€™½È¡½¹ÍÐÀ½˜µ½‘•°¹Á…ÑÑ•É¹Ì¥í½¹ÍÐÍ½É”õÁ…ÑÑ•É¹M¥µ¥±…É¥Ñä¡É•Á¼±À±É•…‘µ”¤í¥˜ …‰•ÍÑññÍ½É”ù‰•ÍÐ¹Í½É”¥‰•ÍÐõíÁ…ÑÑ•É¸éÀ±Í½É•ôíô(€É•ÑÕÉ¸‰•ÍÐì)ô()•áÁ½ÉÐ™Õ¹Ñ¥½¸Í½É•I•Á½Í¥Ñ½Éä¡É•Á¼±µ½‘•°±±¥¹•…”õmt±É•…‘µ”ôœœ¤ì(€½¹ÍÐ…”õÉ•Á¼¹ÁÕÍ¡•‘}…Ðü¡…Ñ”¹¹½Ü ¤µ¹•Ü…Ñ”¡É•Á¼¹ÁÕÍ¡•‘}…Ð¤¤¼àØÑ”Ôèääääì(€½¹ÍÐÍÑ…ÉÌõ5…Ñ ¹µ¥¸ Ä±5…Ñ ¹±½œÄÀ ¡É•Á¼¹ÍÑ…É…é•ÉÍ}½Õ¹ÑñðÀ¤¬Ä¤¼Ð¤ì(€½¹ÍÐÉ••¹äõ5…Ñ ¹•áÀ µ5…Ñ ¹µ…à À±…”¤¼ÔÐÀ¤ì(€½¹ÍÐ±¥•¹Í”õÉ•Á¼¹±¥•¹Í”ü¹ÍÁ‘á}¥üÄè¸ÌÔì(€½¹ÍÐ‘•ÍÉ¥ÁÑ¥½¸ô¡É•Á¼¹‘•ÍÉ¥ÁÑ¥½¹ñðœœ¤¹±•¹Ñ øÈÀüÄè¸ÌÔì(€½¹ÍÐÑ•¡¹¥…°ô¸ÌÄ©ÍÑ…ÉÌ¬¸Èä©É••¹ä¬¸È©±¥•¹Í”¬¸È©‘•ÍÉ¥ÁÑ¥½¸ì(€½¹ÍÐÁ••ÉÌõ¹•…É•ÍÑ…Í•Ì¡É•Á¼±µ½‘•°±É•…‘µ”°Ô¤ì(€½¹ÍÐ…É¡¥Ù•¥ÐõÁ••ÉÌ¹±•¹Ñ ý5…Ñ ¹µ¥¸ Ä±Á••ÉÌ¹Í±¥” À°Ì¤¹É•‘Õ” ¡„±à¤ôù„­à¹Í½É”°À¤½5…Ñ ¹µ¥¸ Ì±Á••ÉÌ¹±•¹Ñ ¤¤èÀì(€½¹ÍÐ‰Àõ‰•ÍÑA…ÑÑ•É¸¡É•Á¼±µ½‘•°±É•…‘µ”¤ì(€½¹ÍÐÁ…ÑÑ•É¹¥Ðõ‰Àü¹Í½É•ñðÀì(€½¹ÍÐÅÕ•Éå!¥ÑÌõÕ¹¥ÅÕ”¡±¥¹•…”¹µ…À¡àôùà¹ÅÕ•Éå%¤¤¹±•¹Ñ ì(€½¹ÍÐÁÉ½Ù•¹…¹”õ5…Ñ ¹µ¥¸ Ä°¸ÈÔ©ÅÕ•Éå!¥ÑÌ€¬€¸Äà©Õ¹¥ÅÕ”¡±¥¹•…”¹µ…À¡àôùà¹Á…ÑÑ•É¹%¤¹™¥±Ñ•È¡	½½±•…¸¤¤¹±•¹Ñ ¤ì(€½¹ÍÐÍ½É”õ5…Ñ ¹µ¥¸ Ä°¸ÐÌ©Ñ•¡¹¥…°¬¸ÌÄ©…É¡¥Ù•¥Ð¬¸Äà©Á…ÑÑ•É¹¥Ð¬¸Àà©ÁÉ½Ù•¹…¹”¤ì(€É•ÑÕÉ¸íÍ½É”±Ñ•¡¹¥…°±…É¡¥Ù•¥Ð±Á…ÑÑ•É¹¥Ð±ÁÉ½Ù•¹…¹”±‰•ÍÑA…ÑÑ•É¸é‰Àü¹Á…ÑÑ•É¹ññ¹Õ±°±Á••ÉÍôì)ô()•áÁ½ÉÐ™Õ¹Ñ¥½¸½Ù•É…•	åA…ÑÑ•É¸¡…¹‘¥‘…Ñ•Ì¤ì(€½¹ÍÐµ…Àõ¹•Ü5…À ¤ì(€™½È¡½¹ÍÐ¥Ñ•´½˜…¹‘¥‘…Ñ•Ì¤™½È¡½¹ÍÐÀ½˜Õ¹¥ÅÕ” ¡¥Ñ•´¹}‘¥Í½Ù•Éäü¹±¥¹•…•ññmt¤¹µ…À¡àôùà¹Á…ÑÑ•É¹%¤¹™¥±Ñ•È¡	½½±•…¸¤¤¤µ…À¹Í•Ð¡À°¡µ…À¹•Ð¡À¥ñðÀ¤¬Ä¤ì(€É•ÑÕÉ¸µ…Àì)ô()•áÁ½ÉÐ™Õ¹Ñ¥½¸‘¥Ù•ÉÍ¥™ä¡…¹‘¥‘…Ñ•Ì°µ½‘•°°±¥µ¥ÐôÈÐ¤ì(€½¹ÍÐÁ½½°õ…¹‘¥‘…Ñ•Ì¹µ…À¡É•Á¼ôø¡íÉ•Á¼±‰…Í”éÍ½É•I•Á½Í¥Ñ½Éä¡É•Á¼±µ½‘•°±É•Á¼¹}‘¥Í½Ù•Éäü¹±¥¹•…•ññmt¤¹Í½É•ô¤¤ì(€½¹ÍÐÍ•±•Ñ•õmtì(€Ý¡¥±”¡Á½½°¹±•¹Ñ ˜™Í•±•Ñ•¹±•¹Ñ ñ±¥µ¥Ð¥ì(€€€±•Ð‰•ÍÑ%¹‘•àôÀ±‰•ÍÑM½É”ôµ%¹™¥¹¥Ñäì(€€€™½È¡±•Ð¤ôÀí¤ñÁ½½°¹±•¹Ñ í¤¬¬¥ì(€€€€€½¹ÍÐ¥Ñ•´õÁ½½±m¥tì(€€€€€±•ÐÁ•¹…±ÑäôÀì(€€€€€™½È¡½¹ÍÐÌ½˜Í•±•Ñ•¹Í±¥” ´à¤¥ì(€€€€€€€½¹ÍÐõÑ½­•¹M•Ð¡€‘í¥Ñ•´¹É•Á¼¹™Õ±±}¹…µ•ô€‘í¥Ñ•´¹É•Á¼¹‘•ÍÉ¥ÁÑ¥½¹ñðœô€‘ì¡¥Ñ•´¹É•Á¼¹Ñ½Á¥Íññmt¤¹©½¥¸ œ€œ¥õ€¤ì(€€€€€€€½¹ÍÐõÑ½­•¹M•Ð¡€‘íÌ¹™Õ±±}¹…µ•ô€‘íÌ¹‘•ÍÉ¥ÁÑ¥½¹ñðœô€‘ì¡Ì¹Ñ½Á¥Íññmt¤¹©½¥¸ œ€œ¥õ€¤ì(€€€€€€€Á•¹…±Ñäõ5…Ñ ¹µ…à¡Á•¹…±Ñä±Í¥µ¥±…É¥ÑåM•ÑÌ¡±¤¤ì(€€€€€ô(€€€€€½¹ÍÐ©¥ÑÑ•Èõ5…Ñ ¹É…¹‘½´ ¤¨¸Ààì(€€€€€½¹ÍÐÍ½É”õ¥Ñ•´¹‰…Í”´¸ÈØ©Á•¹…±Ñä­©¥ÑÑ•Èì(€€€€€¥˜¡Í½É”ù‰•ÍÑM½É”¥í‰•ÍÑM½É”õÍ½É”í‰•ÍÑ%¹‘•àõ¤íô(€€€ô(€€€Í•±•Ñ•¹ÁÕÍ ¡Á½½°¹ÍÁ±¥”¡‰•ÍÑ%¹‘•à°Ä¥lÁt¹É•Á¼¤ì(€ô(€É•ÑÕÉ¸Í•±•Ñ•ì)ô(
+  if(!A.size||!B.size)return 0;
+  let n=0; for(const x of A) if(B.has(x)) n++;
+  return n/Math.sqrt(A.size*B.size);
+}
+
+export function nearestCases(repo,model,readme='',limit=4) {
+  const rt=tokenSet(`${repo.name||''} ${repo.full_name||''} ${repo.description||''} ${(repo.topics||[]).join(' ')} ${readme}`);
+  return model.caseVectors.map(v=>({case:v.raw,score:similaritySets(rt,v.tokens)+.08*v.weight})).sort((a,b)=>b.score-a.score).slice(0,limit);
+}
+
+export function patternSimilarity(repo,pattern,readme='') {
+  const rt=tokenSet(`${repo.name||''} ${repo.full_name||''} ${repo.description||''} ${(repo.topics||[]).join(' ')} ${readme}`);
+  const pt=tokenSet([
+    ...pattern.niche.map(x=>x.value),...pattern.work.map(x=>x.value),...pattern.clients.map(x=>x.value),...pattern.stacks.map(x=>x.value),...pattern.keywords.map(x=>x.value)
+  ].join(' '));
+  return similaritySets(rt,pt);
+}
+
+export function bestPattern(repo,model,readme='') {
+  let best=null;
+  for(const p of model.patterns){const score=patternSimilarity(repo,p,readme);if(!best||score>best.score)best={pattern:p,score};}
+  return best;
+}
+
+export function scoreRepository(repo,model,lineage=[],readme='') {
+  const age=repo.pushed_at?(Date.now()-new Date(repo.pushed_at))/864e5:9999;
+  const stars=Math.min(1,Math.log10((repo.stargazers_count||0)+1)/4);
+  const recency=Math.exp(-Math.max(0,age)/540);
+  const license=repo.license?.spdx_id?1:.35;
+  const description=(repo.description||'').length>20?1:.35;
+  const technical=.31*stars+.29*recency+.2*license+.2*description;
+  const peers=nearestCases(repo,model,readme,5);
+  const archiveFit=peers.length?Math.min(1,peers.slice(0,3).reduce((a,x)=>a+x.score,0)/Math.min(3,peers.length)):0;
+  const bp=bestPattern(repo,model,readme);
+  const patternFit=bp?.score||0;
+  const queryHits=unique(lineage.map(x=>x.queryId)).length;
+  const provenance=Math.min(1,.25*queryHits + .18*unique(lineage.map(x=>x.patternId).filter(Boolean)).length);
+  const score=Math.min(1,.43*technical+.31*archiveFit+.18*patternFit+.08*provenance);
+  return {score,technical,archiveFit,patternFit,provenance,bestPattern:bp?.pattern||null,peers};
+}
+
+export function coverageByPattern(candidates) {
+  const map=new Map();
+  for(const item of candidates) for(const p of unique((item._discovery?.lineage||[]).map(x=>x.patternId).filter(Boolean))) map.set(p,(map.get(p)||0)+1);
+  return map;
+}
+
+export function diversify(candidates, model, limit=24) {
+  const pool=candidates.map(repo=>({repo,base:scoreRepository(repo,model,repo._discovery?.lineage||[]).score}));
+  const selected=[];
+  while(pool.length&&selected.length<limit){
+    let bestIndex=0,bestScore=-Infinity;
+    for(let i=0;i<pool.length;i++){
+      const item=pool[i];
+      let penalty=0;
+      for(const s of selected.slice(-8)){
+        const A=tokenSet(`${item.repo.full_name} ${item.repo.description||''} ${(item.repo.topics||[]).join(' ')}`);
+        const B=tokenSet(`${s.full_name} ${s.description||''} ${(s.topics||[]).join(' ')}`);
+        penalty=Math.max(penalty,similaritySets(A,B));
+      }
+      const jitter=Math.random()*.08;
+      const score=item.base-.26*penalty+jitter;
+      if(score>bestScore){bestScore=score;bestIndex=i;}
+    }
+    selected.push(pool.splice(bestIndex,1)[0].repo);
+  }
+  return selected;
+}
