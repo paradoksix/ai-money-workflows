@@ -7,21 +7,16 @@
   <meta name="description" content="AI Money Workflows arşivinden kanıt dereceli iş vakaları; arşiv tükendiğinde ücretsiz GitHub frontier keşfi." />
   <title>AI Money Workflows — Discovery Engine</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="card-metrics.css" />
 </head>
 <body>
   <main class="shell">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">AI Money Workflows</p>
-        <h1>Repo Discovery Engine</h1>
-        <p class="lede">Önce kendi kanıt dereceli arşivimiz. Arşiv bittiğinde, aynı desenlerden yeni fırsat adayları.</p>
-      </div>
-      <div class="status-row">
-        <span id="sourceStatus" class="pill accent">kaynak: hazırlanıyor</span>
-        <span id="networkStatus" class="pill">hazırlanıyor</span>
-        <span id="rateStatus" class="pill">GitHub API: beklemede</span>
-      </div>
-    </header>
+    <div class="runtime-status" hidden aria-hidden="true">
+      <span id="sourceStatus">kaynak: hazırlanıyor</span>
+      <span id="networkStatus">hazırlanıyor</span>
+      <span id="rateStatus">GitHub API: beklemede</span>
+      <pre id="diag"></pre>
+    </div>
 
     <section class="toolbar" aria-label="Keşif ayarları">
       <label>
@@ -70,13 +65,9 @@
       </div>
       <div id="wikiBody" class="wiki-body"></div>
     </section>
-
-    <details class="diagnostics">
-      <summary>Tanılama</summary>
-      <pre id="diag"></pre>
-    </details>
   </main>
 
   <script src="archive-app.js" type="module"></script>
+  <script src="card-metrics.js" type="module"></script>
 </body>
 </html>
