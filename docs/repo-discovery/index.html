@@ -18,27 +18,29 @@
       <pre id="diag"></pre>
     </div>
 
-    <section class="toolbar" aria-label="Keşif ayarları">
-      <label>
-        Arşiv odağı
-        <select id="modeSelect">
-          <option value="all">Tüm vakalar</option>
-          <option value="verified">A — en güçlü kanıt</option>
-          <option value="high">Türkiye'de yüksek satılabilirlik</option>
-          <option value="code">Kaynak reposu olanlar</option>
-          <option value="local">Yerel işletme / müşteri operasyonu</option>
-        </select>
-      </label>
-      <label class="grow">
-        Frontier için isteğe bağlı GitHub token
-        <input id="tokenInput" type="password" autocomplete="off" placeholder="yalnızca bu sekmede tutulur" />
-      </label>
-      <button id="applyBtn" class="secondary" type="button">Arşivi yeniden yükle</button>
-      <button id="exportBtn" class="ghost" type="button">Geçmişi dışa aktar</button>
-      <label class="ghost file-label">Geçmişi içe aktar<input id="importInput" type="file" accept="application/json" hidden /></label>
-    </section>
+    <div class="runtime-controls" hidden aria-hidden="true">
+      <section class="toolbar" aria-label="Keşif ayarları">
+        <label>
+          Arşiv odağı
+          <select id="modeSelect">
+            <option value="all">Tüm vakalar</option>
+            <option value="verified">A — en güçlü kanıt</option>
+            <option value="high">Türkiye'de yüksek satılabilirlik</option>
+            <option value="code">Kaynak reposu olanlar</option>
+            <option value="local">Yerel işletme / müşteri operasyonu</option>
+          </select>
+        </label>
+        <label class="grow">
+          Frontier için isteğe bağlı GitHub token
+          <input id="tokenInput" type="password" autocomplete="off" placeholder="yalnızca bu sekmede tutulur" />
+        </label>
+        <button id="applyBtn" class="secondary" type="button">Arşivi yeniden yükle</button>
+        <button id="exportBtn" class="ghost" type="button">Geçmişi dışa aktar</button>
+        <label class="ghost file-label">Geçmişi içe aktar<input id="importInput" type="file" accept="application/json" hidden /></label>
+      </section>
 
-    <section id="phaseNote" class="phase-note" hidden></section>
+      <section id="phaseNote" class="phase-note" hidden></section>
+    </div>
 
     <section class="stage" aria-live="polite">
       <button id="repoCard" class="repo-card" type="button" aria-describedby="spaceHint">
