@@ -58,6 +58,12 @@ jobs:
           for control_id in ['modeSelect', 'tokenInput', 'applyBtn', 'exportBtn', 'importInput', 'phaseNote']:
               assert f'id="{control_id}"' in html
 
+          # The card and its wiki button, inherited from the retired
+          # repo-discovery-demo workflow so that coverage is not lost. The
+          # controls above already cover the rest of what it asserted.
+          for control_id in ['repoCard', 'wikiBtn']:
+              assert f'id="{control_id}"' in html, control_id
+
           for token in ['Quality', 'REVENUE_ORDER', 'SELLABILITY_ORDER', 'DIFFICULTY_ORDER', 'semiGauge', 'verticalGauge', 'owner.remove()']:
               assert token in js, token
 

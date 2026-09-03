@@ -72,7 +72,7 @@ jobs:
           grep -q "DOMParser" builds/repo-discovery-demo/archive-app.js
           grep -q "fetchWikiCase" builds/repo-discovery-demo/archive-app.js
           grep -q "toggleWiki" builds/repo-discovery-demo/archive-app.js
-          if grep -qi "deepwiki\.com\|DeepWiki" builds/repo-discovery-demo/index.html builds/repo-discovery-demo/archive-app.js docs/repo-discovery/index.html docs/repo-discovery/archive-app.js; then echo 'External DeepWiki integration is forbidden in the active demo'; exit 1; fi
+          if grep -rqi "deepwiki\.com\|DeepWiki" builds/repo-discovery-demo docs/repo-discovery; then echo 'External DeepWiki integration is forbidden anywhere in the demo, including files nothing loads'; exit 1; fi
           if grep -q "const FRONTIER=" builds/repo-discovery-demo/archive-app.js; then echo 'Static FRONTIER query list is forbidden'; exit 1; fi
           cmp builds/repo-discovery-demo/index.html docs/repo-discovery/index.html
           cmp builds/repo-discovery-demo/styles.css docs/repo-discovery/styles.css

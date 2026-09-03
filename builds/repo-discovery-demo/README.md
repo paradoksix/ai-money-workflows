@@ -1,68 +1,56 @@
-# Repo Discovery Engine — sıfır maliyetli demo
+# Keşif motoru — sıfır maliyetli demo
 
-Bu klasör, `repo-discovery-engine-v2.md` mimarisinin **sunucusuz ve ücretli servis kullanmayan** çalışan demosudur. Amaç production altyapısını birebir taklit etmek değil; ürün deneyimini ve kritik algoritmaları gerçek GitHub verisiyle doğrulamaktır.
+Arşivi tek tek kart olarak gezdiren, arşiv tükenince GitHub'da arşivde **olmayan** benzer depoları öneren statik bir sayfa. Sunucusu yok, ücretli servis kullanmıyor ve **hiçbir yapay zekâ modeline istek atmıyor** — bütün eşleştirme tarayıcıda, sabit kurallarla yapılıyor.
+
+Arşive veri **yazmaz**. Yeni vaka üretmez. Ne göstereceğine `data/cases.csv` karar verir.
+
+## İki aşama
+
+**1. Arşiv aşaması (açılıştaki hâli).** `data/cases.csv`'yi okur ve kayıtları teker teker kart olarak gösterir. Kartta vakanın adı, özeti, bildirilen sonucu ve altı ölçüsü var: kanıt derecesi, gelir türü, Türkiye'de satılabilirlik, zorluk, iş modeli, müşteri tipi. Üstteki "Arşiv odağı" listesiyle daraltılabilir (yalnız A dereceliler, yalnız depo adresi olanlar, yalnız yerel işletmeye satılabilirler gibi).
+
+**2. Sınır aşaması.** Seçilen odaktaki bütün vakalar görüldükten sonra kendiliğinden devreye girer. `cases.csv`'den çıkardığı desenlerle GitHub'da arama yapar ve **arşivde kaydı olmayan** depoları gösterir. Bu kartlar açıkça "arşivde kayıtlı değil; gelir kanıtı değil" diye işaretlenir — bir aday, kanıtlanmış bir vaka değildir.
+
+## İki düğme
+
+- **Wiki** — vakanın ansiklopedi metnini sayfadan ayrılmadan açar. Komşu Wiki sayfasını çeker, ilgili vaka bölümünü ayıklar, script/iframe/form gibi her şeyi temizler ve gömer.
+- **Derin analiz** — arşiv kartında künyenin düzenli hâlini; sınır kartında "bu neden bulundu" izini gösterir: hangi sorgu, hangi desen, hangi vaka kimliklerinden türedi ve arşivdeki en yakın örnekler hangileri.
 
 ## Çalıştırma
 
+**`docs/` kökünden servis et, bu klasörden değil:**
+
 ```bash
-cd builds/repo-discovery-demo
-python -m http.server 8080
-# http://localhost:8080
+python3 -m http.server 8080 --directory docs
+# http://localhost:8080/repo-discovery/
 ```
 
-Node/Python zorunlu değildir; herhangi bir statik HTTP server yeterlidir. GitHub Pages veya ücretsiz statik hosting üzerinde de çalışır.
+Wiki düğmesi ansiklopedi sayfalarını `../nis-02-b2b-satis-lead.html` gibi göreli adreslerle çeker. Bu klasörün içinden servis edilirse o adresler boşa çıkar ve **Wiki düğmesi çalışmaz**; sayfanın geri kalanı çalışıyor göründüğü için hata da fark edilmez.
 
-## Gerçekten çalışan parçalar
+## Ağa çıktığı yerler — hepsi bu
 
-- Gerçek GitHub Repository Search API üzerinden aday keşfi.
-- Exact `repository.id` ile kimliklendirme.
-- IndexedDB metadata cache.
-- Exact seen-set; Bloom filter yok.
-- Seen state JSON export/import.
-- Quality + relevance + freshness + novelty skoru.
-- Son 10 repo üzerinden diversity penalty.
-- Ağırlıklı, yer değiştirmesiz örnekleme.
-- İstemci tarafında 20'lik kuyruk ve low-water refill.
-- Kart odaktayken doğal Space/Enter aktivasyonu; global keyboard handler yok.
-- Static canonical route: `#/r/{repository_id}/{slug}`.
-- Repo ID üzerinden route restore (`GET /repositories/{id}`).
-- README'nin yalnızca talep üzerine çekilmesi.
-- Ücretli LLM olmadan deterministik “AI Money Workflow Opportunities” üretimi.
-- DeepWiki çıkışı.
-- GitHub rate-limit header'larının UI'da gösterilmesi.
-- İsteğe bağlı token; sadece `sessionStorage` içinde tutulur.
-- Havuz tükenince açıkça işaretli “seen fallback”.
+| Nereye | Ne zaman |
+|---|---|
+| `raw.githubusercontent.com/.../data/cases.csv` | Açılışta, arşivi okumak için |
+| `api.github.com/search/repositories` | Yalnız sınır aşamasında, aday aramak için |
+| `api.github.com/repos/{depo}/readme` | Yalnız sınır aşamasında ve yalnız derin analiz istenirse |
+| Aynı sunucudaki `../nis-*.html` | Wiki düğmesine basılırsa |
 
-## v2'den bilinçli sapmalar
+Arşivi her zaman `main` dalından okur. Yani yerelde çalıştırsan bile **yayındaki veriyi** gösterir; yerel `cases.csv` değişikliğin sayfaya yansımaz.
 
-Bu demo tamamen statiktir. Bu yüzden production v2'nin şu parçaları **taklit edilmez**:
+## Saklama ve gizlilik
 
-1. Sunucu tarafı RoaringBitmap / tek doğruluk kaynağı: burada exact ID set IndexedDB'de tutulur. Safari storage eviction riski nedeniyle export/import eklendi. Production'da server-backed seen state kullanılmalı.
-2. GH Archive ingest: tarayıcıdan saatlik gzip firehose işlemek demo için gereksiz ve kaba olur. Demo GitHub Search API ile sınırlı aday havuzu doldurur. Production keşif yakıtı yine GH Archive olmalıdır.
-3. Supabase/Postgres queue + unique job index: ücretsiz statik demoda server job yok. Wiki deterministik olarak tarayıcıda üretilir.
-4. Edge/origin ayrımı: static asset CDN + GitHub API çağrıları dışında origin yoktur.
-5. Claude/API tabanlı opportunity generation: ücret şartını ihlal etmemek için yerini deterministic rules alır.
+- Görülen vakalar `localStorage`'daki `amw_seen` anahtarında tutulur; dışa aktarılıp geri yüklenebilir (JSON).
+- GitHub erişim anahtarı **isteğe bağlıdır** ve yalnız sekme ömrü boyunca `sessionStorage`'da durur. Hiçbir dosyaya, adrese ya da kalıcı depoya yazılmaz. Anahtarın tek etkisi GitHub'ın saatlik istek sınırını yükseltmektir; onsuz da çalışır.
+- Dışarıdan gelen her metin ekrana basılmadan önce kaçırılır; çekilen Wiki bölümü temizlenmeden gömülmez; dış bağlantılar `rel=noreferrer` ile açılır.
 
-## Rate-limit
+## `docs/repo-discovery/` ile ilişkisi
 
-Demo token olmadan da çalışır. GitHub unauthenticated ve Search API limitleri daha düşüktür; UI kalan kotayı response header'lardan gösterir. Kendi token'ını girersen yalnızca sekme ömrü boyunca `sessionStorage`'da tutulur. Repo içine secret yazılmaz.
+`docs/repo-discovery/` bu klasörün **birebir kopyasıdır** (`README.md` hariç) ve **elle** güncellenir — üreten bir script yok. Burada bir dosyayı değiştirirsen aynısını oraya da kopyala; `archive-discovery.yml` ve `card-metric-ui.yml` iş akışları iki kopyanın eşitliğini denetler ve ayrışırsa CI kırılır.
 
-## Güvenlik
+`scripts/build_site.py` bu klasörü **bilmez**. Wiki'yi üretirken `docs/` içindeki başka hiçbir şeyi silmediği için kopya hayatta kalıyor — bu artık bir gereklilik, ayrıntısı `CLAUDE.md`'nin veri sözleşmesinde.
 
-- Token hiçbir dosyaya, URL'ye veya localStorage'a yazılmaz.
-- HTML'e basılan dış veri escape edilir.
-- README ham HTML olarak render edilmez.
-- `target=_blank` linklerinde `rel=noreferrer` kullanılır.
-- README yalnızca özet/başlık/komut ipucu için analiz edilir; tüm içerik yeniden yayınlanmaz.
+## Bilerek yapılmayanlar
 
-## Kabul kriteri
-
-Demo başarılı sayılırsa:
-
-1. İlk açılışta gerçek bir repo gösterir.
-2. Kart odaktayken Space ile yeni repo gösterir.
-3. Aynı oturum/IndexedDB içinde aynı repo, havuz tükenmedikçe tekrar gelmez.
-4. Wiki düğmesi README'yi talep üzerine analiz eder.
-5. Sayfa yenilenince `#/r/{id}` route'u aynı repo ID'sini geri yükler.
-6. Token olmadan temel akış çalışır.
-7. Rate-limit hatası kullanıcıya sessizce yutulmadan gösterilir.
+- **Model çağrısı yok.** Fırsat metni de, benzerlik sıralaması da sabit kurallarla üretiliyor. Maliyet şartı bu.
+- **Kod indirilmiyor.** Sınır aşaması yalnız depo üstverisine ve istenirse README'ye bakar; dosya ağacı taranmaz. Lisans kuralı bunu gerektiriyor.
+- **Sayfa yenilenince kaldığın vakaya dönmüyor.** Adres çubuğuna `#/case/A002` yazılıyor ama okunmuyor; yenileme baştan başlatır.

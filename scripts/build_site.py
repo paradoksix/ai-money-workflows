@@ -121,6 +121,8 @@ STATUS = {
     "superseded_by_A006": "Bu kayıt A006'ya devredildi",
     "paid_claim_source_private": "Ödeme anlatılıyor, kaynağı kapalı",
     "disputed": "Şüpheli — ana sayıma katılmıyor",
+    "open_code_claimed_unlocated": "Kodun açık olduğu söyleniyor, ama adresi kayıtlı değil",
+    "no_recorded_evidence": "Derecesini destekleyen hiçbir kanıt kaydedilmemiş",
 }
 
 # Terms kept as-is because they are searchable and precise, explained once here.
