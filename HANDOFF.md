@@ -2,7 +2,7 @@
 
 **Nerede kaldık** dosyası. Turdan tura değişmeyen kurallar için [`CLAUDE.md`](CLAUDE.md)'ye bak — bu dosya her turda güncellenir.
 
-Son güncelleme: **2026-09-03**. Bu tur **arşiv doğrulaması**ydı: sabitlenmiş sürümler ilk kez denetlendi, iki araştırma yolu kapandı, bir tanesi de arşivin kendi kuralıyla çelişiyor çıktı.
+Son güncelleme: **2026-09-03**. Bu tur **arşiv doğrulamasıydı**: sabitlenmiş sürümler ilk kez denetlendi, bir araştırma yolu sebebiyle birlikte kapandı, 23 kaydın kendi derecesiyle çelişkisi işaretlendi ve kayda geçmemiş keşif motoru hem yazıldı hem ölü kodundan arındırıldı.
 
 ## Şu anki durum
 
@@ -47,39 +47,43 @@ Bunu mümkün kılan şey yeni keşfedildi ve `CLAUDE.md`'ye yazıldı: GitHub A
 
 Yani bulunan bir ilanı `source_url` diye yazmak, **arşivin sahip olmadığı kanıtı üretmek** olurdu. Kaynağı olmayan 74 vakanın **42'si** bu sınıfta (`N müşteri yorumu` / `görünür sipariş` sinyali taşıyanlar). Kuyruğa 42 mekanik satır eklemedim — bulgu sınıfın tamamı için geçerli ve burada duruyor. **Aynı aramayı tekrarlama.**
 
-## 3. Açık bulgu: 23 B vakası kendi derecesinin tanımını karşılamıyor
-
-**Bu turda karara bağlanmadı — kullanıcının kararı gerekiyor.**
+## 3. Kapandı: 23 B vakası artık ne olduğunu söylüyor
 
 `B` derecesinin tanımı `RESEARCH_POLICY.md`'de net: *"Kod açıkta duruyor ve ticari bağlam güçlü; fakat tam olarak bu iş akışının para kazandırdığı gösterilmemiş."* Yani B'nin tek şartı **kodun açık olması**.
 
-25 B vakasının **23'ünde ne depo adresi ne kaynak adresi var:**
+25 B vakasının **23'ünde ne depo adresi ne kaynak adresi vardı** — üstelik hepsinde `reported_amount` ve `revenue_type` de boş. Dört derecenin mantığı şu: A = para✓ kod✓ · B = para✗ kod✓ · C = para✓ kod✗. "para✗ kod✗" için arşivde karşılık yok, o yüzden bu 23 kayıt B'ye park edilmişti.
 
-| Durum | Sayı |
-|---|---|
-| "Açık JSON" / "çalışan iş akışı açık" diyor, ama adresi hiçbir yerde yazmıyor | **9** |
-| Ansiklopedi metninde **hiç kanıt satırı yok** | **14** |
-| Adresi gerçekten kayıtlı olan (B001, B002) | 2 |
+**Karar: derece duruyor, durum işaretlendi.** `status` alanı `encyclopedia_only`'den ikiye ayrıldı:
 
-Yirmi üçünde de `reported_amount` ve `revenue_type` boş. Yani bu kayıtlar ne para kanıtı ne kod adresi taşıyor; B derecesi fiilen "kulağa makul gelen bir otomasyon fikri" anlamına gelmiş.
+| Yeni durum | Sayı | Wiki'de görünen |
+|---|---|---|
+| `open_code_claimed_unlocated` | **8** | "Kodun açık olduğu söyleniyor, ama adresi kayıtlı değil" |
+| `no_recorded_evidence` | **15** | "Derecesini destekleyen hiçbir kanıt kaydedilmemiş" |
 
-**`C`'ye indirmek de yanlış olur:** C'nin tanımı "para kazandırmış, kodu yok" — bu 23 kayıtta para kanıtı da yok, yani C onları para ekseninde *yükseltmiş* olur.
+İlk grup (B003 · B004 · B005 · B006 · B009 · B012 · B014 · B017) ansiklopedi metninde "Açık JSON" / "çalışan iş akışı açık" diyor ama o dosyanın adresi hiçbir yerde yazmıyor. İkinci grup (B007 · B008 · B010 · B011 · B013 · B015 · B016 · B018–B025) **hiç kanıt satırı taşımıyor.**
 
-Seçenekler ve etkileri sonraki oturumda kullanıcıya sunulacak. Hangisi seçilirse seçilsin dört derecenin adı üç yerde birebir aynı kalmalı (`RESEARCH_POLICY.md` · `CLAUDE.md` özeti · `build_site.py`'deki `GRADES`) ve README'nin 12 rakamı veriden yeniden üretilmeli.
+Yirmi üçü de `research_queue.csv`'ye girdi (kuyruk 42 → 65 satır). İlk grubun `next_action`'ı dayandığı iddiayı **birebir alıntılıyor**, yani sonraki oturum tam olarak neyi arayacağını biliyor.
 
-## 4. Kayda geçmemiş bir yapım dalgası var: Repo Discovery Engine
+**`C`'ye indirilmedi, bilerek:** C'nin tanımı "para kazandırmış, kodu yok" — bu 23 kayıtta para kanıtı da yok, yani C onları para ekseninde *yükseltmiş* olurdu.
 
-2-3 Eylül'de `main`'e altı commit girmiş (`9a249f4` → `909ba0b`) ve `builds/repo-discovery-demo/` + `docs/repo-discovery/` altında çalışan bir keşif motoru kurulmuş. **Önceki HANDOFF'ta tek satır yok.** Ne olduğu:
+Derece sayıları değişmedi (A6 · B25 · C92 · X1), dolayısıyla README'nin 12 rakamı ve dört derecenin üç yerdeki adı da aynı kaldı. Adres bulunursa kayıt gerçek B olur — karar geri alınabilir.
 
-`data/cases.csv`'yi tarayıcıda okuyup önce arşivdeki vakaları tek tek kart olarak gösteriyor; arşiv tükenince `cases.csv`'den türettiği desenlerle GitHub'da arşivde olmayan depoları arıyor ve her adayın hangi vakalardan türediğini gösteriyor. **Model çağrısı yok, ücretsiz, tamamen tarayıcı tarafında.** Arşive veri yazmıyor.
+## 4. Keşif motoru kayda geçti ve ölü kodu temizlendi
 
-Bakım borcu olarak not edilenler — hiçbiri bu turda ellenmedi:
+2-3 Eylül'de `main`'e altı commit girmiş (`9a249f4` → `909ba0b`) ve `builds/repo-discovery-demo/` + `docs/repo-discovery/` altında çalışan bir keşif motoru kurulmuş. **Önceki HANDOFF'ta tek satır yoktu.**
 
-- `app.js` **ölü kod**: hiçbir HTML yüklemiyor, kaldırılmış `#minStars`/`#deepWikiLink` alanlarını arıyor, ama hâlâ `docs/`'a yayınlanıyor ve `repo-discovery-demo.yml` tarafından denetleniyor. Deponun DeepWiki yasağını delen tek dosya da bu (yasak yalnız `index.html` ve `archive-app.js`'i tarıyor).
-- `builds/repo-discovery-demo/README.md` **silinmiş uygulamayı** anlatıyor ve var olmayan bir mimari dosyasına atıf yapıyor.
-- Sayfaya **hiçbir yerden link yok** — Wiki'de, README'de, hiçbir yerde. Adresi bilmeyen bulamaz.
-- İki iş akışı (`repo-discovery-demo.yml` ve `archive-discovery.yml`) aynı klasör üzerinde **birbiriyle çelişen** mimariler doğruluyor.
-- `builds/` ↔ `docs/` kopyası **elle** tutuluyor; CI eşitliği sonradan denetliyor ama `app.js` iki denetimin de dışında, sessizce ayrışabilir.
+Ne yaptığı: `data/cases.csv`'yi tarayıcıda okuyup arşivdeki vakaları tek tek kart olarak gösteriyor; seçilen odaktaki vakalar tükenince `cases.csv`'den türettiği desenlerle GitHub'da **arşivde olmayan** depoları arıyor ve her adayın hangi vakalardan türediğini gösteriyor. **Model çağrısı yok, ücretsiz, tamamen tarayıcı tarafında.** Arşive veri yazmıyor.
+
+Bu turda temizlenenler:
+
+- **`app.js` silindi** (iki kopyadan da). Hiçbir HTML yüklemiyordu, kaldırılmış alanları arıyordu ve deponun DeepWiki yasağını delen tek dosyaydı — yasak yalnız iki dosyayı tarıyordu, o ise üçüncüsüydü.
+- **DeepWiki yasağı klasörün tamamına genişletildi** (`grep -rqi`). Artık hiçbir şeyin yüklemediği bir dosya bile yasağı delemiyor.
+- **`repo-discovery-demo.yml` kaldırıldı.** İçindeki denetimlerin tamamı ya ölü `app.js` hakkındaydı ya da diğer iki iş akışında zaten vardı. Yalnız araç çubuğu alanlarının denetimi (`repoCard` · `wikiBtn` · `tokenInput` · `importInput`) tek başınaydı; **kaybolmasın diye `card-metric-ui.yml`'e taşındı.** Çelişen iki mimari doğrulaması böylece bitti.
+- **README yeniden yazıldı.** Eskisi silinmiş uygulamayı anlatıyordu, var olmayan bir mimari dosyasına atıf yapıyordu ve verdiği çalıştırma komutu **Wiki düğmesini bozuyordu** (bu klasörden servis edilince `../nis-*.html` adresleri boşa çıkıyor, üstelik sayfanın geri kalanı çalıştığı için fark edilmiyor). Yenisi `docs/` kökünden servis etmeyi, ağa çıktığı dört yeri ve iki kopyanın elle tutulduğunu yazıyor.
+
+**Yapılmadı, duruyor:** sayfaya hâlâ hiçbir yerden link yok — Wiki'de, README'de, hiçbir yerde. Adresini bilmeyen bulamaz. Bağlamak Wiki üreticisine dokunmayı gerektiriyor, ayrı bir tur.
+
+**Küçük not:** üç iş akışının canlı sayfa dumanı testi sunucuyu `sleep 1` ile bekliyor. Yerelde bu yarışı bir kez yakaladım (sunucu geç açılınca ilk kontroller düşüyor). Şimdiye kadar CI'da patlamamış ama hazır bir tökezleme; hazır dokunulmuşken hazır olana kadar bekleyen bir döngüye çevrilebilir.
 
 ---
 
@@ -91,8 +95,8 @@ Araştırmanın ucu açık, sabit hedef sayı yok. Ölçütler gevşemiyor.
 
 | Boşluk | Sayı | Anlamı |
 |---|---|---|
-| `status = encyclopedia_only` | **82 / 124** | Hiç araştırma kuyruğundan geçmemiş |
-| `research_queue.csv`'de olmayan C vakası | **50 / 92** | Kuyruk 42 satır |
+| `status = encyclopedia_only` | **59 / 124** | Hiç araştırma kuyruğundan geçmemiş (23'ü bu turda çıktı) |
+| `research_queue.csv`'de olmayan C vakası | **50 / 92** | Kuyruk 65 satır |
 | `source_url` boş | **74 / 124** | Bunun **42'si** pazar yeri sınıfı — yukarıda kapandı |
 | `revenue_type` boş | **33 / 124** | |
 | `reported_amount` boş | **39 / 124** | |
