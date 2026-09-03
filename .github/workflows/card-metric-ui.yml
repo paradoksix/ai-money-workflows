@@ -1,0 +1,77 @@
+name: card-metric-ui
+
+on:
+  pull_request:
+    paths:
+      - 'builds/repo-discovery-demo/index.html'
+      - 'builds/repo-discovery-demo/card-metrics.css'
+      - 'builds/repo-discovery-demo/card-metrics.js'
+      - 'docs/repo-discovery/index.html'
+      - 'docs/repo-discovery/card-metrics.css'
+      - 'docs/repo-discovery/card-metrics.js'
+      - '.github/workflows/card-metric-ui.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'builds/repo-discovery-demo/index.html'
+      - 'builds/repo-discovery-demo/card-metrics.css'
+      - 'builds/repo-discovery-demo/card-metrics.js'
+      - 'docs/repo-discovery/index.html'
+      - 'docs/repo-discovery/card-metrics.css'
+      - 'docs/repo-discovery/card-metrics.js'
+      - '.github/workflows/card-metric-ui.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  ui-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Metric script syntax
+        run: node --check builds/repo-discovery-demo/card-metrics.js
+      - name: UI contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('builds/repo-discovery-demo')
+          html = (root / 'index.html').read_text(encoding='utf-8')
+          js = (root / 'card-metrics.js').read_text(encoding='utf-8')
+          css = (root / 'card-metrics.css').read_text(encoding='utf-8')
+
+          assert '<header class="topbar">' not in html
+          assert '<h1>Repo Discovery Engine</h1>' not in html
+          assert '<details class="diagnostics">' not in html
+          assert 'card-metrics.css' in html
+          assert 'card-metrics.js' in html
+
+          for runtime_id in ['sourceStatus', 'networkStatus', 'rateStatus', 'diag']:
+              assert f'id="{runtime_id}"' in html
+          assert 'runtime-status' in html and 'hidden aria-hidden="true"' in html
+
+          for token in ['Quality', 'REVENUE_ORDER', 'SELLABILITY_ORDER', 'DIFFICULTY_ORDER', 'semiGauge', 'verticalGauge', 'owner.remove()']:
+              assert token in js, token
+
+          for token in ['repo-card:not(.frontier) .owner', '.metric-visual', '.semi-scale', '.vertical-gauge-wrap']:
+              assert token in css, token
+
+          assert (Path('docs/repo-discovery/index.html').read_text(encoding='utf-8') == html)
+          assert (Path('docs/repo-discovery/card-metrics.js').read_text(encoding='utf-8') == js)
+          assert (Path('docs/repo-discovery/card-metrics.css').read_text(encoding='utf-8') == css)
+
+          print('card metric UI contract ok')
+          PY
+      - name: Local page smoke
+        run: |
+          python -m http.server 8080 --directory docs >/tmp/card-ui.log 2>&1 &
+          pid=$!
+          trap 'kill $pid' EXIT
+          sleep 1
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'card-metrics.js'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/card-metrics.js | grep -q 'Quality'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/card-metrics.css | grep -q 'metric-visual'
