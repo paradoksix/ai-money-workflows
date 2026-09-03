@@ -35,6 +35,7 @@ const STACK_CANONICAL = new Map([
 function normalize(value='') {
   return String(value ?? '')
     .toLowerCase()
+    .replace(/ı/g,'i')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g,'')
     .replace(/[’']/g,'')
