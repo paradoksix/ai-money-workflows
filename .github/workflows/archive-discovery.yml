@@ -7,6 +7,7 @@ on:
       - 'builds/repo-discovery-demo/discovery-core.js'
       - 'builds/repo-discovery-demo/discovery-runtime.js'
       - 'builds/repo-discovery-demo/index.html'
+      - 'builds/repo-discovery-demo/styles.css'
       - 'docs/repo-discovery/**'
       - '.github/workflows/archive-discovery.yml'
   push:
@@ -16,6 +17,7 @@ on:
       - 'builds/repo-discovery-demo/discovery-core.js'
       - 'builds/repo-discovery-demo/discovery-runtime.js'
       - 'builds/repo-discovery-demo/index.html'
+      - 'builds/repo-discovery-demo/styles.css'
       - 'docs/repo-discovery/**'
       - '.github/workflows/archive-discovery.yml'
 
@@ -55,7 +57,7 @@ jobs:
           const score=scoreRepository({name:'lead-agent',full_name:'x/lead-agent',description:'AI sales prospecting automation with n8n and CRM',topics:['lead-generation','n8n'],stargazers_count:100,pushed_at:new Date().toISOString(),license:{spdx_id:'MIT'}},model,[{queryId:'q1',patternId:model.patterns[0].id}]);
           if(!(score.score>0&&score.archiveFit>=0)) throw new Error('candidate scoring failed');
           NODE
-      - name: Archive-first contracts
+      - name: Archive-first and inline-wiki contracts
         run: |
           grep -q "data/cases.csv" builds/repo-discovery-demo/archive-app.js
           grep -q "buildDiscoveryModel" builds/repo-discovery-demo/archive-app.js
@@ -65,17 +67,27 @@ jobs:
           grep -q "synthesizeRefinementQueries" builds/repo-discovery-demo/discovery-runtime.js
           grep -q "discovery-core.js" builds/repo-discovery-demo/archive-app.js
           grep -q "archiveRepos" builds/repo-discovery-demo/archive-app.js
+          grep -q "archiveWikiBtn" builds/repo-discovery-demo/index.html
+          grep -q "WIKI_PAGE_BY_NICHE" builds/repo-discovery-demo/archive-app.js
+          grep -q "DOMParser" builds/repo-discovery-demo/archive-app.js
+          grep -q "fetchWikiCase" builds/repo-discovery-demo/archive-app.js
+          grep -q "toggleWiki" builds/repo-discovery-demo/archive-app.js
+          if grep -Rqi "deepwiki\.com\|DeepWiki" builds/repo-discovery-demo docs/repo-discovery; then echo 'External DeepWiki integration is forbidden'; exit 1; fi
           if grep -q "const FRONTIER=" builds/repo-discovery-demo/archive-app.js; then echo 'Static FRONTIER query list is forbidden'; exit 1; fi
+          cmp builds/repo-discovery-demo/index.html docs/repo-discovery/index.html
+          cmp builds/repo-discovery-demo/styles.css docs/repo-discovery/styles.css
           cmp builds/repo-discovery-demo/archive-app.js docs/repo-discovery/archive-app.js
           cmp builds/repo-discovery-demo/discovery-core.js docs/repo-discovery/discovery-core.js
           cmp builds/repo-discovery-demo/discovery-runtime.js docs/repo-discovery/discovery-runtime.js
-      - name: Serve live-copy smoke
+      - name: Serve wiki-aware live-copy smoke
         run: |
-          python -m http.server 8080 --directory docs/repo-discovery >/tmp/archive-discovery.log 2>&1 &
+          python -m http.server 8080 --directory docs >/tmp/archive-discovery.log 2>&1 &
           pid=$!
           trap 'kill $pid' EXIT
           sleep 1
-          curl --fail --silent http://127.0.0.1:8080/ | grep -q 'Repo Discovery Engine'
-          curl --fail --silent http://127.0.0.1:8080/archive-app.js | grep -q 'buildDiscoveryModel'
-          curl --fail --silent http://127.0.0.1:8080/discovery-core.js | grep -q 'synthesizeQueries'
-          curl --fail --silent http://127.0.0.1:8080/discovery-runtime.js | grep -q 'runDiscoveryPipeline'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'Repo Discovery Engine'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'archiveWikiBtn'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/archive-app.js | grep -q 'fetchWikiCase'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/discovery-core.js | grep -q 'synthesizeQueries'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/discovery-runtime.js | grep -q 'runDiscoveryPipeline'
+          curl --fail --silent http://127.0.0.1:8080/nis-02-b2b-satis-lead.html | grep -q 'id="A002"'
