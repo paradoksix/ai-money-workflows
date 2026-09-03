@@ -85,8 +85,9 @@ jobs:
           pid=$!
           trap 'kill $pid' EXIT
           sleep 1
-          curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'Repo Discovery Engine'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'id="repoCard"'
           curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'archiveWikiBtn'
+          curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'card-metrics.js'
           curl --fail --silent http://127.0.0.1:8080/repo-discovery/archive-app.js | grep -q 'fetchWikiCase'
           curl --fail --silent http://127.0.0.1:8080/repo-discovery/discovery-core.js | grep -q 'synthesizeQueries'
           curl --fail --silent http://127.0.0.1:8080/repo-discovery/discovery-runtime.js | grep -q 'runDiscoveryPipeline'
