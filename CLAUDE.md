@@ -71,7 +71,8 @@ Sık düşülen tuzaklar ve arşivin yerleşmiş karşılıkları — yeni metin
 ## Veri sözleşmesi
 
 - **`data/cases.csv` tek doğruluk kaynağıdır.** 124 kaydın tamamı burada. Bir vakayla ilgili herhangi bir sayı değişecekse önce burası değişir.
-- **`docs/` klasörünün tamamı üretilir — elle düzenlenmez.** `scripts/build_site.py` 22 Wiki sayfasını + `wiki.css`, `wiki.js`, `vakalar.js` dosyalarını `data/cases.csv` ve `encyclopedia/*.md`'den yeniden yazar. (Elle konmuş tek iki dosya: `.nojekyll` ve `wiki-onizleme.png`.)
+- **`docs/` kökündeki Wiki üretilir — elle düzenlenmez.** `scripts/build_site.py` 22 Wiki sayfasını + `wiki.css`, `wiki.js`, `vakalar.js` dosyalarını `data/cases.csv` ve `encyclopedia/*.md`'den yeniden yazar. Elle konanlar: `.nojekyll`, `wiki-onizleme.png` ve **`docs/repo-discovery/`** — bu son klasör `builds/repo-discovery-demo/`'nun birebir kopyasıdır, üretilmez.
+- **`build_site.py` çıktı klasörünü asla temizlemez** ve bu artık bir gereklilik: temiz derleme diye `docs/`'u silen bir değişiklik `repo-discovery/`'yi de sessizce siler, üstelik CI'nın tazelik kontrolü bunu fark etmez. Yalnız adını bildiği dosyaları yaz.
 - **`catalog.csv`**, A/B/X çekirdeğinin sürümü sabitlenmiş alt kümesidir (42 satır) ve `validate_cases.py`'deki `SHARED_WITH_CATALOG` alanlarında `cases.csv` ile **birebir uyuşmak zorundadır**.
 - **README'deki rakamlar veriden yeniden hesaplanır.** `validate_cases.py`'nin `check_readme` kontrolü 12 rakamı veriden üretip README ile karşılaştırır; tutmayanı adıyla söyleyip başarısız olur. README'de sayı değiştirirken veriyi de değiştir, yoksa CI kırılır — CI, her push'ta GitHub'ın kendiliğinden çalıştırdığı denetim.
 - **`build_site.py` deterministiktir** — aynı veriden bayt-aynı çıktı üretir. CI tazeliği `git diff --exit-code` ile ölçtüğü için bu özellik korunmalı: sözlük sırasına güvenme, zaman damgası veya rastgelelik ekleme.
@@ -95,6 +96,26 @@ Ansiklopedi metnine dokunan her değişiklikten sonra ayrıca vaka bloğu sayıs
 grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc     # 123 olmalı
 ```
 
+## Sabitlenmiş sürüm doğrulaması
+
+Üçlüden **ayrı** bir denetim var; ağ gerektirdiği ve başkalarının depolarına gittiği
+için CI'da koşmaz, araştırma turu açarken elle çalıştırılır:
+
+```bash
+python3 scripts/verify_pins.py                                         # 9 sabitlenmiş sürüm hâlâ gerçek mi
+python3 scripts/verify_pins.py --report research/PIN-DOGRULAMA-<tarih>.md
+```
+
+Depo adresi **ve** 40 karakterlik sürüm kimliği taşıyan her kayıt için üç soru sorar:
+özgün depo hâlâ cevap veriyor mu · sabitlenen sürüme hâlâ ulaşılabiliyor mu ·
+`license_status` gerçekle uyuşuyor mu. Kod indirmez, yalnız sabitlenen sürümün kök
+dizin listesini okur — lisans kuralı bozulmaz.
+
+Bu arşivin bütün iddiası "işin tam olarak hangi kodla yapıldığını biliyoruz"a dayandığı
+için **bu denetim bayatlar**: özgün depo silinebilir, adı değişebilir, gizlenebilir ya da
+geçmişi yeniden yazılabilir. Sabitlenmiş sürüm eklendiğinde ve derece değiştiğinde
+çalıştır; sonucu tarihli raporla `research/` altına yaz.
+
 ## Depo haritası
 
 | Yol | Ne |
@@ -108,10 +129,13 @@ grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc     # 123 olm
 | `encyclopedia/A006-JACOBO-DEVICE-REPAIR.md` | Arşivin en sağlam tek vakası, kendi kartıyla |
 | `encyclopedia/APPENDIX-X-DISPUTED.md` | Şüpheli iddialar |
 | `ENCYCLOPEDIA.md` | Ansiklopedi girişi ve iş kolu indeksi |
-| `docs/` | **Üretilen Wiki** — 22 sayfa: giriş, bütün örnekler, 16 iş kolu, şüpheli iddialar, ortak dersler, A006, ölçütler · `wiki.css` · `wiki.js` · `vakalar.js` · elle konan `.nojekyll` ve `wiki-onizleme.png` |
+| `docs/` | **Üretilen Wiki** — 22 sayfa: giriş, bütün örnekler, 16 iş kolu, şüpheli iddialar, ortak dersler, A006, ölçütler · `wiki.css` · `wiki.js` · `vakalar.js` · elle konan `.nojekyll`, `wiki-onizleme.png` ve `repo-discovery/` |
+| `builds/repo-discovery-demo/` | Keşif motoru demosu — `docs/repo-discovery/` bunun elle tutulan birebir kopyası |
 | `scripts/build_site.py` | Wiki üreticisi — sol menü, vaka çapaları, ansiklopedi çeviricisi (`--fragment PATH` ile giriş sayfasının başlıksız kopyasını da yazar) |
 | `scripts/validate_cases.py` | Şema + 3 çapraz kontrol (katalog ↔ ansiklopedi ↔ README) |
 | `scripts/validate_catalog.py` | `catalog.csv` şeması, A/B/X için depo adresi + 40 karakterlik sürüm kimliği zorunlu |
+| `scripts/verify_pins.py` | Sabitlenmiş sürümler hâlâ gerçek mi — ağ gerektirir, CI'da koşmaz |
+| `research/PIN-DOGRULAMA-*.md` | Tarihli sabitlenmiş sürüm doğrulama turları |
 | `.github/workflows/verify-live-site.yml` | Canlı sitenin **Wiki'yi** sunduğunu doğrular (README'yi değil) — bu ortamdan yapılamayan tek kontrol |
 | `research/GOLDEN-CASES-DEEP-DIVE-*.md` | Tarihli derin araştırma turları |
 | `RESEARCH_POLICY.md` | Kanıt ve lisans kural kitabı |
@@ -130,6 +154,8 @@ Bu çalışma ortamında doğrulanmış, kalıcı kısıtlar. **Her oturumda yen
 - **GitHub API yazma yolları proxy tarafından kapalı:** `"Write access to this GitHub API path is not permitted through this proxy."` Yani **dal silme, depo ayarı, Pages ayarı buradan yapılamaz** — bunlar kullanıcıya bırakılır. Okuma, issue ve PR yorumu (PR = pull request, bir dalın `main`'e katılma önerisi) ve `git push` çalışır.
 - Reddit metni gerektiren araştırmalarda tek yol `WebSearch`'ün dolaylı özetleridir; tartışma başlığının tam metnine ulaşılamaz. Kaynak bulunamadıysa **uydurma — "bulunamadı" diye kaydet.** (`reddit.com` yalnız doğrudan erişime değil, **web aramasına da kapalı** — arama motoru alan adını reddediyor.)
 - **GitHub Pages kaynağı `main` + `/docs` olmak zorundadır.** Kök dizin seçilirse Jekyll `README.md`'yi site sanıp yayınlar; Wiki `/docs/` altına gömülür ve deponun bütün bağlantıları yanlış yere gider. Bu ayar buradan **değiştirilemez** (depo ayarı, GitHub MCP'sinde Pages aracı yok) — kullanıcıya bırakılır.
+- **Pazar yeri sayfaları kapalı, araması açık — ama arama tek başına işe yaramıyor.** `fiverr.com` ve `upwork.com` `WebSearch`'te **reddedilmiyor** ve gerçek ilan adresleri dönüyor; fakat sayfanın kendisi ağ katmanında kapalı (`EGRESS_BLOCKED`), yani bulunan ilanın yorum sayısı ya da fiyatı **doğrulanamıyor**. Üstüne, arşivin bu vakalarda tuttuğu alanlar (`38 müşteri yorumu`, `$50-100`) **kimlik belirtmiyor**: binlerce neredeyse aynı ilan var, arama motoru yorum sayısına göre indekslemiyor ve yorum sayısı zaten zamanla değişiyor. Bulunan bir ilanı `source_url` diye yazmak, arşivin sahip olmadığı kanıtı üretmek olur. 2026-09-03'te sınandı — **tekrarlama.**
+- **Özgün depoları `git` üzerinden okumak çalışıyor.** GitHub API'sinin `repos/*` yolları proxy tarafından kapalı (`403`), ama `git ls-remote <adres>` ve sabitlenen sürümü tek tek çekmek (`git fetch --depth 1 origin <sürüm>`) çalışıyor. Sabitlenmiş sürüm doğrulaması bu kanala dayanır; `scripts/verify_pins.py` bunu kullanır. Depo erişimi için önce API'yi deneyip pes etme.
 - **Sitenin yayında olduğu buradan doğrulanamaz.** `*.github.io` kapalı. "pages build and deployment" iş akışının yeşil bitmesi bir derlemenin *bittiğini* söyler, **neyin yayınlandığını söylemez** — bu ikisi bir kez karıştırıldı ve depo birkaç tur boyunca sitenin canlı olduğunu yanlış varsaydı. "Canlı" iddiası yalnız iki şeye dayanabilir: `verify-live-site` iş akışının yeşili ya da kullanıcının teyidi. **Derleme durumuna bakıp varsayma.**
 
 ## PR ve dal politikası
