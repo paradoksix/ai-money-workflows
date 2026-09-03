@@ -54,6 +54,10 @@ jobs:
               assert f'id="{runtime_id}"' in html
           assert 'runtime-status' in html and 'hidden aria-hidden="true"' in html
 
+          assert '<div class="runtime-controls" hidden aria-hidden="true">' in html
+          for control_id in ['modeSelect', 'tokenInput', 'applyBtn', 'exportBtn', 'importInput', 'phaseNote']:
+              assert f'id="{control_id}"' in html
+
           for token in ['Quality', 'REVENUE_ORDER', 'SELLABILITY_ORDER', 'DIFFICULTY_ORDER', 'semiGauge', 'verticalGauge', 'owner.remove()']:
               assert token in js, token
 
