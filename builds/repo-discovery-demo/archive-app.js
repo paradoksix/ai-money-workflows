@@ -1,10 +1,41 @@
 import {caseWeight,caseMatchesMode,buildDiscoveryModel,nearestCases,scoreRepository} from './discovery-core.js';
 import {runDiscoveryPipeline} from './discovery-runtime.js';
+
 const ARCHIVE='https://raw.githubusercontent.com/paradoksix/ai-money-workflows/main/data/cases.csv';
+const WIKI_PAGE_BY_NICHE=new Map([
+  ['video-gorsel-produksiyon','../nis-01-video-gorsel-produksiyon.html'],
+  ['b2b-satis-lead','../nis-02-b2b-satis-lead.html'],
+  ['musteri-iletisim-destek','../nis-03-musteri-iletisim-destek.html'],
+  ['ozel-yazilim-mikro-saas','../nis-04-ozel-yazilim-mikro-saas.html'],
+  ['icerik-sosyal-medya','../nis-05-icerik-sosyal-medya.html'],
+  ['eticaret-katalog','../nis-06-eticaret-katalog.html'],
+  ['kurumsal-operasyon-maliyet','../nis-07-kurumsal-operasyon-maliyet.html'],
+  ['ofis-belge-operasyonu','../nis-08-ofis-belge-operasyonu.html'],
+  ['veri-cikti-temizligi','../nis-09-veri-cikti-temizligi.html'],
+  ['ajans-freelance-model','../nis-10-ajans-freelance-model.html'],
+  ['yerel-isletme-saha-servisi','../nis-11-yerel-isletme-saha-servisi.html'],
+  ['rag-bilgi-sistemleri','../nis-12-rag-bilgi-sistemleri.html'],
+  ['emlak-site-yonetimi','../nis-13-emlak-site-yonetimi.html'],
+  ['muhasebe-finans-belge','../nis-14-muhasebe-finans-belge.html'],
+  ['ik-ise-alim','../nis-15-ik-ise-alim.html'],
+  ['egitim-kurs-operasyonu','../nis-16-egitim-kurs-operasyonu.html'],
+  ['tartismali','../supheli-iddialar.html'],
+]);
+
 const $=s=>document.querySelector(s);
-const el={card:$('#repoCard'),source:$('#sourceLink'),github:$('#githubLink'),deep:$('#deepWikiLink'),analyse:$('#wikiBtn'),panel:$('#wikiPanel'),title:$('#wikiTitle'),body:$('#wikiBody'),close:$('#closeWikiBtn'),status:$('#networkStatus'),rate:$('#rateStatus'),sourceStatus:$('#sourceStatus'),mode:$('#modeSelect'),token:$('#tokenInput'),reload:$('#applyBtn'),export:$('#exportBtn'),import:$('#importInput'),reset:$('#skipSeenBtn'),phase:$('#phaseNote'),diag:$('#diag')};
-const state={cases:[],archiveRepos:new Set(),queue:[],frontier:[],seen:new Set(JSON.parse(localStorage.getItem('amw_seen')||'[]')),current:null,phase:'archive',mode:'all',token:sessionStorage.getItem('amw_token')||'',rate:null,model:null,queryPlan:[],executed:[],cycle:0};
+const el={
+  card:$('#repoCard'),source:$('#sourceLink'),github:$('#githubLink'),analyse:$('#wikiBtn'),wiki:$('#archiveWikiBtn'),
+  panel:$('#wikiPanel'),title:$('#wikiTitle'),body:$('#wikiBody'),eyebrow:$('#analysisEyebrow'),close:$('#closeWikiBtn'),
+  status:$('#networkStatus'),rate:$('#rateStatus'),sourceStatus:$('#sourceStatus'),mode:$('#modeSelect'),token:$('#tokenInput'),
+  reload:$('#applyBtn'),export:$('#exportBtn'),import:$('#importInput'),reset:$('#skipSeenBtn'),phase:$('#phaseNote'),diag:$('#diag')
+};
+const state={
+  cases:[],archiveRepos:new Set(),queue:[],frontier:[],seen:new Set(JSON.parse(localStorage.getItem('amw_seen')||'[]')),
+  current:null,phase:'archive',mode:'all',token:sessionStorage.getItem('amw_token')||'',rate:null,model:null,queryPlan:[],executed:[],cycle:0,
+  panelMode:null,panelKey:null,wikiCache:new Map()
+};
 el.token.value=state.token;
+
 const esc=(s='')=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function csv(t){const rs=[];let r=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c==='"'&&t[i+1]==='"'){f+='"';i++}else if(c==='"')q=false;else f+=c}else if(c==='"')q=true;else if(c===','){r.push(f);f=''}else if(c==='\n'){r.push(f.replace(/\r$/,''));rs.push(r);r=[];f=''}else f+=c}if(f||r.length){r.push(f);rs.push(r)}const [h,...b]=rs.filter(x=>x.some(Boolean));return b.map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]??''])))}
 function repoName(u=''){const m=String(u).match(/github\.com\/([^/]+\/[^/#?]+)/i);return m?m[1].replace(/\.git$/,''):''}
@@ -12,15 +43,105 @@ const keyCase=c=>`case:${c.id}`,keyRepo=r=>`repo:${r.id}`;
 function persist(){localStorage.setItem('amw_seen',JSON.stringify([...state.seen]))}
 function setLink(a,u,l){a.textContent=l;if(u){a.href=u;a.classList.remove('disabled')}else{a.href='#';a.classList.add('disabled')}}
 function note(s,f=false){el.phase.hidden=false;el.phase.classList.toggle('frontier',f);el.phase.textContent=s}
+function currentPanelKey(){if(!state.current)return'';return state.current.kind==='case'?keyCase(state.current.data):keyRepo(state.current.data)}
+function closePanel(){el.panel.hidden=true;state.panelMode=null;state.panelKey=null;el.wiki.setAttribute('aria-expanded','false')}
+function openPanel(mode,key){state.panelMode=mode;state.panelKey=key;el.panel.hidden=false;el.wiki.setAttribute('aria-expanded',mode==='wiki'?'true':'false')}
 function rebuild(){state.model=buildDiscoveryModel(state.cases,{mode:state.mode});state.queryPlan=[];state.executed=[];diag()}
-function diag(){if(!el.diag)return;el.diag.textContent=JSON.stringify({phase:state.phase,mode:state.mode,model:state.model?{version:state.model.version,eligible:state.model.eligibleCount,patterns:state.model.patterns.slice(0,8).map(p=>({id:p.id,label:p.label,support:p.support,cases:p.caseIds.slice(0,6)}))}:null,cycle:state.cycle,queryPlan:state.queryPlan.map(q=>({stage:q.stage,pattern:q.patternId,text:q.text,cases:q.caseIds})),executed:state.executed.map(q=>({stage:q.stage,text:q.text,resultCount:q.resultCount,page:q.page})),frontier:state.frontier.length},null,2)}
+function diag(){if(!el.diag)return;el.diag.textContent=JSON.stringify({phase:state.phase,mode:state.mode,model:state.model?{version:state.model.version,eligible:state.model.eligibleCount,patterns:state.model.patterns.slice(0,8).map(p=>({id:p.id,label:p.label,support:p.support,cases:p.caseIds.slice(0,6)}))}:null,cycle:state.cycle,queryPlan:state.queryPlan.map(q=>({stage:q.stage,pattern:q.patternId,text:q.text,cases:q.caseIds})),executed:state.executed.map(q=>({stage:q.stage,text:q.text,resultCount:q.resultCount,page:q.page})),frontier:state.frontier.length,panelMode:state.panelMode},null,2)}
 function status(){const seen=[...state.seen].filter(x=>x.startsWith('case:')).length;el.sourceStatus.textContent=state.phase==='archive'?`kaynak: arşiv · ${seen}/${state.cases.filter(c=>c.evidence_grade!=='X').length}`:`kaynak: frontier · ${state.frontier.length} aday · ${state.executed.length} sorgu`;if(state.rate)el.rate.textContent=`${state.rate.remaining}/${state.rate.limit} · ${state.rate.resource}`;diag()}
 function refill(){let a=state.cases.filter(c=>caseMatchesMode(c,state.mode)&&!state.seen.has(keyCase(c)));if(!a.length)a=state.cases.filter(c=>c.evidence_grade!=='X'&&!state.seen.has(keyCase(c)));state.queue=a.map(x=>({x,k:Math.pow(Math.random(),1/Math.max(.02,caseWeight(x)))})).sort((a,b)=>b.k-a.k).slice(0,24).map(o=>({kind:'case',data:o.x}))}
-function renderCase(c){state.current={kind:'case',data:c};el.card.classList.remove('frontier');el.card.innerHTML=`<div class="owner">ARŞİV · ${esc(c.id)}</div><div class="repo-name">${esc(c.title)}</div><div class="description">${esc(c.summary||c.work_model)}</div>${c.reported_result?`<div class="result"><b>Bildirilen sonuç</b><br>${esc(c.reported_result)}</div>`:''}<div class="meta-grid"><div class="metric">Kanıt<b>${esc(c.evidence_grade)}</b></div><div class="metric">Gelir türü<b>${esc(c.revenue_type||'—')}</b></div><div class="metric">TR satılabilirlik<b>${esc(c.tr_sellability||'—')}</b></div><div class="metric">Zorluk<b>${esc(c.difficulty||'—')}</b></div><div class="metric">İş modeli<b>${esc(c.work_model||'—')}</b></div><div class="metric">Müşteri<b>${esc(c.client_type||'—')}</b></div></div>`;setLink(el.source,c.source_url,'Birincil kaynak');setLink(el.github,c.repo_url,'GitHub repo');const rn=repoName(c.repo_url);setLink(el.deep,rn?`https://deepwiki.com/${rn}`:'','DeepWiki');el.analyse.disabled=false;el.analyse.textContent='Arşiv kaydını aç';history.replaceState(null,'',`#/case/${c.id}`);el.card.focus({preventScroll:true});status()}
-function renderRepo(r){state.current={kind:'repo',data:r};const s=scoreRepository(r,state.model,r._discovery?.lineage||[]);el.card.classList.add('frontier');el.card.innerHTML=`<div class="owner">FRONTIER · CASES.CSV-DEN TÜRETİLMİŞ ADAY</div><div class="repo-name">${esc(r.full_name)}</div><div class="description">${esc(r.description||'Açıklama yok.')}</div><div class="result"><b>Durum</b><br>Arşivde kayıtlı değil; gelir kanıtı değil. En yakın desen: ${esc(s.bestPattern?.label||'belirsiz')}.</div><div class="meta-grid"><div class="metric">Aday skoru<b>${Math.round(s.score*100)}/100</b></div><div class="metric">Arşiv uyumu<b>${Math.round(s.archiveFit*100)}/100</b></div><div class="metric">Yıldız<b>${r.stargazers_count||0}</b></div><div class="metric">Dil<b>${esc(r.language||'—')}</b></div><div class="metric">Lisans<b>${esc(r.license?.spdx_id||'belirsiz')}</b></div><div class="metric">Son push<b>${esc((r.pushed_at||'').slice(0,10)||'—')}</b></div></div>`;setLink(el.source,r.html_url,'GitHub kaynak');setLink(el.github,r.html_url,'GitHub repo');setLink(el.deep,`https://deepwiki.com/${r.full_name}`,'DeepWiki');el.analyse.disabled=false;el.analyse.textContent='Derin fırsat analizi';history.replaceState(null,'',`#/repo/${r.id}`);el.card.focus({preventScroll:true});status()}
+
+function renderCase(c){
+  closePanel();state.current={kind:'case',data:c};el.card.classList.remove('frontier');
+  el.card.innerHTML=`<div class="owner">ARŞİV · ${esc(c.id)}</div><div class="repo-name">${esc(c.title)}</div><div class="description">${esc(c.summary||c.work_model)}</div>${c.reported_result?`<div class="result"><b>Bildirilen sonuç</b><br>${esc(c.reported_result)}</div>`:''}<div class="meta-grid"><div class="metric">Kanıt<b>${esc(c.evidence_grade)}</b></div><div class="metric">Gelir türü<b>${esc(c.revenue_type||'—')}</b></div><div class="metric">TR satılabilirlik<b>${esc(c.tr_sellability||'—')}</b></div><div class="metric">Zorluk<b>${esc(c.difficulty||'—')}</b></div><div class="metric">İş modeli<b>${esc(c.work_model||'—')}</b></div><div class="metric">Müşteri<b>${esc(c.client_type||'—')}</b></div></div>`;
+  setLink(el.source,c.source_url,'Birincil kaynak');setLink(el.github,c.repo_url,'GitHub repo');
+  el.analyse.disabled=false;el.analyse.textContent='Arşiv kaydını aç';el.wiki.disabled=false;el.wiki.textContent='Wiki';
+  history.replaceState(null,'',`#/case/${c.id}`);el.card.focus({preventScroll:true});status();
+}
+function renderRepo(r){
+  closePanel();state.current={kind:'repo',data:r};const s=scoreRepository(r,state.model,r._discovery?.lineage||[]);el.card.classList.add('frontier');
+  el.card.innerHTML=`<div class="owner">FRONTIER · CASES.CSV-DEN TÜRETİLMİŞ ADAY</div><div class="repo-name">${esc(r.full_name)}</div><div class="description">${esc(r.description||'Açıklama yok.')}</div><div class="result"><b>Durum</b><br>Arşivde kayıtlı değil; gelir kanıtı değil. En yakın desen: ${esc(s.bestPattern?.label||'belirsiz')}.</div><div class="meta-grid"><div class="metric">Aday skoru<b>${Math.round(s.score*100)}/100</b></div><div class="metric">Arşiv uyumu<b>${Math.round(s.archiveFit*100)}/100</b></div><div class="metric">Yıldız<b>${r.stargazers_count||0}</b></div><div class="metric">Dil<b>${esc(r.language||'—')}</b></div><div class="metric">Lisans<b>${esc(r.license?.spdx_id||'belirsiz')}</b></div><div class="metric">Son push<b>${esc((r.pushed_at||'').slice(0,10)||'—')}</b></div></div>`;
+  setLink(el.source,r.html_url,'GitHub kaynak');setLink(el.github,r.html_url,'GitHub repo');
+  el.analyse.disabled=false;el.analyse.textContent='Derin fırsat analizi';el.wiki.disabled=false;el.wiki.textContent='Wiki';
+  history.replaceState(null,'',`#/repo/${r.id}`);el.card.focus({preventScroll:true});status();
+}
+
 async function frontier(){state.phase='frontier';state.queue=[];note('Arşiv tükendi. Sabit frontier sorgu listesi kullanılmıyor: cases.csv içindeki kanıt, niş, iş modeli, müşteri tipi ve stack desenlerinden sorgular üretiliyor; ilk turdan sonra eksik kalan desenler için ikinci tur sorgular türetiliyor.',true);el.status.textContent='cases.csv → desenler → sorgular → adaylar…';const out=await runDiscoveryPipeline({model:state.model,token:state.token,archiveRepos:state.archiveRepos,seen:state.seen,cycle:state.cycle,onRate:r=>{state.rate=r;status()}});state.frontier=out.candidates;state.queryPlan=out.queryPlan;state.executed=out.executed;state.cycle=out.nextCycle;state.queue=out.candidates.map(data=>({kind:'repo',data}));el.status.textContent='frontier hazır';status()}
-async function next(){if(state.current){state.seen.add(state.current.kind==='case'?keyCase(state.current.data):keyRepo(state.current.data));persist()}if(!state.queue.length&&state.phase==='archive')refill();if(!state.queue.length&&state.phase==='archive')await frontier();if(!state.queue.length&&state.phase==='frontier')await frontier();const n=state.queue.shift();if(!n){el.card.innerHTML='<div class="repo-name">Yeni aday bulunamadı</div><div class="description">Pipeline bu turda yeni aday üretemedi; sonraki tur daha gevşek eşik/sayfa kullanır.</div>';return}n.kind==='case'?renderCase(n.data):renderRepo(n.data)}
+async function next(){if(state.current){state.seen.add(state.current.kind==='case'?keyCase(state.current.data):keyRepo(state.current.data));persist()}closePanel();if(!state.queue.length&&state.phase==='archive')refill();if(!state.queue.length&&state.phase==='archive')await frontier();if(!state.queue.length&&state.phase==='frontier')await frontier();const n=state.queue.shift();if(!n){el.card.innerHTML='<div class="repo-name">Yeni aday bulunamadı</div><div class="description">Pipeline bu turda yeni aday üretemedi; sonraki tur daha gevşek eşik/sayfa kullanır.</div>';el.analyse.disabled=true;el.wiki.disabled=true;return}n.kind==='case'?renderCase(n.data):renderRepo(n.data)}
+
 async function apiReadme(r){try{const h={'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};if(state.token)h.Authorization=`Bearer ${state.token}`;const x=await fetch(`https://api.github.com/repos/${r.full_name}/readme`,{headers:h});if(!x.ok)return'';const d=await x.json(),b=Uint8Array.from(atob(d.content.replace(/\n/g,'')),c=>c.charCodeAt(0));return new TextDecoder().decode(b)}catch{return''}}
-async function analyse(){if(!state.current)return;el.panel.hidden=false;el.analyse.disabled=true;try{if(state.current.kind==='case'){const c=state.current.data;el.title.textContent=`${c.id} · ${c.title}`;el.body.innerHTML=`<section class="wiki-section"><h3>Arşiv kaydı</h3><p>${esc(c.summary)}</p></section><section class="wiki-section"><h3>Ticari çerçeve</h3><ul><li><b>Kanıt:</b> ${esc(c.evidence_grade)} / ${esc(c.status)}</li><li><b>İş modeli:</b> ${esc(c.work_model)}</li><li><b>Müşteri:</b> ${esc(c.client_type)}</li><li><b>Stack:</b> ${esc(c.stack)}</li><li><b>Bildirilen sonuç:</b> ${esc(c.reported_result||'yok')}</li></ul></section>`}else{const r=state.current.data,md=await apiReadme(r),s=scoreRepository(r,state.model,r._discovery?.lineage||[],md),peers=nearestCases(r,state.model,md,4),line=r._discovery?.lineage||[];el.title.textContent=r.full_name;el.body.innerHTML=`<section class="wiki-section"><h3>Neden bulundu?</h3><p><b>Model:</b> ${esc(state.model.version)} · <b>En yakın desen:</b> ${esc(s.bestPattern?.label||'—')} · <b>Arşiv uyumu:</b> ${Math.round(s.archiveFit*100)}/100 · <b>Desen uyumu:</b> ${Math.round(s.patternFit*100)}/100</p><p>Bu sonuç gelir kanıtı değildir; cases.csv içindeki mevcut ticari desenlerden türetilmiş keşif adayıdır.</p></section><section class="wiki-section"><h3>Discovery provenance</h3><ol>${line.map(x=>`<li><b>${esc(x.stage)}</b> · <code>${esc(x.queryText)}</code>${x.patternId?`<br><small>${esc(x.patternId)} · kaynak vakalar: ${esc((x.caseIds||[]).join(', '))}</small>`:''}</li>`).join('')||'<li>Provenance yok.</li>'}</ol></section><section class="wiki-section"><h3>En yakın arşiv emsalleri</h3><ol>${peers.map(x=>`<li><b>${esc(x.case.id)} · ${esc(x.case.title)}</b> — ${Math.round(Math.min(1,x.score)*100)}/100 · kanıt ${esc(x.case.evidence_grade)}${x.case.reported_result?`<br><small>${esc(x.case.reported_result)}</small>`:''}</li>`).join('')}</ol></section><section class="wiki-section"><h3>Doğrulama sınırı</h3><p>Bu demo yeni case üretmez ve arşive veri yazmaz. Yalnızca mevcut cases.csv’den sorgu üretir, aday bulur ve mevcut vakalarla ilişkilendirir.</p></section>`}}finally{el.analyse.disabled=false}}
-async function load(){el.status.textContent='AI Money Workflows arşivi yükleniyor…';const r=await fetch(ARCHIVE,{cache:'no-store'});if(!r.ok)throw new Error(`Arşiv yüklenemedi: ${r.status}`);state.cases=csv(await r.text()).filter(c=>c.id);state.archiveRepos=new Set(state.cases.map(c=>repoName(c.repo_url).toLowerCase()).filter(Boolean));state.phase='archive';state.queue=[];state.frontier=[];state.cycle=0;rebuild();refill();el.status.textContent='arşiv hazır';note(`Öncelik: cases.csv. Frontier açıldığında ${state.model.eligibleCount} uygun vakadan çıkarılan ${state.model.patterns.length} desen, çok aşamalı dinamik sorgu pipeline'ını besleyecek.`);status();await next()}
-el.card.onclick=next;el.analyse.onclick=analyse;el.close.onclick=()=>el.panel.hidden=true;el.mode.onchange=()=>{state.mode=el.mode.value;state.queue=[];state.frontier=[];state.cycle=0;rebuild();if(state.phase==='archive')refill();status()};el.reload.onclick=async()=>{state.mode=el.mode.value;state.token=el.token.value.trim();sessionStorage.setItem('amw_token',state.token);state.current=null;await load()};el.reset.onclick=async()=>{if(!confirm('Görülmüş kayıt geçmişi sıfırlansın mı?'))return;state.seen.clear();persist();state.current=null;await load()};el.export.onclick=()=>{const b=new Blob([JSON.stringify({seen:[...state.seen]},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='ai-money-workflows-discovery-history.json';a.click();URL.revokeObjectURL(a.href)};el.import.onchange=async()=>{const f=el.import.files?.[0];if(!f)return;const d=JSON.parse(await f.text());if(Array.isArray(d.seen)){d.seen.forEach(x=>state.seen.add(x));persist();state.queue=[];refill();status()}el.import.value=''};load().catch(e=>{el.status.textContent=e.message;el.status.style.color='var(--danger)'});
+
+function sanitizeWikiArticle(article,pageUrl){
+  const clone=article.cloneNode(true);
+  clone.querySelectorAll('script,style,iframe,object,embed,form').forEach(n=>n.remove());
+  clone.querySelectorAll('.self').forEach(n=>n.remove());
+  clone.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));
+  clone.querySelectorAll('*').forEach(n=>[...n.attributes].forEach(a=>{if(/^on/i.test(a.name))n.removeAttribute(a.name)}));
+  clone.querySelectorAll('a').forEach(a=>{
+    const href=a.getAttribute('href');
+    if(!href||/^\s*javascript:/i.test(href)){a.removeAttribute('href');return}
+    try{a.href=new URL(href,pageUrl).href;a.target='_blank';a.rel='noreferrer'}catch{a.removeAttribute('href')}
+  });
+  return clone.outerHTML;
+}
+async function fetchWikiCase(c){
+  if(state.wikiCache.has(c.id))return state.wikiCache.get(c.id);
+  const rel=WIKI_PAGE_BY_NICHE.get(c.niche);
+  if(!rel)throw new Error(`Wiki sayfası eşlenemedi: ${c.niche||'niş yok'}`);
+  const pageUrl=new URL(rel,location.href).href;
+  const r=await fetch(pageUrl,{cache:'no-store'});
+  if(!r.ok)throw new Error(`Wiki yüklenemedi: ${r.status}`);
+  const doc=new DOMParser().parseFromString(await r.text(),'text/html');
+  const article=doc.getElementById(c.id);
+  if(!article||!article.classList.contains('case'))throw new Error(`${c.id} wiki bloğu bulunamadı`);
+  const out={html:sanitizeWikiArticle(article,pageUrl),pageUrl};state.wikiCache.set(c.id,out);return out;
+}
+function wikiCasesForCurrent(){
+  if(!state.current)return[];
+  if(state.current.kind==='case')return[state.current.data];
+  const r=state.current.data,line=r._discovery?.lineage||[];
+  const ids=[...new Set(line.flatMap(x=>x.caseIds||[]))];
+  let cases=ids.map(id=>state.cases.find(c=>c.id===id)).filter(Boolean);
+  if(!cases.length)cases=nearestCases(r,state.model,'',4).map(x=>x.case);
+  const seen=new Set();return cases.filter(c=>c&&!seen.has(c.id)&&seen.add(c.id)).slice(0,4);
+}
+async function toggleWiki(){
+  if(!state.current)return;
+  const key=currentPanelKey();
+  if(!el.panel.hidden&&state.panelMode==='wiki'&&state.panelKey===key){closePanel();return}
+  openPanel('wiki',key);el.eyebrow.textContent='Wiki';el.wiki.disabled=true;el.body.innerHTML='<div class="skeleton">Ana ansiklopedideki ilgili wiki kaydı yükleniyor…</div>';
+  try{
+    const cases=wikiCasesForCurrent();
+    if(!cases.length){el.title.textContent='Wiki';el.body.innerHTML='<section class="wiki-section"><p>Bu aday için arşivde ilişkilendirilebilen bir wiki kaydı bulunamadı.</p></section>';return}
+    if(state.current.kind==='case')el.title.textContent=`${cases[0].id} · ${cases[0].title}`;
+    else el.title.textContent=`${state.current.data.full_name} · ilgili arşiv wikileri`;
+    const blocks=[];
+    if(state.current.kind==='repo')blocks.push('<section class="wiki-section wiki-context"><h3>Bu adayın arşiv dayanakları</h3><p>Aşağıdaki içerikler yeni aday için gelir kanıtı değildir. Adayı keşfeden <code>cases.csv</code> desenleriyle ilişkili, ana AI Money Workflows ansiklopedisindeki mevcut vaka wikileridir.</p></section>');
+    for(const c of cases){
+      try{const w=await fetchWikiCase(c);blocks.push(`<section class="wiki-import-group"><div class="wiki-origin"><span>${esc(c.id)} · ana ansiklopedi</span><a href="${esc(w.pageUrl)}#${encodeURIComponent(c.id)}" target="_blank" rel="noreferrer">tam sayfada aç ↗</a></div><div class="wiki-import">${w.html}</div></section>`)}
+      catch(e){blocks.push(`<section class="wiki-section"><h3>${esc(c.id)} · ${esc(c.title)}</h3><p class="wiki-error">Wiki içeriği yüklenemedi: ${esc(e.message)}</p></section>`)}
+    }
+    el.body.innerHTML=blocks.join('');
+  }finally{el.wiki.disabled=false}
+}
+
+async function analyse(){
+  if(!state.current)return;const key=currentPanelKey();openPanel('analysis',key);el.eyebrow.textContent='Analiz';el.analyse.disabled=true;
+  try{
+    if(state.current.kind==='case'){
+      const c=state.current.data;el.title.textContent=`${c.id} · ${c.title}`;el.body.innerHTML=`<section class="wiki-section"><h3>Arşiv kaydı</h3><p>${esc(c.summary)}</p></section><section class="wiki-section"><h3>Ticari çerçeve</h3><ul><li><b>Kanıt:</b> ${esc(c.evidence_grade)} / ${esc(c.status)}</li><li><b>İş modeli:</b> ${esc(c.work_model)}</li><li><b>Müşteri:</b> ${esc(c.client_type)}</li><li><b>Stack:</b> ${esc(c.stack)}</li><li><b>Bildirilen sonuç:</b> ${esc(c.reported_result||'yok')}</li></ul></section>`
+    }else{
+      const r=state.current.data,md=await apiReadme(r),s=scoreRepository(r,state.model,r._discovery?.lineage||[],md),peers=nearestCases(r,state.model,md,4),line=r._discovery?.lineage||[];el.title.textContent=r.full_name;el.body.innerHTML=`<section class="wiki-section"><h3>Neden bulundu?</h3><p><b>Model:</b> ${esc(state.model.version)} · <b>En yakın desen:</b> ${esc(s.bestPattern?.label||'—')} · <b>Arşiv uyumu:</b> ${Math.round(s.archiveFit*100)}/100 · <b>Desen uyumu:</b> ${Math.round(s.patternFit*100)}/100</p><p>Bu sonuç gelir kanıtı değildir; cases.csv içindeki mevcut ticari desenlerden türetilmiş keşif adayıdır.</p></section><section class="wiki-section"><h3>Discovery provenance</h3><ol>${line.map(x=>`<li><b>${esc(x.stage)}</b> · <code>${esc(x.queryText)}</code>${x.patternId?`<br><small>${esc(x.patternId)} · kaynak vakalar: ${esc((x.caseIds||[]).join(', '))}</small>`:''}</li>`).join('')||'<li>Provenance yok.</li>'}</ol></section><section class="wiki-section"><h3>En yakın arşiv emsalleri</h3><ol>${peers.map(x=>`<li><b>${esc(x.case.id)} · ${esc(x.case.title)}</b> — ${Math.round(Math.min(1,x.score)*100)}/100 · kanıt ${esc(x.case.evidence_grade)}${x.case.reported_result?`<br><small>${esc(x.case.reported_result)}</small>`:''}</li>`).join('')}</ol></section><section class="wiki-section"><h3>Doğrulama sınırı</h3><p>Bu demo yeni case üretmez ve arşive veri yazmaz. Yalnızca mevcut cases.csv’den sorgu üretir, aday bulur ve mevcut vakalarla ilişkilendirir.</p></section>`
+    }
+  }finally{el.analyse.disabled=false}
+}
+
+async function load(){el.status.textContent='AI Money Workflows arşivi yükleniyor…';const r=await fetch(ARCHIVE,{cache:'no-store'});if(!r.ok)throw new Error(`Arşiv yüklenemedi: ${r.status}`);state.cases=csv(await r.text()).filter(c=>c.id);state.archiveRepos=new Set(state.cases.map(c=>repoName(c.repo_url).toLowerCase()).filter(Boolean));state.phase='archive';state.queue=[];state.frontier=[];state.cycle=0;state.wikiCache.clear();closePanel();rebuild();refill();el.status.textContent='arşiv hazır';note(`Öncelik: cases.csv. Frontier açıldığında ${state.model.eligibleCount} uygun vakadan çıkarılan ${state.model.patterns.length} desen, çok aşamalı dinamik sorgu pipeline'ını besleyecek.`);status();await next()}
+
+el.card.onclick=next;el.analyse.onclick=analyse;el.wiki.onclick=toggleWiki;el.close.onclick=closePanel;
+el.mode.onchange=()=>{state.mode=el.mode.value;state.queue=[];state.frontier=[];state.cycle=0;closePanel();rebuild();if(state.phase==='archive')refill();status()};
+el.reload.onclick=async()=>{state.mode=el.mode.value;state.token=el.token.value.trim();sessionStorage.setItem('amw_token',state.token);state.current=null;await load()};
+el.reset.onclick=async()=>{if(!confirm('Görülmüş kayıt geçmişi sıfırlansın mı?'))return;state.seen.clear();persist();state.current=null;await load()};
+el.export.onclick=()=>{const b=new Blob([JSON.stringify({seen:[...state.seen]},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='ai-money-workflows-discovery-history.json';a.click();URL.revokeObjectURL(a.href)};
+el.import.onchange=async()=>{const f=el.import.files?.[0];if(!f)return;const d=JSON.parse(await f.text());if(Array.isArray(d.seen)){d.seen.forEach(x=>state.seen.add(x));persist();state.queue=[];refill();status()}el.import.value=''};
+load().catch(e=>{el.status.textContent=e.message;el.status.style.color='var(--danger)'});
