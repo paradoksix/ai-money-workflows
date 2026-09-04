@@ -2,19 +2,19 @@
 
 **Nerede kaldık** dosyası. Turdan tura değişmeyen kurallar için [`CLAUDE.md`](CLAUDE.md)'ye bak — bu dosya her turda güncellenir.
 
-Son güncelleme: **2026-09-03**. Bu tur **arşiv doğrulamasıydı**: sabitlenmiş sürümler ilk kez denetlendi, bir araştırma yolu sebebiyle birlikte kapandı, 23 kaydın kendi derecesiyle çelişkisi işaretlendi ve kayda geçmemiş keşif motoru hem yazıldı hem ölü kodundan arındırıldı.
+Son güncelleme: **2026-09-04**. Bu tur **kapandı** — [PR #13](https://github.com/paradoksix/ai-money-workflows/pull/13) `main`'e girdi (`1e48999`). Yapılan iş **arşiv doğrulamasıydı**: sabitlenmiş sürümler ilk kez denetlendi, bir araştırma yolu sebebiyle birlikte kapandı, 23 kaydın kendi derecesiyle çelişkisi işaretlendi ve kayda geçmemiş keşif motoru hem yazıldı hem ölü kodundan arındırıldı.
 
 ## Şu anki durum
 
 | | |
 |---|---|
-| Dal | `claude/proje-arsiv-revizyon-yzwtvq` → **[PR #13](https://github.com/paradoksix/ai-money-workflows/pull/13)** açık |
+| Dal | **`main` temiz** — turun dalı merge edildi ve silindi, açık PR yok |
 | Vaka sayısı | **124 kayıt** — A 6 · B 25 · C 92 · X 1 · **arşivde 122** (X001 ve A006'ya devredilen C027 hariç) |
 | İş kolu | 16 gerçek niş + `tartismali` |
 | Doğrulayıcılar | `validate_catalog.py` 42 kayıt · `validate_cases.py` 124 kayıt + 3 çapraz kontrol — **ikisi de geçiyor** |
 | Sabitlenmiş sürümler | **9/9 doğrulandı** — [2026-09-03 raporu](research/PIN-DOGRULAMA-2026-09-03.md) |
 | `docs/` | 22 sayfalık Wiki, veriyle taze · ayrıca elle tutulan `docs/repo-discovery/` |
-| Canlı site | Yayında ve doğrulandı — https://paradoksix.github.io/ai-money-workflows/ |
+| Canlı site | Yayında — `verify-live-site` `1e48999` üzerinde yeşil, kök adres Wiki'yi sunuyor. https://paradoksix.github.io/ai-money-workflows/ |
 
 ---
 
@@ -146,8 +146,23 @@ Veri değişince `docs/` yeniden üretilip **aynı commit'e** konur.
 
 ## Kullanıcıya kalan manuel iş
 
-- `claude/handoff-wiki-conversion-xemu2b` dalı hâlâ duruyor. **Tamamen merge edilmiş** — `main`'de olmayan commit'i yok, silinse hiçbir şey kaybolmaz. Dal silme buradan yapılamıyor (proxy yazma yollarını kapatıyor). **Acil değil.**
-- Bu turun dalı [PR #13](https://github.com/paradoksix/ai-money-workflows/pull/13) olarak açıldı. İçinde `main` de merge edildi: tur sürerken [PR #12](https://github.com/paradoksix/ai-money-workflows/pull/12) ("arayüzden keşif kontrollerini kaldır") merge edilmiş ve `card-metric-ui.yml`'nin tam aynı yerine dokunmuştu. Çakışma çözüldü — PR #12'nin kontrol denetimi olduğu gibi korundu, benim eklediğimden yalnız onun kapsamadığı `repoCard` ve `wikiBtn` bırakıldı.
+**Yedi bayat dal duruyor, hepsi silinebilir.** Her biri merge edilmiş bir PR'ın başı; hiçbirinde `main`'de olmayan iş yok:
+
+| Dal | Girdiği PR |
+|---|---|
+| `demo/repo-discovery-engine` | #6 |
+| `feat/archive-first-discovery` | #7 |
+| `feat/archive-similarity-frontier` | #8 |
+| `feat/cases-driven-discovery-pipeline` | #9 |
+| `feat/inline-archive-wiki` | #10 |
+| `feat/card-metric-visualization` | #11 |
+| `feat/remove-discovery-controls` | #12 |
+
+Zaten silinmiş olanlar: `claude/handoff-wiki-conversion-xemu2b` (PR #5) ve `claude/proje-arsiv-revizyon-yzwtvq` (PR #13).
+
+**Dikkat — yanıltıcı sinyal:** bu dallarda `git rev-list main..<dal>` sıfır **değil** ve `git diff` yüz satırlarca fark gösterir. Bu, dalda kurtarılacak iş kaldığı anlamına **gelmez**: depo squash merge kullanıyor, dolayısıyla dal commit'leri hiçbir zaman `main`'in atası olmuyor; fark da `main`'in o dalların çok ilerisine geçmiş olmasından geliyor. Ölçüt tek şey: **PR merge edildi mi.** Yedisinde de edildi.
+
+Silmeyi kullanıcı arayüzden kendisi yapar — proxy GitHub API'sinin yazma yollarını kapattığı için buradan yapılamıyor. **Acil değil.**
 
 ## Yeni oturum için ilk adımlar
 
@@ -159,5 +174,12 @@ Veri değişince `docs/` yeniden üretilip **aynı commit'e** konur.
    python3 scripts/build_site.py && git diff --exit-code docs
    grep -hc '^## [ABCX][0-9]' encyclopedia/nis-*.md | paste -sd+ | bc   # 123 olmalı
    ```
-3. **Açık karar var:** yukarıdaki 3. madde — 23 B vakasının derecesi. Araştırmaya devam etmeden önce bu karara bağlanmalı, çünkü A/B/C sayıları README'nin 12 rakamını ve Wiki'yi etkiliyor.
-4. Turu kapatan commit bu dosyayı da güncellesin.
+3. Sabitlenmiş sürümleri bir kez doğrula — hızlı ve arşivin en kırılgan yeri:
+   ```bash
+   python3 scripts/verify_pins.py                                     # 9/9 bekleniyor
+   ```
+4. **Açık karar yok, doğrudan araştırmaya geç.** Sıradaki iki iş, verimli olandan başlayarak:
+   - **Kuyruktaki 23 B vakasının adresini ara.** Sekizinin `next_action`'ı, kaydın dayandığı iddiayı birebir alıntılıyor ("Açık JSON" gibi) — yani ne aradığın yazılı. Adres bulunursa kayıt gerçek B olur ve arşiv ilk kez B tarafında da sağlamlaşır.
+   - **Kuyrukta olmayan 50 C vakası.** Hiç araştırma görmemiş en büyük yığın.
+5. **Önce "Denenmiş ve tükenmiş" bölümünü oku.** Üç yol sebebiyle birlikte kapatıldı (42 pazar yeri vakası · C076–C084 · 11 altın vaka). Bunları tekrarlamak bir turu boşa harcar.
+6. Turu kapatan commit bu dosyayı da güncellesin.
