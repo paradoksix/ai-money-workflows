@@ -81,7 +81,14 @@ jobs:
           python -m http.server 8080 --directory docs >/tmp/card-ui.log 2>&1 &
           pid=$!
           trap 'kill $pid' EXIT
-          sleep 1
+          # Wait for the server to answer instead of assuming one second is
+          # enough; a slow start used to fail the first checks below.
+          for _ in $(seq 1 60); do
+            curl --silent --fail --output /dev/null http://127.0.0.1:8080/ && break
+            sleep 0.5
+          done
+          curl --silent --fail --output /dev/null http://127.0.0.1:8080/ \
+            || { echo 'local server never came up'; cat /tmp/card-ui.log; exit 1; }
           curl --fail --silent http://127.0.0.1:8080/repo-discovery/ | grep -q 'card-metrics.js'
           curl --fail --silent http://127.0.0.1:8080/repo-discovery/card-metrics.js | grep -q 'Quality'
           curl --fail --silent http://127.0.0.1:8080/repo-discovery/card-metrics.css | grep -q 'metric-visual'
